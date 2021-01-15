@@ -105,15 +105,15 @@ z-index: -2;
 }
 .one
 {
-    background: url(./IMG/img3.jpg) center;
+    background: url(/IMG/img3.jpg) center;
 }
 .two
 {
-    background: url(./IMG/img2.jpg) center;
+    background: url(/IMG/img2.jpg) center;
 }
 .three
 {
-    background: url(./IMG/img1.jpg) center;
+    background: url(/IMG/img1.jpg) center;
 }
 
 .service-box .service-text
