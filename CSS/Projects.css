@@ -1,0 +1,367 @@
+@media (min-width: 360px), (max-width: 767px){
+.Projects h2
+{
+  color: rgb(255, 255, 255);
+    margin-top: -12vh;
+    font-size: 40px;
+text-align: inherit;
+width: 75%;
+margin-left: 50%;
+transform: translate(-50%);
+}
+.Projects h2:before
+{
+  content: '';
+  position: absolute;
+  left: -1.1rem;
+  width: 180px;
+height: 106%;
+  /* background: rgb(175, 175, 175); */
+  background: #757F9A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
+  transform: skew(15deg);
+z-index: -1;
+
+}
+.Projects h2:After
+{
+  content: '';
+  position: absolute;
+  left: -1.9rem;
+  width: 205px;
+height: 106%;
+  /* background: var(--main-color); */
+
+  background: #757F9A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #c5d3e2, #52596b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #bec9d8, #454b5c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transform: skew(15deg);
+z-index: -2;
+
+}
+.card .layer
+{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: -webkit-linear-gradient(to top, #2c3e50cc, #bdc3c7bb);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #2c3e50d0, #bdc3c7d5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  z-index: 1;
+  transition: 0.5s;
+}
+.card:hover .layer
+  {
+   
+   bottom: 0%;
+    height: 35%;
+  
+  }
+  .card .layer .content
+  {
+ 
+    position: relative;
+    z-index: 2;
+    display: none;
+    width: 100%;
+    top: 53px;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   text-align: center;
+   justify-content: center;
+  }
+  .card .layer .content span
+  {
+    display: none;
+    color: #fff;
+    justify-content: center;
+    order: 4;
+    max-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px 10px 0px 10px;
+
+  }
+  .card:HOVER .content span
+  {
+    display: block;
+  }
+
+  .card .layer .project-layer-button , .card .layer .project-layer-button2
+  {
+    /* border-radius: 10px; */
+    font-size: 20px;
+    position: absolute;
+  
+    top: 0%;
+display: none;
+border: none;
+color: #fff;
+background-color: rgba(255,255,255,0.15);
+transition: 0.5s;
+height:40px;
+width: 49.8%;
+line-height: 30px;
+  }
+  .card .layer .project-layer-button
+  {
+    left: 0%;
+  }
+  .card .layer .project-layer-button2
+  {
+    right:0%;
+  }
+  .card .layer .project-layer-button:hover , .card .layer .project-layer-button2:hover
+  {
+
+    background-color: rgba(4, 226, 255, 0.562);
+   /* transform: scale(1.05); */
+    text-shadow: 0 0 5px #dddddd, 0 0 10px #c5c5c5, 0 0 10px #c7c7c7;
+    transition: 0.5s;
+cursor: pointer;
+  }
+ 
+  .card:hover .layer  .project-layer-button ,   .card:hover .layer  .project-layer-button2
+  {
+   display: block;
+   
+  }
+  .Projects-text
+{
+  padding: 5vw;
+  width: 70vw;
+  margin-left: 15vw;
+  text-align: center;
+}
+  .swiper-container {
+   padding-top: 20vh;
+    width: 100%;
+
+    height: 400px;
+ 
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+background-color: rgb(255, 255, 255);
+
+-webkit-box-reflect: below 1px linear-gradient(transparent , transparent , #0006);
+  }
+  .Carousel
+  {
+    background-color: #fff;
+    max-height: 105vh;
+    width: 100%;
+    margin-top: .6vh;
+    
+  }
+  .Projects-text
+{
+  padding: 5vw;
+  width: 80vw;
+  margin-left: 10vw;
+  text-align: justify;
+  
+  font-weight: 900;
+}
+#Projects
+{
+  margin-top: -20vh;
+  position: absolute;
+}
+@media (min-width: 768px)
+{
+  .Projects_title_text
+  {
+    color:#64666d;
+    font-weight: 900;
+   
+    font-size: 20px;
+  }
+  .card .layer
+  {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: -webkit-linear-gradient(to top, #2c3e50cc, #bdc3c7bb);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2c3e50d0, #bdc3c7d5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    z-index: 1;
+    transition: 0.5s;
+  }
+  
+   .card:hover .layer
+  {
+   
+   bottom: 0%;
+    height: 35%;
+  
+  }
+  .card .layer .content
+  {
+ 
+    position: relative;
+    z-index: 2;
+    display: none;
+    width: 100%;
+    top: 53px;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   text-align: center;
+   justify-content: center;
+  }
+  .card .layer .content span
+  {
+    display: none;
+    color: #fff;
+    justify-content: center;
+    order: 4;
+    max-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px 10px 0px 10px;
+
+  }
+  .card:HOVER .content span
+  {
+    display: block;
+  }
+  /* .card:HOVER .content p
+  {
+    position: absolute;
+    bottom: -80px;
+    color: #fff;
+  } */
+  .card .layer .img-box
+  {
+    overflow: hidden;
+  }
+  .card .layer .project-layer-button , .card .layer .project-layer-button2
+  {
+    /* border-radius: 10px; */
+    font-size: 20px;
+    position: absolute;
+  
+    top: 0%;
+display: none;
+border: none;
+color: #fff;
+background-color: rgba(255,255,255,0.15);
+transition: 0.5s;
+height:40px;
+width: 49.8%;
+line-height: 30px;
+  }
+  .card .layer .project-layer-button
+  {
+    left: 0%;
+  }
+  .card .layer .project-layer-button2
+  {
+    right:0%;
+  }
+  .card .layer .project-layer-button:hover , .card .layer .project-layer-button2:hover
+  {
+
+    background-color: rgba(4, 226, 255, 0.562);
+   /* transform: scale(1.05); */
+    text-shadow: 0 0 5px #dddddd, 0 0 10px #c5c5c5, 0 0 10px #c7c7c7;
+    transition: 0.5s;
+cursor: pointer;
+  }
+ 
+  .card:hover .layer  .project-layer-button ,   .card:hover .layer  .project-layer-button2
+  {
+   display: block;
+   
+  }
+.Projects-text
+{
+  padding: 5vw;
+  width: 70vw;
+  margin-left: 15vw;
+  text-align: center;
+}
+  .swiper-container {
+   padding-top: 20vh;
+    width: 100%;
+
+    padding-bottom: 0px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+background-color: rgb(255, 255, 255);
+
+-webkit-box-reflect: below 1px linear-gradient(transparent , transparent , #0006);
+  }
+
+  /* .swiper-slide-active
+{
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 255, 0.486);
+  z-index: 5;
+  transition: 2S;
+} */
+  .Carousel
+  {
+    background-color: #fff;
+    height: 80vh;
+    width: 100%;
+    margin-top: .6vh;
+  }
+  .Projects h2
+    {
+        font-size: 70px;
+    }
+    .Projects h2:before
+    {
+       width: 350px;
+       left: -53px;
+    }
+    .Projects h2:after
+    {
+       width: 380px;
+       left: -67.5px;
+    }
+   
+}
+
+@media (max-width: 830px) and (orientation:landscape)
+{
+  .Projects h2:before
+  {
+ 
+     left: -17px;
+  }
+  .Projects h2:after
+  {
+    left: -30px;
+
+  }
+}

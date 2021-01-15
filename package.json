@@ -1,0 +1,11 @@
+{
+    "name": "my-awesome-package",
+    "dependencies": {
+        "bootstrap": "^4.5.3",
+        "fontawesome": "latest",
+        "fontisto": "latest",
+        "gsap": "^3.5.1",
+        "swiper": "^6.3.5"
+    },
+    "version": "1.0.0"
+}

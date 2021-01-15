@@ -1,0 +1,242 @@
+@media (min-width: 360px), (max-width: 767px){
+header{
+
+    height: 100vh;
+    width: 98.95vw;
+    background-color: rgb(135, 143, 151);
+    display: flex;
+}
+
+.header__backgroung{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgb(135, 143, 151);
+  animation: linear 1s animate1;
+}
+
+.header__backgroung #bg {
+  position: absolute;
+  width: 100%;
+  height: 10vh;
+  background-image: url(../IMG/Background7.jpg);
+  background-size: cover;
+background-repeat: no-repeat;
+  z-index: 0;
+      background-position: right bottom; 
+      transform: scale(1.14) scaleX(-1);
+  }
+
+
+.header__backgroung h1{
+    margin-top: 24%;
+    margin-left: 5vw;
+     position: absolute;
+     padding: 20px 16px 35px;
+     color: #4e686e;
+   background: #c9d1d8;
+   box-shadow: 0 0 10px #b4c4cc, 0 0 40px #b0c5cf, 0 0 80px #abbfc9;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     text-decoration: none;
+     font-size: 22px;
+     animation-delay: 2s;
+     animation: animate1 0.7s linear forwards;
+     z-index: 1;
+     transform: rotate(-3deg);
+   }
+  
+ .header__backgroung h1 .h1-neon__logospan {
+     
+     font-size: 12px;
+     font-weight: 900;
+     position: absolute;
+     right: 5%;
+     color: var(--span-color);
+     bottom: 22%;
+     opacity: 0;
+     -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+     transition: transform 0.5s, opacity 0.5s;
+     animation: animate2 0.7s linear forwards;
+ }
+ .header__backgroung h1 span
+ {
+  font-size: 29px;
+ }
+
+.boxArrow
+{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.boxArrow a 
+{
+  color: #c5c5c5;
+  display: block;
+  font-size: 48px;
+  margin-bottom: -40px;
+  animation: animate3 2s infinite;
+  cursor: pointer;
+}
+ .boxArrow a:nth-child(2)
+ {
+ 
+   animation-delay: -0.2s;
+   transform:  translate(0,-20px);
+ }
+.boxArrow a:nth-child(3)
+ {
+   animation-delay: -0.4s;
+ }
+
+.boxArrow a:hover
+{
+  text-shadow: 0 0 10px #dddddd, 0 0 40px #c5c5c5, 0 0 80px #c7c7c7;
+}
+  @keyframes animate1
+ {
+  0%
+  {
+  background-color: white;
+   opacity: 0;
+  }
+  100%
+  {
+    opacity: 1; 
+  }
+ }
+ 
+ @keyframes animate2 
+ {
+  0%
+  {
+  
+   opacity: 0;
+  }
+  15%{
+     opacity: 0;
+   }
+  17%{
+     opacity: 0.4;
+   }
+  18%{
+   opacity: 0.6;
+ }
+ 
+  19%{
+    opacity: 0.8;
+   }
+  20%{
+    opacity: 1;
+    
+  }
+   97%
+   {
+     opacity: 1;
+    
+   }
+   100%
+   {
+     opacity: 1;
+   }
+  }
+ 
+  @keyframes animate3
+ {
+  0%
+  {
+    opacity: 0;
+    transform:  translate(0,-20px);
+  }
+  
+  50%
+   {
+     opacity: 1;
+   }
+   100%
+   {
+     opacity: 0;
+     transform:  translate(0,20px);
+   }
+  }
+}
+  @media (min-width: 768px)
+{
+  .header__backgroung h1
+  {
+    padding: 15px 16px 35px;
+   margin-top: 9%;
+    font-size: 60px;
+  left: 5%;
+  color: #4e686e;
+   background: #d8d8d8;
+   box-shadow: 0 0 10px #dddddd, 0 0 40px #c5c5c5, 0 0 80px #c7c7c7;
+   transform: rotate(0deg);
+  }
+  .header__backgroung h1 .h1-neon__logospan
+  {
+    bottom: 10%;
+    font-size: 34%;
+    right: 22px;
+  }
+  .header__backgroung h1 span
+  {
+   font-size: 70px;
+  }
+  .header__backgroung #bg
+  {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../IMG/Background7.jpg");
+    background-size: cover;
+  background-repeat: no-repeat;
+    transform: scaleX(1);
+  }
+  .boxArrow a 
+  {
+    font-size: 58px;
+  }
+}
+
+@media (max-width: 830px) and (orientation:landscape)
+{
+  .header__backgroung h1
+  {
+    padding: 15px 16px 35px;
+   margin-top: 8%;
+    font-size: 26px;
+  left: 5%;
+  color: #4e686e;
+   background: #d8d8d8;
+   box-shadow: 0 0 10px #dddddd, 0 0 40px #c5c5c5, 0 0 80px #c7c7c7;
+   transform: rotate(0deg);
+  }
+  .header__backgroung h1 .h1-neon__logospan
+  {
+    bottom: 26%;
+    font-size: 48%;
+    right: 18px;
+  }
+  .header__backgroung h1 span
+  {
+   font-size: 30px;
+  }
+  .header__backgroung #bg
+  {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../IMG/Background7.jpg");
+    background-size: cover;
+  background-repeat: no-repeat;
+    transform: scaleX(1);
+  }
+  .boxArrow a 
+  {
+    font-size: 42px;
+  }
+}

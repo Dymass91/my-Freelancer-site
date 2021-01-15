@@ -1,0 +1,538 @@
+
+@media (min-width: 360px) ,  (max-width: 767px)
+{
+
+  .Skills_section{
+    margin-top: 90px;
+      display: flex;
+      height: 400px;
+      background-color: rgb(43, 43, 48);
+      box-shadow: 0 0 25px 11px rgb(39, 39, 39);
+  }
+  .container {
+    width: 100%;
+    margin-top: 20px;
+ 
+  }
+  .carousel {
+   height: 570px;
+    overflow: hidden;
+    position: relative;
+  }
+  .slider {
+    display: flex;
+    height: 95%;
+    width: 400%;
+    transition: 0.8s;
+    
+  }
+  .slider section {
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  
+    left: 50%;
+    width: 100%;
+    margin-top: -175px;
+  }
+ 
+  .left, .right {
+    position: absolute;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 35px;
+top: 35%;
+    color: rgba(160, 160, 160, 0.295);
+  }
+  .arrow i{
+    transition: 0.5s;
+  }
+  .arrow i:hover {
+      -webkit-user-select: none;
+    color: #cfcfcf;
+    text-shadow: 0 0 5px #dddddd, 0 0 10px #c5c5c5, 0 0 10px #c7c7c7;
+    transition: 0.5s;
+  }
+  
+  .left {
+    left: 3%;
+  }
+  .right {
+    right: 3%;
+    
+  }
+  .control ul {
+    list-style: none;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    bottom: 34%;
+    left: 48%;
+    padding: 0;
+    transform: translate(-50%);
+    z-index: 2;
+  }
+  .control ul li {
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border: 2px solid var(--span-color);
+    border-radius: 50px;
+    margin: 0 0 24px 18px;
+  }
+  .control ul li.selected {
+    transition: 0.5s;
+    background-color: rgb(13, 207, 255);
+    box-shadow: 0px 0px 6px rgb(118, 223, 255), 0 0 5px #0000FF, 0 0 5px #0000FF;
+  }
+
+
+  /* social divs */
+
+
+.front_end_icons{
+    display: flex;
+    margin-top: 8%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.slider h2{
+    position: relative;
+    color: rgb(153, 153, 153);
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+     margin-top: 0%;
+    margin-bottom: 5%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+}
+.slider .Work_Experience,.Soft_Skills_section h2{
+  margin-top: 5%;
+}
+
+ .front_end_icons i{
+     
+    color: rgb(2, 229, 236);
+    position: relative;
+    font-size: 30px;
+    padding:0px 12px 2px 18px;
+    transition: 0.5s;
+    margin-bottom: 2%;
+    text-shadow: 0px 0px 6px rgb(118, 223, 255), 0 0 5px #0000FF, 0 0 5px #0000FF;
+
+}
+
+
+.slider h1{
+    position: absolute;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 0;
+    top: 1%;
+    color: rgb(92, 186, 230);  
+    font-size: 35px;
+}
+
+.slider ul li {
+    position: relative;
+    text-align: justify;
+    font-size: 14px;
+margin: 0 0% 3% 15.5%;
+    width: 100%;
+}
+.Work_Experience p{
+    font-size: 10px;
+    display: block;
+    width: 65%;
+}
+.front_end_icons i p{
+  font-size: 10px;
+    margin-top: 1px;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+}
+
+.front_end_icons i:hover p{
+    opacity: 1;
+    cursor: pointer;
+    transition: ease-in-out 1s;
+}
+.Work_Experience ul li {
+    margin-left: 19.5%;
+    width: 100%;
+}
+
+/* image slider */
+
+.carousel ul{
+    color: rgb(206, 206, 206);
+}
+
+
+.carousel ul li a:hover{
+    transition: ease-in 0.2s;
+    cursor: pointer;
+    color: rgb(2, 229, 236);
+    text-shadow: 0px 0px 6px rgb(118, 223, 255), 0 0 5px #0000FF, 0 0 5px 
+}
+
+.carousel ul li a {
+    transition: ease-in 0.2s;
+    text-decoration: none;
+    color: rgb(206, 206, 206);
+}
+
+.Image_slider{
+  display: none;
+}
+img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-origin: border-box;
+    background-position: center;
+}
+
+/* Animations and classes to Javascript */
+.fade{
+    opacity: 0;
+   animation: fadein 2s ease-in-out;
+}
+.unactive{
+  pointer-events: none;
+  opacity: 0;
+  transition: 1s;
+}
+.active{
+  opacity: 1;
+  transition: 1s;
+}
+
+@keyframes fadein
+{
+    0%{opacity: 0;}
+    25%{opacity: 1;}
+    75%{opacity: 1;}
+    100%{opacity: 1;} 
+}
+
+
+@media (max-width: 359px) 
+{
+  .front_end_icons{
+    display: flex;
+    width: 76%;
+    margin-top: 8%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .front_end_icons i{
+    font-size: 24px;
+  }
+  .slider h2
+  {
+    bottom: -6px;
+  }
+  .slider .Work_Experience,
+  .Soft_Skills_section,
+  .Courses_Certyficates h2{
+    margin-top: -7%;
+  }
+  }
+
+
+@media (min-width: 768px) 
+{
+  .Skills_section{
+    margin-top: 10%;
+      display: flex;
+      height: 640px;
+      background-color: rgb(43, 43, 48);
+      box-shadow: 0 0 25px 11px rgb(39, 39, 39);
+  }
+  .Image_slider{
+    display: block;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 65%;
+    width: 40vw;
+   margin-left: 2.3%;
+    border: 4px solid rgb(143, 143, 143);
+    box-shadow: 0 0 25px 11px rgb(31, 31, 31);
+    border-radius: 6px;
+    overflow: hidden;
+    
+}
+
+.slider section {
+    left: 50%;
+    width: 100%;
+    margin-top: -175px;
+  }
+  .container {
+    width: 50%;
+    margin-top: 40px;
+  }
+
+  
+.front_end_icons{
+width: 75%;
+margin-top: 38%;
+}
+.front_end_icons i p 
+{
+font-size: 20px;
+}
+
+.slider h1
+{
+margin-top: -5%;
+margin-bottom: 0;
+font-size: 45px;
+}
+.slider h2{
+  margin-top: 8%;
+  font-size: 26px;
+}
+.slider .front_end_icons h2{
+  margin-top: 1%;
+  margin-bottom: 4%;
+  font-size: 26px;
+}
+.front_end_icons i{
+  color: rgb(2, 229, 236);
+  position: relative;
+  font-size: 45px;
+  padding:0px 18px 2px 18px;
+  
+  margin-bottom: 2%;
+}
+
+.slider h1{
+  font-size: 60px;
+  top: -2%;
+  margin-top: 1%;
+  margin-bottom: 0;
+}
+.left{
+margin-left: 4%;
+}
+.right
+{
+  margin-right: 4%;
+}
+.left, .right {
+  top: 50%;
+    font-size: 72px;
+}
+.slider ul li {
+  font-size: 24px;
+  margin: 0 0% 3% 17.5%;
+}
+.slider ul
+{
+  margin-bottom: -40%;
+}
+.Work_Experience p
+{
+font-size: 20px;
+}
+.Work_Experience ul
+{
+  margin-top: -3%;
+font-size: 20px;
+}
+.Work_Experience h2
+{
+  margin-top: -11%;
+}
+.control ul
+{
+bottom: -3.5%;
+}
+.control ul li {
+  width: 15px;
+  height: 15px;
+}
+}
+
+@media (min-width: 768px) and (max-width: 880px)
+{
+  .Image_slider{
+    display: none;
+  }
+  img{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-origin: border-box;
+      background-position: center;
+   
+  }
+
+  
+.front_end_icons{
+  display: flex;
+  width: 75%;
+  margin-top: 38%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+.container {
+  width: 100%;
+  margin-top: 20px;
+
+}
+.slider h2{
+  position: relative;
+  font-size: 28px;
+   margin-top: 20%;
+  margin-bottom: 5%;
+  margin-left: 50%;
+  transform: translate(-50%);
+
+}
+.slider .Work_Experience,.Soft_Skills_section h2{
+margin-top: 5%;
+}
+.Work_Experience h2
+{
+  margin-top: -7%;
+}
+.front_end_icons i{
+  font-size: 38px;
+  padding:0px 14px 2px 18px;
+  margin-bottom: 2%;
+
+}
+}
+
+@media (max-width: 830px) and (orientation:landscape)
+{
+  .Skills_section{
+    margin-top: 10%;
+      display: flex;
+      height: 380px;
+      background-color: rgb(43, 43, 48);
+      box-shadow: 0 0 25px 11px rgb(39, 39, 39);
+  }
+  .Image_slider{
+    display: block;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 55%;
+    width: 40vw;
+   margin-left: 2.3%;
+    border: 4px solid rgb(143, 143, 143);
+    box-shadow: 0 0 25px 11px rgb(31, 31, 31);
+    border-radius: 6px;
+    overflow: hidden;
+    
+}
+
+.slider section {
+    left: 50%;
+    width: 100%;
+    margin-top: -175px;
+  }
+  .container {
+    width: 50%;
+    margin-top: 40px;
+  }
+
+  
+.front_end_icons{
+width: 75%;
+margin-top: 6%;
+}
+.front_end_icons i p 
+{
+font-size: 9px;
+}
+
+
+.slider h2{
+  margin-top: 4%;
+  font-size: 14px;
+}
+.Courses_Certyficates .naughty
+{
+  margin-top: -20%;
+}
+.slider .front_end_icons h2{
+  margin-top: 3%;
+  margin-bottom: 4%;
+  font-size: 14px;
+}
+.front_end_icons i{
+  color: rgb(2, 229, 236);
+  position: relative;
+  font-size: 19px;
+  padding:0px 17px 1px 17px;
+  margin-top: 4px;
+  margin-bottom: 2%;
+}
+.carousel
+{
+  height: 500px;
+}
+.slider h1{
+  font-size: 28px;
+  margin-top: 0%;
+  margin-bottom: 0;
+}
+
+.left, .right {
+  top: 28%;
+    font-size: 35px;
+}
+.slider ul li {
+  font-size: 12px;
+  margin: 0 0% 3% 17.5%;
+}
+.slider ul
+{
+  margin-bottom: 10%;
+}
+.Work_Experience p
+{
+font-size: 10px;
+}
+.Work_Experience ul
+{
+  margin-top: -3%;
+font-size: 10px;
+}
+.Work_Experience h2
+{
+  margin-top: -2%;
+}
+.control ul
+{
+margin-bottom: 2.5%;
+}
+.control ul li {
+  width: 12px;
+  height: 12px;
+}

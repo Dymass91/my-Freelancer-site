@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+
+@media (min-width: 360px), (max-width: 767px){
+        .home-text{
+ 	text-align: center;
+ 	position: relative;
+     z-index: 2;
+     display: flex;
+     align-items: center;
+     justify-items: center;
+     justify-content: center;
+     align-content: center;
+ }
+
+
+.home-text p{
+	margin:0;
+overflow: visible;
+
+}
+.home-text p span{
+        display: none;
+
+}
+
+
+}
+@media (min-width: 768px)
+{
+ .home-text{
+ 	text-align: center;
+ 	position: relative;
+     z-index: 2;
+     display: flex;
+     align-items: center;
+     justify-items: center;
+     justify-content: center;
+     align-content: center;
+ }
+
+
+.home-text p{
+	margin:0;
+overflow: visible;
+
+}
+.home-text p span{
+    position: absolute;
+   top: -5vh;
+    width: 440px;
+    text-align: center;
+    transform: scale(1.6);
+    font-size: 27px;
+    color:#000000;
+    font-weight: 900;
+    text-shadow: 0 0 6px #000000, 0 0 15px #afafaf;
+    display: inline-block;
+    line-height: 100px;
+    display: none;
+    z-index: 4;
+}
+
+.home-text p span.text-in{
+	display: block;
+	animation: textIn 1.2s ease;
+}
+.home-text p span.text-out{
+	animation: textOut 1.2s ease;
+}
+}
+@keyframes textIn{
+	0%{
+        transform: translateY(100%);
+        opacity: 0;
+	}
+	100%{
+        transform: translateY(0%);
+        opacity: 1;
+        transform: scale(1.6);
+	}
+}
+@keyframes textOut{
+	0%{
+        transform: translateY(0%);
+        opacity: 1;
+        transform: scale(1.6);
+	}
+	100%{
+		transform: translateY(-100%);
+        opacity: 0;
+	}
+}
+
+
+
+

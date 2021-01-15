@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TomaszMatyszczak</title>
+    <link rel="stylesheet" type="text/css" href="CSS/styles.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="CSS/Header.css" /> -->
+    <link rel="stylesheet" type="text/css" href="CSS/Aboutme.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Skills.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/Service.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/Projects.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/Navbar.css">
+    <!-- <link rel="stylesheet" type="text/css" href="CSS/Contact.css"> -->
+    <link rel="stylesheet" type="text/css" href="CSS/Footer.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Landing.css">
+    <link rel="stylesheet" type="text/css" href="CSS/SlideUpText.css">
+    <link rel="stylesheet" type="text/css" href="CSS/swiper.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Contact2.css">
+    <link rel="stylesheet" type="text/css" href="CSS/languageCSS.css">
+    <link rel="stylesheet" type="text/css" href="CSS/ScrollToTopCSS.css">
+
+    <script src="https://kit.fontawesome.com/a9043bc812.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="IMG/android-chrome-192x192.png">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="stylesheet" href="../package/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Baumans|Merienda+One|Share|Syncopate&display=swap"
+        rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--------------   HEADER  ------------>
+
+    <header>
+        <!-- loader -->
+        <!-- <div class="wrapper">
+            <div class="loader"></div>
+        </div> -->
+
+        <div class="container-header">
+            <!-- nav  -->
+
+            <nav class="menu">
+                <div class="menu-left menu-item">
+                    <div class="langWrap">
+                        <div class="neumorphism-toggles">
+                            <a language='Polish' class="btn_language neumorphism fa-home active" name="PL">PL</a>
+                            <a language='english' class="btn_language neumorphism fa-bell" name="EN">EN</a>
+                        </div>
+                    </div>
+                    <ul class="Header-pages">
+                        <li class="menu_header-1"><a href="#About" class="menu_header_About">O mnie</a></li>
+                        <li class="menu_header-2"><a href="#Skills" class="menu_header_Service">Usługi</a></li>
+                        <li class="menu_header-1"><a href="#Projects" class="menu_header_Projects">Portfolio</a></li>
+                        <li class="menu_header-2"><a href="#Contact" class="menu_header_Contact">Kontakt</a></li>
+                    </ul>
+
+                </div>
+
+            </nav>
+
+
+            <!-- hero image  -->
+            <div class="wrapper-img">
+                <div class="box-header"></div>
+                <div>
+                    <img class="image-header" src="IMG/Portrait.jpg">
+                </div>
+            </div>
+
+            <!-- header  -->
+            <div class="header-text">
+                <h1 class="header-1">Tomasz</h1>
+                <h1 class="header-2">Matyszczak</h1>
+                <h2 class="header-3">Front-end Developer</h2>
+            </div>
+
+            <!-- hero-container  -->
+            <div class="hero-container">
+                <div class="img-nav">
+                </div>
+
+            </div>
+
+            <div class="boxArrow">
+
+                <a href="#box"><i class="fas fa-chevron-down"></i></a>
+                <a href="#box"><i class="fas fa-chevron-down"></i></a>
+                <a href="#box"><i class="fas fa-chevron-down"></i></a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!--------------   NAVBAR  ------------>
+
+    <nav class="navbar">
+
+        <ul>
+            <li><a href="#About" class="navbar_header_About">O mnie</a></li>
+            <li><a href="#Skills" class="navbar_header_Service">Usługi</a></li>
+            <li><a href="#Projects" class="navbar_header_Projects">Portfolio</a></li>
+            <li><a href="#Contact" class="navbar_header_Contact">Kontakt</a></li>
+            <ul>
+                <li> <a language='Polish' class="btn_language active">PL</a></li>
+                <li> <a language='english' class="btn_language">EN</a></li>
+            </ul>
+        </ul>
+
+        <button class="navbar-toggler">
+            <span></span>
+        </button>
+
+
+    </nav>
+    </div>
+
+    <!--------------   ABOUT ME  ------------>
+
+    <!-- Navigation point for scroll bar-->
+    <div id="About"> </div>
+    <!-- Navigation point for scroll bar-->
+
+    <section class="Aboutme" data-aos="fade-up">
+
+        <span class="line1"></span>
+        <span class="h2_under-background2"></span>
+        <h2 class="title">O mnie</h2>
+        <span class="line2"></span>
+        <div class="About-container">
+
+
+            <div class="about-left">
+                <div class="home-text">
+                    <p class="animate-text">
+                        <span>HTML5 <i class="fab fa-html5"></i></span>
+                        <span>CSS <i class="fab fa-css3-alt"></i></span>
+                        <span>Sass\Scss <i class="fab fa-sass"></i></span>
+                        <span>Bootstrap <i class="fab fa-bootstrap"></i></span>
+                        <span>Javascript <i class="fab fa-js"></i></span>
+                        <span>React <i class="fab fa-react"></i></span>
+                        <span>PHP </span>
+                        <span>MySql <i class="fas fa-database"></i></span>
+                        <span>WordPress <i class="fab fa-wordpress"></i></span>
+                        <span>RWD</span>
+
+                    </p>
+                </div>
+                <div class="About-img"><img src="/IMG/gif11.txt" /> </div>
+            </div>
+            <div class="about-text">
+
+                <p class="descriptionAbout"><span>Witam!</span> Od paru lat rozwijam sie w projektowaniu stron
+                    internetowych.
+                    Wykonuję strony statyczne jak i również dynamiczne, na podstawie
+                    dowolnego systemu zarządzania treścią. Systemy, z którymi mam najwięcej doświadczenia to
+                    HTML, CSS i
+                    JavaScript!, Ale zdarzyło mi się również kodować strony oparte na innych rozwiązaniach,
+                    takich jak React i Wordpress. I wciąż rozwijam swoją wiedzę o nowe języki programowania.
+
+                </p>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation point for Arrow-->
+    <section id="box" class="Scroll_to_section"></section>
+    <!-- Navigation point for Arrow-->
+
+    <!--------------   SKILLS, QUALIFICATIONS, EXPERIENCE  ------------>
+
+    <!-- Navigation point for scroll bar-->
+    <div id="Skills"></div>
+    <!-- Navigation point for scroll bar-->
+
+    <span class="line1"></span>
+    <span class="h2_under-background"></span>
+    <h2 class="service_h2 my_service_h2">Moje usługi</h2>
+    <span class="line2"></span>
+    <div class="Service_section">
+        <div class="service_container" data-aos="fade-up">
+
+            <div class="service-wrapper">
+
+
+                <div class="row">
+                    <div class="service-card" data-aos="fade-up">
+                        <div class="service-box one">
+                            <div class="service-text" data-aos="slide-down" data-aos-duration='1000'>
+                                <h3 class="titleService1">Oferta</h3>
+
+
+                                <p class="descriptionPriceSpan"> W mojej ofercie otrzymasz:</p>
+                                <p class="descriptionService1">
+                                    Kompletna strona internetową opartą o HTML, CSS, Javascript, WordPress lub
+                                    React
+                                    wraz z wykupieniem hoistingu i domeny oraz z redagowaniem tekstow pod kątem
+                                    wyników
+                                    wyszukiwania w Google,
+                                </p>
+                                <div class="Price">
+                                    <p class="service_Price">od</p>
+                                    <p class="Price_strong"><strong> 599zł</strong></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up">
+                        <div class="service-box two">
+                            <div class="service-text" data-aos="slide-down" data-aos-duration='1000'>
+                                <h3 class="titleService2">Usługi</h3>
+                                <p class="description_Service2">
+                                    - Buduje strony które są w pełni responsywne, dbam o to aby jej układ
+                                    dostosowywał
+                                    się
+                                    samoczynnie do rozmiaru okna przeglądarki, na której jest wyświetlany np.
+                                    przeglądarki, smartfonów czy tabletów.
+                                </p>
+                                <p class="description_Service2_Bottom"> - Jeśli nie posiadasz gotowego layoutu
+                                    strony
+                                    oferuję również usługę jego
+                                    stworzenia. Do współpracy zapraszam wtedy grafika.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up">
+                        <div class="service-box three">
+                            <div class="service-text" data-aos="slide-down" data-aos-duration='1000'>
+                                <h3>E-Commerce</h3>
+                                <p class="description_Service3">E-Commerce oferuje takie korzyści jak:
+                                    <br>
+                                    - redukcja kosztów.
+                                    <br>
+                                    - Możliwość szybkiej aktualizacji oferty i zamieszczenia rozbudowanego opisu
+                                    produktu.
+                                    <br>
+                                    - Dostęp do szerokiej bazy klientów .
+                                    <br>
+                                    - Lepsze wykorzystanie możliwości produkcyjnych oraz przyśpieszenie działań
+                                    biznesowych.
+                                    <br>
+                                    - Wzrost poziomu sprzedaży - dzięki niższym nakładom i większym możliwościom
+                                    dotarcia
+                                    do klienta niż w przypadku sklepu tradycyjnego.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!--------------   PROJECTS  ------------>
+
+    <!-- Navigation point for scroll bar-->
+    <div id="Projects"></div>
+    <!-- Navigation point for scroll bar-->
+
+
+    <section class="Projects">
+        <span class="line1"></span>
+        <span class="h2_under-background2"></span>
+        <h2 class="Projects_h2">Portfolio</h2>
+        <span class="line2"></span>
+
+        <div class="Carousel">
+            <div class="Projects-text" data-aos="fade-up">
+                <p class="Projects_title_text">
+                    Poniżej reprezentuje wam moje portfolio w którym są wykonane przezemnie projekty w czystym
+                    HTML, CSS, JS jak i również w frameworku React i systemie cms Wordpress które robiłem dla rozwoju
+                    własnych umiejetnosci jak i dla klientów.
+                </p>
+            </div>
+            <div class="swiper-container" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <button class="project-layer-button">Live</button>
+                                <button class="project-layer-button2">Code</button>
+                                <div class="content">
+
+                                    <span>HTML5 <i class="fab fa-html5"></i></span>
+                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
+                                    <span>Javascript <i class="fab fa-js"></i></span>
+
+                                </div>
+                            </div>
+                            <div class="img-box"><img src="/IMG/Portfolio1.png" /></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <button class="project-layer-button">Live</button>
+                                <button class="project-layer-button2">Code</button>
+                                <div class="content">
+
+                                    <span>HTML5 <i class="fab fa-html5"></i></span>
+                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
+                                    <span>Javascript <i class="fab fa-js"></i></span>
+
+                                </div>
+                            </div>
+                            <div class="img-box"><img src="/IMG/Portfolio3.png" /></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <button class="project-layer-button">Live</button>
+                                <button class="project-layer-button2">Code</button>
+                                <div class="content">
+                                    <span> HTML5 <i class="fab fa-html5"></i></span>
+                                    <span> CSS <i class="fab fa-css3-alt"></i></span>
+                                    <span> Bootstrap <i class="fab fa-bootstrap"></i></span>
+                                    <span> Javascript <i class="fab fa-js"></i></span>
+                                </div>
+                            </div>
+                            <div class="img-box"><img src="/IMG/Portfolio4.png" /></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <button class="project-layer-button">Live</button>
+                                <button class="project-layer-button2">Code</button>
+                                <div class="content">
+
+                                    <span>HTML5 <i class="fab fa-html5"></i></span>
+                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
+
+                                </div>
+                            </div>
+                            <div class="img-box"><img src="/IMG/Portfolio1.png" /></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="width:450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <button class="project-layer-button">Live</button>
+                                <button class="project-layer-button2">Code</button>
+                                <div class="content">
+
+                                    <span>HTML5 <i class="fab fa-html5"></i></span>
+                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
+                                    <span>Javascript <i class="fab fa-js"></i></span>
+
+                                </div>
+                            </div>
+                            <div class="img-box"><img src="/IMG/Portfolio2.png" /></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <button class="project-layer-button">Live</button>
+                                <button class="project-layer-button2">Code</button>
+                                <div class="content">
+
+                                    <span>React <i class="fab fa-react"></i></span>
+                                    <span> CSS <i class="fab fa-css3-alt"></i></span>
+
+                                </div>
+                            </div>
+                            <div class="img-box"><img src="/IMG/Portfolio2.png" /></div>
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+    </section>
+
+
+    <!--------------  Contact  ------------>
+    <section class="Contact_Social">
+
+        <!-- Navigation point for scroll bar-->
+        <div id="Contact"> </div>
+        <!-- Navigation point for scroll bar-->
+
+        <span class="line1"></span>
+        <span class="h2_under-background"></span>
+        <h2 class="Contact_h2">Kontakt</h2>
+        <span class="line2"></span>
+
+        <div class="contact_container" data-aos="fade-up">
+
+
+            <div class="form">
+                <div class="contact-info">
+                    <h3 class="contact_title">Skontaktuj się ze mną</h3>
+                    <p class="text">
+                        Jeśli chcesz ze mną współpracować, poniżej znajdziesz moje dane kontaktowe i linki do moich kont
+                        społecznościowych.
+                    </p>
+
+                    <div class="info">
+                        <div class="information">
+                            <i class="fas fa-map-marker-alt icon"></i>
+                            <p class="information_country">Polska, Piła</p>
+                        </div>
+                        <div class="information">
+                            <i class="fas fa-envelope icon"></i>
+                            <p>matyszczak24@gmail.com</p>
+                        </div>
+                        <div class="information">
+                            <i class="fas fa-phone-alt icon"></i>
+                            <p>+48 575 255 608</p>
+                        </div>
+                    </div>
+
+                    <div class="social-media">
+                        <p class="contact_title_social">Połącz się ze mną :</p>
+                        <div class="social-icons">
+
+                            <a href="https://www.linkedin.com/in/tomasz-matyszczak-972ba9173/"><i
+                                    class="fab fa-linkedin"></i></a>
+
+                            <a href="https://github.com/Dymass91"><i class="fab fa-github"></i></a>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <span class="circle one"></span>
+                    <span class="circle two"></span>
+
+                    <form method="POST" class="contact-form">
+                        <h3 class="Contact_form_title">Napisz do mnie</h3>
+                        <div class="input-container">
+                            <label for="" class="contact_name">Imie</label>
+                            <input class="name input" type="text" />
+                            <span>Username</span>
+                        </div>
+                        <div class="input-container">
+                            <label for="">Email</label>
+                            <input class="email input" type="email" />
+                            <span>Email</span>
+                        </div>
+                        <div class="input-container textarea">
+                            <label for="" class="contact_message">Wiadomość</label>
+                            <textarea class="message input" name="" id="" cols="30" rows="10"></textarea>
+                            <span>Message</span>
+                        </div>
+                        <button type="submit" class="btn">Wyślij</button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <!--------------   Footer  ------------>
+    <a href="#" class="to-top">
+        <span><i class="fas fa-chevron-up"></i></span>
+    </a>
+    <footer>
+
+        <div class="footer_info">
+            <p class="footer_text">Wszelkie prawa zastrzeżone</p>
+            &copy; 2021
+        </div>
+
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <!-- <script src="JS/Header.js"></script> -->
+    <!-- <script src="JS/Skills.js"></script> -->
+    <script src="JS/Navbar.js"></script>
+    <script src="JS/AnimationGsap.js"></script>
+    <script src="JS/SlideUpText.js"></script>
+    <script src="JS/swiper.js"></script>
+    <script src="JS/Multilang.js"></script>
+    <script src="JS/Contact.js"></script>
+    <script src="JS/ScrollToTopArrow.js"></script>
+
+    <script src="../package/swiper-bundle.min.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script src="JS/app.js"></script>
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+
+</body>
+
+</html>

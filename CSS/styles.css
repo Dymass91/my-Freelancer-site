@@ -1,0 +1,130 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    padding: 0;
+    --main-color: rgb(126, 182, 228);
+    --span-color: rgb(100, 211, 255);
+}
+
+body {
+  background-image: url(/IMG/gplaypattern_@2X.png);
+ width: 100% ;
+  background-attachment: fixed;
+    /* background-color: rgb(243, 243, 243); */
+    /* background-color: rgb(255, 255, 255); */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ font-family: 'Baumans', cursive;
+  }
+  @media (min-width: 360px), (max-width: 767px){
+ .line1
+  {
+    position: absolute;
+    background:#757F9A;
+    width: 50%;
+    height: 2px;
+    margin-left: -25%;
+    z-index: -1;
+  }
+  .line2
+  {
+    position: absolute;
+    background: #D7DDE8;
+    width: 85%;
+    height: 2px;
+    margin-left: 15%;
+    z-index: -1;
+    box-sizing: border-box;
+  }
+  .h2_under-background
+  {
+    position: absolute;
+    background: #ffffff;
+    width: 85%;
+
+    height: 50px;
+    margin-left: 15%;
+    z-index: -1;
+    box-sizing: border-box;
+  }
+  .h2_under-background2
+  {
+    position: absolute;
+    background: #ffffff;
+    width: 20%;
+
+    height: 70px;
+    margin-left: 0;
+    z-index: -2;
+    box-sizing: border-box;
+  }
+    #box
+    {
+      
+      position: absolute;
+      top: 100%;
+    }
+}
+  @media (min-width: 768px) {
+
+    .h2_under-background
+  {
+    position: absolute;
+    background: #ffffff;
+    width: 85%;
+
+    height: 85px;
+    margin-left: 15%;
+    z-index: -1;
+    box-sizing: border-box;
+  }
+  .h2_under-background2
+  {
+    position: absolute;
+    background: #ffffff;
+    width: 20%;
+
+    height: 90px;
+    margin-left: 0;
+    z-index: -2;
+    box-sizing: border-box;
+  }
+    /*------------ General section ---------*/
+    .line1
+    {
+        height: 3px;
+    }
+    .line2
+    {
+      margin-top: 2px;
+        height: 3px;
+    }
+   #Skills
+    {
+      position: absolute;
+      margin-top: 5%;
+    }
+    #box
+{
+  z-index: 12;
+  position: absolute;
+  top: 95%;
+}
+    
+    #Contact
+    {
+        position: absolute;
+      top: 480%;
+    }
+  }
+  @media (max-width: 830px) and (orientation:landscape)
+  {
+    #box
+{
+  position: absolute;
+  top: 110%;
+}
+  }

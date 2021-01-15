@@ -1,0 +1,380 @@
+
+#box
+{
+  
+  position: absolute;
+  top: 100%;
+}
+.boxArrow
+{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.boxArrow a 
+{
+  color: #ffffff;
+  display: block;
+  font-size: 48px;
+  margin-bottom: -40px;
+  animation: animate3 2s infinite;
+  cursor: pointer;
+}
+ .boxArrow a:nth-child(2)
+ {
+ 
+   animation-delay: -0.2s;
+   transform:  translate(0,-20px);
+ }
+.boxArrow a:nth-child(3)
+ {
+   animation-delay: -0.4s;
+ }
+/* hero img  */
+/* .container-header #bg {
+  position: absolute;
+  width: 100%;
+  height: 0vh;
+  background-color:  rgb(197, 197, 197);
+  background-size: cover;
+background-repeat: no-repeat;
+  z-index: 0;
+      background-position: right bottom; 
+  } */
+.Header-pages
+{
+  z-index: 12;
+  list-style: none;
+  position: absolute;
+  top: 30vh;
+  right: 8vw;
+  height: 10vh;
+  line-height: 14vh;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.container-header .langWrap
+{
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 100px;
+  position: relative;
+  
+  
+top: 5vh;
+left: 88vw;
+z-index: 10;
+}
+.menu-left .langWrap .neumorphism-toggles {
+  position: relative;
+  width: 120px;
+ height: 60px;
+ background-color: #e3e6ec;
+  box-shadow:
+      10px 10px 15px rgba(209, 217, 230, 1),
+      -10px -10px 15px rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  font-size: 0;
+}
+
+
+.Header-pages a
+{
+  color: rgb(156, 156, 156);
+  z-index: 12;
+  text-decoration: none;
+  transition: .3s;
+}
+.Header-pages a:hover
+{
+
+  color :rgb(100, 211, 255);
+  text-shadow:
+  0 0 5px rgba(10, 170, 219, 0.5);
+  z-index: 12;
+  transition: .3s;
+}
+.menu_header-1
+{
+  margin-left: -5vw;
+}
+
+.container-header
+{
+  background: url(/IMG/whitcorner.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+}
+.wrapper-img {
+  overflow: hidden;
+  position: relative;
+  top: 50% !important;
+  left: 55%;
+  transform: translate(-45%, -60%);
+  width: 30%;
+  height: 79vh;
+  margin-top: 2vh;
+animation: animate4 linear 12s;
+box-shadow: 0 0 60px 1px #000000;
+}
+
+.image-header {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-origin: border-box;
+  background-position: center;
+}
+
+.box-header {
+  background:  rgb(255, 255, 255);
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* header  */
+
+.header-text {
+  position: absolute;
+  top: 60%;
+  left: 28%;
+  transform: translate(-50%, -50%);
+}
+
+.header-text h1 {
+  color: rgb(82, 82, 82);
+  font-size: 100px;
+  text-transform: uppercase;
+  margin: 0;
+  mix-blend-mode: overlay;
+}
+
+.header-1 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+.header-2 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+.header-3
+{
+  letter-spacing: 6px;
+  font-size: 40px;
+  color :rgb(100, 211, 255);
+  text-shadow:
+  0 0 5px rgba(10, 170, 219, 0.5),
+  0 0 15px rgba(10, 142, 219, 0.3);
+}
+/* hero-container */
+
+.sidebar-text {
+  position: absolute;
+  top: 20%;
+  right: 7%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(165, 165, 165);
+}
+
+
+
+.img-nav {
+  position: absolute;
+  right: 13%;
+  bottom: 13%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  color: grey;
+}
+
+/* loader  */
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 2;
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8%;
+  height: 20vh;
+  background: #fff;
+  z-index: 2;
+}
+
+/* media queries  */
+
+@media (max-width: 900px) {
+  .boxArrow a 
+{font-size: 32px;
+  margin-bottom: -28px;
+}
+  .Header-pages
+{
+  z-index: 12;
+  list-style: none;
+  position: absolute;
+  top: 40vh;
+  right: 66vw;
+  height: 6vh;
+  line-height: 12vh;
+  font-weight: 900;
+  font-size: 20px;
+}
+  .container-header .langWrap
+{
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 100px;
+  position: relative;
+  
+  
+top: 2vh;
+left: 72vw;
+z-index: 10;
+}
+  .menu-left .langWrap .neumorphism-toggles {
+    position: relative;
+    width: 80px;
+   height: 40px;
+   background-color: #e3e6ec;
+    box-shadow:
+        10px 10px 15px rgba(209, 217, 230, 1),
+        -10px -10px 15px rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    font-size: 0;
+  }
+  .box-header {
+    background:  rgb(255, 255, 255);
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+  }
+  .wrapper-img {
+    
+    overflow: hidden;
+    position: relative;
+    top: 50% !important;
+    right: 0;
+    transform: translate(-25%, -60%);
+    width: 60%;
+    height: 79vh;
+    margin-top: 2vh;
+  animation: animate4 linear 12s;
+  box-shadow: 0 0 60px 1px #000000;
+  }
+  
+  .image-header {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-origin: border-box;
+    background-position: center;
+  }
+  .header-text {
+    position: absolute;
+    width: 80%;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .header-text h1 {
+    color: rgb(48, 52, 58);
+    font-size: 50px;
+    text-transform: uppercase;
+    margin: 0;
+    mix-blend-mode: overlay;
+  }
+  
+  .header-1 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+  .header-2 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+  .header-3
+  {
+    letter-spacing: 6px;
+    font-size: 30px;
+    color :rgb(100, 211, 255);
+    text-shadow:
+    0 0 5px rgba(10, 170, 219, 0.5),
+    0 0 15px rgba(10, 142, 219, 0.3);
+  }
+ 
+  .header {
+    top: 50%;
+    left: 50%;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 40px;
+  }
+
+  .projects,
+  .img-nav {
+    display: none;
+  }
+}
+@keyframes animate4
+{
+  0%
+  {
+    box-shadow: 0 0 0px 0px #000000;
+  }
+  45%
+  {
+    box-shadow: 0 0 0px 0px #000000;
+  }
+  100%
+  {
+    box-shadow: 0 0 60px 1px #000000;
+  }
+}
+
+@keyframes animate3
+{
+ 0%
+ {
+   opacity: 0;
+   transform:  translate(0,-20px);
+ }
+ 
+ 50%
+  {
+    opacity: 1;
+  }
+  100%
+  {
+    opacity: 0;
+    transform:  translate(0,20px);
+  }
+ }

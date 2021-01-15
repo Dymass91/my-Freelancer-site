@@ -1,0 +1,86 @@
+
+
+.neumorphism-toggles {
+    position: relative;
+    width: 120px;
+    background-color: #e3e6ec;
+    border-radius: 20px;
+    font-size: 0;
+    
+}
+
+.neumorphism-toggles>a.neumorphism {
+    position: relative;
+    -webkit-appearance: none;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+   display: block;
+   float: left;
+    background-color: #e3e6ec;
+    box-shadow:
+    10px 10px 15px rgba(209,217,230,1),
+    -10px -10px 15px rgba(255,255,255,1),
+    inset 0 0 15px rgba(209,217,230,1),
+    inset 0 0 15px rgba(255,255,255,1)
+;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+
+
+.neumorphism-toggles>a.neumorphism::before {
+    font-family: 'Baumans', cursive;
+    font-weight: 900;
+    font-size: 25px;
+    color: rgba(0, 0, 0, .1);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .2s ease-in-out;
+    
+}
+
+.neumorphism-toggles .active
+{
+    box-shadow:
+    0 0 15px rgba(209,217,230,1),
+    0 0 15px rgba(255,255,255,1),
+    inset 10px 10px 15px rgba(209,217,230,1),
+    inset -10px -10px 15px rgba(255,255,255,1)!important
+;
+background-color: #e3e6ec;
+    text-shadow:
+        0 0 5px rgba(10, 170, 219, 0.5),
+        0 0 15px rgba(10, 142, 219, 0.3);
+}
+.neumorphism-toggles .active::before 
+{
+  
+    color:  rgb(100, 211, 255)!important;
+    text-shadow:
+        0 0 5px rgba(10, 170, 219, 0.5)
+       ;
+}
+.neumorphism-toggles>a.neumorphism.fa-home::before {
+    content: "PL";
+    
+}
+
+.neumorphism-toggles>a.neumorphism.fa-bell::before {
+    content: "EN";
+}
+@media (max-width: 900px) {
+    .neumorphism-toggles>a.neumorphism {
+        width: 30px;
+        height: 30px;
+    
+    }
+    .neumorphism-toggles>a.neumorphism::before {
+        font-size: 20px;  
+    }
+}
