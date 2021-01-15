@@ -104,7 +104,7 @@ z-index: 10;
 
 .container-header
 {
-  background: url(/IMG/whitcorner.png);
+  background: url(IMG/whitcorner.png);
   background-position: top right;
   background-repeat: no-repeat;
   background-color: rgb(255, 255, 255);
