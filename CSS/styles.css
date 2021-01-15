@@ -9,7 +9,7 @@
 }
 
 body {
-  background-image: url(IMG/gplaypattern_@2X.png);
+  background: url(IMG/gplaypattern_@2X.png);
  width: 100% ;
   background-attachment: fixed;
     /* background-color: rgb(243, 243, 243); */
