@@ -113,7 +113,7 @@ z-index: -2;
 }
 .three
 {
-    background: url(IMG/img1.jpg) center;
+    background: url(../IMG/img1.jpg) center;
 }
 
 .service-box .service-text
