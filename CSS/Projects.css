@@ -165,7 +165,7 @@ background-color: rgb(255, 255, 255);
     max-height: 105vh;
     width: 100%;
     margin-top: .6vh;
-    
+    padding-bottom: 50px;
   }
   .Projects-text
 {

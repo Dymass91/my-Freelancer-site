@@ -105,7 +105,7 @@ z-index: -2;
 }
 .one
 {
-    background-image: url(../IMG/img3.jpg) center;
+    background: url(../IMG/img3.jpg) center;
 }
 .two
 {
@@ -162,7 +162,7 @@ font-weight: 600;
  
     margin-left: 10px;
     font-size: 40px;
-    color: lawngreen;
+    color: rgb(27, 216, 84);
 }
 .service-box .service-text h3
 {
