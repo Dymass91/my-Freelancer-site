@@ -224,6 +224,12 @@ box-shadow: 0 0 60px 1px #000000;
 /* media queries  */
 
 @media (max-width: 900px) {
+  .container-header
+{
+  background: none;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+}
   .loader {
     position: fixed;
     top: 50%;
@@ -309,7 +315,7 @@ z-index: 10;
   .header-text {
     position: absolute;
     width: 80%;
-    top: 20%;
+    top: 17%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
