@@ -136,7 +136,7 @@ position: absolute;
 left: 0;
 top: 100%;
 padding: 10px 20px;
-height: 320px;
+min-height: 320px;
 width: 100%;
 transition: bottom 1s;
 font-weight: 600;
@@ -286,9 +286,20 @@ font-weight: 600;
     }
     .service-wrapper .row .service-card
 {
-    width: 400px;
+    width: 25vw;
     margin: 20px;
 }
+.service-box
+{
+       width: 25vw;
+    height: 320px;
+   display: block;
+    padding: 30px;
+    position: relative;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
   .service_h2
     {
         font-size: 70px;

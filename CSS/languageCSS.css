@@ -2,7 +2,7 @@
 
 .neumorphism-toggles {
     position: relative;
-    width: 120px;
+    width: 100px;
     background-color: #e3e6ec;
     border-radius: 20px;
     font-size: 0;
@@ -76,8 +76,8 @@ background-color: #e3e6ec;
 }
 @media (max-width: 900px) {
     .neumorphism-toggles>a.neumorphism {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     
     }
     .neumorphism-toggles>a.neumorphism::before {
