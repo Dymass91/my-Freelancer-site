@@ -49,15 +49,14 @@ z-index: -2;
     display: flex;
     justify-content: center;
     align-items: center;
-
+padding-bottom: 5vh;
     z-index: -2;
 }
 .Service_section
 {
     /* background-image: url(/IMG/gplaypattern_@2X.png); */
-    margin-top: 10vh;
-    margin-bottom: 60vh;
     /* background-color: rgb(250, 250, 250); */
+    margin-top: 10vh;
     min-height: 100%;
     display: flex;
     justify-content: center;
@@ -79,15 +78,13 @@ z-index: -2;
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap; 
     
 }
 .service-wrapper .row .service-card
 {
-    width: 400px;
-    margin: 20px
-
+    margin: 20px;
 }
 .service-wrapper h1
 {
@@ -96,30 +93,31 @@ z-index: -2;
 
 .service-box
 {
-    width: 400px;
+       width: 400px;
     height: 320px;
-   
+   display: block;
     padding: 30px;
     position: relative;
-    
+    border: 2px solid gray;
+    border-radius: 5px;
 }
 .one
 {
-    background: url(../IMG/offer3.jpg) ;
+    background: url(../IMG/offer1.jpg) ;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 .two
 {
-    background: url(../IMG/service2.jpg) ;
+    background: url(../IMG/rwd.jpg) ;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 .three
 {
-    background: url(../IMG/ecommerce4.jpg) ;
+    background: url(../IMG/ecom2.jpg) ;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -127,6 +125,7 @@ z-index: -2;
 
 .service-box .service-text
 {
+    display: block;
    flex-wrap: wrap;
     background: #bdc3c7;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom, #2c3e506c, #bdc3c74d);  /* Chrome 10-25, Safari 5.1-6 */
@@ -208,14 +207,13 @@ font-weight: 600;
         flex-direction: column;
     }
 }
-@media  (max-width: 767px)
+@media  (max-width: 900px)
 {
+
     .service-box .service-text
-{
-
-height: auto;
-
-}
+    {
+        height: auto;
+    }
     .my_service_h2
     {
         font-size: 36px;
@@ -231,7 +229,7 @@ height: auto;
     .Service_section
 {
     margin-top: 0vh;
-    margin-bottom: 35vh;
+    margin-bottom: 25vh;
   
     min-height: 100%;
     display: flex;
@@ -252,7 +250,7 @@ height: auto;
 }
     .service-box
 {
-    width: 320px;
+    max-width: 90vw;
     height: 320px;
    
     padding: 30px;
@@ -261,9 +259,9 @@ height: auto;
 }
     .service-wrapper .row .service-card
 {
-    width: 320px;
+    max-width: 90vw;
     margin-top: 80px;
-
+    margin: 5vw;
 }
     .service-box .row
     {
@@ -272,8 +270,25 @@ height: auto;
     }
     
 }
-@media (min-width: 768px)
+@media (min-width: 900px)
 {
+    .Service_section
+    {
+        margin-top: 10vh;
+        margin-bottom: 50vh;
+      
+        min-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        z-index: -2;
+    }
+    .service-wrapper .row .service-card
+{
+    width: 400px;
+    margin: 20px;
+}
   .service_h2
     {
         font-size: 70px;
@@ -291,4 +306,55 @@ height: auto;
        left: -67.5px;
     }
    
+}
+
+@media (min-width: 900px) and (max-width: 1280px)
+{
+    .service-wrapper .row .service-card
+    {
+        width: 30vw;
+        margin: 40px;
+        margin-bottom: 0vh;
+    }
+    .Service_section
+    {
+        margin-top: 0vh;
+        margin-bottom: 50vh;
+      
+        min-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        z-index: -2;
+    }
+        .service-wrapper .row
+    {
+        
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        flex-wrap: wrap; 
+        
+    }
+        .service-box
+    {
+        
+  max-width: 30vw;
+        padding: 30px;
+ 
+    }
+        .service-wrapper .row .service-card
+    {
+        width: 320px;
+        margin-top: 80px;
+    
+    }
+        .service-box .row
+        {
+            margin-bottom: 40px;
+            flex-direction: column;
+        }
+        
+    }
 }

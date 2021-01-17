@@ -127,9 +127,10 @@ box-shadow: 0 0 60px 1px #000000;
   position: absolute;
   width: 100%;
   height: 100%;
+  background: url(../IMG/Portrait.jpg);
   object-fit: cover;
   background-origin: border-box;
-  background-position: center;
+  background-position: bottom;
 }
 
 .box-header {
@@ -223,7 +224,7 @@ box-shadow: 0 0 60px 1px #000000;
 
 /* media queries  */
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .container-header
 {
   background: none;
@@ -298,19 +299,22 @@ z-index: 10;
     right: 0;
     transform: translate(-25%, -60%);
     width: 60%;
-    height: 79vh;
+    height: 66vh;
     margin-top: 2vh;
   animation: animate4 linear 12s;
   box-shadow: 0 0 60px 1px #000000;
+
   }
   
   .image-header {
     position: absolute;
+    background: url(../IMG/PortraitSmall.jpg);
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-origin: border-box;
-    background-position: center;
+    background-position: bottom;
   }
   .header-text {
     position: absolute;
