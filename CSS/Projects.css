@@ -161,6 +161,7 @@ background-color: rgb(255, 255, 255);
   }
   .Carousel
   {
+    display: none;
     background-color: #fff;
     max-height: 105vh;
     width: 100%;
@@ -330,6 +331,7 @@ background-color: rgb(255, 255, 255);
 } */
   .Carousel
   {
+    display: block;
     background-color: #fff;
     height: 80vh;
     width: 100%;
