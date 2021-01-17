@@ -105,15 +105,24 @@ z-index: -2;
 }
 .one
 {
-    background: url(../IMG/img3.jpg) center;
+    background: url(../IMG/offer3.jpg) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .two
 {
-    background: url(../IMG/img2.jpg) center;
+    background: url(../IMG/service2.jpg) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .three
 {
-    background: url(../IMG/img1.jpg) center;
+    background: url(../IMG/ecommerce4.jpg) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .service-box .service-text
