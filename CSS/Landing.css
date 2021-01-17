@@ -52,7 +52,7 @@ background-repeat: no-repeat;
   height: 10vh;
   line-height: 14vh;
   font-weight: 900;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .container-header .langWrap
@@ -117,7 +117,7 @@ z-index: 10;
   left: 55%;
   transform: translate(-45%, -60%);
   width: 30%;
-  height: 79vh;
+  height: 75vh;
   margin-top: 2vh;
 animation: animate4 linear 12s;
 box-shadow: 0 0 60px 1px #000000;
@@ -155,7 +155,7 @@ box-shadow: 0 0 60px 1px #000000;
 
 .header-text h1 {
   color: rgb(82, 82, 82);
-  font-size: 100px;
+  font-size: 120px;
   text-transform: uppercase;
   margin: 0;
   mix-blend-mode: overlay;
@@ -257,30 +257,7 @@ box-shadow: 0 0 60px 1px #000000;
   font-weight: 900;
   font-size: 20px;
 }
-  .container-header .langWrap
-{
-  text-align: center;
-  line-height: 50px;
-  height: 50px;
-  width: 100px;
-  position: relative;
-  
-  
-top: 2vh;
-left: 72vw;
-z-index: 10;
-}
-  .menu-left .langWrap .neumorphism-toggles {
-    position: relative;
-    width: 80px;
-   height: 40px;
-   background-color: #e3e6ec;
-    box-shadow:
-        10px 10px 15px rgba(209, 217, 230, 1),
-        -10px -10px 15px rgba(255, 255, 255, 1);
-    border-radius: 20px;
-    font-size: 0;
-  }
+
   .box-header {
     background:  rgb(255, 255, 255);
     opacity: 1;
