@@ -116,8 +116,8 @@ z-index: 10;
   top: 50% !important;
   left: 55%;
   transform: translate(-45%, -60%);
-  width: 30%;
-  height: 75vh;
+  width: 26vw;
+    height: 70vh;
   margin-top: 2vh;
 animation: animate4 linear 12s;
 box-shadow: 0 0 60px 1px #000000;
@@ -267,9 +267,13 @@ background-position: bottom;
 }
   .container-header
 {
-  background: none;
+  background: url(../IMG/Portrait.jpg);
   background-color: rgb(255, 255, 255);
   height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: border-box;
+  background-position: bottom left;
 }
 .wrapper {
   position: fixed;
@@ -306,7 +310,7 @@ background-position: bottom;
 }
 .Header-pages a
 {
-  color: rgb(156, 156, 156);
+  color: rgb(255, 255, 255);
   z-index: 12;
   text-decoration: none;
   transition: .3s;
@@ -331,7 +335,7 @@ background-position: bottom;
     z-index: 2;
   }
   .wrapper-img {
-    
+    display: none;
     overflow: hidden;
     position: relative;
     top: 20% !important;
@@ -361,11 +365,12 @@ background-position: bottom;
     width: 80%;
     top: 17%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) ;
   }
   
   .header-text h1 {
-    color: rgb(48, 52, 58);
+    
+    color: rgb(173, 185, 202);
     font-size: 50px;
     text-transform: uppercase;
     margin: 0;
