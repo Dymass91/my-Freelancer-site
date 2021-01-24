@@ -45,14 +45,15 @@ overflow: visible;
 
 }
 .home-text p span{
+        font-family: 'Baumans', cursive;
     position: absolute;
    top: -5vh;
     width: 440px;
+    font-weight: bold;
     text-align: center;
     transform: scale(1.6);
     font-size: 27px;
     color:#000000;
-    font-weight: 900;
     text-shadow: 0 0 6px #000000, 0 0 15px #afafaf;
     display: inline-block;
     line-height: 100px;

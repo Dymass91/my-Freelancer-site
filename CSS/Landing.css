@@ -160,6 +160,7 @@ background-position: bottom;
 .header-text h1 {
   color: rgb(82, 82, 82);
   font-size: 120px;
+  font-weight: bold;
   text-transform: uppercase;
   margin: 0;
   mix-blend-mode: overlay;

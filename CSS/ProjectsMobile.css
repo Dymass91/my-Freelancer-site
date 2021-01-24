@@ -83,8 +83,8 @@
     }
     .Project_wrapper .img-area .single-img:hover
     {
-       transition: 1.5s;
-       transform: scale(1.05);
+       transition: .9s;
+       transform: scale(1.03);
        opacity: 1;
     }
 
