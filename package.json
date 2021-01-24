@@ -4,7 +4,7 @@
         "bootstrap": "^4.5.3",
         "fontawesome": "latest",
         "fontisto": "latest",
-        "gsap": "^3.5.1",
+        "gsap": "^3.6.0",
         "swiper": "^6.3.5"
     },
     "version": "1.0.0"

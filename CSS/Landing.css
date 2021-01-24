@@ -116,8 +116,8 @@ z-index: 10;
   top: 50% !important;
   left: 55%;
   transform: translate(-45%, -60%);
-  width: 26vw;
-    height: 70vh;
+  width: 30%;
+    height: 74vh;
   margin-top: 2vh;
 animation: animate4 linear 12s;
 box-shadow: 0 0 60px 1px #000000;
@@ -371,7 +371,7 @@ background-position: bottom;
   .header-text h1 {
     
     color: rgb(173, 185, 202);
-    font-size: 50px;
+    font-size: 45px;
     text-transform: uppercase;
     margin: 0;
     mix-blend-mode: overlay;
@@ -433,6 +433,41 @@ z-index: 10;
   border-radius: 20px;
   font-size: 0;
 }
+}
+
+@media (min-width: 768px) and (max-width: 1024px)
+{
+  .header-text h1 {
+    
+    color: rgb(173, 185, 202);
+    font-size: 80px;
+    text-transform: uppercase;
+    margin: 0;
+    mix-blend-mode: overlay;
+  }
+  .header-text h3 {
+    font-size: 45px;
+  }
+  .Header-pages
+  {
+    font-size: 30px;
+  }
+  .container-header .langWrap
+{
+top: 5vh;
+left: 84vw;
+}
+}
+@media (min-width: 1024px) and (max-width: 1280px)
+{
+  .header-text h1 {
+    
+   
+    font-size: 90px;
+    text-transform: uppercase;
+    margin: 0;
+    mix-blend-mode: overlay;
+  }
 }
 @keyframes animate4
 {

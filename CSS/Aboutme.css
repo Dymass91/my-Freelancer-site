@@ -180,3 +180,12 @@ left: -1.9rem;
 
   }
 }
+@media (min-width: 769px) and (max-width: 1024px)
+{
+  .Aboutme p
+  {
+      font-size: 1em;
+  margin-top: 16vh;
+  margin-bottom: 10vh;
+  }
+}
