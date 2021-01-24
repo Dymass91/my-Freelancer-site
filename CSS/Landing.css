@@ -434,11 +434,10 @@ z-index: 10;
   font-size: 0;
 }
 }
-
 @media (min-width: 768px) and (max-width: 1024px)
 {
   .header-text h1 {
-    
+
     color: rgb(173, 185, 202);
     font-size: 80px;
     text-transform: uppercase;
@@ -461,8 +460,8 @@ left: 84vw;
 @media (min-width: 1024px) and (max-width: 1280px)
 {
   .header-text h1 {
-    
-   
+
+
     font-size: 90px;
     text-transform: uppercase;
     margin: 0;

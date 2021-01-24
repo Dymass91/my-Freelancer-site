@@ -123,9 +123,9 @@ display: none;
 border: none;
 color: #fff;
 background-color: rgba(255,255,255,0.15);
-transition: 0.5s;
 text-decoration: none;
 text-align: center;
+transition: 0.5s;
 height:40px;
 width: 49.8%;
 line-height: 40px;
@@ -174,6 +174,7 @@ cursor: pointer;
   .swiper-slide {
     background-position: center;
     background-size: cover;
+
 background-color: rgb(255, 255, 255);
 -webkit-box-reflect: below 1px linear-gradient(transparent , transparent , #0006);
   }
@@ -192,7 +193,7 @@ background-color: rgb(255, 255, 255);
   {
     display: block;
     background-color: #fff;
-    height: 81vh;
+    height: 72vh;
     width: 100%;
     margin-top: .6vh;
   }
@@ -221,12 +222,4 @@ background-color: rgb(255, 255, 255);
   }
   .Projects h2:before
   {
- 
-     left: -17px;
   }
-  .Projects h2:after
-  {
-    left: -30px;
-
-  }
-}
