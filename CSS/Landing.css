@@ -1,4 +1,4 @@
-@media (min-width: 768px) {
+@media (min-width: 801px) {
 #box
 {
   
@@ -228,7 +228,7 @@ background-position: bottom;
 }
 /* media queries  */
 
-@media (max-width: 768px) {
+@media (max-width: 801px) {
   #box
 {
   
