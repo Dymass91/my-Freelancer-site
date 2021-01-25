@@ -428,9 +428,7 @@ z-index: 10;
   width: 100px;
  height: 50px;
  background-color: #e3e6ec;
-  box-shadow:
-      10px 10px 15px rgba(209, 217, 230, 1),
-      -10px -10px 15px rgba(255, 255, 255, 1);
+
   border-radius: 20px;
   font-size: 0;
 }
