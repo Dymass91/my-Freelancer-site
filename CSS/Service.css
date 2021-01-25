@@ -220,11 +220,11 @@ font-weight: 600;
     }
     .my_service_h2::before
     {
-        width: 210px;
+        width: 220px;
     }
     .my_service_h2::after
     {
-        width: 235px;
+        width: 245px;
     }
     .Service_section
 {
