@@ -19,10 +19,10 @@
    float: left;
     background-color: #e3e6ec;
     box-shadow:
-    10px 10px 15px rgba(209,217,230,1),
-    -10px -10px 15px rgba(255,255,255,1),
-    inset 0 0 15px rgba(209,217,230,1),
-    inset 0 0 15px rgba(255,255,255,1)
+    5px 5px 10px rgba(209,217,230,1),
+    -5px -5px 10px rgba(255,255,255,1),
+    inset 0 0 10px rgba(209,217,230,1),
+    inset 0 0 10px rgba(255,255,255,1)
 ;
     border-radius: 20px;
     outline: none;
