@@ -209,7 +209,19 @@ font-weight: 600;
 }
 @media  (max-width: 900px)
 {
+    .service-box .service-text h3
+{
+    text-align: center;
+    font-size: 40px;
+    color: #fff;
+}
+    .service-box .service-text
+    {
+       
+    padding: 10px 20px;
 
+    font-weight: 600;
+    }
     .service-box .service-text
     {
         height: auto;
@@ -271,6 +283,19 @@ font-weight: 600;
 }
 @media (min-width: 900px)
 {
+    .service-box .service-text h3
+    {
+        text-align: center;
+        font-size: 40px;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+.service-box .service-text
+{
+   
+padding: 20px 35px;
+font-weight: 600;
+}
     .Service_section
     {
         margin-top: 10vh;

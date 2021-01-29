@@ -145,7 +145,7 @@ var data = {
 
         "description_Service3": "E-Commerce oferuje takie korzyści jak redukcja kosztów. Możliwość szybkiej aktualizacji oferty i zamieszczenia rozbudowanego opisu produktu. Dostęp do szerokiej bazy klientów. Lepsze wykorzystanie możliwości produkcyjnych oraz przyśpieszenie działań  biznesowych. Wzrost poziomu sprzedaży dzięki niższym nakładom i większym możliwościom dotarcia do klienta niż w przypadku sklepu tradycyjnego.",
 
-        "Projects_title_text": "Poniżej reprezentuje wam moje portfolio w którym są wykonane przezemnie projekty w czystym HTML,CSS,Js jak i również w frameworku React i systemie cms Wordpress które robiłem dla rozwoju własnych umiejetnosci jak i dla klientów.",
+        "Projects_title_text": "Poniżej reprezentuje wam moje portfolio w którym są wykonane przeze mnie projekty w czystym HTML,CSS,Js jak i również w frameworku React i systemie cms Wordpress które robiłem dla rozwoju własnych umiejetnosci jak i dla klientów.",
 
         "contact_title": "Skontaktuj się ze mną",
         "information_country": "Polska, Piła",
