@@ -264,10 +264,10 @@ width: 100%;
   .social-icons  a:hover 
 {
     
-  color: #00b9f1;
+  color: #00d5f1;
     transition: 0.5s;
     background:  rgb(255, 255, 255);
-    box-shadow: 0 0 10px #00657e, 0 0 10px #0089c9, 0 0 20px #00b9f1;
+    box-shadow: 0 0 10px #00eeff, 0 0 10px #0089c9, 0 0 20px #00b9f1;
 }
 .social-icons  a:before
 {
