@@ -1,11 +1,33 @@
 @media (min-width: 360px), (max-width: 769px){
-
+.descriptionAbout
+{
+  margin-bottom: 1rem;
+}
 .Aboutme p{
     
     color: rgb(75, 75, 75);
     font-size: 1rem;
    
-    text-align: justify;
+    text-align: inherit;
+} 
+.AboutMe-hrefToContact
+{
+  color: var(--span-color);
+  text-decoration: none;
+  transition: .2s;
+}
+.AboutMe-hrefToContact:hover
+{
+  color: var(--span-color);
+  text-shadow:
+  0 0 5px rgba(10, 170, 219, 0.5);
+}
+.aboutMe-myOffer_ul
+{
+  color: rgb(75, 75, 75);
+  font-size: 1rem;
+ 
+  text-align: inherit;
 }
 .Aboutme h2
 {
@@ -79,7 +101,7 @@ left: -1.9rem;
   .About-container
   {
     background-color: #fff;
-    max-height: 70vh;
+   
     width: 100%;
     display: flex;
     align-items: center;
@@ -118,7 +140,6 @@ left: -1.9rem;
     height: 480px;
     position: relative;
     overflow: hidden; */
-    shape-outside: circle();
   }
   .about-text
   {
@@ -136,7 +157,7 @@ left: -1.9rem;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
-    shape-outside: circle(50%);
+    shape-outside: ellipse(400px 400px at 10% 20%);
    margin: 1px;
   }
   .About-img img 
@@ -209,10 +230,17 @@ left: -1.9rem;
 }
 @media (min-width: 769px) and (max-width: 1024px)
 {
+  .aboutMe-myOffer_ul
+{
+
+  font-size: 1.3rem;
+ 
+  text-align: inherit;
+}
   .Aboutme p
   {
-      font-size: 1em;
+      font-size: 1.3em;
   margin-top: 16vh;
-  margin-bottom: 10vh;
+ 
   }
 } 
