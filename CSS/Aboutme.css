@@ -118,6 +118,7 @@ left: -1.9rem;
     height: 480px;
     position: relative;
     overflow: hidden; */
+    shape-outside: circle();
   }
   .about-text
   {
@@ -135,7 +136,8 @@ left: -1.9rem;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
-    shape-outside: circle();
+    shape-outside: circle(50%);
+   margin: 1px;
   }
   .About-img img 
   {
@@ -146,6 +148,7 @@ left: -1.9rem;
     left: 50%;
     top: 50%;
     transform: translate(-50% , -50%);
+    shape-outside: circle(50%);
   }
   .Aboutme h2
     {
