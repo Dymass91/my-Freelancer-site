@@ -56,13 +56,13 @@ left: -1.9rem;
 }
 .about-left
   {
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: center;
     justify-items: center;
     align-content: center;
     height: 100%;
-    width: 340px;
+    width: 340px; */
   }
   .about-text
   {
@@ -96,40 +96,46 @@ left: -1.9rem;
   .About-container
   {
     background-color: #fff;
-    min-height: 70vh;
+    min-height: 90vh;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+    /* position: relative; */
+    /* display: flex; */
+   
+ 
     margin-top: .6vh;
     padding: 5rem 10rem 5rem 10rem;
   }
   .about-left
   {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    align-content: center;
-    height: 100%;
-    width: 440px;
+     /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* justify-items: center; */
+    /* align-content: center;  */
+    /* height: 100%; */
+    /* width: 440px; */
+    /* width: 480px;
+    height: 480px;
+    position: relative;
+    overflow: hidden; */
   }
   .about-text
   {
-    margin-top: -10vh;
-  width: 45vw;
+    margin-top: 10vh;
+  width: 60vw;
   font-weight: 900;
   }
   .About-img
   {
+    float: left;
     display: block;
     /* border: solid 3px gray; */
-    width: 480px;
-    height: 480px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
+    position: relative;
     overflow: hidden;
-    box-sizing: content-box;
+    shape-outside: circle();
   }
   .About-img img 
   {
@@ -158,8 +164,26 @@ left: -1.9rem;
     .Aboutme p
     {
         font-size: 1.4em;
-    margin-top: 16vh;
-    margin-bottom: 10vh;
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+    }
+    .aboutMe-myOffer_ul
+    {
+      color: rgb(75, 75, 75);
+      text-align: justify;
+      font-size: 1.4em;
+    }
+    .AboutMe-hrefToContact
+    {
+      color: var(--span-color);
+      text-decoration: none;
+      transition: .2s;
+    }
+    .AboutMe-hrefToContact:hover
+    {
+      color: var(--span-color);
+      text-shadow:
+      0 0 5px rgba(10, 170, 219, 0.5);
     }
     .Aboutme p span
     {

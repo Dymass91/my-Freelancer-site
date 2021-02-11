@@ -5,7 +5,7 @@
  	text-align: center;
  	position: relative;
      z-index: 2;
-     display: flex;
+     /* display: flex; */
      align-items: center;
      justify-items: center;
      justify-content: center;
@@ -31,7 +31,7 @@ overflow: visible;
  	text-align: center;
  	position: relative;
      z-index: 2;
-     display: flex;
+     /* display: flex; */
      align-items: center;
      justify-items: center;
      justify-content: center;
@@ -47,8 +47,9 @@ overflow: visible;
 .home-text p span{
         font-family: 'Baumans', cursive;
     position: absolute;
-   top: -5vh;
-    width: 440px;
+    
+   top: -30vh;
+    width: 400px;
     font-weight: bold;
     text-align: center;
     transform: scale(1.6);
