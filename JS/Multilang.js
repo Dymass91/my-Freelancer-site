@@ -15,6 +15,13 @@ const navbarHeaderContact = document.querySelector('.navbar_header_Contact');
 const titleEl = document.querySelector('.title');
 const descrEl = document.querySelector('.descriptionAbout');
 
+const aboutText1 = document.querySelector('.aboutMe_text1');
+const aboutText2 = document.querySelector('.aboutMe_text2');
+const aboutText3 = document.querySelector('.aboutMe_text3');
+const aboutText4 = document.querySelector('.aboutMe_text4');
+const aboutText5 = document.querySelector('.aboutMe_text5');
+const hrefToContact = document.querySelector('.AboutMe_hrefToContact');
+
 
 const Serviceh2 = document.querySelector('.service_h2');
 const Projectsh2 = document.querySelector('.Projects_h2');
@@ -72,6 +79,13 @@ link.forEach(el => {
 
         titleEl.textContent = data[attr].title;
         descrEl.textContent = data[attr].descriptionAbout;
+  
+        aboutText1.textContent = data[attr].aboutMe_text1;
+        aboutText2.textContent = data[attr].aboutMe_text2;
+        aboutText3.textContent = data[attr].aboutMe_text3;
+        aboutText4.textContent = data[attr].aboutMe_text4;
+        aboutText5.textContent = data[attr].aboutMe_text5;
+        hrefToContact.textContent = data[attr].AboutMe_hrefToContact;
 
         Serviceh2.textContent = data[attr].service_h2;
         Projectsh2.textContent = data[attr].Projects_h2;
@@ -123,11 +137,16 @@ var data = {
         "Projects_h2": "Portfolio",
         "Contact_h2": "Kontakt",
 
-        "about_span_text": "Witam!",
+    
         "descriptionAbout":
-            "Witam! Od paru lat rozwijam sie w projektowaniu stron internetowych. Wykonuję strony statyczne jak i również dynamiczne, na podstawie dowolnego systemu zarządzania treścią. Systemy, z którymi mam najwięcej doświadczenia to HTML, CSS i JavaScript!, Ale zdarzyło mi się również kodować strony oparte na innych rozwiązaniach, takich jak React i Wordpress. I wciąż rozwijam swoją wiedzę o nowe języki programowania.",
-
-        "titleService1": "Oferta",
+             " Witam! Od paru lat rozwijam sie w projektowaniu stron internetowych. Wykonuję strony statyczne jak i również dynamiczne, na podstawie dowolnego systemu zarządzania treścią. Systemy, z którymi mam najwięcej doświadczenia to HTML, CSS i JavaScript!, Ale również buduje strony oparte na innych rozwiązaniach, takich jak React i Wordpress.",
+        "aboutMe_text1":"Swoje usługi opieram na gotowych motywach, dzięki czemu masz pewność stabilnego i ciągle aktualizowanego rozwiązania.",
+        "aboutMe_text2":"Stworzę dla Ciebie prostą w obsłudze, szybką i bezpieczną stronę, która będzie przyciągała użytkowników.",
+        "aboutMe_text3":"Otrzymasz indywidualne wskazówki dotyczące funkcjonowania strony.",
+        "aboutMe_text4":"Nauczę Cię podstawowych zasad pracy ze stroną internetową.",
+        "aboutMe_text5":"Poniżej znajdziesz możliwe formy współpracy ze mną. Jeśli myślisz, że te rozwiązania są dla Ciebie, napisz do mnie. Jeśli Twoje potrzeby związane z działaniem strony  wybiegają poza te rozwiązania – skontaktuj się ze mną, znajdziemy wspólne rozwiązanie.",
+        "AboutMe_hrefToContact":"napisz do mnie.",
+        "titleService": "Oferta",
 
         "service_Price": "od",
 
@@ -174,10 +193,13 @@ var data = {
         "Projects_h2": "Portfolio",
         "Contact_h2": "Contact",
 
-        "about_span_text": "Hello!",
-        "descriptionAbout":
-            "Hello! I have been developing in website design for several years websites and I do both static pages as well as dynamic based on any content management system. The systems with which I have the most experience are HTML, CSS and JavaScript !, but in my career I also coded websites based on other solutions, such as React and Wordpress. And I am still developing my knowledge of new programming languages.",
-
+        "descriptionAbout": "Hello! I have been developing in web design for several years. I make static and dynamic websites, based on any content management system. The systems I have the most experience with are HTML, CSS and JavaScript !, but also build websites based on other solutions such as React and Wordpress.",
+            "aboutMe_text1":"I base my services on ready-made themes, so you can be sure of a stable and constantly updated solution.",
+            "aboutMe_text2":"I will create an easy-to-use, fast and secure website for you that will attract users.",
+            "aboutMe_text3":" You will receive individual instructions on the functioning of the website. ",
+            "aboutMe_text4":"I will teach you the basic principles of working with a website.",
+            "aboutMe_text5":"Below you will find possible forms of cooperation with me. If you think that these solutions are for you, write to me. If your needs related to the operation of the website go beyond these solutions - contact me, we will find a joint solution.",
+            "AboutMe_hrefToContact":"write to me.",
         "titleService1": "Offer",
 
         "descriptionPriceSpan": "In my offer you will receive: ",

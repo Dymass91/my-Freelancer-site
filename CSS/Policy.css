@@ -1,0 +1,129 @@
+.Policy_button
+{
+    left: 60vw;
+   margin-right: 1vw;
+  
+   color: rgb(122, 122, 122);
+   text-decoration: none;
+   transition: .2s;
+   cursor: pointer;
+   font-weight: 900;
+}
+.Policy_button:hover{
+    color: var(--span-color);
+    text-shadow:
+    0 0 5px rgba(10, 170, 219, 0.5);
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 350ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 20;
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    max-width: 80%;
+    max-height: 95%;
+    color: #000;
+    overflow-y: scroll;
+    scrollbar-color: black;
+  }
+  table
+  {
+    border-radius: 6px;
+      background-color: rgb(185, 185, 185);
+      margin-bottom: 2vh;
+  }
+  td
+  {
+    padding: 8px;
+   background-color: white;
+  }
+  .td_bold
+  {
+      font-weight: bold;
+      font-size: 17px;  }
+  
+  ::-webkit-scrollbar {
+ 
+    width: 15px;
+   overflow: hidden;
+   
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #e3e6ec;
+    border-radius: 0 8px 8px 0;
+  }
+  ::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+    background-color: rgb(0, 0, 0);
+    box-shadow:
+    0 0 15px rgb(192, 221, 238),
+    0 0 15px rgb(224, 229, 231),
+    inset 10px 10px 15px rgb(178, 192, 218),
+    inset -10px -10px 15px rgb(218, 233, 236)!important
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(2, 183, 255);
+    
+  }
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 20;
+   
+  }
+  
+  .modal-header {
+    padding: 30px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+  
+  .modal-header .title {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+  
+  .modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 3.5rem;
+    font-weight: bold;
+  }
+  
+  .modal-body {
+      
+    padding: .5vw 5vw;
+    text-align: inherit;
+  }
+  
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    filter: blur(100px);    
+  }
+  
+  #overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  ol > li 
+  {
+      margin-bottom: 2vh;
+  }

@@ -127,6 +127,7 @@ left: -1.9rem;
     margin-top: .6vh;
     padding: 5rem 10rem 5rem 10rem;
   }
+
   .about-left
   {
      /* display: flex; */
@@ -191,19 +192,20 @@ left: -1.9rem;
     margin-top: 5vh;
     margin-bottom: 4vh;
     }
+    
     .aboutMe-myOffer_ul
     {
       color: rgb(75, 75, 75);
       text-align: justify;
       font-size: 1.4em;
     }
-    .AboutMe-hrefToContact
+    .AboutMe_hrefToContact
     {
       color: var(--span-color);
       text-decoration: none;
       transition: .2s;
     }
-    .AboutMe-hrefToContact:hover
+    .AboutMe_hrefToContact:hover
     {
       color: var(--span-color);
       text-shadow:

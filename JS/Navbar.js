@@ -2,7 +2,7 @@
 const NavBar = document.querySelector('.navbar')
 const navbarToggler = document.querySelector(".navbar-toggler");
 const navbarMenu = document.querySelector(".navbar ul");
-const navbarLinks = document.querySelectorAll(".navbar a, .boxArrow a , .to-top, .Header-pages a, .AboutMe-hrefToContact");
+const navbarLinks = document.querySelectorAll(".navbar a, .boxArrow a , .to-top, .Header-pages a, .AboutMe_hrefToContact");
 
 navbarToggler.addEventListener("click", navbarTogglerClick);
 
