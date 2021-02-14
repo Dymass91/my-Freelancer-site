@@ -29,6 +29,18 @@
  
   text-align: inherit;
 }
+.AboutMe_hrefToContact
+    {
+      color: var(--span-color);
+      text-decoration: none;
+      transition: .2s;
+    }
+    .AboutMe_hrefToContact:hover
+    {
+      color: var(--span-color);
+      text-shadow:
+      0 0 5px rgba(10, 170, 219, 0.5);
+    }
 .Aboutme h2
 {
   color: rgb(255, 255, 255);
