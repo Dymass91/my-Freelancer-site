@@ -47,12 +47,8 @@ overflow: visible;
 .home-text p span{
         font-family: 'Baumans', cursive;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    align-content: center;
-   bottom: 30vh;
+  
+   bottom: 18rem;
     width: 400px;
     height: auto;
     font-weight: bold;
