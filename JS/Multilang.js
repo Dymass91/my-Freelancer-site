@@ -48,6 +48,8 @@ const btn = document.querySelector('.btn');
 const contactName = document.querySelector('.contact_name');
 const contactMessage = document.querySelector('.contact_message');
 
+const ProjectLiveButton = document.querySelector('.Project_Live_btn');
+
 const footerText = document.querySelector('.footer_text');
 
 const footerPolicyText = document.querySelector('.footer_policy_text');
@@ -101,6 +103,7 @@ link.forEach(el => {
         PriceStr.textContent = data[attr].Price_strong;
 
         ProjectsTitleText.textContent = data[attr].Projects_title_text
+        ProjectLiveButton.textContent = data[attr].Project_Live_btn
 
         ServEl2.textContent = data[attr].titleService2;
         discServ2.textContent = data[attr].description_Service2;
@@ -170,6 +173,7 @@ var data = {
         "description_Service3": "E-Commerce oferuje takie korzyści jak redukcja kosztów. Możliwość szybkiej aktualizacji oferty i zamieszczenia rozbudowanego opisu produktu. Dostęp do szerokiej bazy klientów. Lepsze wykorzystanie możliwości produkcyjnych oraz przyśpieszenie działań  biznesowych. Wzrost poziomu sprzedaży dzięki niższym nakładom i większym możliwościom dotarcia do klienta niż w przypadku sklepu tradycyjnego.",
 
         "Projects_title_text": "Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML,CSS,JS jak i również framework React i system cms Wordpress.",
+        "Project_Live_btn": "Wejdż na stronę",
 
         "contact_title": "Skontaktuj się ze mną",
         "information_country": "Polska, Piła",
@@ -222,6 +226,7 @@ var data = {
         "description_Service3": "E-Commerce offers such benefits as cost reduction. Ability to quickly update the offer and post an extensive product description. Access to a wide customer base. Better use of production possibilities and acceleration of business activities. Increased sales level. thanks to lower expenditures and greater opportunities to reach the customer than in the case of a traditional store.",
 
         "Projects_title_text": "Below you will find my portfolio in which there are projects made to present my skills and for my first clients for which I used pure HTML, CSS, JS as well as the React framework and Wordpress cms system.",
+        "Project_Live_btn": "Live",
 
         "contact_title": "Let's get in touch",
         "information_country": "Poland, Piła",
