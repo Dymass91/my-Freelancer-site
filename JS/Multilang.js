@@ -183,7 +183,7 @@ var data = {
         "btn": "Wyślij",
         "contact_name": "Imie",
         "contact_message": "Wiadomość",
-        "footer_text": ". Wszelkie prawa zastrzeżone © 2021",
+        "footer_text": " Wszelkie prawa zastrzeżone © 2021",
         "footer_policy_text": "Korzystając z tej strony proszę zapoznać się z  ",
         "Policy_button": " Polityką prywatności"
     },
@@ -236,7 +236,7 @@ var data = {
         "btn": "Send",
         "contact_name": "Name",
         "contact_message": "Message",
-        "footer_text": ". All rights reserved © 2021",
+        "footer_text": " All rights reserved © 2021",
         "footer_policy_text": "When using this page, please read the  ",
         "Policy_button": " Privacy policy"
 
