@@ -1,8 +1,8 @@
 .Policy_button
 {
     left: 60vw;
-   margin-right: 1vw;
-  
+   
+  margin-left: .3vw;
    color: rgb(122, 122, 122);
    text-decoration: none;
    transition: .2s;
@@ -92,6 +92,7 @@
   }
   
   .modal-header .close-button {
+   
     cursor: pointer;
     border: none;
     outline: none;

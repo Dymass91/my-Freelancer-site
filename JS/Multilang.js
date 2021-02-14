@@ -50,6 +50,9 @@ const contactMessage = document.querySelector('.contact_message');
 
 const footerText = document.querySelector('.footer_text');
 
+const footerPolicyText = document.querySelector('.footer_policy_text');
+const PolicyButton = document.querySelector('.Policy_button');
+
 const ProjectsTitleText = document.querySelector('.Projects_title_text');
 
 link.forEach(el => {
@@ -114,7 +117,9 @@ link.forEach(el => {
         contactName.textContent = data[attr].contact_name
         contactMessage.textContent = data[attr].contact_message
         footerText.textContent = data[attr].footer_text
-        aboutSpanText.textContent = data[attr].about_span_text
+        PolicyButton.textContent = data[attr].Policy_button
+        footerPolicyText.textContent = data[attr].footer_policy_text
+        
     });
 });
 
@@ -146,15 +151,15 @@ var data = {
         "aboutMe_text4":"Nauczę Cię podstawowych zasad pracy ze stroną internetową.",
         "aboutMe_text5":"Poniżej znajdziesz możliwe formy współpracy ze mną. Jeśli myślisz, że te rozwiązania są dla Ciebie, napisz do mnie. Jeśli Twoje potrzeby związane z działaniem strony  wybiegają poza te rozwiązania – skontaktuj się ze mną, znajdziemy wspólne rozwiązanie.",
         "AboutMe_hrefToContact":"napisz do mnie.",
-        "titleService": "Oferta",
+        "titleService1": "Oferta",
 
         "service_Price": "od",
 
-        "Price_strong": "599zl",
+        "Price_strong": "549zl",
 
         "descriptionPriceSpan": "W mojej ofercie otrzymasz: ",
 
-        "descriptionService1": " Kompletna strona internetową opartą o HTML, CSS, Javascript, WordPress lub React  wraz z wykupieniem hoistingu i domeny oraz z redagowaniem tekstow pod kątem wyników wyszukiwania w Google",
+        "descriptionService1": " Kompletna strona internetową opartą o HTML, CSS, Javascript, WordPress lub React  wraz z wykupieniem hoistingu i domeny oraz z redagowaniem tekstow pod kątem wyników wyszukiwania w Google. Dodatkowo wdrążę cię w obsługę tej strony tak żebyś mógł sam edytować i dodawać treśći.",
 
         "titleService2": "Usługi",
 
@@ -164,7 +169,7 @@ var data = {
 
         "description_Service3": "E-Commerce oferuje takie korzyści jak redukcja kosztów. Możliwość szybkiej aktualizacji oferty i zamieszczenia rozbudowanego opisu produktu. Dostęp do szerokiej bazy klientów. Lepsze wykorzystanie możliwości produkcyjnych oraz przyśpieszenie działań  biznesowych. Wzrost poziomu sprzedaży dzięki niższym nakładom i większym możliwościom dotarcia do klienta niż w przypadku sklepu tradycyjnego.",
 
-        "Projects_title_text": "Poniżej reprezentuje wam moje portfolio w którym są wykonane przeze mnie projekty w czystym HTML,CSS,Js jak i również w frameworku React i systemie cms Wordpress które robiłem dla rozwoju własnych umiejetnosci jak i dla klientów.",
+        "Projects_title_text": "Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML,CSS,JS jak i również framework React i system cms Wordpress.",
 
         "contact_title": "Skontaktuj się ze mną",
         "information_country": "Polska, Piła",
@@ -174,7 +179,9 @@ var data = {
         "btn": "Wyślij",
         "contact_name": "Imie",
         "contact_message": "Wiadomość",
-        "footer_text": "Wszelkie prawa zastrzeżone"
+        "footer_text": ". Wszelkie prawa zastrzeżone © 2021",
+        "footer_policy_text": "Korzystając z tej strony proszę zapoznać się z  ",
+        "Policy_button": " Polityką prywatności"
     },
     "english":
     {
@@ -204,17 +211,17 @@ var data = {
 
         "descriptionPriceSpan": "In my offer you will receive: ",
 
-        "descriptionService1": "A complete website based on HTML, CSS, Javascript, WordPress or React with the purchase of a hoisting and domain and text editing in terms of Google search results",
+        "descriptionService1": "A complete website based on HTML, CSS, Javascript, WordPress or React with the purchase of a hoisting and domain and text editing in terms of Google search results. In addition, I will implement you in handling this page so that you can edit and add content yourself.",
 
         "service_Price": "from",
-        "Price_strong": "125£",
+        "Price_strong": "119£",
 
         "titleService2": "Service",
         "description_Service2": " - I build websites that are fully responsive, I make sure that its layout automatically adjusts to the size of the browser window on which it is displayed, for example, of browsers, smartphones or tablets.",
         "description_Service2_Bottom": " - If you do not have a ready page layout, I also offer the service of creating it. Then I invite a graphic designer to cooperate.",
         "description_Service3": "E-Commerce offers such benefits as cost reduction. Ability to quickly update the offer and post an extensive product description. Access to a wide customer base. Better use of production possibilities and acceleration of business activities. Increased sales level. thanks to lower expenditures and greater opportunities to reach the customer than in the case of a traditional store.",
 
-        "Projects_title_text": "Below I represent my portfolio in which my projects are made in pure HTML, CSS, Js as well as in the React framework and the Wordpress cms system which I did for the development of my own skills and for clients.",
+        "Projects_title_text": "Below you will find my portfolio in which there are projects made to present my skills and for my first clients for which I used pure HTML, CSS, JS as well as the React framework and Wordpress cms system.",
 
         "contact_title": "Let's get in touch",
         "information_country": "Poland, Piła",
@@ -224,6 +231,9 @@ var data = {
         "btn": "Send",
         "contact_name": "Name",
         "contact_message": "Message",
-        "footer_text": "All rights reserved"
+        "footer_text": ". All rights reserved © 2021",
+        "footer_policy_text": "When using this page, please read the  ",
+        "Policy_button": " Privacy policy"
+
     }
 }

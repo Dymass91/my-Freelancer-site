@@ -3,20 +3,20 @@
   footer
   {
       height: 80px;
-      line-height: 80px;
+     line-height: 25px;
       position: relative;
-      display: flex;
+   
       background-color:#959eac79;
       box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
       z-index: 0;
   }
   .footer_info
   {
-      font-size: 18px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
+  flex-wrap: wrap;
       position: relative;
       transform: translateX(-50%);
   max-width: 100%;
@@ -34,7 +34,7 @@
   footer
   {
       height: 100px;
-      line-height: 40px;
+      line-height: 50px;
       position: relative;
       display: flex;
       background-color:#959eac79;
@@ -44,7 +44,7 @@
   .footer_info
   {
       font-size: 25px;
-      display: flex;
+   
   max-width: 100%;
   min-width: 88%;    
           font-weight: bold;
