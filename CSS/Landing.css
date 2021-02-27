@@ -467,7 +467,7 @@ left: 84vw;
     mix-blend-mode: overlay;
   }
 }
-@media (min-height: 600px) and (max-height: 800px)
+@media (min-width: 10240px) and (max-width: 1480px)
 {
   .header-text h1 {
 
