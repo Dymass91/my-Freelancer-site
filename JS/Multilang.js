@@ -158,7 +158,7 @@ var data = {
 
         "service_Price": "od",
 
-        "Price_strong": "549zl",
+        "Price_strong": "449zl",
 
         "descriptionPriceSpan": "W mojej ofercie otrzymasz: ",
 
@@ -218,7 +218,7 @@ var data = {
         "descriptionService1": "A complete website based on HTML, CSS, Javascript, WordPress or React with the purchase of a hoisting and domain and text editing in terms of Google search results. In addition, I will implement you in handling this page so that you can edit and add content yourself.",
 
         "service_Price": "from",
-        "Price_strong": "119£",
+        "Price_strong": "109£",
 
         "titleService2": "Service",
         "description_Service2": " - I build websites that are fully responsive, I make sure that its layout automatically adjusts to the size of the browser window on which it is displayed, for example, of browsers, smartphones or tablets.",

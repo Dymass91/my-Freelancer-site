@@ -467,6 +467,17 @@ left: 84vw;
     mix-blend-mode: overlay;
   }
 }
+@media (min-height: 600px) and (max-height: 800px)
+{
+  .header-text h1 {
+
+
+    font-size: 95px;
+    text-transform: uppercase;
+    margin: 0;
+    mix-blend-mode: overlay;
+  }
+  }
 @keyframes animate4
 {
   0%
