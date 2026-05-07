@@ -171,7 +171,7 @@ cursor: pointer;
 }
   .swiper-container {
     overflow: visible !important;
-    clip-path: polygon(0 -40px, 100% -40px, 100% calc(100% + 260px), 0 calc(100% + 260px));
+    clip-path: polygon(0 -10px, 100% -10px, 100% calc(100% + 260px), 0 calc(100% + 260px));
     width: 100%;
     padding-top: 40px;
     padding-bottom: 60px;
@@ -196,52 +196,8 @@ cursor: pointer;
     overflow: visible;
   }
 
-  /* JS-driven 3D depth faces */
-  .depth-face {
-    position: absolute;
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0;
-  }
-
-  /* Side faces — transform set dynamically by JS */
-  .depth-side-right,
-  .depth-side-left {
-    top: 0;
-    width: 32px;
-    height: 100%;
-  }
-
-  /* Bright inner edge simulates the rounded-corner highlight from the image */
-  .depth-side-right {
-    left: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0.55) 0%, #8a9bb0 28%, #4a5568 62%, #2d3748 100%);
-    transform-origin: top left;
-    border-radius: 0 24px 24px 0;
-  }
-
-  .depth-side-left {
-    right: 100%;
-    background: linear-gradient(to left, rgba(255,255,255,0.55) 0%, #8a9bb0 28%, #4a5568 62%, #2d3748 100%);
-    transform-origin: top right;
-    border-radius: 24px 0 0 24px;
-  }
-
-  /* Top faces — height and top set dynamically by JS; bright at front edge = rounded highlight */
-  .depth-top-right {
-    left: 0;
-    width: calc(100% + 32px);
-    background: linear-gradient(to top, rgba(255,255,255,0.55) 0%, #c8d5e8 45%, #a8b8cc 100%);
-  }
-
-  .depth-top-left {
-    left: -32px;
-    width: calc(100% + 32px);
-    background: linear-gradient(to top, rgba(255,255,255,0.55) 0%, #c8d5e8 45%, #a8b8cc 100%);
-  }
-
   .swiper-slide .card {
-    border-radius: 24px;
+    border-radius: 6px;
     overflow: hidden;
   }
 
