@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/languageCSS.css">
     <link rel="stylesheet" type="text/css" href="CSS/ScrollToTopCSS.css">
     <link rel="stylesheet" type="text/css" href="CSS/Policy.css">
+    <link rel="stylesheet" type="text/css" href="CSS/WorkSection.css">
 
     <script src="https://kit.fontawesome.com/a9043bc812.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
@@ -390,87 +391,81 @@
 
         <!-- End of Project section for mobile -->
 
-        <!-- Project section for screen -->
-        <div class="Carousel">
-            <div class="Projects-text" data-aos="fade-up">
-                <p class="Projects_title_text">
-                    Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML, CSS, JS jak i również framework React i system cms Wordpress.
-                </p>
-            </div>
-            <div class="swiper-container" data-aos="fade-up">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide" style="width: 450px; height: 250px;">
-                        <div class="card">
-                            <div class="layer">
-                                <a class="project-layer-button" href="https://dymass91.github.io/Sit-on-chair/" style="width: 100%;"><p class="Project_Live_btn">Odwiedź stronę</p></a>
-
-                                <div class="content">
-
-                                    <span>HTML5 <i class="fab fa-html5"></i></span>
-                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
-
-                                </div>
-                            </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/sit-on-chair.png" />
-                            </div>
-                        </div>
+        <!-- Work section for desktop -->
+        <div class="work-section">
+            <div class="work-left">
+                <div class="work-images">
+                    <div class="work-image" data-index="0">
+                        <img src="IMG/sit-on-chair.png" alt="Sit on Chair" />
                     </div>
-                    <div class="swiper-slide" style="width: 450px; height: 250px;">
-                        <div class="card">
-                            <div class="layer">
-                                <a class="project-layer-button"
-                                    href="https://dymass91.github.io/Love-the-music/">Odwiedź stronę</a>
-                                <a class="project-layer-button2"
-                                    href="https://github.com/Dymass91/Love-the-music">Kod</a>
-                                <div class="content">
-                                    <span> HTML5 <i class="fab fa-html5"></i></span>
-                                    <span> CSS <i class="fab fa-css3-alt"></i></span>
-                                    <span> GULP <i class="fab fa-gulp"></i></span>
-
-                                </div>
-                            </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;"
-                                    src="IMG/love-the-music.jpg" /></div>
-                        </div>
+                    <div class="work-image" data-index="1">
+                        <img src="IMG/love-the-music.jpg" alt="Love the Music" />
                     </div>
-                    <div class="swiper-slide" style="width: 450px; height: 250px;">
-                        <div class="card">
-                            <div class="layer">
-                                <a class="project-layer-button"
-                                    href="https://dymass91.github.io/Exquisite-Foods/">Odwiedź stronę</a>
-                                <a class="project-layer-button2"
-                                    href="https://github.com/Dymass91/Exquisite-Foods">Kod</a>
-                                <div class="content">
-                                    <span> HTML5 <i class="fab fa-html5"></i></span>
-                                    <span> CSS <i class="fab fa-css3-alt"></i></span>
-                                    <span> React <i class="fab fa-react"></i></span>
-                                    <span> Node <i class="fab fa-node-js"></i></span>
-                                </div>
-                            </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/exq-site.png" />
-                            </div>
-                        </div>
+                    <div class="work-image" data-index="2">
+                        <img src="IMG/exq-site.png" alt="Exquisite Foods" />
                     </div>
-
-                    <div class="swiper-slide" style="width: 450px; height: 250px;">
-                        <div class="card">
-                            <div class="layer">
-                                <a class="project-layer-button" style="width: 100%;"
-                                    href="https://laptop-odnowa.pl/">Odwiedź stronę</a>
-
-                                <div class="content">
-                                    <span> Wordpress <i class="fab fa-wordpress"></i></span>
-                                </div>
-                            </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/Odnowa.png" />
-                            </div>
-                        </div>
+                    <div class="work-image" data-index="3">
+                        <img src="IMG/Odnowa.png" alt="Laptop Odnowa" />
                     </div>
                 </div>
             </div>
-
-            <!-- End of Project section for screen -->
+            <div class="work-right">
+                <div class="work-right-inner">
+                    <p class="Projects_title_text">Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML, CSS, JS jak i również framework React i system cms Wordpress.</p>
+                    <ul class="work-list">
+                        <li class="work-item" data-index="0">
+                            <a class="work-item-link" href="https://dymass91.github.io/Sit-on-chair/" target="_blank">
+                                <div class="work-item-main">
+                                    <div class="work-item-left">
+                                        <span class="work-num">01</span>
+                                        <span class="work-arrow">→</span>
+                                        <span class="work-title">Sit on Chair</span>
+                                    </div>
+                                    <span class="work-category">HTML / CSS</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="work-item" data-index="1">
+                            <a class="work-item-link" href="https://dymass91.github.io/Love-the-music/" target="_blank">
+                                <div class="work-item-main">
+                                    <div class="work-item-left">
+                                        <span class="work-num">02</span>
+                                        <span class="work-arrow">→</span>
+                                        <span class="work-title">Love the Music</span>
+                                    </div>
+                                    <span class="work-category">HTML / CSS / Gulp</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="work-item" data-index="2">
+                            <a class="work-item-link" href="https://dymass91.github.io/Exquisite-Foods/" target="_blank">
+                                <div class="work-item-main">
+                                    <div class="work-item-left">
+                                        <span class="work-num">03</span>
+                                        <span class="work-arrow">→</span>
+                                        <span class="work-title">Exquisite Foods</span>
+                                    </div>
+                                    <span class="work-category">React / Node</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="work-item" data-index="3">
+                            <a class="work-item-link" href="https://laptop-odnowa.pl/" target="_blank">
+                                <div class="work-item-main">
+                                    <div class="work-item-left">
+                                        <span class="work-num">04</span>
+                                        <span class="work-arrow">→</span>
+                                        <span class="work-title">Laptop Odnowa</span>
+                                    </div>
+                                    <span class="work-category">WordPress</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End of Work section for desktop -->
     </section>
 
 
@@ -1008,6 +1003,7 @@ https://tools.google.com/dlpage/gaoptout?hl=pl
     <script src="JS/ScrollToTopArrow.js"></script>
     <script src="JS/Policy.js"></script>
     <script src="JS/MobileProjects.js"></script>
+    <script src="JS/WorkSection.js"></script>
 
 
 
