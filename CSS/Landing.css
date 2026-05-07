@@ -261,8 +261,8 @@ background-position: bottom;
   object-position: bottom center;
 }
 
-/* --back: hex shape in image coords (hex top = 110px = 21% of 520px image) */
-.hero-photo-img--back  { z-index: 2; clip-path: polygon(50% 21%, 100% 41%, 100% 80%, 50% 100%, 0% 80%, 0% 41%); }
+/* --back: clipped by parent hex-bg polygon */
+.hero-photo-img--back  { z-index: 2; }
 /* --front: head above hex — top 21% only */
 .hero-photo-img--front { z-index: 4; clip-path: inset(0 0 79% 0); }
 
