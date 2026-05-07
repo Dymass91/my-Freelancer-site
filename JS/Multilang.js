@@ -17,8 +17,6 @@ const descrEl = document.querySelector('.descriptionAbout');
 
 const aboutText1 = document.querySelector('.aboutMe_text1');
 const aboutText2 = document.querySelector('.aboutMe_text2');
-const aboutText3 = document.querySelector('.aboutMe_text3');
-const aboutText4 = document.querySelector('.aboutMe_text4');
 const aboutText5 = document.querySelector('.aboutMe_text5');
 const hrefToContact = document.querySelector('.AboutMe_hrefToContact');
 
@@ -62,7 +60,7 @@ function getTranslatableElements() {
         menuHeaderAbout, menuHeaderService, menuHeaderProjects, menuHeaderContact,
         navbarHeaderAbout, navbarHeaderService, navbarHeaderProjects, navbarHeaderContact,
         titleEl, descrEl,
-        aboutText1, aboutText2, aboutText3, aboutText4, aboutText5, hrefToContact,
+        aboutText1, aboutText2, aboutText5, hrefToContact,
         Serviceh2, Projectsh2, Contacth2,
         ServEl1, discrEl1, discrElSpan, ServPrice, PriceStr,
         discServ2, discServ2Bot, ServEl2,
@@ -91,8 +89,6 @@ function applyTranslation(attr) {
 
     aboutText1.textContent = data[attr].aboutMe_text1;
     aboutText2.textContent = data[attr].aboutMe_text2;
-    aboutText3.textContent = data[attr].aboutMe_text3;
-    aboutText4.textContent = data[attr].aboutMe_text4;
     aboutText5.textContent = data[attr].aboutMe_text5;
     hrefToContact.textContent = data[attr].AboutMe_hrefToContact;
 
