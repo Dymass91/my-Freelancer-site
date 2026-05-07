@@ -39,6 +39,11 @@ var slider = new KeenSlider('#portfolio-slider', {
         spacing: 24,
         origin: 'center'
     },
+    breakpoints: {
+        '(max-width: 767px)': {
+            slides: { perView: 1.08, spacing: 12, origin: 'center' }
+        }
+    },
     created: function(s) {
         updateEffects(s);
         createDots(s);
