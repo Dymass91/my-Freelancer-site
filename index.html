@@ -31,9 +31,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper@6/swiper-bundle.min.css">
-
-    <script src="https://unpkg.com/swiper@6/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Saira+Condensed&display=swap"
@@ -399,82 +397,70 @@
                     Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML, CSS, JS jak i również framework React i system cms Wordpress.
                 </p>
             </div>
-            <div class="swiper-container" data-aos="fade-up">
-                <div class="swiper-wrapper">
-               
-                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+            <div class="portfolio-carousel-wrapper" data-aos="fade-up">
+                <div id="portfolio-slider" class="keen-slider">
+
+                    <div class="keen-slider__slide">
                         <div class="card">
                             <div class="layer">
-                                <a class="project-layer-button" href="https://dymass91.github.io/Sit-on-chair/" style="width: 100%;"><p class="Project_Live_btn">Odwiedź stronę</p></a>
-                                
+                                <a class="project-visit-btn" href="https://dymass91.github.io/Sit-on-chair/">Odwiedź stronę</a>
                                 <div class="content">
-
                                     <span>HTML5 <i class="fab fa-html5"></i></span>
                                     <span>CSS <i class="fab fa-css3-alt"></i></span>
-
                                 </div>
                             </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/sit-on-chair.png" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" style="width: 450px; height: 250px;">
-                        <div class="card">
-                            <div class="layer">
-                                <a class="project-layer-button"
-                                    href="https://dymass91.github.io/Love-the-music/">Odwiedź stronę</a>
-                                <a class="project-layer-button2"
-                                    href="https://github.com/Dymass91/Love-the-music">Kod</a>
-                                <div class="content">
-                                    <span> HTML5 <i class="fab fa-html5"></i></span>
-                                    <span> CSS <i class="fab fa-css3-alt"></i></span>
-                                    <span> GULP <i class="fab fa-gulp"></i></span>
-
-                                </div>
-                            </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;"
-                                    src="IMG/love-the-music.jpg" /></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" style="width: 450px; height: 250px;">
-                        <div class="card">
-                            <div class="layer">
-                                <a class="project-layer-button"
-                                    href="https://dymass91.github.io/Exquisite-Foods/">Odwiedź stronę</a>
-                                <a class="project-layer-button2"
-                                    href="https://github.com/Dymass91/Exquisite-Foods">Kod</a>
-                                <div class="content">
-                                    <span> HTML5 <i class="fab fa-html5"></i></span>
-                                    <span> CSS <i class="fab fa-css3-alt"></i></span>
-                                    <span> React <i class="fab fa-react"></i></span>
-                                    <span> Node <i class="fab fa-node-js"></i></span>
-                                </div>
-                            </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/exq-site.png" />
-                            </div>
+                            <div class="img-box"><img src="IMG/sit-on-chair.png" /></div>
                         </div>
                     </div>
 
-                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                    <div class="keen-slider__slide">
                         <div class="card">
                             <div class="layer">
-                                <a class="project-layer-button" style="width: 100%;"
-                                    href="https://laptop-odnowa.pl/">Odwiedź stronę</a>
-                
+                                <a class="project-visit-btn" href="https://dymass91.github.io/Love-the-music/">Odwiedź stronę</a>
                                 <div class="content">
-                                    <span> Wordpress <i class="fab fa-wordpress"></i></span>
+                                    <span>HTML5 <i class="fab fa-html5"></i></span>
+                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
+                                    <span>GULP <i class="fab fa-gulp"></i></span>
                                 </div>
                             </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/Odnowa.png" />
-                            </div>
+                            <div class="img-box"><img src="IMG/love-the-music.jpg" /></div>
                         </div>
                     </div>
+
+                    <div class="keen-slider__slide">
+                        <div class="card">
+                            <div class="layer">
+                                <a class="project-visit-btn" href="https://dymass91.github.io/Exquisite-Foods/">Odwiedź stronę</a>
+                                <div class="content">
+                                    <span>HTML5 <i class="fab fa-html5"></i></span>
+                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
+                                    <span>React <i class="fab fa-react"></i></span>
+                                    <span>Node <i class="fab fa-node-js"></i></span>
+                                </div>
+                            </div>
+                            <div class="img-box"><img src="IMG/exq-site.png" /></div>
+                        </div>
+                    </div>
+
+                    <div class="keen-slider__slide">
+                        <div class="card">
+                            <div class="layer">
+                                <a class="project-visit-btn" href="https://laptop-odnowa.pl/">Odwiedź stronę</a>
+                                <div class="content">
+                                    <span>Wordpress <i class="fab fa-wordpress"></i></span>
+                                </div>
+                            </div>
+                            <div class="img-box"><img src="IMG/Odnowa.png" /></div>
+                        </div>
+                    </div>
+
                 </div>
-                <!-- Pagination -->
-                <div class="swiper-pagination"></div>
+                <button class="portfolio-arrow portfolio-arrow--prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="portfolio-arrow portfolio-arrow--next"><i class="fas fa-chevron-right"></i></button>
+                <div class="portfolio-dots"></div>
             </div>
-
-            <!-- End of Project section for screen -->
+        </div>
+        <!-- End of Project section for screen -->
     </section>
 
 
@@ -1006,6 +992,7 @@ https://tools.google.com/dlpage/gaoptout?hl=pl
     <script src="JS/Navbar.js"></script>
     <script src="JS/AnimationGsap.js"></script>
     <script src="JS/SlideUpText.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.js"></script>
     <script src="JS/swiper.js"></script>
     <script src="JS/Multilang.js"></script>
     <script src="JS/Contact.js"></script>

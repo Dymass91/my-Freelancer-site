@@ -1,15 +1,142 @@
-
-
-  .swiper-container {
+.portfolio-carousel-wrapper {
+    position: relative;
     width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
+    padding: 40px 0 60px;
+}
 
-  .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    height: 300px;
-background-color: black;
-  }
+.keen-slider {
+    overflow: visible !important;
+}
+
+.keen-slider__slide {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    will-change: transform, opacity;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    cursor: grab;
+}
+
+.card:active {
+    cursor: grabbing;
+}
+
+.card .img-box {
+    width: 100%;
+    height: 100%;
+}
+
+.card .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+.card .layer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(20,20,20,0.85), rgba(80,80,80,0.4));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    gap: 12px;
+    z-index: 2;
+}
+
+.card:hover .layer {
+    opacity: 1;
+}
+
+.project-visit-btn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 24px;
+    border: 1px solid rgba(255,255,255,0.6);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.project-visit-btn:hover {
+    background: rgba(100, 211, 255, 0.25);
+    border-color: rgb(100, 211, 255);
+    color: #fff;
+}
+
+.card .layer .content {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card .layer .content span {
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+}
+
+/* Navigation arrows */
+.portfolio-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-size: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    transition: background 0.2s, color 0.2s;
+    z-index: 10;
+}
+
+.portfolio-arrow:hover {
+    background: rgb(100, 211, 255);
+    color: #fff;
+}
+
+.portfolio-arrow--prev { left: 12px; }
+.portfolio-arrow--next { right: 12px; }
+
+/* Dots */
+.portfolio-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.portfolio-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.2);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.portfolio-dot.active {
+    background: rgb(100, 211, 255);
+    transform: scale(1.4);
+}
