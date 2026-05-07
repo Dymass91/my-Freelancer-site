@@ -195,6 +195,10 @@ left: -1.9rem;
       font-size: 1.4em;
       margin-top: 1vh;
     }
+    .aboutMe-myOffer_ul li + li
+    {
+      margin-top: 2vh;
+    }
     .AboutMe_hrefToContact
     {
       color: var(--span-color);
