@@ -8,15 +8,9 @@
     --span-color: rgb(100, 211, 255);
 }
 
-html {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-
 body {
   background: url(../IMG/gplaypattern_@2X.png);
   width: 100%;
-  max-width: 100%;
   overflow-x: hidden;
   background-attachment: fixed;
     /* background-color: rgb(243, 243, 243); */
