@@ -5,8 +5,10 @@ function updateEffects(slider) {
         var dist = Math.abs(slideDetail.distance);
         var scale = Math.max(0.82, 1 - dist * 0.1);
         var opacity = Math.max(0.45, 1 - dist * 0.28);
-        slider.slides[idx].style.transform = 'scale(' + scale + ')';
-        slider.slides[idx].style.opacity = opacity;
+        var inner = slider.slides[idx].querySelector('.slide-inner');
+        if (!inner) inner = slider.slides[idx];
+        inner.style.transform = 'scale(' + scale + ')';
+        inner.style.opacity = opacity;
     });
 }
 

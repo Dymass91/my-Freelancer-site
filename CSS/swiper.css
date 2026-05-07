@@ -1,24 +1,42 @@
-/* Hide old mobile grid — slider replaces it everywhere */
-.Project_wrapper {
-    display: none !important;
-}
+/* Hide old mobile grid */
+.Project_wrapper { display: none !important; }
 
-/* Show slider on all screen sizes */
+/* Show slider on all devices */
 .Carousel {
     display: block !important;
     background-color: #fff;
     height: auto !important;
-    min-height: 50vh;
-    padding-bottom: 40px;
     width: 100%;
     margin-top: .6vh;
+    padding-bottom: 48px;
 }
 
+/* ── Carousel wrapper ── */
 .portfolio-carousel-wrapper {
     position: relative;
     width: 88%;
     margin: 0 auto;
-    padding: 32px 0 24px;
+    padding: 32px 0 8px;
+}
+
+/* ── Keen Slider — overflow hidden prevents mobile bleed ── */
+.keen-slider {
+    overflow: hidden;
+}
+
+/* ── Keen Slider slide — NO transform transition (Keen Slider owns transform) ── */
+.keen-slider__slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Inner wrapper gets the scale/opacity effect ── */
+.slide-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    will-change: transform, opacity;
 }
 
 /* ── Card ── */
@@ -48,9 +66,9 @@
     pointer-events: none;
 }
 
-/* ── Hover overlay — fix height conflict from Projects.css ── */
+/* ── Hover overlay ── */
 .card .layer {
-    position: absolute;
+    position: absolute !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
@@ -101,23 +119,15 @@
 
 .card .layer .content span {
     display: block !important;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.75);
     font-size: 13px;
-}
-
-/* ── Keen Slider ── */
-.keen-slider { overflow: visible !important; }
-
-.keen-slider__slide {
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    will-change: transform, opacity;
 }
 
 /* ── Navigation arrows ── */
 .portfolio-arrow {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-60%);
     background: rgba(255,255,255,0.92);
     border: none;
     width: 38px;
@@ -147,7 +157,7 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 22px;
+    margin-top: 20px;
 }
 
 .portfolio-dot {
@@ -166,18 +176,11 @@
     transform: scale(1.5);
 }
 
-/* ── Mobile adjustments ── */
+/* ── Mobile ── */
 @media (max-width: 767px) {
     .card { height: 200px; }
-
-    .portfolio-carousel-wrapper { width: 92%; }
-
-    .portfolio-arrow--prev { left: -14px; }
-    .portfolio-arrow--next { right: -14px; }
-
-    .portfolio-arrow {
-        width: 32px;
-        height: 32px;
-        font-size: 11px;
-    }
+    .portfolio-carousel-wrapper { width: 94%; }
+    .portfolio-arrow--prev { left: -10px; }
+    .portfolio-arrow--next { right: -10px; }
+    .portfolio-arrow { width: 30px; height: 30px; font-size: 11px; }
 }
