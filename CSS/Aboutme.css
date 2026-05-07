@@ -129,6 +129,7 @@ left: -1.9rem;
 
   .about-left
   {
+    display: block;
     flex-shrink: 0;
   }
   .about-text
