@@ -31,6 +31,13 @@
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <link rel="stylesheet" href="../package/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Saira+Condensed&display=swap"
@@ -394,69 +401,82 @@
                     Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML, CSS, JS jak i również framework React i system cms Wordpress.
                 </p>
             </div>
-            <div class="portfolio-slider" data-aos="fade-up">
-                <div class="slider-track">
-                    <div class="slide" data-index="0">
-                        <div class="slide-card">
-                            <img src="IMG/sit-on-chair.png" alt="Sit on Chair">
-                            <div class="slide-overlay">
-                                <a href="https://dymass91.github.io/Sit-on-chair/" class="slide-visit" target="_blank">Odwiedź stronę</a>
-                                <div class="slide-tech">
+            <div class="swiper-container" data-aos="fade-up">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <a class="project-layer-button" href="https://dymass91.github.io/Sit-on-chair/" style="width: 100%;"><p class="Project_Live_btn">Odwiedź stronę</p></a>
+
+                                <div class="content">
+
                                     <span>HTML5 <i class="fab fa-html5"></i></span>
                                     <span>CSS <i class="fab fa-css3-alt"></i></span>
+
                                 </div>
+                            </div>
+                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/sit-on-chair.png" />
                             </div>
                         </div>
                     </div>
-                    <div class="slide" data-index="1">
-                        <div class="slide-card">
-                            <img src="IMG/love-the-music.jpg" alt="Love the Music">
-                            <div class="slide-overlay">
-                                <a href="https://dymass91.github.io/Love-the-music/" class="slide-visit" target="_blank">Odwiedź stronę</a>
-                                <div class="slide-tech">
-                                    <span>HTML5 <i class="fab fa-html5"></i></span>
-                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
-                                    <span>GULP <i class="fab fa-gulp"></i></span>
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <a class="project-layer-button"
+                                    href="https://dymass91.github.io/Love-the-music/">Odwiedź stronę</a>
+                                <a class="project-layer-button2"
+                                    href="https://github.com/Dymass91/Love-the-music">Kod</a>
+                                <div class="content">
+                                    <span> HTML5 <i class="fab fa-html5"></i></span>
+                                    <span> CSS <i class="fab fa-css3-alt"></i></span>
+                                    <span> GULP <i class="fab fa-gulp"></i></span>
+
                                 </div>
+                            </div>
+                            <div class="img-box"><img style="width: 450px; height: 250px;"
+                                    src="IMG/love-the-music.jpg" /></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <a class="project-layer-button"
+                                    href="https://dymass91.github.io/Exquisite-Foods/">Odwiedź stronę</a>
+                                <a class="project-layer-button2"
+                                    href="https://github.com/Dymass91/Exquisite-Foods">Kod</a>
+                                <div class="content">
+                                    <span> HTML5 <i class="fab fa-html5"></i></span>
+                                    <span> CSS <i class="fab fa-css3-alt"></i></span>
+                                    <span> React <i class="fab fa-react"></i></span>
+                                    <span> Node <i class="fab fa-node-js"></i></span>
+                                </div>
+                            </div>
+                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/exq-site.png" />
                             </div>
                         </div>
                     </div>
-                    <div class="slide" data-index="2">
-                        <div class="slide-card">
-                            <img src="IMG/exq-site.png" alt="Exquisite Foods">
-                            <div class="slide-overlay">
-                                <a href="https://dymass91.github.io/Exquisite-Foods/" class="slide-visit" target="_blank">Odwiedź stronę</a>
-                                <div class="slide-tech">
-                                    <span>HTML5 <i class="fab fa-html5"></i></span>
-                                    <span>CSS <i class="fab fa-css3-alt"></i></span>
-                                    <span>React <i class="fab fa-react"></i></span>
-                                    <span>Node <i class="fab fa-node-js"></i></span>
+
+                    <div class="swiper-slide" style="width: 450px; height: 250px;">
+                        <div class="card">
+                            <div class="layer">
+                                <a class="project-layer-button" style="width: 100%;"
+                                    href="https://laptop-odnowa.pl/">Odwiedź stronę</a>
+
+                                <div class="content">
+                                    <span> Wordpress <i class="fab fa-wordpress"></i></span>
                                 </div>
+                            </div>
+                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/Odnowa.png" />
                             </div>
                         </div>
                     </div>
-                    <div class="slide" data-index="3">
-                        <div class="slide-card">
-                            <img src="IMG/Odnowa.png" alt="Laptop Odnowa">
-                            <div class="slide-overlay">
-                                <a href="https://laptop-odnowa.pl/" class="slide-visit" target="_blank">Odwiedź stronę</a>
-                                <div class="slide-tech">
-                                    <span>WordPress <i class="fab fa-wordpress"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="slider-btn slider-prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn slider-next"><i class="fas fa-chevron-right"></i></button>
-                <div class="slider-dots">
-                    <span class="slider-dot"></span>
-                    <span class="slider-dot"></span>
-                    <span class="slider-dot"></span>
-                    <span class="slider-dot"></span>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
-        </div>
+
+            <!-- End of Project section for screen -->
     </section>
 
 
