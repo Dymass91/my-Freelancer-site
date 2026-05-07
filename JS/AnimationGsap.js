@@ -73,6 +73,25 @@ function exitLoader() {
         delay: function(el, i) { return 1100 + 50 * i; }
     });
 
+    var heroWrap = document.querySelector('.hero-photo-wrap');
+    if (heroWrap) {
+        heroWrap.style.opacity = '0';
+        heroWrap.style.transform = 'translate(-50%, -55%) translateY(120px)';
+        anime({
+            targets: { ty: 120, op: 0 },
+            ty: 0,
+            op: 1,
+            easing: 'easeOutExpo',
+            duration: 1800,
+            delay: 800,
+            update: function(anim) {
+                var s = anim.animatables[0].target;
+                heroWrap.style.transform = 'translate(-50%, -55%) translateY(' + s.ty + 'px)';
+                heroWrap.style.opacity   = s.op;
+            }
+        });
+    }
+
     TweenMax.staggerFrom(".menu > div", 1.5, {
         opacity: 0,
         y: 20,
