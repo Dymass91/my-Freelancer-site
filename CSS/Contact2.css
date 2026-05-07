@@ -457,6 +457,39 @@ z-index: -2;
   }
 }
 
+/* Landscape phone: compact contact layout */
+@media (max-height: 500px) and (orientation: landscape) {
+  .Contact_Social {
+    padding-top: 20px;
+  }
+  .contact_container {
+    min-height: auto;
+    padding: 1rem;
+  }
+  .form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-info {
+    padding: 1.5rem 1.2rem;
+  }
+  .contact_title {
+    font-size: 1.1rem;
+  }
+  .text {
+    font-size: 0.85rem;
+    margin: 0.5rem 0 0.8rem 0;
+  }
+  form {
+    padding: 1.2rem 1rem;
+  }
+  textarea.input {
+    min-height: 80px;
+  }
+  .Contact_Social h2 {
+    font-size: 40px;
+  }
+}
+
 @media (max-width: 480px) {
   .Contact_Social h2
 {

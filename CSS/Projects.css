@@ -230,7 +230,7 @@ z-index: -2;
    
 }
 
-@media (max-width: 768px) 
+@media (max-width: 768px)
 {
   .Carousel
   {
@@ -248,4 +248,24 @@ z-index: -2;
     width: 100%;
     margin-top: .6vh;
   }
+}
+
+/* Landscape phone: remove reflection that bleeds into Contact section */
+@media (max-height: 500px) and (orientation: landscape) {
+  .Carousel {
+    display: block;
+    background-color: #fff;
+    min-height: auto;
+    padding-bottom: 30px;
+    width: 100%;
   }
+  .swiper-container {
+    overflow: hidden !important;
+    clip-path: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .swiper-slide {
+    -webkit-box-reflect: none;
+  }
+}
