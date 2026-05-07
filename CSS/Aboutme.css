@@ -232,9 +232,15 @@ left: -1.9rem;
 }
 /* ── Landscape phone fix ── */
 @media (max-height: 500px) and (orientation: landscape) {
+  .Aboutme h2 {
+    font-size: 36px;
+    margin-top: 2%;
+  }
+  .Aboutme h2:before { width: 180px; left: -17px; }
+  .Aboutme h2:after  { width: 200px; left: -30px; }
   .About-container {
-    padding: 1.5rem 2rem;
-    gap: 2rem;
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
     min-height: auto;
     flex-direction: row;
   }
@@ -245,15 +251,19 @@ left: -1.9rem;
     max-width: 100%;
   }
   .Aboutme p {
-    font-size: 1rem;
-    margin-top: 0.5vh;
-    margin-bottom: 0.5vh;
+    font-size: 0.92rem;
+    margin-top: 0.4vh;
+    margin-bottom: 0.4vh;
+  }
+  .descriptionAbout {
+    margin-bottom: 0.5rem;
   }
   .aboutMe-myOffer_ul {
-    font-size: 1rem;
+    font-size: 0.92rem;
+    margin-top: 0.4vh;
   }
   .aboutMe-myOffer_ul li + li {
-    margin-top: 0.8vh;
+    margin-top: 0.5vh;
   }
 }
 

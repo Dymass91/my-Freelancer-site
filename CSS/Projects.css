@@ -250,20 +250,34 @@ z-index: -2;
   }
 }
 
-/* Landscape phone: remove reflection that bleeds into Contact section */
+/* Landscape phone: compact projects section */
 @media (max-height: 500px) and (orientation: landscape) {
+  .Projects h2 {
+    font-size: 36px;
+    margin-top: -4vh;
+  }
+  .Projects h2:before { width: 175px; left: -17px; }
+  .Projects h2:after  { width: 195px; left: -30px; }
+  .Projects-text {
+    padding: 1.5vw;
+    width: 90vw;
+    margin-left: 5vw;
+  }
+  .Projects_title_text {
+    font-size: 16px;
+  }
   .Carousel {
     display: block;
     background-color: #fff;
     min-height: auto;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     width: 100%;
   }
   .swiper-container {
     overflow: hidden !important;
     clip-path: none;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
   .swiper-slide {
     -webkit-box-reflect: none;
