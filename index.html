@@ -18,7 +18,7 @@
     <meta property="og:title" content="Tomasz Matyszczak – Strony Internetowe Piła | Web Developer">
     <meta property="og:description" content="Profesjonalne strony internetowe i sklepy online na zamówienie. HTML, CSS, JavaScript, React, WordPress. Od 1449 zł.">
     <meta property="og:url" content="https://my-freelancer-site.matyszczak24.workers.dev/">
-    <meta property="og:image" content="https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait3.png">
+    <meta property="og:image" content="https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait3.jpg">
     <meta property="og:locale" content="pl_PL">
     <meta property="og:site_name" content="Tomasz Matyszczak – Web Developer">
 
@@ -26,7 +26,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tomasz Matyszczak – Strony Internetowe Piła | Web Developer">
     <meta name="twitter:description" content="Profesjonalne strony internetowe i sklepy online na zamówienie. Od 1449 zł.">
-    <meta name="twitter:image" content="https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait3.png">
+    <meta name="twitter:image" content="https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait3.jpg">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -36,7 +36,7 @@
       "name": "Tomasz Matyszczak – Web Developer",
       "description": "Tworzenie nowoczesnych stron internetowych i sklepów online. Specjalizacja: HTML, CSS, JavaScript, React, WordPress.",
       "url": "https://my-freelancer-site.matyszczak24.workers.dev/",
-      "image": "https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait3.png",
+      "image": "https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait3.jpg",
       "priceRange": "od 1449 zł",
       "email": "matyszczak24@gmail.com",
       "address": {
@@ -72,23 +72,28 @@
     <link rel="stylesheet" type="text/css" href="CSS/ScrollToTopCSS.css">
     <link rel="stylesheet" type="text/css" href="CSS/Policy.css">
 
-    <script src="https://kit.fontawesome.com/a9043bc812.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
-    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="IMG/Logo.png">
 
+    <!-- Preconnect for faster CDN handshakes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
+
+    <!-- Fonts (combined into one request) -->
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Saira+Condensed&family=Baumans&display=swap" rel="stylesheet">
+
+    <!-- AOS CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css">
-    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
 
+    <!-- Font Awesome (deferred – icons not needed before paint) -->
+    <script defer src="https://kit.fontawesome.com/a9043bc812.js" crossorigin="anonymous"></script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Saira+Condensed&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Baumans|Merienda+One|Share|Syncopate&display=swap"
-        rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <!-- Ionicons (deferred) -->
+    <script defer src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 </head>
 
 <body>
@@ -136,9 +141,9 @@
             <div class="hero-photo-wrap">
                 <div class="hero-photo-glow"></div>
                 <div class="hero-photo-hex-bg">
-                    <img class="hero-photo-img hero-photo-img--back" src="IMG/portrait3.png" alt="Tomasz Matyszczak – Web Developer Piła">
+                    <img class="hero-photo-img hero-photo-img--back" src="IMG/portrait3.jpg" alt="Tomasz Matyszczak – Web Developer Piła">
                 </div>
-                <img class="hero-photo-img hero-photo-img--front" src="IMG/portrait3.png" alt="" aria-hidden="true">
+                <img class="hero-photo-img hero-photo-img--front" src="IMG/portrait3.jpg" alt="" aria-hidden="true">
             </div>
 
             <!-- header  -->
@@ -205,7 +210,7 @@
         <div class="About-container">
             <div class="about-left">
                 <div class="About-img">
-                    <img src="IMG/gif11.gif" alt="Technologie: HTML, CSS, JavaScript, React, WordPress, PHP" />
+                    <img src="IMG/gif11.gif" alt="Technologie: HTML, CSS, JavaScript, React, WordPress, PHP" loading="lazy" />
                     <div class="home-text">
                         <p class="animate-text">
                             <span>HTML5 <i class="fab fa-html5"></i></span>
@@ -407,7 +412,7 @@
                                 </div>
                             </div>
                             <div class="img-box"><img style="width: 450px; height: 250px;"
-                                    src="IMG/love-the-music.jpg" alt="Love the Music – projekt strony HTML CSS" /></div>
+                                    src="IMG/love-the-music.jpg" alt="Love the Music – projekt strony HTML CSS" loading="lazy" /></div>
                         </div>
                     </div>
                     <div class="swiper-slide" style="width: 450px; height: 250px;">
@@ -422,7 +427,7 @@
                                     <span> Node <i class="fab fa-node-js"></i></span>
                                 </div>
                             </div>
-                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/exq-site.png" alt="Exquisite Foods – aplikacja React Node.js" />
+                            <div class="img-box"><img style="width: 450px; height: 250px;" src="IMG/exq-site.png" alt="Exquisite Foods – aplikacja React Node.js" loading="lazy" />
                             </div>
                         </div>
                     </div>
@@ -440,7 +445,7 @@
                                 </div>
                             </div>
                             <div class="img-box" style="background-color: #D9D5CA; display:flex; align-items:center; justify-content:center; width:450px; height:250px;">
-                                <img style="width: 251px; height: 251px;" src="IMG/detweederonde.png" alt="Tweede Ronde Eindhoven – strona HTML JS Tailwind" />
+                                <img style="width: 251px; height: 251px;" src="IMG/detweederonde.png" alt="Tweede Ronde Eindhoven – strona HTML JS Tailwind" loading="lazy" />
                             </div>
                         </div>
                     </div>
@@ -972,6 +977,8 @@ https://tools.google.com/dlpage/gaoptout?hl=pl
         </div>
 
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
     <!-- <script src="JS/Header.js"></script> -->
