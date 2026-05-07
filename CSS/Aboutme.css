@@ -163,8 +163,8 @@ left: -1.9rem;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 60px;
-    background: linear-gradient(to bottom, transparent 0%, #fff 55%);
+    height: 32px;
+    background: linear-gradient(to bottom, transparent 0%, #fff 80%);
     z-index: 3;
   }
   .Aboutme h2
