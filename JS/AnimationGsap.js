@@ -109,6 +109,25 @@ function exitLoader() {
 
 requestAnimationFrame(animateCounter);
 
+// ── First scroll snaps to #About ──
+(function () {
+    var about = document.getElementById('About');
+    if (!about) return;
+    var snapping = false;
+
+    window.addEventListener('wheel', function (e) {
+        if (snapping) { e.preventDefault(); return; }
+        if (window.scrollY > 80) return;
+        if (e.deltaY <= 0) return;
+
+        snapping = true;
+        e.preventDefault();
+        about.scrollIntoView({ behavior: 'smooth' });
+
+        setTimeout(function () { snapping = false; }, 1000);
+    }, { passive: false });
+})();
+
 // ── Hero scroll-out: fade + move up as user scrolls away ──
 (function () {
   var wrap  = document.querySelector('.hero-photo-wrap');
