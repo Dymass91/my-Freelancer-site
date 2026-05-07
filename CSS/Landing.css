@@ -215,43 +215,44 @@ background-position: bottom;
 }
 
 /* ── Hero hexagon photo ── */
-/* flat-top hex 460×400, rounded corners r=28
-   image 460×460, head protrusion = 60px = 13% of 460             */
+/* flat-top hex 530×460, rounded corners r=32
+   image 530×530, head protrusion = 70px ≈ 13% of 530             */
 .hero-photo-wrap {
   position: absolute;
   top: 50%;
   left: 65%;
   transform: translate(-50%, -55%);
-  width: 460px;
-  height: 460px;
+  width: 530px;
+  height: 530px;
   z-index: 10;
 }
 
 .hero-photo-glow {
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 460px;
-  height: 400px;
-  background: radial-gradient(ellipse at 50% 60%, rgba(64, 211, 255, 0.5) 0%, transparent 70%);
-  filter: blur(40px);
+  width: 530px;
+  height: 460px;
+  background:
+    radial-gradient(ellipse 80% 35% at 50% 108%, rgba(100, 211, 255, 1) 0%, rgba(64, 211, 255, 0.55) 40%, transparent 70%),
+    radial-gradient(ellipse at 50% 55%, rgba(64, 211, 255, 0.25) 0%, transparent 65%);
+  filter: blur(20px);
   pointer-events: none;
   z-index: 0;
 }
 
-/* flat-top rounded-corner hex: 460×400
-   vertices: TL(115,0) TR(345,0) R(460,200) BR(345,400) BL(115,400) L(0,200)
-   edge-length ≈ 230, corner-radius 28                               */
+/* flat-top rounded hex 530×460, r=32
+   TL(132.5,0) TR(397.5,0) R(530,230) BR(397.5,460) BL(132.5,460) L(0,230) */
 .hero-photo-hex-bg {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 460px;
-  height: 400px;
-  background: linear-gradient(150deg, #3fe8c8 0%, #64D3FF 45%, #7EB6E4 100%);
-  clip-path: path('M 143,0 L 317,0 Q 345,0 359,24.2 L 446,175.8 Q 460,200 446,224.2 L 359,375.8 Q 345,400 317,400 L 143,400 Q 115,400 101,375.8 L 14,224.2 Q 0,200 14,175.8 L 101,24.2 Q 115,0 143,0 Z');
+  width: 530px;
+  height: 460px;
+  background: linear-gradient(160deg, #3fe8c8 0%, #64D3FF 55%, #40c8ff 100%);
+  clip-path: path('M 164.5,0 L 365.5,0 Q 397.5,0 413.5,27.7 L 514,202.3 Q 530,230 514,257.7 L 413.5,432.3 Q 397.5,460 365.5,460 L 164.5,460 Q 132.5,460 116.5,432.3 L 16,257.7 Q 0,230 16,202.3 L 116.5,27.7 Q 132.5,0 164.5,0 Z');
   z-index: 1;
 }
 
@@ -260,15 +261,15 @@ background-position: bottom;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 460px;
-  height: 460px;
+  width: 530px;
+  height: 530px;
   object-fit: cover;
   object-position: top center;
 }
 
 /* --back: clipped by parent flat-top hex-bg */
 .hero-photo-img--back  { z-index: 2; }
-/* --front: hair + slight overlap into hex to hide seam */
+/* --front: hair + overlap into hex to hide seam */
 .hero-photo-img--front { z-index: 20; clip-path: inset(0 0 83% 0); }
 
 /* header  */
