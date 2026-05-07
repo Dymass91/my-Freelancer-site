@@ -122,9 +122,16 @@ requestAnimationFrame(animateCounter);
 
         snapping = true;
         e.preventDefault();
-        about.scrollIntoView({ behavior: 'smooth' });
-
-        setTimeout(function () { snapping = false; }, 1000);
+        anime({
+            targets: { y: window.scrollY },
+            y: about.offsetTop,
+            duration: 1600,
+            easing: 'easeInOutQuart',
+            update: function (anim) {
+                window.scrollTo(0, anim.animatables[0].target.y);
+            },
+            complete: function () { snapping = false; }
+        });
     }, { passive: false });
 })();
 
