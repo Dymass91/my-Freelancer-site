@@ -4,11 +4,11 @@ var swiper = new Swiper('.swiper-container', {
     centeredSlides: true,
     slidesPerView: 'auto',
     coverflowEffect: {
-        rotate: 20,
+        rotate: 15,
         stretch: 0,
-        depth: 200,
+        depth: 80,
         modifier: 1,
-        slideShadows: true,
+        slideShadows: false,
     },
     loop: true,
 });
