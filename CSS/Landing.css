@@ -565,6 +565,42 @@ left: 84vw;
     mix-blend-mode: overlay;
   }
   }
+/* ── Landscape phone fix (phones rotated sideways, height < 500px) ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-photo-wrap { display: none; }
+  .container-header {
+    background: url(../IMG/Portrait.jpg);
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-origin: border-box;
+    background-position: bottom right;
+  }
+  .header-text {
+    position: absolute;
+    width: 55%;
+    top: 42%;
+    left: 28%;
+    transform: translate(-50%, -50%);
+  }
+  .header-text h1 {
+    color: rgb(173, 185, 202);
+    font-size: 52px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    mix-blend-mode: overlay;
+  }
+  .header-3 {
+    font-size: 24px;
+    letter-spacing: 4px;
+  }
+  .boxArrow {
+    top: 70%;
+  }
+}
+
 @keyframes animate4
 {
   0%
