@@ -174,7 +174,7 @@ var data = {
         "Contact_h2": "Kontakt",
 
 
-        "descriptionAbout": "Cześć! Tworzę nowoczesne strony internetowe od kilku lat — statyczne i dynamiczne, szyte na miarę potrzeb każdego klienta. Specjalizuję się w HTML, CSS i JavaScript, a także realizuję projekty w React i WordPress.",
+        "descriptionAbout": "Cześć! Jestem web developerem z Piły i tworzę nowoczesne strony internetowe od kilku lat — statyczne i dynamiczne, szyte na miarę potrzeb każdego klienta. Specjalizuję się w HTML, CSS i JavaScript, a także realizuję projekty w React i WordPress.",
         "aboutMe_text1": "Każda strona, którą tworzę, jest responsywna, szybka i zoptymalizowana pod kątem Google — dbam o każdy detal, który przekłada się na Twoje wyniki w sieci.",
         "aboutMe_text2": "Projektuję z myślą o użytkowniku — intuicyjna nawigacja i estetyczny design to standard, nie dodatek.",
         "aboutMe_text3": "Po wdrożeniu przeprowadzam szkolenie z obsługi panelu, dzięki czemu samodzielnie zarządzasz swoimi treściami.",
@@ -231,7 +231,7 @@ var data = {
         "Projects_h2": "Portfolio",
         "Contact_h2": "Contact",
 
-        "descriptionAbout": "Hi! I build modern, high-performance websites tailored to each client's needs. With several years of experience in HTML, CSS, JavaScript, React and WordPress, I deliver solutions that look great and drive real results.",
+        "descriptionAbout": "Hi! I'm a web developer based in Piła, Poland, and I build modern, high-performance websites tailored to each client's needs. With several years of experience in HTML, CSS, JavaScript, React and WordPress, I deliver solutions that look great and drive real results.",
         "aboutMe_text1": "Every website I build is responsive, fast and SEO-optimised — every detail is crafted to boost your visibility online.",
         "aboutMe_text2": "I design with the user in mind — clean layouts, intuitive navigation and polished aesthetics that keep visitors engaged.",
         "aboutMe_text3": "After launch I walk you through managing your site, so you can update content independently from day one.",
