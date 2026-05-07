@@ -268,8 +268,8 @@ background-position: bottom;
 
 /* --back: clipped by parent flat-top hex-bg */
 .hero-photo-img--back  { z-index: 2; }
-/* --front: only hair above hex top edge (top 13%) */
-.hero-photo-img--front { z-index: 20; clip-path: inset(0 0 87% 0); }
+/* --front: hair + slight overlap into hex to hide seam */
+.hero-photo-img--front { z-index: 20; clip-path: inset(0 0 83% 0); }
 
 /* header  */
 
