@@ -27,9 +27,6 @@ function updateDepthFaces() {
     Array.from(swiper.slides).forEach(function (slide) {
         slide.querySelectorAll('.depth-face').forEach(function (el) { el.remove(); });
 
-        var card = slide.querySelector('.card');
-        if (!card) return;
-
         var realIdx = parseInt(slide.getAttribute('data-swiper-slide-index'));
         if (isNaN(realIdx)) return;
 
@@ -42,10 +39,10 @@ function updateDepthFaces() {
 
         var side = document.createElement('div');
         side.className = 'depth-face depth-side-' + dir;
-        card.appendChild(side);
+        slide.appendChild(side);
 
         var top = document.createElement('div');
         top.className = 'depth-face depth-top-' + dir;
-        card.appendChild(top);
+        slide.appendChild(top);
     });
 }

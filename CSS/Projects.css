@@ -171,7 +171,7 @@ cursor: pointer;
 }
   .swiper-container {
     overflow: visible !important;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% + 260px), 0 calc(100% + 260px));
+    clip-path: polygon(0 -30px, 100% -30px, 100% calc(100% + 260px), 0 calc(100% + 260px));
     width: 100%;
     padding-top: 40px;
     padding-bottom: 60px;
@@ -199,45 +199,58 @@ cursor: pointer;
   /* JS-driven 3D depth faces */
   .depth-face {
     position: absolute;
-    top: -20px;
     pointer-events: none;
     z-index: 3;
   }
 
-  /* RIGHT slides — side panel on the right, depth angle goes upper-right */
+  /* Side faces — skewY gives the angle, border-radius rounds the outer edge */
+  .depth-side-right,
+  .depth-side-left {
+    top: 0;
+    width: 12px;
+    height: 100%;
+  }
+
   .depth-side-right {
     left: 100%;
-    width: 20px;
-    height: calc(100% + 20px);
-    background: linear-gradient(to right, #1e2533, #111827);
-    clip-path: polygon(0% 7.41%, 100% 0%, 100% 92.59%, 0% 100%);
+    background: linear-gradient(to right, #4a5568, #2d3748);
+    transform-origin: top left;
+    transform: skewY(-45deg);
+    border-radius: 0 5px 5px 0;
   }
 
-  /* RIGHT slides — top panel going upper-right */
-  .depth-top-right {
-    left: 0;
-    width: calc(100% + 20px);
-    height: 20px;
-    background: linear-gradient(to right, #dde3ee, #b8c2d4);
-    clip-path: polygon(0% 100%, 4.26% 0%, 100% 0%, 95.74% 100%);
-  }
-
-  /* LEFT slides — side panel on the left, depth angle goes upper-left */
   .depth-side-left {
     right: 100%;
-    width: 20px;
-    height: calc(100% + 20px);
-    background: linear-gradient(to left, #1e2533, #111827);
-    clip-path: polygon(0% 0%, 100% 7.41%, 100% 100%, 0% 92.59%);
+    background: linear-gradient(to left, #4a5568, #2d3748);
+    transform-origin: top right;
+    transform: skewY(45deg);
+    border-radius: 5px 0 0 5px;
   }
 
-  /* LEFT slides — top panel going upper-left */
+  /* Top faces — clip-path parallelogram, 12px depth */
+  .depth-top-right,
   .depth-top-left {
-    left: -20px;
-    width: calc(100% + 20px);
-    height: 20px;
-    background: linear-gradient(to left, #dde3ee, #b8c2d4);
-    clip-path: polygon(0% 0%, 4.26% 100%, 100% 100%, 95.74% 0%);
+    top: -12px;
+    height: 12px;
+  }
+
+  .depth-top-right {
+    left: 0;
+    width: calc(100% + 12px);
+    background: linear-gradient(to right, #c8d5e8, #dce6f3);
+    clip-path: polygon(0% 100%, 2.6% 0%, 100% 0%, 97.4% 100%);
+  }
+
+  .depth-top-left {
+    left: -12px;
+    width: calc(100% + 12px);
+    background: linear-gradient(to left, #c8d5e8, #dce6f3);
+    clip-path: polygon(0% 0%, 2.6% 100%, 100% 100%, 97.4% 0%);
+  }
+
+  .swiper-slide .card {
+    border-radius: 6px;
+    overflow: hidden;
   }
 
   .swiper-slide .img-box img {
