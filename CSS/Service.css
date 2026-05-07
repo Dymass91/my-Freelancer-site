@@ -136,7 +136,7 @@ position: absolute;
 left: 0;
 top: 100%;
 padding: 10px 20px;
-min-height: 220px;
+height: 250px;
 width: 100%;
 transition: bottom 1s;
 font-weight: 600;
