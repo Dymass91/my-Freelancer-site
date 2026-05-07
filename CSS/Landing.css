@@ -265,8 +265,8 @@ background-position: bottom;
 
 /* --back: clipped by parent flat-top hex-bg */
 .hero-photo-img--back  { z-index: 2; }
-/* --front: hair + overlap into hex to hide seam */
-.hero-photo-img--front { z-index: 20; clip-path: inset(0 0 83% 0); }
+/* --front: hidden — JPEG top area is dark background, no usable hair overlay */
+.hero-photo-img--front { display: none; }
 
 /* header  */
 
