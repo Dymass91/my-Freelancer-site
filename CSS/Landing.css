@@ -220,38 +220,60 @@ background-position: bottom;
   top: 50%;
   left: 55%;
   transform: translate(-45%, -60%);
-  width: 300px;
-  height: 340px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 320px;
+  height: 420px;
 }
 
 .hero-photo-glow {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 68%, rgba(64, 211, 255, 0.45) 0%, transparent 62%);
-  filter: blur(28px);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 340px;
+  background: radial-gradient(ellipse at 50% 60%, rgba(64, 211, 255, 0.5) 0%, transparent 70%);
+  filter: blur(32px);
   pointer-events: none;
   z-index: 0;
 }
 
-.hero-photo-hex {
-  position: relative;
-  z-index: 1;
-  width: 260px;
-  height: 295px;
+.hero-photo-hex-bg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 340px;
   background: linear-gradient(150deg, #3fe8c8 0%, #64D3FF 45%, #7EB6E4 100%);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  overflow: hidden;
+  z-index: 1;
 }
 
+/* Both images share position — split at hex top (80px = 19% of 420px) */
 .hero-photo-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 420px;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.hero-photo-img--back  { z-index: 2; clip-path: inset(19% 0 0 0); }
+.hero-photo-img--front { z-index: 4; clip-path: inset(0 0 81% 0); }
+
+.hero-photo-ring {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 340px;
+  z-index: 3;
+  pointer-events: none;
+  overflow: visible;
 }
 
 /* header  */
