@@ -44,6 +44,13 @@ z-index: -2;
 }
 
 
+/* Base rules — hide swiper card overlay buttons on all screen sizes by default */
+.card .layer .project-layer-button,
+.card .layer .project-layer-button2
+{
+  display: none;
+}
+
 @media (min-width: 768px)
 {
  
@@ -219,7 +226,7 @@ cursor: pointer;
   }
 
 }
-  @media (min-height: 600px) and (max-height: 800px)
+  @media (min-width: 769px) and (min-height: 600px) and (max-height: 800px)
 {
   .Carousel
   {
