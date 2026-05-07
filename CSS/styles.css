@@ -10,7 +10,8 @@
 
 body {
   background: url(../IMG/gplaypattern_@2X.png);
- width: 100% ;
+  width: 100%;
+  overflow-x: hidden;
   background-attachment: fixed;
     /* background-color: rgb(243, 243, 243); */
     /* background-color: rgb(255, 255, 255); */
