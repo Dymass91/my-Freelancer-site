@@ -183,7 +183,7 @@ z-index: 10;
   margin-top: 2vh;
 animation: animate4 linear 12s;
 box-shadow: 0 0 60px 1px #000000;
-background: url(../IMG/Portrait.jpg);
+background: url(../IMG/portrait3.jpg);
 object-fit: cover;
 background-origin: border-box;
 background-position: bottom;
@@ -369,7 +369,7 @@ background-position: bottom;
 }
   .container-header
 {
-  background: url(../IMG/Portrait.jpg);
+  background: url(../IMG/portrait3.jpg);
   background-color: rgb(255, 255, 255);
   height: 100vh;
   width: 100%;
@@ -571,13 +571,13 @@ left: 84vw;
 @media (max-height: 500px) and (orientation: landscape) {
   .hero-photo-wrap { display: none; }
   .container-header {
-    background: url(../IMG/Portrait.jpg);
+    background: url(../IMG/portrait3.jpg);
     background-color: rgb(255, 255, 255);
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-origin: border-box;
-    background-position: bottom right;
+    background-position: center right;
   }
   .header-text {
     position: absolute;
