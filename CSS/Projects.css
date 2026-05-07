@@ -172,7 +172,7 @@ cursor: pointer;
   .swiper-container {
     width: 100%;
     padding-top: 40px;
-    padding-bottom: 60px;
+    padding-bottom: 270px;
     background-color: rgb(255, 255, 255);
   }
 
@@ -197,7 +197,8 @@ cursor: pointer;
   {
     display: block;
     background-color: #fff;
-    height: 83vh;
+    height: auto;
+    min-height: 83vh;
     width: 100%;
     margin-top: .6vh;
   }
