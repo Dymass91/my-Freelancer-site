@@ -204,49 +204,43 @@ cursor: pointer;
     opacity: 0;
   }
 
-  /* Side faces — skewY gives the angle, border-radius rounds the outer edge */
+  /* Side faces — transform set dynamically by JS */
   .depth-side-right,
   .depth-side-left {
     top: 0;
-    width: 12px;
+    width: 20px;
     height: 100%;
   }
 
   .depth-side-right {
     left: 100%;
-    background: linear-gradient(to right, #4a5568, #2d3748);
+    background: linear-gradient(to right, rgba(74, 85, 104, 0.15), #4a5568 40%, #2d3748);
     transform-origin: top left;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 12px 12px 0;
   }
 
   .depth-side-left {
     right: 100%;
-    background: linear-gradient(to left, #4a5568, #2d3748);
+    background: linear-gradient(to left, rgba(74, 85, 104, 0.15), #4a5568 40%, #2d3748);
     transform-origin: top right;
-    border-radius: 5px 0 0 5px;
+    border-radius: 12px 0 0 12px;
   }
 
-  /* Top faces — clip-path parallelogram, 12px depth */
-  .depth-top-right,
-  .depth-top-left {
-    top: -12px;
-    height: 12px;
-  }
-
+  /* Top faces — height and top set dynamically by JS */
   .depth-top-right {
     left: 0;
-    width: calc(100% + 12px);
+    width: calc(100% + 20px);
     background: linear-gradient(to right, #c8d5e8, #dce6f3);
   }
 
   .depth-top-left {
-    left: -12px;
-    width: calc(100% + 12px);
+    left: -20px;
+    width: calc(100% + 20px);
     background: linear-gradient(to left, #c8d5e8, #dce6f3);
   }
 
   .swiper-slide .card {
-    border-radius: 6px;
+    border-radius: 12px;
     overflow: hidden;
   }
 
