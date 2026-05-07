@@ -147,7 +147,7 @@ link.forEach(el => {
         if (!overlay) {
             overlay = document.createElement('div');
             overlay.id = 'lang-overlay';
-            overlay.style.cssText = 'position:fixed;inset:0;background:#000;opacity:0;transition:opacity 0.6s ease;z-index:99999;pointer-events:none;';
+            overlay.style.cssText = 'position:fixed;inset:0;background:#000;opacity:0;transition:opacity 0.8s ease;z-index:99999;pointer-events:none;';
             document.body.appendChild(overlay);
         }
         overlay.style.pointerEvents = 'all';
@@ -156,8 +156,8 @@ link.forEach(el => {
         setTimeout(function () {
             applyTranslation(attr);
             overlay.style.opacity = '0';
-            setTimeout(function () { overlay.style.pointerEvents = 'none'; }, 650);
-        }, 650);
+            setTimeout(function () { overlay.style.pointerEvents = 'none'; }, 850);
+        }, 850);
     });
 });
 
