@@ -46,7 +46,6 @@ const btn = document.querySelector('.btn');
 const contactName = document.querySelector('.contact_name');
 const contactMessage = document.querySelector('.contact_message');
 
-const ProjectLiveButton = document.querySelector('.Project_Live_btn');
 
 const footerText = document.querySelector('.footer_text');
 
@@ -67,7 +66,6 @@ function getTranslatableElements() {
         discServ3,
         ContactFormTitle, contactTitle, contactSocialTitle,
         informationCountry, contactInfoText, btn, contactName, contactMessage,
-        ProjectLiveButton,
         footerText, footerPolicyText, PolicyButton,
         ProjectsTitleText
     ].filter(Boolean);
@@ -103,7 +101,6 @@ function applyTranslation(attr) {
     PriceStr.textContent = data[attr].Price_strong;
 
     ProjectsTitleText.textContent = data[attr].Projects_title_text;
-    ProjectLiveButton.textContent = data[attr].Project_Live_btn;
 
     ServEl2.textContent = data[attr].titleService2;
     discServ2.textContent = data[attr].description_Service2;
