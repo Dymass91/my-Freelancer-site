@@ -152,46 +152,34 @@
     }
 
 
-    .Project_wrapper .img-area .imgbox .layer .project-layer-button , .Project_wrapper .img-area .imgbox .layer .project-layer-button2
+    .Project_wrapper .img-area .imgbox .layer .project-layer-button
   {
-    /* border-radius: 10px; */
     font-size: 20px;
     position: absolute;
-  
     top: 0%;
-display: none;
-border: none;
-color: #fff;
-text-decoration: none;
-text-align: center;
-background-color: rgba(255,255,255,0.15);
-transition: 0.5s;
-height: 5vh;
-width: 49.8%;
-line-height: 5vh;
-  }
-  .Project_wrapper .img-area .imgbox .layer .project-layer-button
-  {
     left: 0%;
+    display: none;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(255,255,255,0.15);
+    transition: 0.5s;
+    height: 5vh;
+    width: 100%;
+    line-height: 5vh;
   }
-  .Project_wrapper .img-area .imgbox .layer .project-layer-button2
+  .Project_wrapper .img-area .imgbox .layer .project-layer-button:hover
   {
-    right:0%;
-  }
-  .Project_wrapper .img-area .imgbox .layer .project-layer-button:hover , .Project_wrapper .img-area .imgbox .layer .project-layer-button2:hover
-  {
-
     background-color: rgba(4, 226, 255, 0.562);
-   /* transform: scale(1.05); */
     text-shadow: 0 0 5px #dddddd, 0 0 10px #c5c5c5, 0 0 10px #c7c7c7;
     transition: 0.5s;
-cursor: pointer;
+    cursor: pointer;
   }
- 
-  .Project_wrapper .img-area .imgbox:hover .layer  .project-layer-button ,   .Project_wrapper .img-area .imgbox:hover .layer  .project-layer-button2
-  {
-   display: block;
 
+  .Project_wrapper .img-area .imgbox:hover .layer .project-layer-button
+  {
+    display: block;
   }
 
   /* Touch / tap active state (mirrors hover for mobile) */
@@ -204,8 +192,7 @@ cursor: pointer;
   {
     display: block;
   }
-  .Project_wrapper .img-area .imgbox.active .layer .project-layer-button,
-  .Project_wrapper .img-area .imgbox.active .layer .project-layer-button2
+  .Project_wrapper .img-area .imgbox.active .layer .project-layer-button
   {
     display: block;
     background-color: rgba(4, 226, 255, 0.562);

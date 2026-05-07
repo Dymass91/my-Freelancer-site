@@ -45,8 +45,7 @@ z-index: -2;
 
 
 /* Base rules — hide swiper card overlay buttons on all screen sizes by default */
-.card .layer .project-layer-button,
-.card .layer .project-layer-button2
+.card .layer .project-layer-button
 {
   display: none;
 }
@@ -121,46 +120,34 @@ z-index: -2;
   {
     overflow: hidden;
   }
-  .card .layer .project-layer-button , .card .layer .project-layer-button2
-  {
-    /* border-radius: 10px; */
-    font-size: 20px;
-    position: absolute;
-  
-    top: 0%;
-display: none;
-border: none;
-color: #fff;
-background-color: rgba(255,255,255,0.15);
-text-decoration: none;
-text-align: center;
-transition: 0.5s;
-height:40px;
-width: 49.8%;
-line-height: 40px;
-  }
   .card .layer .project-layer-button
   {
+    font-size: 20px;
+    position: absolute;
+    top: 0%;
     left: 0%;
+    display: none;
+    border: none;
+    color: #fff;
+    background-color: rgba(255,255,255,0.15);
+    text-decoration: none;
+    text-align: center;
+    transition: 0.5s;
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
   }
-  .card .layer .project-layer-button2
+  .card .layer .project-layer-button:hover
   {
-    right:0%;
-  }
-  .card .layer .project-layer-button:hover , .card .layer .project-layer-button2:hover
-  {
-
     background-color: rgba(4, 226, 255, 0.562);
-   /* transform: scale(1.05); */
     text-shadow: 0 0 5px #dddddd, 0 0 10px #c5c5c5, 0 0 10px #c7c7c7;
     transition: 0.5s;
-cursor: pointer;
+    cursor: pointer;
   }
- 
-  .card:hover .layer  .project-layer-button ,   .card:hover .layer  .project-layer-button2
+
+  .card:hover .layer .project-layer-button
   {
-   display: block;
-   
+    display: block;
   }
 .Projects-text
 {
