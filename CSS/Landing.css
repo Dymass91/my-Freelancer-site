@@ -12,44 +12,55 @@
 }
 
 .loader-inner {
-  width: 80%;
-  max-width: 900px;
+  width: 60%;
+  max-width: 480px;
   text-align: center;
+}
+
+.loader-label {
+  font-family: 'Jura', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 8px;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .loader-counter {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 8px;
-  font-family: 'Syncopate', sans-serif;
+  gap: 4px;
+  font-family: 'Jura', sans-serif;
 }
 
 .counter-number {
-  font-size: clamp(72px, 14vw, 160px);
-  font-weight: 700;
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 300;
   line-height: 1;
-  letter-spacing: -4px;
-  color: #ffffff;
+  letter-spacing: 6px;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .counter-percent {
-  font-size: clamp(18px, 3.5vw, 40px);
-  color: rgba(255, 255, 255, 0.35);
-  letter-spacing: 2px;
+  font-size: clamp(13px, 1.5vw, 18px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 3px;
 }
 
 .loader-bar-track {
   width: 100%;
   height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  margin-top: clamp(24px, 4vh, 48px);
+  background: rgba(255, 255, 255, 0.08);
+  margin-top: clamp(20px, 3vh, 36px);
 }
 
 .loader-bar-fill {
   height: 100%;
   width: 0%;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.5);
 }
 /* ── End Loader ── */
 
