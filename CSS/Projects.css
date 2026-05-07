@@ -196,30 +196,48 @@ cursor: pointer;
     overflow: visible;
   }
 
-  /* Right face of 3D box — dark panel angled at 45° to top-right */
-  .swiper-slide .card::after {
-    content: '';
+  /* JS-driven 3D depth faces */
+  .depth-face {
     position: absolute;
-    left: 100%;
     top: -20px;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* RIGHT slides — side panel on the right, depth angle goes upper-right */
+  .depth-side-right {
+    left: 100%;
     width: 20px;
     height: calc(100% + 20px);
     background: linear-gradient(to right, #1e2533, #111827);
     clip-path: polygon(0% 7.41%, 100% 0%, 100% 92.59%, 0% 100%);
-    z-index: 3;
   }
 
-  /* Top face of 3D box — light panel angled at 45° to top-right */
-  .swiper-slide .card::before {
-    content: '';
-    position: absolute;
+  /* RIGHT slides — top panel going upper-right */
+  .depth-top-right {
     left: 0;
-    top: -20px;
     width: calc(100% + 20px);
     height: 20px;
     background: linear-gradient(to right, #dde3ee, #b8c2d4);
     clip-path: polygon(0% 100%, 4.26% 0%, 100% 0%, 95.74% 100%);
-    z-index: 3;
+  }
+
+  /* LEFT slides — side panel on the left, depth angle goes upper-left */
+  .depth-side-left {
+    right: 100%;
+    width: 20px;
+    height: calc(100% + 20px);
+    background: linear-gradient(to left, #1e2533, #111827);
+    clip-path: polygon(0% 0%, 100% 7.41%, 100% 100%, 0% 92.59%);
+  }
+
+  /* LEFT slides — top panel going upper-left */
+  .depth-top-left {
+    left: -20px;
+    width: calc(100% + 20px);
+    height: 20px;
+    background: linear-gradient(to left, #dde3ee, #b8c2d4);
+    clip-path: polygon(0% 0%, 4.26% 100%, 100% 100%, 95.74% 0%);
   }
 
   .swiper-slide .img-box img {
