@@ -191,7 +191,25 @@ cursor: pointer;
   .Project_wrapper .img-area .imgbox:hover .layer  .project-layer-button ,   .Project_wrapper .img-area .imgbox:hover .layer  .project-layer-button2
   {
    display: block;
-   
+
+  }
+
+  /* Touch / tap active state (mirrors hover for mobile) */
+  .Project_wrapper .img-area .imgbox.active .layer
+  {
+    bottom: 0;
+    height: 35%;
+  }
+  .Project_wrapper .img-area .imgbox.active .content span
+  {
+    display: block;
+  }
+  .Project_wrapper .img-area .imgbox.active .layer .project-layer-button,
+  .Project_wrapper .img-area .imgbox.active .layer .project-layer-button2
+  {
+    display: block;
+    background-color: rgba(4, 226, 255, 0.562);
+    text-shadow: 0 0 5px #dddddd, 0 0 10px #c5c5c5, 0 0 10px #c7c7c7;
   }
     }
 
