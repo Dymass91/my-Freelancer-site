@@ -181,40 +181,39 @@ var data = {
         "Contact_h2": "Kontakt",
 
 
-        "descriptionAbout":
-             " Witam! Od paru lat rozwijam się w projektowaniu stron internetowych. Wykonuję strony statyczne jak i również dynamiczne, na podstawie dowolnego systemu zarządzania treścią. Systemy, z którymi mam najwięcej doświadczenia to HTML, CSS i JavaScript, ale również buduję strony oparte na innych rozwiązaniach, takich jak React i Wordpress.",
-        "aboutMe_text1":"Swoje usługi opieram na gotowych motywach, dzięki czemu masz pewność stabilnego i ciągle aktualizowanego rozwiązania.",
-        "aboutMe_text2":"Stworzę dla Ciebie prostą w obsłudze, szybką i bezpieczną stronę, która będzie przyciągała użytkowników.",
-        "aboutMe_text3":"Otrzymasz indywidualne wskazówki dotyczące funkcjonowania strony.",
-        "aboutMe_text4":"Nauczę Cię podstawowych zasad pracy ze stroną internetową.",
-        "aboutMe_text5":"Poniżej znajdziesz możliwe formy współpracy ze mną. Jeśli myślisz, że te rozwiązania są dla Ciebie, napisz do mnie. Jeśli Twoje potrzeby związane z działaniem strony  wybiegają poza te rozwiązania – skontaktuj się ze mną, znajdziemy wspólne rozwiązanie.",
-        "AboutMe_hrefToContact":"napisz do mnie.",
+        "descriptionAbout": "Cześć! Tworzę nowoczesne strony internetowe od kilku lat — statyczne i dynamiczne, szyte na miarę potrzeb każdego klienta. Specjalizuję się w HTML, CSS i JavaScript, a także realizuję projekty w React i WordPress.",
+        "aboutMe_text1": "Każda strona, którą tworzę, jest responsywna, szybka i zoptymalizowana pod kątem Google — dbam o każdy detal, który przekłada się na Twoje wyniki w sieci.",
+        "aboutMe_text2": "Projektuję z myślą o użytkowniku — intuicyjna nawigacja i estetyczny design to standard, nie dodatek.",
+        "aboutMe_text3": "Po wdrożeniu przeprowadzam szkolenie z obsługi panelu, dzięki czemu samodzielnie zarządzasz swoimi treściami.",
+        "aboutMe_text4": "Oferuję stałe wsparcie techniczne — jesteś pod dobrą opieką długo po uruchomieniu strony.",
+        "aboutMe_text5": "Sprawdź moje usługi poniżej i napisz do mnie — wspólnie znajdziemy rozwiązanie dopasowane do Twojego biznesu.",
+        "AboutMe_hrefToContact": "napisz do mnie",
         "titleService1": "Oferta",
 
         "service_Price": "od",
 
         "Price_strong": "1449zł",
 
-        "descriptionPriceSpan": "W mojej ofercie otrzymasz: ",
+        "descriptionPriceSpan": "W pakiecie otrzymasz:",
 
-        "descriptionService1": " Kompletną stronę internetową opartą o HTML, CSS, Javascript, WordPress lub React wraz z wykupieniem hostingu i domeny oraz z redagowaniem tekstów pod kątem wyników wyszukiwania w Google. Dodatkowo wdrożę cię w obsługę tej strony tak żebyś mógł sam edytować i dodawać treści.",
+        "descriptionService1": "Kompleksową realizację: projekt graficzny, programowanie, optymalizację SEO, zakup hostingu i domeny oraz szkolenie z samodzielnej edycji treści.",
 
-        "titleService2": "Usługi",
+        "titleService2": "Responsywność",
 
-        "description_Service2": " - Buduję strony które są w pełni responsywne, dbam o to aby jej układ dostosowywał się samoczynnie do rozmiaru okna przeglądarki, na której jest wyświetlany np. przeglądarki, smartfonów czy tabletów.",
+        "description_Service2": "Każda strona działa perfekcyjnie na komputerach, tabletach i smartfonach. Układ automatycznie dostosowuje się do każdego rozmiaru ekranu — żaden klient Cię nie ominie.",
 
-        "description_Service2_Bottom": " - Jeśli nie posiadasz gotowego layoutu strony oferuję również usługę jego stworzenia. Do współpracy zapraszam wtedy grafika.",
+        "description_Service2_Bottom": "Nie masz jeszcze projektu graficznego? Zajmuję się również kreacją wizualną we współpracy ze sprawdzonym grafikiem.",
 
-        "description_Service3": "E-Commerce oferuje takie korzyści jak redukcja kosztów. Możliwość szybkiej aktualizacji oferty i zamieszczenia rozbudowanego opisu produktu. Dostęp do szerokiej bazy klientów. Lepsze wykorzystanie możliwości produkcyjnych oraz przyśpieszenie działań  biznesowych. Wzrost poziomu sprzedaży dzięki niższym nakładom i większym możliwościom dotarcia do klienta niż w przypadku sklepu tradycyjnego.",
+        "description_Service3": "Sklep internetowy to inwestycja, która pracuje na Ciebie przez całą dobę. Poszerz zasięg swojego biznesu, zautomatyzuj sprzedaż i docieraj do klientów z całej Polski — bez ograniczeń geograficznych sklepu stacjonarnego.",
 
-        "Projects_title_text": "Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML, CSS, JS jak i również framework React i system cms Wordpress.",
+        "Projects_title_text": "Poniżej znajdziesz wybrane realizacje — projekty komercyjne oraz demonstracyjne, zbudowane w HTML/CSS/JS, React i WordPress.",
         "Project_Live_btn": "Wejdź na stronę",
 
-        "contact_title": "Skontaktuj się ze mną",
+        "contact_title": "Porozmawiajmy o Twoim projekcie",
         "information_country": "Polska, Piła",
         "Contact_form_title": "Napisz do mnie",
-        "contact_title_social": "Połącz się ze mną :",
-        "text": "Jeśli chcesz ze mną współpracować, poniżej znajdziesz moje dane kontaktowe i linki do moich kont społecznościowych.",
+        "contact_title_social": "Połącz się ze mną:",
+        "text": "Masz pomysł na stronę lub sklep internetowy? Napisz do mnie — odpowiem w ciągu 24 godzin i ustalimy szczegóły współpracy.",
         "btn": "Wyślij",
         "contact_name": "Imię",
         "contact_message": "Wiadomość",
@@ -239,35 +238,35 @@ var data = {
         "Projects_h2": "Portfolio",
         "Contact_h2": "Contact",
 
-        "descriptionAbout": "Hello! I have been developing in web design for several years. I make static and dynamic websites, based on any content management system. The systems I have the most experience with are HTML, CSS and JavaScript, but I also build websites based on other solutions such as React and Wordpress.",
-            "aboutMe_text1":"I base my services on ready-made themes, so you can be sure of a stable and constantly updated solution.",
-            "aboutMe_text2":"I will create an easy-to-use, fast and secure website for you that will attract users.",
-            "aboutMe_text3":" You will receive individual instructions on the functioning of the website. ",
-            "aboutMe_text4":"I will teach you the basic principles of working with a website.",
-            "aboutMe_text5":"Below you will find possible forms of cooperation with me. If you think that these solutions are for you, write to me. If your needs related to the operation of the website go beyond these solutions - contact me, we will find a joint solution.",
-            "AboutMe_hrefToContact":"write to me.",
+        "descriptionAbout": "Hi! I build modern, high-performance websites tailored to each client's needs. With several years of experience in HTML, CSS, JavaScript, React and WordPress, I deliver solutions that look great and drive real results.",
+        "aboutMe_text1": "Every website I build is responsive, fast and SEO-optimised — every detail is crafted to boost your visibility online.",
+        "aboutMe_text2": "I design with the user in mind — clean layouts, intuitive navigation and polished aesthetics that keep visitors engaged.",
+        "aboutMe_text3": "After launch I walk you through managing your site, so you can update content independently from day one.",
+        "aboutMe_text4": "I offer ongoing technical support — you're in good hands long after your site goes live.",
+        "aboutMe_text5": "Browse my services below and get in touch — together we'll find the right solution for your business.",
+        "AboutMe_hrefToContact": "get in touch",
         "titleService1": "Offer",
 
-        "descriptionPriceSpan": "In my offer you will receive: ",
+        "descriptionPriceSpan": "The package includes:",
 
-        "descriptionService1": "A complete website based on HTML, CSS, Javascript, WordPress or React with the purchase of hosting and a domain and text editing for Google search results. In addition, I will guide you through managing this page so that you can edit and add content yourself.",
+        "descriptionService1": "Full delivery: design, development, SEO optimisation, hosting and domain setup, plus a hands-on training session so you can manage your content independently.",
 
         "service_Price": "from",
         "Price_strong": "1449zł",
 
-        "titleService2": "Service",
-        "description_Service2": " - I build websites that are fully responsive, I make sure that its layout automatically adjusts to the size of the browser window on which it is displayed, for example, of browsers, smartphones or tablets.",
-        "description_Service2_Bottom": " - If you do not have a ready page layout, I also offer the service of creating it. Then I invite a graphic designer to cooperate.",
-        "description_Service3": "E-Commerce offers such benefits as cost reduction. Ability to quickly update the offer and post an extensive product description. Access to a wide customer base. Better use of production possibilities and acceleration of business activities. Increased sales level thanks to lower expenditures and greater opportunities to reach the customer than in the case of a traditional store.",
+        "titleService2": "Responsiveness",
+        "description_Service2": "Every site works flawlessly on desktops, tablets and smartphones. The layout adapts automatically to every screen size — so no potential customer ever misses out.",
+        "description_Service2_Bottom": "No design brief yet? I also handle the visual concept in collaboration with a trusted graphic designer.",
+        "description_Service3": "An online store works for you around the clock. Expand your reach, automate your sales and connect with customers nationwide — without the limitations of a physical shop.",
 
-        "Projects_title_text": "Below you will find my portfolio in which there are projects made to present my skills and for my first clients for which I used pure HTML, CSS, JS as well as the React framework and Wordpress cms system.",
+        "Projects_title_text": "A selection of my work — commercial and demo projects built with HTML/CSS/JS, React and WordPress.",
         "Project_Live_btn": "Live",
 
-        "contact_title": "Let's get in touch",
+        "contact_title": "Let's talk about your project",
         "information_country": "Poland, Piła",
         "Contact_form_title": "Contact me",
-        "contact_title_social": "Connect with me :",
-        "text": "If you want to cooperate with me, below are my contact details and links to my social accounts.",
+        "contact_title_social": "Connect with me:",
+        "text": "Have an idea for a website or online store? Send me a message — I'll reply within 24 hours and we'll map out the details together.",
         "btn": "Send",
         "contact_name": "Name",
         "contact_message": "Message",
