@@ -162,10 +162,23 @@ cursor: pointer;
   margin-left: 15vw;
   text-align: center;
 }
-  .portfolio-carousel-wrapper {
-    padding-top: 4vh;
-    width: 88%;
-    margin: 0 auto;
+  .swiper-container {
+   padding-top: 20vh;
+    width: 100%;
+    padding-bottom: 0px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+
+background-color: rgb(255, 255, 255);
+-webkit-box-reflect: below 1px linear-gradient(transparent , transparent , #0006);
   }
 
   /* .swiper-slide-active
