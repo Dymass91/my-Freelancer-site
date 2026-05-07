@@ -142,21 +142,15 @@ link.forEach(el => {
         const attr = el.getAttribute('language');
         if (!attr || !data[attr]) return;
 
-        var elements = getTranslatableElements();
+        // Fade out entire page
+        document.body.style.transition = 'opacity 0.25s ease';
+        document.body.style.opacity = '0';
 
-        // Fade out
-        elements.forEach(function (el) {
-            el.style.transition = 'opacity 0.18s ease';
-            el.style.opacity = '0';
-        });
-
-        // Swap text after fade-out, then fade back in
+        // Swap all text after fade-out, then fade back in
         setTimeout(function () {
             applyTranslation(attr);
-            elements.forEach(function (el) {
-                el.style.opacity = '1';
-            });
-        }, 200);
+            document.body.style.opacity = '1';
+        }, 260);
     });
 });
 
