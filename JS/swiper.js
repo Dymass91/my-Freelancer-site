@@ -1,4 +1,4 @@
-var DEPTH = 20;
+var DEPTH = 32;
 
 var swiper = new Swiper('.swiper-container', {
     effect: 'coverflow',

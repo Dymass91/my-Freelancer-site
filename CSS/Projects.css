@@ -171,7 +171,7 @@ cursor: pointer;
 }
   .swiper-container {
     overflow: visible !important;
-    clip-path: polygon(0 -30px, 100% -30px, 100% calc(100% + 260px), 0 calc(100% + 260px));
+    clip-path: polygon(0 -40px, 100% -40px, 100% calc(100% + 260px), 0 calc(100% + 260px));
     width: 100%;
     padding-top: 40px;
     padding-bottom: 60px;
@@ -208,39 +208,40 @@ cursor: pointer;
   .depth-side-right,
   .depth-side-left {
     top: 0;
-    width: 20px;
+    width: 32px;
     height: 100%;
   }
 
+  /* Bright inner edge simulates the rounded-corner highlight from the image */
   .depth-side-right {
     left: 100%;
-    background: linear-gradient(to right, rgba(74, 85, 104, 0.15), #4a5568 40%, #2d3748);
+    background: linear-gradient(to right, rgba(255,255,255,0.55) 0%, #8a9bb0 28%, #4a5568 62%, #2d3748 100%);
     transform-origin: top left;
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 24px 24px 0;
   }
 
   .depth-side-left {
     right: 100%;
-    background: linear-gradient(to left, rgba(74, 85, 104, 0.15), #4a5568 40%, #2d3748);
+    background: linear-gradient(to left, rgba(255,255,255,0.55) 0%, #8a9bb0 28%, #4a5568 62%, #2d3748 100%);
     transform-origin: top right;
-    border-radius: 12px 0 0 12px;
+    border-radius: 24px 0 0 24px;
   }
 
-  /* Top faces — height and top set dynamically by JS */
+  /* Top faces — height and top set dynamically by JS; bright at front edge = rounded highlight */
   .depth-top-right {
     left: 0;
-    width: calc(100% + 20px);
-    background: linear-gradient(to right, #c8d5e8, #dce6f3);
+    width: calc(100% + 32px);
+    background: linear-gradient(to top, rgba(255,255,255,0.55) 0%, #c8d5e8 45%, #a8b8cc 100%);
   }
 
   .depth-top-left {
-    left: -20px;
-    width: calc(100% + 20px);
-    background: linear-gradient(to left, #c8d5e8, #dce6f3);
+    left: -32px;
+    width: calc(100% + 32px);
+    background: linear-gradient(to top, rgba(255,255,255,0.55) 0%, #c8d5e8 45%, #a8b8cc 100%);
   }
 
   .swiper-slide .card {
-    border-radius: 12px;
+    border-radius: 24px;
     overflow: hidden;
   }
 
