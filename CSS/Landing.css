@@ -569,7 +569,7 @@ left: 84vw;
 @media (max-height: 500px) and (orientation: landscape) {
   .hero-photo-wrap { display: none; }
   .container-header {
-    background: url(../IMG/portrait3.png);
+    background: url(../IMG/portrait4.png);
     background-color: rgb(255, 255, 255);
     height: 100vh;
     overflow: hidden;
