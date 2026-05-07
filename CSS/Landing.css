@@ -214,6 +214,50 @@ background-position: bottom;
   z-index: 2;
 }
 
+/* ── Hero hexagon photo ── */
+.hero-photo-wrap {
+  position: relative;
+  top: 50%;
+  left: 55%;
+  transform: translate(-45%, -60%);
+  width: 300px;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero-photo-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 68%, rgba(64, 211, 255, 0.45) 0%, transparent 62%);
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-photo-hex {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 295px;
+  background: linear-gradient(150deg, #3fe8c8 0%, #64D3FF 45%, #7EB6E4 100%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  z-index: 1;
+}
+
+.hero-photo-img {
+  position: relative;
+  z-index: 2;
+  width: 280px;
+  height: 400px;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 12px 36px rgba(0, 0, 0, 0.4));
+}
+
 /* header  */
 
 .header-text {
@@ -364,6 +408,9 @@ background-position: bottom;
     right: 0;
     left: 0;
     z-index: 2;
+  }
+  .hero-photo-wrap {
+    display: none;
   }
   .wrapper-img {
     display: none;
