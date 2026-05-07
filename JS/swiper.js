@@ -1,59 +1,52 @@
-function updateEffects(slider) {
-    var details = slider.track.details;
-    if (!details) return;
-    details.slides.forEach(function(slideDetail, idx) {
-        var dist = Math.abs(slideDetail.distance);
-        var scale = Math.max(0.82, 1 - dist * 0.1);
-        var opacity = Math.max(0.45, 1 - dist * 0.28);
-        slider.slides[idx].style.transform = 'scale(' + scale + ')';
-        slider.slides[idx].style.opacity = opacity;
-    });
-}
+(function () {
+    var slides = Array.from(document.querySelectorAll('.slide'));
+    var dots = Array.from(document.querySelectorAll('.slider-dot'));
+    var total = slides.length;
+    var current = 0;
 
-function createDots(slider) {
-    var dotsEl = document.querySelector('.portfolio-dots');
-    if (!dotsEl) return;
-    dotsEl.innerHTML = '';
-    slider.slides.forEach(function(_, idx) {
-        var dot = document.createElement('button');
-        dot.classList.add('portfolio-dot');
-        if (idx === 0) dot.classList.add('active');
-        dot.addEventListener('click', function() { slider.moveToIdx(idx); });
-        dotsEl.appendChild(dot);
-    });
-}
-
-function updateDots(slider) {
-    var dots = document.querySelectorAll('.portfolio-dot');
-    var rel = slider.track.details.rel;
-    dots.forEach(function(dot, idx) {
-        dot.classList.toggle('active', idx === rel);
-    });
-}
-
-var slider = new KeenSlider('#portfolio-slider', {
-    loop: true,
-    mode: 'free-snap',
-    slides: {
-        perView: 1.35,
-        spacing: 24,
-        origin: 'center'
-    },
-    created: function(s) {
-        updateEffects(s);
-        createDots(s);
-    },
-    detailsChanged: function(s) {
-        updateEffects(s);
-    },
-    slideChanged: function(s) {
-        updateDots(s);
+    function update() {
+        slides.forEach(function (slide, i) {
+            slide.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
+            var diff = (i - current + total) % total;
+            if (diff === 0)            slide.classList.add('active');
+            else if (diff === 1)       slide.classList.add('next');
+            else if (diff === total-1) slide.classList.add('prev');
+            else if (diff === 2)       slide.classList.add('far-next');
+            else                       slide.classList.add('far-prev');
+        });
+        dots.forEach(function (dot, i) {
+            dot.classList.toggle('active', i === current);
+        });
     }
-});
 
-document.querySelector('.portfolio-arrow--prev').addEventListener('click', function() {
-    slider.prev();
-});
-document.querySelector('.portfolio-arrow--next').addEventListener('click', function() {
-    slider.next();
-});
+    document.querySelector('.slider-next').addEventListener('click', function () {
+        current = (current + 1) % total;
+        update();
+    });
+
+    document.querySelector('.slider-prev').addEventListener('click', function () {
+        current = (current - 1 + total) % total;
+        update();
+    });
+
+    slides.forEach(function (slide) {
+        slide.addEventListener('click', function () {
+            if (slide.classList.contains('next')) {
+                current = (current + 1) % total;
+                update();
+            } else if (slide.classList.contains('prev')) {
+                current = (current - 1 + total) % total;
+                update();
+            }
+        });
+    });
+
+    dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () {
+            current = i;
+            update();
+        });
+    });
+
+    update();
+})();
