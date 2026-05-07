@@ -163,22 +163,17 @@ cursor: pointer;
   text-align: center;
 }
   .swiper-container {
-   padding-top: 20vh;
     width: 100%;
-    padding-bottom: 0px;
-    height: 400px;
+    padding-top: 40px;
+    padding-bottom: 60px;
     background-color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .swiper-slide {
     background-position: center;
     background-size: cover;
-
-background-color: rgb(255, 255, 255);
--webkit-box-reflect: below 1px linear-gradient(transparent , transparent , #0006);
+    background-color: rgb(255, 255, 255);
+    -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0006);
   }
 
   /* .swiper-slide-active
