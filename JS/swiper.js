@@ -11,8 +11,4 @@ var swiper = new Swiper('.swiper-container', {
         slideShadows: true,
     },
     loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
 });
