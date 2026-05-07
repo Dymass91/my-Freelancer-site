@@ -189,7 +189,7 @@ var data = {
 
         "descriptionPriceSpan": "W pakiecie otrzymasz:",
 
-        "descriptionService1": "Kompleksową realizację: projekt graficzny, programowanie, optymalizację SEO, zakup hostingu i domeny oraz szkolenie z samodzielnej edycji treści.",
+        "descriptionService1": "Kompleksową realizację: projekt graficzny, programowanie, optymalizację SEO, zakup hostingu i domeny.",
 
         "titleService2": "Responsywność",
 
@@ -242,7 +242,7 @@ var data = {
 
         "descriptionPriceSpan": "The package includes:",
 
-        "descriptionService1": "Full delivery: design, development, SEO optimisation, hosting and domain setup, plus a hands-on training session so you can manage your content independently.",
+        "descriptionService1": "Full delivery: design, development, SEO optimisation, hosting and domain setup.",
 
         "service_Price": "from",
         "Price_strong": "1449zł",
