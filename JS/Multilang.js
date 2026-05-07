@@ -142,15 +142,22 @@ link.forEach(el => {
         const attr = el.getAttribute('language');
         if (!attr || !data[attr]) return;
 
-        // Fade out entire page
-        document.body.style.transition = 'opacity 0.25s ease';
-        document.body.style.opacity = '0';
+        // Fade to black overlay
+        var overlay = document.getElementById('lang-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'lang-overlay';
+            overlay.style.cssText = 'position:fixed;inset:0;background:#000;opacity:0;transition:opacity 0.3s ease;z-index:99999;pointer-events:none;';
+            document.body.appendChild(overlay);
+        }
+        overlay.style.pointerEvents = 'all';
+        overlay.style.opacity = '1';
 
-        // Swap all text after fade-out, then fade back in
         setTimeout(function () {
             applyTranslation(attr);
-            document.body.style.opacity = '1';
-        }, 260);
+            overlay.style.opacity = '0';
+            setTimeout(function () { overlay.style.pointerEvents = 'none'; }, 320);
+        }, 320);
     });
 });
 
