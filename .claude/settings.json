@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"c:/Users/matys/Documents/my-Freelancer-site\" && if [ -n \"$(git status --porcelain)\" ]; then git add -u && git commit -m \"auto-deploy: sync changes\" && git push origin main; else git push origin main 2>/dev/null || true; fi",
+            "shell": "bash",
+            "timeout": 60,
+            "statusMessage": "Deploying to Cloudflare..."
+          }
+        ]
+      }
+    ]
+  }
+}
