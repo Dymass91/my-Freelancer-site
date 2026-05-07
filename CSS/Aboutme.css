@@ -156,7 +156,7 @@ left: -1.9rem;
   }
   .about-text
   {
-    margin-top: 10vh;
+    margin-top: 2vh;
   width: 60vw;
   font-weight: 900;
   }
@@ -201,8 +201,8 @@ left: -1.9rem;
     .Aboutme p
     {
         font-size: 1.4em;
-    margin-top: 5vh;
-    margin-bottom: 4vh;
+    margin-top: 2vh;
+    margin-bottom: 1.5vh;
     }
     
     .aboutMe-myOffer_ul
@@ -210,6 +210,8 @@ left: -1.9rem;
       color: rgb(75, 75, 75);
       text-align: justify;
       font-size: 1.4em;
+      display: flow-root;
+      margin-top: 1.5vh;
     }
     .AboutMe_hrefToContact
     {
