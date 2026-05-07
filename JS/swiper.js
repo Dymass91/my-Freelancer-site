@@ -5,10 +5,8 @@ function updateEffects(slider) {
         var dist = Math.abs(slideDetail.distance);
         var scale = Math.max(0.82, 1 - dist * 0.1);
         var opacity = Math.max(0.45, 1 - dist * 0.28);
-        var inner = slider.slides[idx].querySelector('.slide-inner');
-        if (!inner) inner = slider.slides[idx];
-        inner.style.transform = 'scale(' + scale + ')';
-        inner.style.opacity = opacity;
+        slider.slides[idx].style.transform = 'scale(' + scale + ')';
+        slider.slides[idx].style.opacity = opacity;
     });
 }
 
@@ -40,11 +38,6 @@ var slider = new KeenSlider('#portfolio-slider', {
         perView: 1.35,
         spacing: 24,
         origin: 'center'
-    },
-    breakpoints: {
-        '(max-width: 767px)': {
-            slides: { perView: 1.08, spacing: 12, origin: 'center' }
-        }
     },
     created: function(s) {
         updateEffects(s);
