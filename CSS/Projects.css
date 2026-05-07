@@ -201,6 +201,7 @@ cursor: pointer;
     position: absolute;
     pointer-events: none;
     z-index: 3;
+    opacity: 0;
   }
 
   /* Side faces — skewY gives the angle, border-radius rounds the outer edge */

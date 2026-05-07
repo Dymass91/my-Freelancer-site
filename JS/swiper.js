@@ -11,38 +11,48 @@ var swiper = new Swiper('.swiper-container', {
         slideShadows: true,
     },
     loop: true,
+    watchSlidesProgress: true,
 });
 
-swiper.on('slideChange', updateDepthFaces);
+swiper.on('setTranslate', updateDepthFaces);
 updateDepthFaces();
 
 function updateDepthFaces() {
-    var realCount = document.querySelectorAll(
-        '.swiper-slide:not(.swiper-slide-duplicate)'
-    ).length;
-
-    var activeSlide = swiper.slides[swiper.activeIndex];
-    var activeReal = parseInt(activeSlide.getAttribute('data-swiper-slide-index'));
-
     Array.from(swiper.slides).forEach(function (slide) {
-        slide.querySelectorAll('.depth-face').forEach(function (el) { el.remove(); });
+        if (!slide.querySelector('.depth-side-right')) {
+            ['left', 'right'].forEach(function (dir) {
+                var side = document.createElement('div');
+                side.className = 'depth-face depth-side-' + dir;
+                slide.appendChild(side);
+                var top = document.createElement('div');
+                top.className = 'depth-face depth-top-' + dir;
+                slide.appendChild(top);
+            });
+        }
 
-        var realIdx = parseInt(slide.getAttribute('data-swiper-slide-index'));
-        if (isNaN(realIdx)) return;
+        var progress = typeof slide.progress === 'number' ? slide.progress : 0;
+        var opacity = Math.min(1, Math.abs(progress));
 
-        var diff = realIdx - activeReal;
-        if (diff > realCount / 2)  diff -= realCount;
-        if (diff < -realCount / 2) diff += realCount;
-        if (diff === 0) return;
+        var leftSide  = slide.querySelector('.depth-side-left');
+        var leftTop   = slide.querySelector('.depth-top-left');
+        var rightSide = slide.querySelector('.depth-side-right');
+        var rightTop  = slide.querySelector('.depth-top-right');
 
-        var dir = diff < 0 ? 'left' : 'right';
-
-        var side = document.createElement('div');
-        side.className = 'depth-face depth-side-' + dir;
-        slide.appendChild(side);
-
-        var top = document.createElement('div');
-        top.className = 'depth-face depth-top-' + dir;
-        slide.appendChild(top);
+        if (progress < 0) {
+            rightSide.style.opacity = opacity;
+            rightTop.style.opacity  = opacity;
+            leftSide.style.opacity  = 0;
+            leftTop.style.opacity   = 0;
+        } else if (progress > 0) {
+            leftSide.style.opacity  = opacity;
+            leftTop.style.opacity   = opacity;
+            rightSide.style.opacity = 0;
+            rightTop.style.opacity  = 0;
+        } else {
+            leftSide.style.opacity  = 0;
+            leftTop.style.opacity   = 0;
+            rightSide.style.opacity = 0;
+            rightTop.style.opacity  = 0;
+        }
     });
 }
