@@ -252,6 +252,9 @@ z-index: -2;
 
 /* Landscape phone: compact projects section */
 @media (max-height: 500px) and (orientation: landscape) {
+  .swiper-slide {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
   .Projects h2 {
     font-size: 36px;
     margin-top: -4vh;
