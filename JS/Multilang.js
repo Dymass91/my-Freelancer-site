@@ -147,7 +147,7 @@ var data = {
 
     
         "descriptionAbout":
-             " Witam! Od paru lat rozwijam sie w projektowaniu stron internetowych. Wykonuję strony statyczne jak i również dynamiczne, na podstawie dowolnego systemu zarządzania treścią. Systemy, z którymi mam najwięcej doświadczenia to HTML, CSS i JavaScript!, Ale również buduje strony oparte na innych rozwiązaniach, takich jak React i Wordpress.",
+             " Witam! Od paru lat rozwijam się w projektowaniu stron internetowych. Wykonuję strony statyczne jak i również dynamiczne, na podstawie dowolnego systemu zarządzania treścią. Systemy, z którymi mam najwięcej doświadczenia to HTML, CSS i JavaScript, ale również buduję strony oparte na innych rozwiązaniach, takich jak React i Wordpress.",
         "aboutMe_text1":"Swoje usługi opieram na gotowych motywach, dzięki czemu masz pewność stabilnego i ciągle aktualizowanego rozwiązania.",
         "aboutMe_text2":"Stworzę dla Ciebie prostą w obsłudze, szybką i bezpieczną stronę, która będzie przyciągała użytkowników.",
         "aboutMe_text3":"Otrzymasz indywidualne wskazówki dotyczące funkcjonowania strony.",
@@ -158,22 +158,22 @@ var data = {
 
         "service_Price": "od",
 
-        "Price_strong": "449zl",
+        "Price_strong": "449zł",
 
         "descriptionPriceSpan": "W mojej ofercie otrzymasz: ",
 
-        "descriptionService1": " Kompletna strona internetową opartą o HTML, CSS, Javascript, WordPress lub React  wraz z wykupieniem hoistingu i domeny oraz z redagowaniem tekstow pod kątem wyników wyszukiwania w Google. Dodatkowo wdrążę cię w obsługę tej strony tak żebyś mógł sam edytować i dodawać treśći.",
+        "descriptionService1": " Kompletną stronę internetową opartą o HTML, CSS, Javascript, WordPress lub React wraz z wykupieniem hostingu i domeny oraz z redagowaniem tekstów pod kątem wyników wyszukiwania w Google. Dodatkowo wdrożę cię w obsługę tej strony tak żebyś mógł sam edytować i dodawać treści.",
 
         "titleService2": "Usługi",
 
-        "description_Service2": " - Buduje strony które są w pełni responsywne, dbam o to aby jej układ dostosowywał się samoczynnie do rozmiaru okna przeglądarki, na której jest wyświetlany np.  przeglądarki, smartfonów czy tabletów.",
+        "description_Service2": " - Buduję strony które są w pełni responsywne, dbam o to aby jej układ dostosowywał się samoczynnie do rozmiaru okna przeglądarki, na której jest wyświetlany np. przeglądarki, smartfonów czy tabletów.",
 
         "description_Service2_Bottom": " - Jeśli nie posiadasz gotowego layoutu strony oferuję również usługę jego stworzenia. Do współpracy zapraszam wtedy grafika.",
 
         "description_Service3": "E-Commerce oferuje takie korzyści jak redukcja kosztów. Możliwość szybkiej aktualizacji oferty i zamieszczenia rozbudowanego opisu produktu. Dostęp do szerokiej bazy klientów. Lepsze wykorzystanie możliwości produkcyjnych oraz przyśpieszenie działań  biznesowych. Wzrost poziomu sprzedaży dzięki niższym nakładom i większym możliwościom dotarcia do klienta niż w przypadku sklepu tradycyjnego.",
 
-        "Projects_title_text": "Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML,CSS,JS jak i również framework React i system cms Wordpress.",
-        "Project_Live_btn": "Wejdż na stronę",
+        "Projects_title_text": "Poniżej znajdziesz moje portfolio w którym są projekty wykonane dla przedstawienia moich umiejętności jak i dla moich pierwszych klientów do których wykonania użyłem czysty HTML, CSS, JS jak i również framework React i system cms Wordpress.",
+        "Project_Live_btn": "Wejdź na stronę",
 
         "contact_title": "Skontaktuj się ze mną",
         "information_country": "Polska, Piła",
@@ -181,7 +181,7 @@ var data = {
         "contact_title_social": "Połącz się ze mną :",
         "text": "Jeśli chcesz ze mną współpracować, poniżej znajdziesz moje dane kontaktowe i linki do moich kont społecznościowych.",
         "btn": "Wyślij",
-        "contact_name": "Imie",
+        "contact_name": "Imię",
         "contact_message": "Wiadomość",
         "footer_text": " Wszelkie prawa zastrzeżone © 2021",
         "footer_policy_text": "Korzystając z tej strony proszę zapoznać się z  ",
@@ -204,7 +204,7 @@ var data = {
         "Projects_h2": "Portfolio",
         "Contact_h2": "Contact",
 
-        "descriptionAbout": "Hello! I have been developing in web design for several years. I make static and dynamic websites, based on any content management system. The systems I have the most experience with are HTML, CSS and JavaScript !, but also build websites based on other solutions such as React and Wordpress.",
+        "descriptionAbout": "Hello! I have been developing in web design for several years. I make static and dynamic websites, based on any content management system. The systems I have the most experience with are HTML, CSS and JavaScript, but I also build websites based on other solutions such as React and Wordpress.",
             "aboutMe_text1":"I base my services on ready-made themes, so you can be sure of a stable and constantly updated solution.",
             "aboutMe_text2":"I will create an easy-to-use, fast and secure website for you that will attract users.",
             "aboutMe_text3":" You will receive individual instructions on the functioning of the website. ",
@@ -215,7 +215,7 @@ var data = {
 
         "descriptionPriceSpan": "In my offer you will receive: ",
 
-        "descriptionService1": "A complete website based on HTML, CSS, Javascript, WordPress or React with the purchase of a hoisting and domain and text editing in terms of Google search results. In addition, I will implement you in handling this page so that you can edit and add content yourself.",
+        "descriptionService1": "A complete website based on HTML, CSS, Javascript, WordPress or React with the purchase of hosting and a domain and text editing for Google search results. In addition, I will guide you through managing this page so that you can edit and add content yourself.",
 
         "service_Price": "from",
         "Price_strong": "109£",
@@ -223,16 +223,16 @@ var data = {
         "titleService2": "Service",
         "description_Service2": " - I build websites that are fully responsive, I make sure that its layout automatically adjusts to the size of the browser window on which it is displayed, for example, of browsers, smartphones or tablets.",
         "description_Service2_Bottom": " - If you do not have a ready page layout, I also offer the service of creating it. Then I invite a graphic designer to cooperate.",
-        "description_Service3": "E-Commerce offers such benefits as cost reduction. Ability to quickly update the offer and post an extensive product description. Access to a wide customer base. Better use of production possibilities and acceleration of business activities. Increased sales level. thanks to lower expenditures and greater opportunities to reach the customer than in the case of a traditional store.",
+        "description_Service3": "E-Commerce offers such benefits as cost reduction. Ability to quickly update the offer and post an extensive product description. Access to a wide customer base. Better use of production possibilities and acceleration of business activities. Increased sales level thanks to lower expenditures and greater opportunities to reach the customer than in the case of a traditional store.",
 
         "Projects_title_text": "Below you will find my portfolio in which there are projects made to present my skills and for my first clients for which I used pure HTML, CSS, JS as well as the React framework and Wordpress cms system.",
         "Project_Live_btn": "Live",
 
         "contact_title": "Let's get in touch",
         "information_country": "Poland, Piła",
-        "Contact_form_title": "Contact with me",
+        "Contact_form_title": "Contact me",
         "contact_title_social": "Connect with me :",
-        "text": "If you want to co operate with me, Below are my contact details and links to my social accounts.",
+        "text": "If you want to cooperate with me, below are my contact details and links to my social accounts.",
         "btn": "Send",
         "contact_name": "Name",
         "contact_message": "Message",
