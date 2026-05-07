@@ -13,8 +13,4 @@ var swiper = new Swiper('.swiper-container', {
         slideShadows: false,
     },
     loop: true,
-    lazy: {
-        loadPrevNext: true,
-        loadPrevNextAmount: 1,
-    },
 });
