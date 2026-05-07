@@ -78,9 +78,9 @@
   left: 50%;
   transform: translate(-50%,-50%);
 }
-.boxArrow a 
+.boxArrow a
 {
-  color: #ffffff;
+  color: #64D3FF;
   display: block;
   font-size: 48px;
   margin-bottom: -40px;
@@ -344,9 +344,9 @@ background-position: bottom;
   left: 50%;
   transform: translate(-50%,-50%);
 }
-.boxArrow a 
+.boxArrow a
 {
-  color: #ffffff;
+  color: #64D3FF;
   display: block;
   font-size: 48px;
   margin-bottom: -40px;
