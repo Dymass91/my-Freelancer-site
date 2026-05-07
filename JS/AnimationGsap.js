@@ -1,84 +1,91 @@
 var textWrapper = document.querySelector('.header-1');
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-anime.timeline()
-    .add({
+var textWrapper2 = document.querySelector('.header-2');
+textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+var textWrapper3 = document.querySelector('.header-3');
+textWrapper3.innerHTML = textWrapper3.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+var counterEl = document.querySelector('.counter-number');
+var barFill = document.querySelector('.loader-bar-fill');
+var duration = 2400;
+var startTime = null;
+
+function animateCounter(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var elapsed = timestamp - startTime;
+    var progress = Math.min(elapsed / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    var count = Math.floor(eased * 100);
+
+    counterEl.textContent = count;
+    barFill.style.width = count + '%';
+
+    if (progress < 1) {
+        requestAnimationFrame(animateCounter);
+    } else {
+        counterEl.textContent = 100;
+        barFill.style.width = '100%';
+        setTimeout(exitLoader, 400);
+    }
+}
+
+function exitLoader() {
+    TweenMax.to(".wrapper", 1.2, {
+        y: "-100%",
+        ease: Expo.easeInOut,
+        onComplete: function() {
+            document.querySelector('.wrapper').style.display = 'none';
+        }
+    });
+
+    TweenMax.to(".box-header", 1.2, {
+        y: "-100%",
+        ease: Expo.easeInOut,
+        delay: 0.3
+    });
+
+    anime.timeline().add({
         targets: '.header-1 .letter',
-        translateY: [200, 0],
-        translateZ: 0,
+        translateY: [100, 0],
         opacity: [0, 1],
         easing: "easeOutExpo",
-        duration: 2000,
-        delay: (el, i) => 4800 + 50 * i
+        duration: 1600,
+        delay: function(el, i) { return 700 + 50 * i; }
     });
 
-var textWrapper = document.querySelector('.header-2');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-anime.timeline()
-    .add({
+    anime.timeline().add({
         targets: '.header-2 .letter',
-        translateY: [200, 0],
-        translateZ: 0,
+        translateY: [100, 0],
         opacity: [0, 1],
         easing: "easeOutExpo",
-        duration: 2000,
-        delay: (el, i) => 4800 + 50 * i
+        duration: 1600,
+        delay: function(el, i) { return 700 + 50 * i; }
     });
 
-var textWrapper = document.querySelector('.header-3');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-anime.timeline()
-    .add({
+    anime.timeline().add({
         targets: '.header-3 .letter',
-        translateY: [200, 0],
-        translateZ: 0,
+        translateY: [100, 0],
         opacity: [0, 1],
         easing: "easeOutExpo",
-        duration: 2000,
-        delay: (el, i) => 5800 + 50 * i
+        duration: 1600,
+        delay: function(el, i) { return 1100 + 50 * i; }
     });
 
-TweenMax.to(".wrapper", 2, {
-    top: "-120%",
-    ease: Expo.easeInOut,
-    delay: 3.6
-});
+    TweenMax.staggerFrom(".menu > div", 1.5, {
+        opacity: 0,
+        y: 20,
+        ease: Expo.easeInOut,
+        delay: 0.9
+    }, 0.1);
 
-var tl = new TimelineMax();
+    TweenMax.staggerFrom(".hero-container > div", 1.5, {
+        opacity: 0,
+        y: 20,
+        ease: Expo.easeInOut,
+        delay: 0.9
+    }, 0.1);
+}
 
-tl.from(".loader", 1.6, {
-    scaleY: "0%",
-    y: 80,
-    ease: Expo.easeInOut,
-    delay: 1,
-    transformOrigin: "50% 100%"
-});
-
-tl.to(".loader", 1.6, {
-    height: "20vh",
-    scaleY: "0%",
-    ease: Expo.easeInOut,
-    transformOrigin: "0% -100%"
-});
-
-TweenMax.to(".box-header", 2.4, {
-    y: "-100%",
-    ease: Expo.easeInOut,
-    delay: 3.8,
-});
-
-var tl = new TweenMax.staggerFrom(".menu > div", 2, {
-    opacity: 0,
-    y: 30,
-    ease: Expo.easeInOut,
-    delay: 4.2
-}, 0.1);
-
-var tl = new TweenMax.staggerFrom(".hero-container > div", 2, {
-    opacity: 0,
-    y: 30,
-    ease: Expo.easeInOut,
-    delay: 4.2
-}, 0.1);
+requestAnimationFrame(animateCounter);
