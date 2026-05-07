@@ -216,7 +216,6 @@ cursor: pointer;
     left: 100%;
     background: linear-gradient(to right, #4a5568, #2d3748);
     transform-origin: top left;
-    transform: skewY(-45deg);
     border-radius: 0 5px 5px 0;
   }
 
@@ -224,7 +223,6 @@ cursor: pointer;
     right: 100%;
     background: linear-gradient(to left, #4a5568, #2d3748);
     transform-origin: top right;
-    transform: skewY(45deg);
     border-radius: 5px 0 0 5px;
   }
 
@@ -239,14 +237,12 @@ cursor: pointer;
     left: 0;
     width: calc(100% + 12px);
     background: linear-gradient(to right, #c8d5e8, #dce6f3);
-    clip-path: polygon(0% 100%, 2.6% 0%, 100% 0%, 97.4% 100%);
   }
 
   .depth-top-left {
     left: -12px;
     width: calc(100% + 12px);
     background: linear-gradient(to left, #c8d5e8, #dce6f3);
-    clip-path: polygon(0% 0%, 2.6% 100%, 100% 100%, 97.4% 0%);
   }
 
   .swiper-slide .card {
