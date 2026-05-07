@@ -98,13 +98,11 @@ requestAnimationFrame(animateCounter);
   var lang  = document.querySelector('.container-header .langWrap');
 
   window.addEventListener('scroll', function () {
-    var progress = Math.min(window.scrollY / (window.innerHeight * 0.5), 1);
-    var opacity  = Math.max(1 - progress * 1.8, 0);
-    var ty       = -(progress * 100);
+    var ty = -(window.scrollY * 0.4);
 
-    if (wrap)  { wrap.style.opacity  = opacity; wrap.style.transform  = 'translate(-50%, -55%) translateY(' + ty + 'px)'; }
-    if (title) { title.style.opacity = opacity; title.style.transform = 'translate(-50%, -50%) translateY(' + ty + 'px)'; }
-    if (nav)   { nav.style.opacity   = opacity; nav.style.transform   = 'translateY(' + ty + 'px)'; }
-    if (lang)  { lang.style.opacity  = opacity; lang.style.transform  = 'translateY(' + ty + 'px)'; }
+    if (wrap)  { wrap.style.transform  = 'translate(-50%, -55%) translateY(' + ty + 'px)'; }
+    if (title) { title.style.transform = 'translate(-50%, -50%) translateY(' + ty + 'px)'; }
+    if (nav)   { nav.style.transform   = 'translateY(' + ty + 'px)'; }
+    if (lang)  { lang.style.transform  = 'translateY(' + ty + 'px)'; }
   }, { passive: true });
 })();
