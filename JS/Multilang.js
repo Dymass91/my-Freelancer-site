@@ -57,6 +57,77 @@ const PolicyButton = document.querySelector('.Policy_button');
 
 const ProjectsTitleText = document.querySelector('.Projects_title_text');
 
+function getTranslatableElements() {
+    return [
+        menuHeaderAbout, menuHeaderService, menuHeaderProjects, menuHeaderContact,
+        navbarHeaderAbout, navbarHeaderService, navbarHeaderProjects, navbarHeaderContact,
+        titleEl, descrEl,
+        aboutText1, aboutText2, aboutText3, aboutText4, aboutText5, hrefToContact,
+        Serviceh2, Projectsh2, Contacth2,
+        ServEl1, discrEl1, discrElSpan, ServPrice, PriceStr,
+        discServ2, discServ2Bot, ServEl2,
+        discServ3,
+        ContactFormTitle, contactTitle, contactSocialTitle,
+        informationCountry, contactInfoText, btn, contactName, contactMessage,
+        ProjectLiveButton,
+        footerText, footerPolicyText, PolicyButton,
+        ProjectsTitleText
+    ].filter(Boolean);
+}
+
+function applyTranslation(attr) {
+    menuHeaderAbout.textContent = data[attr].menu_header_About;
+    menuHeaderService.textContent = data[attr].menu_header_Service;
+    menuHeaderProjects.textContent = data[attr].menu_header_Projects;
+    menuHeaderContact.textContent = data[attr].menu_header_Contact;
+
+    navbarHeaderAbout.textContent = data[attr].navbar_header_About;
+    navbarHeaderService.textContent = data[attr].navbar_header_Service;
+    navbarHeaderProjects.textContent = data[attr].navbar_header_Projects;
+    navbarHeaderContact.textContent = data[attr].navbar_header_Contact;
+
+    titleEl.textContent = data[attr].title;
+    descrEl.textContent = data[attr].descriptionAbout;
+
+    aboutText1.textContent = data[attr].aboutMe_text1;
+    aboutText2.textContent = data[attr].aboutMe_text2;
+    aboutText3.textContent = data[attr].aboutMe_text3;
+    aboutText4.textContent = data[attr].aboutMe_text4;
+    aboutText5.textContent = data[attr].aboutMe_text5;
+    hrefToContact.textContent = data[attr].AboutMe_hrefToContact;
+
+    Serviceh2.textContent = data[attr].service_h2;
+    Projectsh2.textContent = data[attr].Projects_h2;
+    Contacth2.textContent = data[attr].Contact_h2;
+
+    ServEl1.textContent = data[attr].titleService1;
+    discrEl1.textContent = data[attr].descriptionService1;
+    discrElSpan.textContent = data[attr].descriptionPriceSpan;
+    ServPrice.textContent = data[attr].service_Price;
+    PriceStr.textContent = data[attr].Price_strong;
+
+    ProjectsTitleText.textContent = data[attr].Projects_title_text;
+    ProjectLiveButton.textContent = data[attr].Project_Live_btn;
+
+    ServEl2.textContent = data[attr].titleService2;
+    discServ2.textContent = data[attr].description_Service2;
+    discServ2Bot.textContent = data[attr].description_Service2_Bottom;
+
+    discServ3.textContent = data[attr].description_Service3;
+
+    ContactFormTitle.textContent = data[attr].Contact_form_title;
+    contactTitle.textContent = data[attr].contact_title;
+    contactSocialTitle.textContent = data[attr].contact_title_social;
+    informationCountry.textContent = data[attr].information_country;
+    contactInfoText.textContent = data[attr].text;
+    btn.textContent = data[attr].btn;
+    contactName.textContent = data[attr].contact_name;
+    contactMessage.textContent = data[attr].contact_message;
+    footerText.textContent = data[attr].footer_text;
+    PolicyButton.textContent = data[attr].Policy_button;
+    footerPolicyText.textContent = data[attr].footer_policy_text;
+}
+
 link.forEach(el => {
     el.addEventListener('click', (event) => {
         var target = event.target || event.srcElement;
@@ -67,62 +138,25 @@ link.forEach(el => {
             }
             return button.classList.remove("active");
         });
-        // el.classList.add('.active').sibilings().classList.remove('.active');;
-        // langEl.querySelector('.active').classList.remove('.active');
 
         const attr = el.getAttribute('language');
+        if (!attr || !data[attr]) return;
 
-        menuHeaderAbout.textContent = data[attr].menu_header_About;
-        menuHeaderService.textContent = data[attr].menu_header_Service;
-        menuHeaderProjects.textContent = data[attr].menu_header_Projects;
-        menuHeaderContact.textContent = data[attr].menu_header_Contact;
+        var elements = getTranslatableElements();
 
-        navbarHeaderAbout.textContent = data[attr].navbar_header_About;
-        navbarHeaderService.textContent = data[attr].navbar_header_Service;
-        navbarHeaderProjects.textContent = data[attr].navbar_header_Projects;
-        navbarHeaderContact.textContent = data[attr].navbar_header_Contact;
+        // Fade out
+        elements.forEach(function (el) {
+            el.style.transition = 'opacity 0.18s ease';
+            el.style.opacity = '0';
+        });
 
-        titleEl.textContent = data[attr].title;
-        descrEl.textContent = data[attr].descriptionAbout;
-  
-        aboutText1.textContent = data[attr].aboutMe_text1;
-        aboutText2.textContent = data[attr].aboutMe_text2;
-        aboutText3.textContent = data[attr].aboutMe_text3;
-        aboutText4.textContent = data[attr].aboutMe_text4;
-        aboutText5.textContent = data[attr].aboutMe_text5;
-        hrefToContact.textContent = data[attr].AboutMe_hrefToContact;
-
-        Serviceh2.textContent = data[attr].service_h2;
-        Projectsh2.textContent = data[attr].Projects_h2;
-        Contacth2.textContent = data[attr].Contact_h2;
-
-        ServEl1.textContent = data[attr].titleService1;
-        discrEl1.textContent = data[attr].descriptionService1;
-        discrElSpan.textContent = data[attr].descriptionPriceSpan;
-        ServPrice.textContent = data[attr].service_Price;
-        PriceStr.textContent = data[attr].Price_strong;
-
-        ProjectsTitleText.textContent = data[attr].Projects_title_text
-        ProjectLiveButton.textContent = data[attr].Project_Live_btn
-
-        ServEl2.textContent = data[attr].titleService2;
-        discServ2.textContent = data[attr].description_Service2;
-        discServ2Bot.textContent = data[attr].description_Service2_Bottom;
-
-        discServ3.textContent = data[attr].description_Service3;
-
-        ContactFormTitle.textContent = data[attr].Contact_form_title;
-        contactTitle.textContent = data[attr].contact_title;
-        contactSocialTitle.textContent = data[attr].contact_title_social;
-        informationCountry.textContent = data[attr].information_country
-        contactInfoText.textContent = data[attr].text
-        btn.textContent = data[attr].btn
-        contactName.textContent = data[attr].contact_name
-        contactMessage.textContent = data[attr].contact_message
-        footerText.textContent = data[attr].footer_text
-        PolicyButton.textContent = data[attr].Policy_button
-        footerPolicyText.textContent = data[attr].footer_policy_text
-        
+        // Swap text after fade-out, then fade back in
+        setTimeout(function () {
+            applyTranslation(attr);
+            elements.forEach(function (el) {
+                el.style.opacity = '1';
+            });
+        }, 200);
     });
 });
 
@@ -145,7 +179,7 @@ var data = {
         "Projects_h2": "Portfolio",
         "Contact_h2": "Kontakt",
 
-    
+
         "descriptionAbout":
              " Witam! Od paru lat rozwijam się w projektowaniu stron internetowych. Wykonuję strony statyczne jak i również dynamiczne, na podstawie dowolnego systemu zarządzania treścią. Systemy, z którymi mam najwięcej doświadczenia to HTML, CSS i JavaScript, ale również buduję strony oparte na innych rozwiązaniach, takich jak React i Wordpress.",
         "aboutMe_text1":"Swoje usługi opieram na gotowych motywach, dzięki czemu masz pewność stabilnego i ciągle aktualizowanego rozwiązania.",
