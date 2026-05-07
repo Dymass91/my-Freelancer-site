@@ -211,15 +211,15 @@ background-position: bottom;
 }
 
 /* ── Hero hexagon photo ── */
-/* flat-top hex 530×460, rounded corners r=32
-   image 530×530, head protrusion = 70px ≈ 13% of 530             */
+/* flat-top hex 557×483, rounded corners r=34
+   image 557×557, head protrusion = 74px ≈ 13% of 557             */
 .hero-photo-wrap {
   position: absolute;
   top: 50%;
-  left: 65%;
+  left: calc(65% - 5px);
   transform: translate(-50%, -55%);
-  width: 530px;
-  height: 530px;
+  width: 557px;
+  height: 557px;
   z-index: 10;
 }
 
@@ -228,8 +228,8 @@ background-position: bottom;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 530px;
-  height: 460px;
+  width: 557px;
+  height: 483px;
   background:
     radial-gradient(ellipse 80% 35% at 50% 108%, rgba(100, 211, 255, 1) 0%, rgba(64, 211, 255, 0.55) 40%, transparent 70%),
     radial-gradient(ellipse at 50% 55%, rgba(64, 211, 255, 0.25) 0%, transparent 65%);
@@ -238,17 +238,17 @@ background-position: bottom;
   z-index: 0;
 }
 
-/* flat-top rounded hex 530×460, r=32
-   TL(132.5,0) TR(397.5,0) R(530,230) BR(397.5,460) BL(132.5,460) L(0,230) */
+/* flat-top rounded hex 557×483, r=34
+   TL(139.25,0) TR(417.75,0) R(557,241.5) BR(417.75,483) BL(139.25,483) L(0,241.5) */
 .hero-photo-hex-bg {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 530px;
-  height: 460px;
+  width: 557px;
+  height: 483px;
   background: linear-gradient(160deg, #3fe8c8 0%, #64D3FF 55%, #40c8ff 100%);
-  clip-path: path('M 164.5,0 L 365.5,0 Q 397.5,0 413.5,27.7 L 514,202.3 Q 530,230 514,257.7 L 413.5,432.3 Q 397.5,460 365.5,460 L 164.5,460 Q 132.5,460 116.5,432.3 L 16,257.7 Q 0,230 16,202.3 L 116.5,27.7 Q 132.5,0 164.5,0 Z');
+  clip-path: path('M 173.25,0 L 383.75,0 Q 417.75,0 434.75,29.4 L 540,212.1 Q 557,241.5 540,270.9 L 434.75,453.6 Q 417.75,483 383.75,483 L 173.25,483 Q 139.25,483 122.25,453.6 L 17,270.9 Q 0,241.5 17,212.1 L 122.25,29.4 Q 139.25,0 173.25,0 Z');
   z-index: 1;
 }
 
@@ -257,8 +257,8 @@ background-position: bottom;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 530px;
-  height: 530px;
+  width: 557px;
+  height: 557px;
   object-fit: cover;
   object-position: top center;
 }
