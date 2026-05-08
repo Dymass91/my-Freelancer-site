@@ -265,8 +265,8 @@ background-position: bottom;
 
 /* --back: clipped by parent flat-top hex-bg */
 .hero-photo-img--back  { z-index: 2; }
-/* --front: hidden — JPEG top area is dark background, no usable hair overlay */
-.hero-photo-img--front { display: none; }
+/* --front: top portion of portrait protruding above the hex */
+.hero-photo-img--front { z-index: 20; clip-path: inset(0 0 83% 0); }
 
 /* header  */
 
