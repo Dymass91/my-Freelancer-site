@@ -240,9 +240,9 @@ font-weight: 600;
     }
     .Service_section
 {
-    margin-top: 0vh;
-    margin-bottom: 5vh;
-  
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+
     min-height: 100%;
     display: flex;
     justify-content: space-between;
@@ -298,14 +298,14 @@ font-weight: 600;
 }
     .Service_section
     {
-        margin-top: 10vh;
-        margin-bottom: 25vh;
-      
+        margin-top: 12vh;
+        margin-bottom: 18vh;
+
         min-height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-    
+
         z-index: -2;
     }
     .service-wrapper .row .service-card
@@ -354,14 +354,14 @@ font-weight: 600;
     }
     .Service_section
     {
-        margin-top: 0vh;
-        margin-bottom: 25vh;
-      
+        margin-top: 5vh;
+        margin-bottom: 18vh;
+
         min-height: 100%;
         display: flex;
-        
+
         align-items: center;
-    
+
         z-index: -2;
     }
         .service-wrapper .row
