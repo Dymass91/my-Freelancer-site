@@ -137,3 +137,8 @@ body {
     background-attachment: scroll;
   }
 }
+
+html:not(.no-js) [data-aos^=fade][data-aos^=fade].aos-animate {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
