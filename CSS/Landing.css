@@ -369,13 +369,14 @@ background-position: bottom;
 }
   .container-header
 {
-  background: url(../IMG/Portrait.jpg);
-  background-color: rgb(255, 255, 255);
+  background: url(../IMG/portrait4.png);
+  background-color: rgb(232, 232, 232);
   height: 100vh;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto 100%;
   background-origin: border-box;
-  background-position: bottom left;
+  background-position: right bottom;
+  overflow: hidden;
 }
   .boxArrow a 
 {font-size: 32px;
