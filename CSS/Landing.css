@@ -373,6 +373,7 @@ background-position: bottom;
   position: relative;
   height: 100vh;
   overflow: hidden;
+  clip-path: inset(0);
 }
   .boxArrow a
 {font-size: 32px;
@@ -383,8 +384,8 @@ background-position: bottom;
   z-index: 12;
   list-style: none;
   position: absolute;
-  top: 33vh;
-  right: 66vw;
+  top: 37vh;
+  right: 60vw;
   height: 6vh;
   line-height: 8.5vh;
   font-weight: 900;
