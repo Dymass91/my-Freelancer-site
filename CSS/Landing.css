@@ -416,10 +416,11 @@ background-position: bottom;
   }
   .hero-photo-wrap {
     display: block;
-    top: 52%;
-    left: 0;
-    transform: translateY(-52%) scale(0.52);
-    transform-origin: left center;
+    top: 50%;
+    left: auto;
+    right: -278px;
+    transform: translateY(-52%) scale(0.72);
+    transform-origin: center center;
   }
   .wrapper-img {
     display: none;
