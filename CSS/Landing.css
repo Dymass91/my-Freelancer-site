@@ -385,9 +385,11 @@ background-position: bottom;
   top: 40vh;
   right: 66vw;
   height: 6vh;
-  line-height: 7vh;
+  line-height: 8.5vh;
   font-weight: 900;
-  font-size: 20px;
+  font-size: 23px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(100, 211, 255, 0.4);
 }
 .Header-pages a
 {
