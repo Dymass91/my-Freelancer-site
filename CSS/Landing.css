@@ -421,10 +421,49 @@ background-position: bottom;
     top: calc(50% - 278px);
     left: auto;
     right: -278px;
+    width: 557px;
+    height: 557px;
     transform: scale(0.72);
     transform-origin: center center;
     z-index: 10;
   }
+  .hero-photo-glow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 557px;
+    height: 483px;
+    background:
+      radial-gradient(ellipse 80% 35% at 50% 108%, rgba(100, 211, 255, 1) 0%, rgba(64, 211, 255, 0.55) 40%, transparent 70%),
+      radial-gradient(ellipse at 50% 55%, rgba(64, 211, 255, 0.25) 0%, transparent 65%);
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-photo-hex-bg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 557px;
+    height: 483px;
+    background: linear-gradient(160deg, #3fe8c8 0%, #64D3FF 55%, #40c8ff 100%);
+    clip-path: path('M 173.25,0 L 383.75,0 Q 417.75,0 434.75,29.4 L 540,212.1 Q 557,241.5 540,270.9 L 434.75,453.6 Q 417.75,483 383.75,483 L 173.25,483 Q 139.25,483 122.25,453.6 L 17,270.9 Q 0,241.5 17,212.1 L 122.25,29.4 Q 139.25,0 173.25,0 Z');
+    z-index: 1;
+  }
+  .hero-photo-img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 557px;
+    height: 557px;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .hero-photo-img--back  { z-index: 2; }
+  .hero-photo-img--front { z-index: 20; clip-path: inset(0 0 83% 0); }
   .wrapper-img {
     display: none;
     overflow: hidden;
