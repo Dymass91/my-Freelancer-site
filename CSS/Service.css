@@ -299,7 +299,7 @@ font-weight: 600;
     .Service_section
     {
         margin-top: 10vh;
-        margin-bottom: 10vh;
+        margin-bottom: 25vh;
       
         min-height: 100%;
         display: flex;
@@ -355,7 +355,7 @@ font-weight: 600;
     .Service_section
     {
         margin-top: 0vh;
-        margin-bottom: 10vh;
+        margin-bottom: 25vh;
       
         min-height: 100%;
         display: flex;
