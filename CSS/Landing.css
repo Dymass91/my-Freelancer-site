@@ -343,6 +343,7 @@ background-position: bottom;
   top: 80%;
   left: 50%;
   transform: translate(-50%,-50%);
+  z-index: 30;
 }
 .boxArrow a
 {
@@ -355,7 +356,7 @@ background-position: bottom;
 }
  .boxArrow a:nth-child(2)
  {
- 
+
    animation-delay: -0.2s;
    transform:  translate(0,-20px);
  }
@@ -382,7 +383,7 @@ background-position: bottom;
   z-index: 12;
   list-style: none;
   position: absolute;
-  top: 24vh;
+  top: 33vh;
   right: 66vw;
   height: 6vh;
   line-height: 8.5vh;
@@ -427,20 +428,10 @@ background-position: bottom;
     transform: scale(1.035);
     transform-origin: center center;
     z-index: 10;
+    overflow: hidden;
   }
   .hero-photo-glow {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 557px;
-    height: 483px;
-    background:
-      radial-gradient(ellipse 80% 35% at 50% 108%, rgba(100, 211, 255, 1) 0%, rgba(64, 211, 255, 0.55) 40%, transparent 70%),
-      radial-gradient(ellipse at 50% 55%, rgba(64, 211, 255, 0.25) 0%, transparent 65%);
-    filter: blur(20px);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
   }
   .hero-photo-hex-bg {
     position: absolute;
