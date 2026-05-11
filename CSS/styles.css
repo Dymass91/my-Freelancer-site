@@ -4,8 +4,8 @@ html {
   overflow-x: hidden;
 }
 
-section, header {
-  overflow-x: hidden;
+html, body {
+  touch-action: pan-y;
 }
 
 *{
