@@ -385,7 +385,7 @@ background-position: bottom;
   top: 40vh;
   right: 66vw;
   height: 6vh;
-  line-height: 12vh;
+  line-height: 7vh;
   font-weight: 900;
   font-size: 20px;
 }
@@ -422,7 +422,7 @@ background-position: bottom;
     right: -278px;
     width: 557px;
     height: 557px;
-    transform: scale(0.9);
+    transform: scale(1.035);
     transform-origin: center center;
     z-index: 10;
   }
