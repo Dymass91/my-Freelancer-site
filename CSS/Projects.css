@@ -236,7 +236,10 @@ z-index: -2;
   {
     display: none;
   }
-
+  .Projects
+  {
+    overflow: hidden;
+  }
 }
   @media (min-width: 769px) and (min-height: 600px) and (max-height: 800px)
 {
