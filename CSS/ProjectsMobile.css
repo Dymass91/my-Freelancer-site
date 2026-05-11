@@ -4,9 +4,9 @@
     .Project_wrapper
     {
         margin-top: .4vh;
-     
         padding-bottom: 150px;
         background-color: #fff;
+        overflow-x: hidden;
     }
     .img-area
     {
@@ -26,11 +26,9 @@
         box-shadow: 0 0 60px 1px #000000;
         position: relative;
         overflow: hidden;
-        margin: 120px 20px 20px;
+        margin: 120px 0 20px;
         border-radius: 6px;
         background-color: rgb(27, 39, 49);
-        -webkit-box-reflect: below 1px linear-gradient(transparent , transparent , #0006);
-        
     }
     
     .Project_wrapper .img-area .imgbox img 
