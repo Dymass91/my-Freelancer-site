@@ -369,10 +369,11 @@ background-position: bottom;
 }
   .container-header
 {
+  position: relative;
   height: 100vh;
   overflow: hidden;
 }
-  .boxArrow a 
+  .boxArrow a
 {font-size: 32px;
   margin-bottom: -28px;
 }
@@ -416,11 +417,12 @@ background-position: bottom;
   }
   .hero-photo-wrap {
     display: block;
-    top: 50%;
+    position: absolute;
+    top: calc(50% - 278px);
     left: auto;
     right: -278px;
-    transform: translateY(-52%) scale(0.72);
-    transform-origin: center center;
+    transform: scale(0.72);
+    transform-origin: right center;
   }
   .wrapper-img {
     display: none;
