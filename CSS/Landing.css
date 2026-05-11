@@ -369,13 +369,7 @@ background-position: bottom;
 }
   .container-header
 {
-  background: url(../IMG/portrait4.png);
-  background-color: rgb(232, 232, 232);
   height: 100vh;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  background-origin: border-box;
-  background-position: right bottom;
   overflow: hidden;
 }
   .boxArrow a 
@@ -421,7 +415,11 @@ background-position: bottom;
     z-index: 2;
   }
   .hero-photo-wrap {
-    display: none;
+    display: block;
+    top: 52%;
+    left: 0;
+    transform: translateY(-52%) scale(0.52);
+    transform-origin: left center;
   }
   .wrapper-img {
     display: none;
