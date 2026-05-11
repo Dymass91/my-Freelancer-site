@@ -391,15 +391,14 @@ background-position: bottom;
 }
 .Header-pages a
 {
-  color: rgb(255, 255, 255);
+  color: rgb(100, 211, 255);
   z-index: 12;
   text-decoration: none;
   transition: .3s;
 }
 .Header-pages a:hover
 {
-
-  color :rgb(100, 211, 255);
+  color: rgb(100, 211, 255);
   text-shadow:
   0 0 5px rgba(10, 170, 219, 0.5);
   z-index: 12;
@@ -423,7 +422,7 @@ background-position: bottom;
     right: -278px;
     width: 557px;
     height: 557px;
-    transform: scale(0.72);
+    transform: scale(0.9);
     transform-origin: center center;
     z-index: 10;
   }
