@@ -188,10 +188,10 @@ font-weight: 600;
 
 @media only screen and (max-width: 767px)
 {
-    
+
     .service-box
     {
-        margin-bottom: 85%;
+        margin-bottom: 45%;
         flex-direction: column;
     }
 }
@@ -203,7 +203,7 @@ font-weight: 600;
     }
     .service-box
     {
-        margin-bottom: 80%;
+        margin-bottom: 50%;
         flex-direction: column;
     }
 }
@@ -272,7 +272,7 @@ font-weight: 600;
     .service-wrapper .row .service-card
 {
     max-width: 90vw;
-    margin-top: 80px;
+    margin-top: 30px;
 }
     .service-box .row
     {
