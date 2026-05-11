@@ -148,3 +148,31 @@ body {
   }
 }
 
+/* === Wider mobile exception (e.g. Honor 200 ~390-540px, Brave) ===
+   Motorola Neo 30 is ~360px so min-width:380px leaves it untouched.
+   Removes vertical AOS transform offset that makes sections bleed
+   into each other on wider phones — keeps the opacity fade intact. */
+@media (min-width: 380px) and (max-width: 700px) {
+  [data-aos="fade-up"],
+  [data-aos="slide-up"],
+  [data-aos="slide-down"] {
+    transform: none !important;
+  }
+
+  /* Service cards: force single column so 3 don't squeeze side-by-side */
+  .service-wrapper .row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .service-wrapper .row .service-card {
+    width: 92vw;
+    max-width: 92vw;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .service-box {
+    width: 92vw;
+    max-width: 92vw;
+  }
+}
+
