@@ -75,21 +75,32 @@ function exitLoader() {
 
     var heroWrap = document.querySelector('.hero-photo-wrap');
     if (heroWrap) {
+        var isMobile = window.innerWidth <= 801;
         heroWrap.style.opacity = '0';
-        heroWrap.style.transform = 'translate(-50%, -55%) translateY(120px)';
-        anime({
-            targets: { ty: 120, op: 0 },
-            ty: 0,
-            op: 1,
-            easing: 'easeOutExpo',
-            duration: 1800,
-            delay: 800,
-            update: function(anim) {
-                var s = anim.animatables[0].target;
-                heroWrap.style.transform = 'translate(-50%, -55%) translateY(' + s.ty + 'px)';
-                heroWrap.style.opacity   = s.op;
-            }
-        });
+        if (!isMobile) {
+            heroWrap.style.transform = 'translate(-50%, -55%) translateY(120px)';
+            anime({
+                targets: { ty: 120, op: 0 },
+                ty: 0,
+                op: 1,
+                easing: 'easeOutExpo',
+                duration: 1800,
+                delay: 800,
+                update: function(anim) {
+                    var s = anim.animatables[0].target;
+                    heroWrap.style.transform = 'translate(-50%, -55%) translateY(' + s.ty + 'px)';
+                    heroWrap.style.opacity   = s.op;
+                }
+            });
+        } else {
+            anime({
+                targets: heroWrap,
+                opacity: [0, 1],
+                easing: 'easeOutExpo',
+                duration: 1200,
+                delay: 800
+            });
+        }
     }
 
     TweenMax.staggerFrom(".menu > div", 1.5, {
@@ -142,10 +153,11 @@ requestAnimationFrame(animateCounter);
   var nav   = document.querySelector('.Header-pages');
   var lang  = document.querySelector('.container-header .langWrap');
 
+  var isMobileScroll = window.innerWidth <= 801;
   window.addEventListener('scroll', function () {
     var ty = -(window.scrollY * 0.4);
 
-    if (wrap)  { wrap.style.transform  = 'translate(-50%, -55%) translateY(' + ty + 'px)'; }
+    if (wrap && !isMobileScroll)  { wrap.style.transform  = 'translate(-50%, -55%) translateY(' + ty + 'px)'; }
     if (title) { title.style.transform = 'translate(-50%, -50%) translateY(' + ty + 'px)'; }
     if (nav)   { nav.style.transform   = 'translateY(' + ty + 'px)'; }
     if (lang)  { lang.style.transform  = 'translateY(' + ty + 'px)'; }
