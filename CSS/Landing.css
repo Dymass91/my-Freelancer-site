@@ -372,7 +372,7 @@ background-position: bottom;
 {
   position: relative;
   height: 100vh;
-  overflow: hidden;
+  overflow: clip;
   clip-path: inset(0);
 }
   .boxArrow a
@@ -384,7 +384,7 @@ background-position: bottom;
   z-index: 12;
   list-style: none;
   position: absolute;
-  top: 37vh;
+  top: 35vh;
   right: 60vw;
   height: 6vh;
   line-height: 8.5vh;
