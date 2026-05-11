@@ -235,9 +235,6 @@ z-index: -2;
   .Carousel
   {
     display: none;
-  }
-  .Projects
-  {
     overflow: hidden;
   }
 }

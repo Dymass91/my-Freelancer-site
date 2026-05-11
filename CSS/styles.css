@@ -148,6 +148,15 @@ body {
   }
 }
 
+/* Prevent swiper slides from causing horizontal scroll on mobile */
+@media (max-width: 900px) {
+  .Projects,
+  .Carousel,
+  .swiper-container {
+    overflow-x: hidden !important;
+  }
+}
+
 /* === Wider mobile exception (e.g. Honor 200) ===
    Service cards: force single column on all phones ≤ 900px. */
 @media (max-width: 900px) {
