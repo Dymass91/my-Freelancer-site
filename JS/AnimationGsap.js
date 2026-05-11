@@ -76,8 +76,8 @@ function exitLoader() {
     var heroWrap = document.querySelector('.hero-photo-wrap');
     if (heroWrap) {
         var isMobile = window.innerWidth <= 801;
-        heroWrap.style.opacity = '0';
         if (!isMobile) {
+            heroWrap.style.opacity = '0';
             heroWrap.style.transform = 'translate(-50%, -55%) translateY(120px)';
             anime({
                 targets: { ty: 120, op: 0 },
@@ -91,14 +91,6 @@ function exitLoader() {
                     heroWrap.style.transform = 'translate(-50%, -55%) translateY(' + s.ty + 'px)';
                     heroWrap.style.opacity   = s.op;
                 }
-            });
-        } else {
-            anime({
-                targets: heroWrap,
-                opacity: [0, 1],
-                easing: 'easeOutExpo',
-                duration: 1200,
-                delay: 800
             });
         }
     }
