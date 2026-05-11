@@ -4,6 +4,10 @@ html {
   overflow-x: hidden;
 }
 
+section, header {
+  overflow-x: hidden;
+}
+
 *{
     margin: 0;
     padding: 0;
