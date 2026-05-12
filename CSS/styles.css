@@ -177,12 +177,10 @@ body {
   }
 }
 
-/* === DIAGNOSTIC: hide Service + Contact on mobile ≤ 900px === */
+/* === DIAGNOSTIC: hide Pricing + About on mobile ≤ 900px === */
 @media (max-width: 900px) {
-  #Skills,
-  .my_service_h2,
-  .Service_section,
-  .Contact_Social {
+  .pricing-section,
+  .Aboutme {
     display: none !important;
   }
 }
