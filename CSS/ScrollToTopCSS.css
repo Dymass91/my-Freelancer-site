@@ -17,10 +17,9 @@
     justify-content: center;
     font-size:38px;
     text-decoration: none;
-    opacity:0;
+    visibility: hidden;
     pointer-events: none;
     transform: translateZ(0);
-    transition: opacity .3s;
   }
 
   .to-top:hover
@@ -31,7 +30,7 @@
   }
   .to-top.active {
     pointer-events: auto;
-    opacity:1;
+    visibility: visible;
     z-index: 4;
   }
 
