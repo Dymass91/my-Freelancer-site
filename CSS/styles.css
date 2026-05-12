@@ -177,10 +177,9 @@ body {
   }
 }
 
-/* === DIAGNOSTIC: hide Pricing + About on mobile ≤ 900px === */
+/* === DIAGNOSTIC: hide Pricing on mobile ≤ 900px === */
 @media (max-width: 900px) {
-  .pricing-section,
-  .Aboutme {
+  .pricing-section {
     display: none !important;
   }
 }
