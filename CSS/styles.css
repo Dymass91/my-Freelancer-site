@@ -150,10 +150,11 @@ body {
 
 /* Prevent swiper slides from causing horizontal scroll on mobile */
 @media (max-width: 900px) {
-  .Projects,
   .Carousel,
-  .swiper-container {
-    overflow-x: hidden !important;
+  .swiper-container,
+  .swiper-wrapper {
+    overflow: hidden !important;
+    max-width: 100vw !important;
   }
 }
 
