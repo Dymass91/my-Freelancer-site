@@ -230,14 +230,12 @@ z-index: -2;
    
 }
 
-@media (max-width: 900px)
+@media (max-width: 768px)
 {
-  #Projects,
-  .Projects,
-  .Project_wrapper,
   .Carousel
   {
-    display: none !important;
+    display: none;
+    overflow: hidden;
   }
 }
   @media (min-width: 769px) and (min-height: 600px) and (max-height: 800px)

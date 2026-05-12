@@ -177,3 +177,13 @@ body {
   }
 }
 
+/* === DIAGNOSTIC: hide Service + Contact on mobile ≤ 900px === */
+@media (max-width: 900px) {
+  #Skills,
+  .my_service_h2,
+  .Service_section,
+  .Contact_Social {
+    display: none !important;
+  }
+}
+
