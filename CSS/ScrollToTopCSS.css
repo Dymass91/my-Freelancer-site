@@ -1,7 +1,7 @@
 
   
   .to-top {
-    background: linear-gradient(to left, #7c858f, #454b5a); 
+    background: linear-gradient(to left, #7c858f, #454b5a);
     color:  rgb(255, 255, 255);
 
 
@@ -19,6 +19,7 @@
     text-decoration: none;
     opacity:0;
     pointer-events: none;
+    transform: translateZ(0);
     transition: opacity .3s;
   }
 
