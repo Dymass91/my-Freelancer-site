@@ -402,7 +402,7 @@ background-position: bottom;
   width: 100%;
   height: 100%;
   font-weight: 900;
-  font-size: 23px;
+  font-size: 28px;
   letter-spacing: 1px;
   text-shadow: 0 0 8px rgba(100, 211, 255, 0.4);
 }
@@ -410,11 +410,11 @@ background-position: bottom;
   position: absolute;
   line-height: 1;
 }
-.Header-pages li:nth-child(1) { top: calc(50vh - 213px); right: 126px; }
-.Header-pages li:nth-child(2) { top: calc(50vh -  93px); right: 224px; }
-.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: 289px; }
-.Header-pages li:nth-child(4) { top: calc(50vh + 147px); right: 236px; }
-.Header-pages li:nth-child(5) { top: calc(50vh + 267px); right: 147px; }
+.Header-pages li:nth-child(1) { top: calc(50vh - 143px); right: 156px; }
+.Header-pages li:nth-child(2) { top: calc(50vh -  58px); right: 254px; }
+.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: 319px; }
+.Header-pages li:nth-child(4) { top: calc(50vh + 112px); right: 266px; }
+.Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: 177px; }
 .Header-pages a
 {
   color: rgb(100, 211, 255);
