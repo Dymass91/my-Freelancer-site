@@ -113,13 +113,26 @@ background-repeat: no-repeat;
   z-index: 12;
   list-style: none;
   position: absolute;
-  top: 15vh;
-  right: 8vw;
-  height: 10vh;
-  line-height: 14vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   font-weight: 900;
   font-size: 40px;
 }
+
+.Header-pages li
+{
+  position: absolute;
+  margin-left: 0;
+  line-height: 1;
+}
+
+.Header-pages li:nth-child(1) { top: calc(50vh - 210px); left: calc(65% + 190px); }
+.Header-pages li:nth-child(2) { top: calc(50vh - 120px); left: calc(65% + 248px); }
+.Header-pages li:nth-child(3) { top: calc(50vh -  25px); left: calc(65% + 290px); }
+.Header-pages li:nth-child(4) { top: calc(50vh +  70px); left: calc(65% + 248px); }
+.Header-pages li:nth-child(5) { top: calc(50vh + 165px); left: calc(65% + 190px); }
 
 .container-header .langWrap
 {
