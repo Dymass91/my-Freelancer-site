@@ -410,11 +410,11 @@ background-position: bottom;
   position: absolute;
   line-height: 1;
 }
-.Header-pages li:nth-child(1) { top: calc(50vh - 143px); right: 156px; }
-.Header-pages li:nth-child(2) { top: calc(50vh -  58px); right: 254px; }
-.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: 319px; }
-.Header-pages li:nth-child(4) { top: calc(50vh + 112px); right: 266px; }
-.Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: 177px; }
+.Header-pages li:nth-child(1) { top: calc(50vh - 143px); right: 195px; }
+.Header-pages li:nth-child(2) { top: calc(50vh -  58px); right: 235px; }
+.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: 265px; }
+.Header-pages li:nth-child(4) { top: calc(50vh + 112px); right: 238px; }
+.Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: 198px; }
 .Header-pages a
 {
   color: rgb(100, 211, 255);
