@@ -128,11 +128,11 @@ background-repeat: no-repeat;
   line-height: 1;
 }
 
-.Header-pages li:nth-child(1) { top: calc(50vh - 240px); left: calc(65% + 185px); }
-.Header-pages li:nth-child(2) { top: calc(50vh - 120px); left: calc(65% + 248px); }
-.Header-pages li:nth-child(3) { top: calc(50vh);         left: calc(65% + 290px); }
-.Header-pages li:nth-child(4) { top: calc(50vh + 120px); left: calc(65% + 248px); }
-.Header-pages li:nth-child(5) { top: calc(50vh + 240px); left: calc(65% + 185px); }
+.Header-pages li:nth-child(1) { top: calc(50vh - 265px); left: calc(65% + 220px); }
+.Header-pages li:nth-child(2) { top: calc(50vh - 145px); left: calc(65% + 283px); }
+.Header-pages li:nth-child(3) { top: calc(50vh -  25px); left: calc(65% + 325px); }
+.Header-pages li:nth-child(4) { top: calc(50vh +  95px); left: calc(65% + 283px); }
+.Header-pages li:nth-child(5) { top: calc(50vh + 215px); left: calc(65% + 220px); }
 
 .container-header .langWrap
 {
