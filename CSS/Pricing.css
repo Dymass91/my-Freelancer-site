@@ -1,0 +1,303 @@
+/* cf-force 1778917823131 */
+.pricing-section {
+    padding: 10rem 2rem 11rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-section .h2_under-background2 {
+    background: transparent;
+}
+
+.pricing_h2 {
+    color: rgb(255, 255, 255);
+    margin-top: 0;
+    font-size: 40px;
+    text-align: inherit;
+    width: 75%;
+    margin-left: 50%;
+    transform: translate(-50%);
+    position: relative;
+}
+
+.pricing_h2:before {
+    content: '';
+    position: absolute;
+    left: -1.8rem;
+    width: 180px;
+    height: 106%;
+    background: #757F9A;
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A);
+    background: linear-gradient(to left, #D7DDE8, #757F9A);
+    transform: skew(15deg);
+    z-index: -1;
+}
+
+.pricing_h2:after {
+    content: '';
+    position: absolute;
+    left: -2.6rem;
+    width: 205px;
+    height: 106%;
+    background: #757F9A;
+    background: -webkit-linear-gradient(to left, #c5d3e2, #52596b);
+    background: linear-gradient(to left, #bec9d8, #454b5c);
+    transform: skew(15deg);
+    z-index: -2;
+}
+
+@media (min-width: 768px) {
+    .pricing_h2 {
+        font-size: 70px;
+        height: 80px;
+        line-height: 80px;
+    }
+    .pricing_h2:before {
+        width: 270px;
+    }
+    .pricing_h2:after {
+        width: 295px;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .pricing_h2 {
+        font-size: 36px;
+        margin-top: -4vh;
+    }
+    .pricing_h2:before { width: 140px; left: -17px; }
+    .pricing_h2:after  { width: 158px; left: -30px; }
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 1rem auto 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.pricing-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    width: 300px;
+    box-shadow: 6px 6px 16px rgba(209, 217, 230, 0.85), -6px -6px 16px rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    box-shadow: 8px 20px 40px rgba(100, 211, 255, 0.25), -6px -6px 16px rgba(255, 255, 255, 0.9);
+}
+
+.pricing-card.featured {
+    background: linear-gradient(160deg, #bec9d8 0%, #757F9A 100%);
+    box-shadow: 0 16px 48px rgba(100, 211, 255, 0.45), 0 2px 8px rgba(117, 127, 154, 0.3), 0 0 0 3px rgba(100, 211, 255, 0.4);
+    padding: 2.9rem 2rem;
+    z-index: 2;
+}
+
+.pricing-card.featured:hover {
+    box-shadow: 0 20px 56px rgba(100, 211, 255, 0.55), 0 2px 8px rgba(117, 127, 154, 0.3);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #64D3FF, #40c8ff);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 18px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(100, 211, 255, 0.5);
+}
+
+.pricing-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.pricing-card.featured .pricing-name {
+    color: #fff;
+}
+
+.pricing-price {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #64D3FF;
+    line-height: 1.1;
+    margin: 0.8rem 0 0.3rem;
+}
+
+.pricing-card.featured .pricing-price {
+    color: #fff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
+.pricing-price-label {
+    font-size: 0.82rem;
+    color: #9c9fa7;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card.featured .pricing-price-label {
+    color: rgba(255,255,255,0.75);
+}
+
+.pricing-divider {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #64D3FF, #40c8ff);
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card.featured .pricing-divider {
+    background: rgba(255,255,255,0.5);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    text-align: left;
+    width: 100%;
+}
+
+.pricing-features li {
+    font-size: 0.95rem;
+    color: #666;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.pricing-features li::before {
+    content: '✓';
+    color: #64D3FF;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.pricing-card.featured .pricing-features li {
+    color: rgba(255,255,255,0.9);
+    border-bottom-color: rgba(255,255,255,0.15);
+}
+
+.pricing-card.featured .pricing-features li::before {
+    color: #fff;
+}
+
+.pricing-time {
+    font-size: 0.8rem;
+    color: #9c9fa7;
+    margin-bottom: 1.8rem;
+}
+
+.pricing-card.featured .pricing-time {
+    color: rgba(255,255,255,0.7);
+}
+
+.pricing-btn {
+    display: inline-block;
+    padding: 0.65rem 2rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+    margin-top: auto;
+    border: 2px solid #64D3FF;
+    color: #64D3FF;
+    background: transparent;
+    cursor: pointer;
+}
+
+.pricing-btn:hover {
+    background: #64D3FF;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(100, 211, 255, 0.5);
+}
+
+.pricing-card.featured .pricing-btn {
+    background: #fff;
+    color: #757F9A;
+    border-color: #fff;
+}
+
+.pricing-card.featured .pricing-btn:hover {
+    background: transparent;
+    color: #fff;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .pricing-cards {
+        gap: 1.5rem;
+    }
+    .pricing-card {
+        width: 270px;
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .pricing-section {
+        padding: 5.5rem 1rem 6.5rem;
+    }
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+    }
+    .pricing-card {
+        width: 90vw;
+        max-width: 380px;
+    }
+    .pricing-card.featured {
+        order: -1;
+    }
+}
+
+/* Landscape phone */
+@media (max-height: 500px) and (orientation: landscape) {
+    .pricing-section {
+        padding: 1.5rem 1rem 2rem;
+    }
+    .pricing-cards {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .pricing-card {
+        width: 220px;
+        padding: 1.5rem 1rem;
+    }
+    .pricing-price {
+        font-size: 1.8rem;
+    }
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+}
