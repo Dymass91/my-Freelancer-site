@@ -161,15 +161,31 @@ body {
 /* === Wider mobile exception (e.g. Honor 200) ===
    Service cards: force single column on all phones ≤ 900px. */
 @media (max-width: 900px) {
-  .service-wrapper .row {
+  .Service_section {
+    width: 100%;
+  }
+  .service_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .service-wrapper {
+    width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .service-wrapper .row {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .service-wrapper .row .service-card {
     width: 92vw;
     max-width: 92vw;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
   .service-box {
     width: 92vw;
