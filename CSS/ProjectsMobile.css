@@ -32,16 +32,14 @@
         -webkit-box-reflect: below 1px linear-gradient(transparent , transparent , #0006);
     }
     
-    .Project_wrapper .img-area .imgbox img 
+    .Project_wrapper .img-area .imgbox img
     {
-        height: 100%;
         width: 100%;
-       transition: 2s;
-       opacity: 0.5;
-       background-size: auto;
-       background-origin: border-box;
-       background-position: center;
-
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        transition: 2s;
+        opacity: 0.5;
     }
     
     .Project_wrapper .img-area .text
