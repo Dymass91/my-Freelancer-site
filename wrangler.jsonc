@@ -3,5 +3,9 @@
   "compatibility_date": "2026-05-07",
   "assets": {
     "directory": "."
-  }
+  },
+  "routes": [
+    { "pattern": "tomaszmatyszczak.pl/*", "zone_name": "tomaszmatyszczak.pl" },
+    { "pattern": "www.tomaszmatyszczak.pl/*", "zone_name": "tomaszmatyszczak.pl" }
+  ]
 }
