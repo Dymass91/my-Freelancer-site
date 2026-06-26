@@ -4,6 +4,7 @@
   "assets": {
     "directory": "."
   },
+  "workers_dev": true,
   "routes": [
     { "pattern": "tomaszmatyszczak.pl/*", "zone_name": "tomaszmatyszczak.pl" },
     { "pattern": "www.tomaszmatyszczak.pl/*", "zone_name": "tomaszmatyszczak.pl" }
