@@ -30,7 +30,7 @@ form.addEventListener("submit", async function (e) {
 
     if (!name || !email || !message) {
         status.textContent = "Wypełnij wszystkie pola.";
-        status.style.color = "#e74c3c";
+        status.style.color = "#f1948a";
         return;
     }
 
@@ -57,18 +57,18 @@ form.addEventListener("submit", async function (e) {
 
         if (json.success) {
             status.textContent = "Wiadomość wysłana! Odezwę się wkrótce.";
-            status.style.color = "#2ecc71";
+            status.style.color = "#a8e6cf";
             form.reset();
             inputs.forEach((input) => {
                 input.parentNode.classList.remove("focus");
             });
         } else {
             status.textContent = "Błąd wysyłania. Spróbuj ponownie.";
-            status.style.color = "#e74c3c";
+            status.style.color = "#f1948a";
         }
     } catch {
         status.textContent = "Błąd połączenia. Spróbuj ponownie.";
-        status.style.color = "#e74c3c";
+        status.style.color = "#f1948a";
     }
 
     btn.textContent = "Wyślij";

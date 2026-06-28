@@ -157,6 +157,21 @@ textarea.input {
   margin: 0;
 }
 
+.form-status {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  min-height: 1.5rem;
+}
+
 .btn:hover {
   background-color: transparent;
   color: #fff;
