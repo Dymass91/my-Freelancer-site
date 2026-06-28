@@ -83,7 +83,7 @@ z-index: -2;
 }
 
 form {
-  padding: 2.3rem 2.2rem;
+  padding: 2.3rem 2.2rem 5rem 2.2rem;
   z-index: 10;
   overflow: hidden;
   position: relative;
@@ -157,6 +157,11 @@ textarea.input {
   margin: 0;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .form-status {
   display: none;
   width: fit-content;
@@ -173,6 +178,7 @@ textarea.input {
 
 .form-status.visible {
   display: block;
+  animation: fadeIn 0.5s ease;
 }
 
 .btn:hover {
@@ -496,7 +502,7 @@ z-index: -2;
     margin: 0.5rem 0 0.8rem 0;
   }
   form {
-    padding: 1.2rem 1rem;
+    padding: 1.2rem 1rem 4rem 1rem;
   }
   textarea.input {
     min-height: 80px;
