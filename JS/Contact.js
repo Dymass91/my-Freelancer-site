@@ -31,12 +31,14 @@ form.addEventListener("submit", async function (e) {
     if (!name || !email || !message) {
         status.textContent = "Wypełnij wszystkie pola.";
         status.style.color = "#f1948a";
+        status.classList.add("visible");
         return;
     }
 
     btn.textContent = "Wysyłanie...";
     btn.disabled = true;
     status.textContent = "";
+    status.classList.remove("visible");
 
     const data = {
         access_key: "e9e0c568-a4ad-46fe-b521-db7793560cd1",
@@ -58,6 +60,7 @@ form.addEventListener("submit", async function (e) {
         if (json.success) {
             status.textContent = "Wiadomość wysłana! Odezwę się wkrótce.";
             status.style.color = "#a8e6cf";
+            status.classList.add("visible");
             form.reset();
             inputs.forEach((input) => {
                 input.parentNode.classList.remove("focus");
@@ -65,10 +68,12 @@ form.addEventListener("submit", async function (e) {
         } else {
             status.textContent = "Błąd wysyłania. Spróbuj ponownie.";
             status.style.color = "#f1948a";
+            status.classList.add("visible");
         }
     } catch {
         status.textContent = "Błąd połączenia. Spróbuj ponownie.";
         status.style.color = "#f1948a";
+        status.classList.add("visible");
     }
 
     btn.textContent = "Wyślij";
