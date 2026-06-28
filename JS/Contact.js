@@ -18,6 +18,7 @@ inputs.forEach((input) => {
 });
 
 const form = document.querySelector("form.contact-form");
+const status = form.querySelector(".form-status");
 
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -28,12 +29,14 @@ form.addEventListener("submit", async function (e) {
     const btn = form.querySelector(".btn");
 
     if (!name || !email || !message) {
-        alert("Wypełnij wszystkie pola.");
+        status.textContent = "Wypełnij wszystkie pola.";
+        status.style.color = "#e74c3c";
         return;
     }
 
     btn.textContent = "Wysyłanie...";
     btn.disabled = true;
+    status.textContent = "";
 
     const data = {
         access_key: "e9e0c568-a4ad-46fe-b521-db7793560cd1",
@@ -53,16 +56,19 @@ form.addEventListener("submit", async function (e) {
         const json = await res.json();
 
         if (json.success) {
-            alert("Wiadomość wysłana! Odezwę się wkrótce.");
+            status.textContent = "Wiadomość wysłana! Odezwę się wkrótce.";
+            status.style.color = "#2ecc71";
             form.reset();
             inputs.forEach((input) => {
                 input.parentNode.classList.remove("focus");
             });
         } else {
-            alert("Błąd wysyłania. Spróbuj ponownie.");
+            status.textContent = "Błąd wysyłania. Spróbuj ponownie.";
+            status.style.color = "#e74c3c";
         }
     } catch {
-        alert("Błąd połączenia. Spróbuj ponownie.");
+        status.textContent = "Błąd połączenia. Spróbuj ponownie.";
+        status.style.color = "#e74c3c";
     }
 
     btn.textContent = "Wyślij";
