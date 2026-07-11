@@ -590,6 +590,15 @@ z-index: 20;
     transform: scale(0.58);
     transform-origin: center center;
   }
+  /* the shrunk+lowered photo's left edge now sits ~162px in from the right edge
+     (constant regardless of viewport width in this bucket, since the box is scaled
+     from a fixed 557px size) — push the menu rows that land in its vertical band
+     further left so their text clears it instead of running under it */
+  .Header-pages li:nth-child(3),
+  .Header-pages li:nth-child(4),
+  .Header-pages li:nth-child(5) {
+    right: 200px;
+  }
 }
 @media (min-width: 768px) and (max-width: 1024px)
 {
