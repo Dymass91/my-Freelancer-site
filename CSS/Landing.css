@@ -579,25 +579,27 @@ z-index: 20;
 }
 }
 
-/* === Narrow phone fix (e.g. Galaxy S20 FE ~412px, and similar ~360-480px wide phones) ===
+/* === Narrow phone fix (e.g. Galaxy S20 FE ~360px, and similar ~360-480px wide phones) ===
    The hero photo is a fixed 557px hex graphic; on very narrow phones it dwarfs the
-   viewport and reaches up into the language toggle / header text. Shrink it and push
-   it down via transform (keeps the hex clip-path proportions intact) instead of
-   resizing width/height directly. */
+   viewport and reaches into the language toggle / header text / menu rows. Shrink it
+   via transform (keeps the hex clip-path proportions intact) and recenter it so its
+   vertical middle lands exactly on the Cennik row, matching the desktop layout where
+   the hex is centered on that same row. Then stack all five menu rows at one shared
+   right offset, sized so it clears the hex at its widest point (its vertical middle)
+   with margin to spare, and still leaves a comfortable gap before the left edge of
+   the screen for the longest label ("Portfolio") at 360px width. */
 @media (max-width: 480px) {
   .hero-photo-wrap {
-    top: calc(50% - 148px);
-    transform: scale(0.58);
+    top: calc(50% - 240px);
+    transform: scale(0.46);
     transform-origin: center center;
   }
-  /* the shrunk+lowered photo's left edge now sits ~162px in from the right edge
-     (constant regardless of viewport width in this bucket, since the box is scaled
-     from a fixed 557px size) — push the menu rows that land in its vertical band
-     further left so their text clears it instead of running under it */
+  .Header-pages li:nth-child(1),
+  .Header-pages li:nth-child(2),
   .Header-pages li:nth-child(3),
   .Header-pages li:nth-child(4),
   .Header-pages li:nth-child(5) {
-    right: 200px;
+    right: 165px;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px)
