@@ -410,11 +410,11 @@ background-position: bottom;
   position: absolute;
   line-height: 1;
 }
-.Header-pages li:nth-child(1) { top: calc(50vh - 143px); right: 200px; }
-.Header-pages li:nth-child(2) { top: calc(50vh -  58px); right: 252px; }
-.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: 298px; }
-.Header-pages li:nth-child(4) { top: calc(50vh + 112px); right: 264px; }
-.Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: 215px; }
+.Header-pages li:nth-child(1) { top: calc(50vh - 143px); right: 25vw; }
+.Header-pages li:nth-child(2) { top: calc(50vh -  58px); right: 31.5vw; }
+.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: 37.3vw; }
+.Header-pages li:nth-child(4) { top: calc(50vh + 112px); right: 33vw; }
+.Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: 26.9vw; }
 .Header-pages a
 {
   color: rgb(100, 211, 255);
@@ -511,6 +511,7 @@ background-position: bottom;
     top: 14%;
     left: 50%;
     transform: translate(-50%, -50%) ;
+    z-index: 15;
   }
   
   .header-text h1 {
@@ -561,11 +562,11 @@ background-position: bottom;
   height: 50px;
   width: 100px;
   position: relative;
-  
-  
+
+
 top: 2vh;
 left: 68vw;
-z-index: 10;
+z-index: 20;
 }
 .menu-left .langWrap .neumorphism-toggles {
   position: relative;
@@ -576,6 +577,19 @@ z-index: 10;
   border-radius: 20px;
   font-size: 0;
 }
+}
+
+/* === Narrow phone fix (e.g. Galaxy S20 FE ~412px, and similar ~360-480px wide phones) ===
+   The hero photo is a fixed 557px hex graphic; on very narrow phones it dwarfs the
+   viewport and reaches up into the language toggle / header text. Shrink it and push
+   it down via transform (keeps the hex clip-path proportions intact) instead of
+   resizing width/height directly. */
+@media (max-width: 480px) {
+  .hero-photo-wrap {
+    top: calc(50% - 148px);
+    transform: scale(0.58);
+    transform-origin: center center;
+  }
 }
 @media (min-width: 768px) and (max-width: 1024px)
 {
