@@ -64,7 +64,17 @@
 }
 /* ── End Loader ── */
 
-@media (min-width: 801px) {
+/* Desktop hero layout. Mirrors the mobile query below by construction
+   (per-orientation complement, no unconditional/orientation-less clause
+   so there's no gap or overlap):
+     portrait: desktop from 1025px  (mobile owns <=1024px portrait)
+     landscape: desktop from 1300px (mobile owns <=1299px landscape)
+   The landscape cutoff is high (not ~801px) because the existing
+   left: calc(65% + Npx) menu positions only fit without clipping
+   "Cennik"/"Portfolio" once the viewport is >=~1300px wide - verified
+   empirically; iPad Air/Mini landscape (1024-1180px) clip badly on this
+   layout, so they need to stay on the mobile layout instead. */
+@media (min-width: 1025px) and (orientation: portrait), (min-width: 1300px) and (orientation: landscape) {
 #box
 {
   
@@ -162,7 +172,7 @@ z-index: 10;
 
 .Header-pages a
 {
-  color: rgb(156, 156, 156);
+  color: rgb(82, 82, 82); /* same gray as .header-text h1 / .hero-rotator (desktop) - was rgb(156,156,156), ~2.75:1 against the light hero background, failed WCAG AA */
   z-index: 12;
   text-decoration: none;
   transition: .3s;
@@ -170,7 +180,7 @@ z-index: 10;
 .Header-pages a:hover
 {
 
-  color :rgb(100, 211, 255);
+  color: rgb(10, 120, 160); /* darkened version of the existing accent cyan (rgb(10,170,219) glow below) - was rgb(100,211,255), ~1.71:1, failed WCAG AA */
   text-shadow:
   0 0 5px rgba(10, 170, 219, 0.5);
   z-index: 12;
@@ -285,7 +295,7 @@ background-position: bottom;
 
 .header-text {
   position: absolute;
-  top: 60%;
+  top: 45%;
   left: 28%;
   transform: translate(-50%, -50%);
 }
@@ -343,7 +353,14 @@ background-position: bottom;
 
 /* media queries  */
 
-@media (max-width: 801px) {
+/* Mobile hero layout (stacked, hex-scaled).
+     portrait:  <=1024px (iPad Air/Mini portrait included)
+     landscape: <=1299px (iPad Air/Mini landscape included - the desktop
+                 menu's left: calc(65% + Npx) positions clip "Cennik"/
+                 "Portfolio" below ~1300px wide, verified empirically, so
+                 landscape tablets stay on this stacked layout too)
+   See the desktop query above for the exact complementary condition. */
+@media (max-width: 1024px) and (orientation: portrait), (max-width: 1299px) and (orientation: landscape) {
   #box
 {
   
@@ -434,14 +451,14 @@ background-position: bottom;
 .Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: calc(100% - var(--hex-left-x) - 73.25px); }
 .Header-pages a
 {
-  color: rgb(100, 211, 255);
+  color: rgb(82, 82, 82); /* same gray as .header-text h1 / .hero-rotator (desktop) - was rgb(100,211,255), ~1.71:1 against the light hero background, failed WCAG AA */
   z-index: 12;
   text-decoration: none;
   transition: .3s;
 }
 .Header-pages a:hover
 {
-  color: rgb(100, 211, 255);
+  color: rgb(10, 120, 160); /* darkened version of the existing accent cyan (rgb(10,170,219) glow below) - was rgb(100,211,255), ~1.71:1, failed WCAG AA */
   text-shadow:
   0 0 5px rgba(10, 170, 219, 0.5);
   z-index: 12;
@@ -602,7 +619,13 @@ z-index: 10;
   font-size: 0;
 }
 }
-@media (min-width: 768px) and (max-width: 1024px)
+/* Tablet-scale tweaks, restricted to 768-801px (any orientation). The rest
+   of the old 768-1024px range (802-1024px, either orientation) now runs
+   the mobile hero layout unconditionally - see the media queries above,
+   where mobile owns portrait <=1024px AND landscape <=1299px - so it's
+   deliberately excluded here: it should keep the mobile layout's own
+   font-size clamp instead of this desktop-oriented 30px/80px override. */
+@media (min-width: 768px) and (max-width: 801px)
 {
   .header-text h1 {
 
@@ -625,7 +648,10 @@ top: 5vh;
 left: 84vw;
 }
 }
-@media (min-width: 1024px) and (max-width: 1280px)
+/* Portrait-only: at this width, landscape is still the mobile hero layout
+   (mobile owns landscape <=1299px - see above), so this desktop-oriented
+   size must not apply there. */
+@media (min-width: 1025px) and (max-width: 1280px) and (orientation: portrait)
 {
   .header-text h1 {
 

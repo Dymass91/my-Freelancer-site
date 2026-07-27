@@ -64,14 +64,23 @@ function exitLoader() {
         delay: function(el, i) { return 700 + 50 * i; }
     });
 
+    // Same base delay (700) as header-1/header-2 above: "Tomasz Matyszczak",
+    // "Front-end Developer" and the hero-rotator subtitle (dispatched below)
+    // all start as one group instead of trailing each other.
     anime.timeline().add({
         targets: '.header-3 .letter',
         translateY: [100, 0],
         opacity: [0, 1],
         easing: "easeOutExpo",
         duration: 1600,
-        delay: function(el, i) { return 1100 + 50 * i; }
+        delay: function(el, i) { return 700 + 50 * i; }
     });
+
+    // Hero subtitle rotator: reveal it at the same moment header-1/2/3's
+    // letters start, so all three appear together as one group.
+    setTimeout(function () {
+        window.dispatchEvent(new Event('hero:reveal'));
+    }, 700);
 
     var heroWrap = document.querySelector('.hero-photo-wrap');
     if (heroWrap) {

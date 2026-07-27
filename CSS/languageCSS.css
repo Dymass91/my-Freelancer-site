@@ -74,13 +74,18 @@ background-color: #e3e6ec;
 .neumorphism-toggles>a.neumorphism.fa-bell::before {
     content: "EN";
 }
-@media (max-width: 900px) {
+/* Matches the mobile hero layout's threshold in Landing.css exactly
+   (portrait <=1024px, landscape <=1299px) - the toggle's container
+   (.langWrap .neumorphism-toggles) is sized for the mobile layout there
+   (100px wide), so the buttons must shrink to fit at the same boundary,
+   not at an unrelated fixed 900px. */
+@media (max-width: 1024px) and (orientation: portrait), (max-width: 1299px) and (orientation: landscape) {
     .neumorphism-toggles>a.neumorphism {
         width: 40px;
         height: 40px;
-    
+
     }
     .neumorphism-toggles>a.neumorphism::before {
-        font-size: 20px;  
+        font-size: 20px;
     }
 }
