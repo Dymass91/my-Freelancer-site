@@ -387,6 +387,13 @@ background-position: bottom;
   height: 100vh;
   overflow: clip;
   clip-path: inset(0);
+  /* Reference phone = 390px (iPhone 12/13 mini-ish / mid-range Android).
+     At vw >= 390px these resolve to the old fixed values (scale 1.035,
+     hex-size 576.495px) unchanged; below 390px they shrink continuously
+     so the hex + menu never overflow narrower screens (320-360px). */
+  --hex-scale: clamp(0.8, calc(1.035 * (100vw / 390px)), 1.035);
+  --hex-size: calc(557px * var(--hex-scale));
+  --hex-left-x: calc(100% - (var(--hex-size) / 2));
 }
   .boxArrow a
 {font-size: 32px;
@@ -402,7 +409,7 @@ background-position: bottom;
   width: 100%;
   height: 100%;
   font-weight: 900;
-  font-size: 24px;
+  font-size: clamp(16px, calc(24px * (100vw / 390px)), 24px);
   letter-spacing: 1px;
   text-shadow: 0 0 8px rgba(100, 211, 255, 0.4);
 }
@@ -410,11 +417,21 @@ background-position: bottom;
   position: absolute;
   line-height: 1;
 }
-.Header-pages li:nth-child(1) { top: calc(50vh - 143px); right: 200px; }
-.Header-pages li:nth-child(2) { top: calc(50vh -  58px); right: 252px; }
-.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: 298px; }
-.Header-pages li:nth-child(4) { top: calc(50vh + 112px); right: 264px; }
-.Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: 215px; }
+/* All 5 items keep the "right" model, each shifted by the same amount
+   --hex-left-x moves as the hex scales. At vw >= 390px (100% - var(--hex-left-x))
+   resolves to the old fixed --hex-size/2 (288.2475px), reproducing the
+   original 200/252/298/264/215 values - and the original ~9.25px whitespace
+   gap between Cennik and the hex - unchanged. Below 390px everything (menu
+   text + hex) shrinks/shifts together, so the gap stays constant instead of
+   the old design's fixed px values running "Cennik"/"Portfolio" off-screen.
+   (Kept as a small fixed gap rather than an exact zero-gap touch: at zero gap
+   most of "Cennik" renders on top of the hex's cyan fill, and its text color
+   (#64D3FF) nearly matches that fill, making the word unreadable.) */
+.Header-pages li:nth-child(1) { top: calc(50vh - 143px); right: calc(100% - var(--hex-left-x) - 88.25px); }
+.Header-pages li:nth-child(2) { top: calc(50vh -  58px); right: calc(100% - var(--hex-left-x) - 36.25px); }
+.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: calc(100% - var(--hex-left-x) + 9.75px); }
+.Header-pages li:nth-child(4) { top: calc(50vh + 112px); right: calc(100% - var(--hex-left-x) - 24.25px); }
+.Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: calc(100% - var(--hex-left-x) - 73.25px); }
 .Header-pages a
 {
   color: rgb(100, 211, 255);
@@ -448,7 +465,15 @@ background-position: bottom;
     right: -278px;
     width: 557px;
     height: 557px;
-    transform: scale(1.035);
+    /* width/height/right stay fixed: transform-origin is the box's own
+       center, so scaling here never moves that center - it's already
+       pinned at the container's right edge. Only the scale needs to
+       respond to viewport width, via --hex-scale (set on .container-header
+       above); the visible hex geometry (--hex-size, --hex-left-x) is
+       derived from that same scale, so hero-photo-hex-bg's clip-path
+       (which uses absolute path() coordinates and can't scale on its own)
+       stays correct at any size. */
+    transform: scale(var(--hex-scale));
     transform-origin: center center;
     z-index: 10;
     overflow: hidden;
