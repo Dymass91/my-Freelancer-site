@@ -87,5 +87,11 @@ background-color: #e3e6ec;
     }
     .neumorphism-toggles>a.neumorphism::before {
         font-size: 20px;
+        /* Same dark gray as .Header-pages (menu) on mobile - was
+           rgba(0,0,0,.1), the inactive letter was nearly invisible.
+           .neumorphism-toggles .active::before (higher specificity,
+           !important) still overrides this for the active letter, which
+           keeps its original cyan. */
+        color: rgb(82, 82, 82);
     }
 }

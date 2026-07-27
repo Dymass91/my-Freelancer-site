@@ -373,7 +373,12 @@ background-position: bottom;
   top: 80%;
   left: 50%;
   transform: translate(-50%,-50%);
-  z-index: 30;
+  /* Was 30 (above everything, including the nav at 12) - on some phone
+     heights (e.g. 414x736, 360x740) this decorative scroll-down hint's
+     box overlaps the "Kontakt" link's bottom-right corner by a few px and
+     was stealing the tap. 11 keeps it above the hero photo (z-index:10)
+     but below .Header-pages (12), so real nav links always win. */
+  z-index: 11;
 }
 .boxArrow a
 {
@@ -556,8 +561,8 @@ background-position: bottom;
   }
   
   .header-text h1 {
-    
-    color: rgb(173, 185, 202);
+
+    color: rgb(82, 82, 82); /* same dark gray as .Header-pages (menu) - was rgb(173,185,202), too light/low-contrast on mobile */
     font-size: 42px;
     text-transform: uppercase;
     margin: 0;

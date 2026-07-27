@@ -59,6 +59,14 @@
   transform: translateY(0);
 }
 
+/* Key phrases within each line - weight only, same color as the rest of
+   the line so the subtitle stays visually lighter than "Front-end
+   Developer" / "Tomasz Matyszczak" overall. */
+.hero-rotator__line strong {
+  font-weight: 700;
+  color: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-rotator,
   .hero-rotator__line {
