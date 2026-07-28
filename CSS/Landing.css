@@ -64,6 +64,25 @@
 }
 /* ── End Loader ── */
 
+/* nav.menu needs its own real stacking context here, not just the z-index
+   already set on its descendants (.langWrap/.Header-pages). AnimationGsap.js
+   runs a one-time entrance tween on ".menu > div" (i.e. .menu-left) that
+   leaves a permanent inline transform (even once it settles at the identity
+   matrix, "transform: matrix(1,0,0,1,0,0)" is still not "none"). Per spec
+   any non-none transform creates a stacking context, which traps
+   .langWrap's z-index:10 inside .menu-left's own context - so from
+   .container-header's point of view .menu-left only counts as stack-level
+   "0", tied with .header-text, and .header-text (later in the DOM) wins the
+   tie and paints over it, silently eating clicks on the PL/EN toggle
+   wherever the hero heading overlaps it (mostly on the stacked mobile
+   layout). Giving nav.menu its own z-index above every sibling it must
+   never lose to (.Header-pages is 12, .boxArrow is up to 11) fixes that
+   regardless of what GSAP leaves behind on its children. */
+nav.menu {
+  position: relative;
+  z-index: 15;
+}
+
 /* Desktop hero layout. Mirrors the mobile query below by construction
    (per-orientation complement, no unconditional/orientation-less clause
    so there's no gap or overlap):
@@ -129,6 +148,14 @@ background-repeat: no-repeat;
   height: 100%;
   font-weight: 900;
   font-size: 40px;
+  /* This UL spans the full hero so its 5 absolutely-positioned li's can sit
+     wherever they need to, but that means its own (invisible) box also
+     covers .langWrap's PL/EN toggle underneath - and an element still
+     captures clicks over its box even with no background. pointer-events:
+     none here + auto back on the links (below) lets clicks fall through
+     the empty areas to whatever's underneath, while the actual nav links
+     stay clickable exactly where they're drawn. */
+  pointer-events: none;
 }
 
 .Header-pages li
@@ -176,6 +203,7 @@ z-index: 10;
   z-index: 12;
   text-decoration: none;
   transition: .3s;
+  pointer-events: auto; /* re-enable clicks on the actual links - .Header-pages itself is pointer-events:none, see above */
 }
 .Header-pages a:hover
 {
@@ -434,6 +462,11 @@ background-position: bottom;
   font-size: clamp(16px, calc(24px * (100vw / 390px)), 24px);
   letter-spacing: 1px;
   text-shadow: 0 0 8px rgba(100, 211, 255, 0.4);
+  /* Same reasoning as the desktop rule above: this UL's own box spans the
+     full hero (for its absolutely-positioned li's) and would otherwise
+     swallow clicks meant for .langWrap's PL/EN toggle sitting underneath it
+     - pointer-events:none here + auto on the links restores that. */
+  pointer-events: none;
 }
 .Header-pages li {
   position: absolute;
@@ -460,6 +493,7 @@ background-position: bottom;
   z-index: 12;
   text-decoration: none;
   transition: .3s;
+  pointer-events: auto; /* re-enable clicks on the actual links - .Header-pages itself is pointer-events:none, see above */
 }
 .Header-pages a:hover
 {
@@ -499,6 +533,13 @@ background-position: bottom;
     transform-origin: center center;
     z-index: 10;
     overflow: hidden;
+    /* Purely decorative (no links/handlers on it or its children - see
+       AnimationGsap.js, it only ever touches .style.transform/.opacity).
+       z-index already puts .Header-pages (12) above this (10), but this
+       removes any chance of the photo - or the un-clipped rectangular top
+       sliver of .hero-photo-img--front, which isn't masked to the hex
+       shape - ever intercepting a tap meant for the nav menu underneath. */
+    pointer-events: none;
   }
   .hero-photo-glow {
     display: none;
