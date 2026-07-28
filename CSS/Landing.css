@@ -516,7 +516,7 @@ background-position: bottom;
   .hero-photo-wrap {
     display: block;
     position: absolute;
-    top: calc(50% - 278px);
+    top: calc(50% - 275px);
     left: auto;
     right: -278px;
     width: 557px;
