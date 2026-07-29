@@ -1,0 +1,214 @@
+/* ── Portfolio: white content panel (text + filters + grid), matching
+   the solid white background the old .Carousel/.Project_wrapper gave
+   this section - the heading above stays on the page's textured
+   background, same as every other section. ── */
+.portfolio-panel {
+  background: #fff;
+  padding-top: 32px;
+  padding-bottom: 8px;
+}
+
+/* ── Portfolio: technology filter pills ── */
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  padding: 0 6vw;
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-filter {
+  font-family: 'Jura', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  color: rgb(82, 82, 82);
+  background: #e3e6ec;
+  border: none;
+  border-radius: 22px;
+  padding: 9px 22px;
+  cursor: pointer;
+  box-shadow: 4px 4px 10px rgba(209, 217, 230, 0.9), -4px -4px 10px rgba(255, 255, 255, 0.9);
+  transition: color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.portfolio-filter:hover {
+  color: rgb(10, 120, 160);
+}
+.portfolio-filter.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, rgb(100, 211, 255), rgb(64, 170, 235));
+  box-shadow: 0 6px 18px rgba(100, 211, 255, 0.45);
+}
+
+/* ── Portfolio: bento grid ── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 6vw 40px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
+    gap: 32px;
+    padding: 0 4vw 60px;
+  }
+  .portfolio-card--hero {
+    grid-column: span 2;
+  }
+  .portfolio-card--hero .browser-frame__viewport {
+    aspect-ratio: 16 / 7;
+  }
+}
+
+/* ── Portfolio: browser-frame card ── */
+.portfolio-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.14), 0 2px 8px rgba(23, 32, 44, 0.06);
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.portfolio-card:hover,
+.portfolio-card:focus-within {
+  transform: translateY(-4px);
+  border-color: rgb(100, 211, 255);
+  box-shadow: 0 16px 40px rgba(100, 211, 255, 0.3), 0 2px 8px rgba(23, 32, 44, 0.1);
+}
+.portfolio-card.is-hidden {
+  display: none;
+}
+
+.browser-frame__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: #e9ebef;
+  border-bottom: 1px solid #d7dce3;
+}
+.browser-frame__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+.browser-frame__dot--red { background: #ff5f57; }
+.browser-frame__dot--yellow { background: #febc2e; }
+.browser-frame__dot--green { background: #28c840; }
+.browser-frame__url {
+  margin-left: 10px;
+  font-family: 'Jura', sans-serif;
+  font-size: 12px;
+  color: #6b7280;
+  background: #fff;
+  border-radius: 8px;
+  padding: 3px 10px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browser-frame__viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+  background: #f4f5f7;
+}
+/* Live preview: a fixed "desktop" viewport (1280x800) scaled down via
+   JS (JS/Portfolio.js) to fit whatever width this card actually renders
+   at, per the requested transform:scale approach - a plain CSS % width
+   would just reflow the embedded page's own responsive layout instead of
+   shrinking it. */
+.browser-frame__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 800px;
+  border: 0;
+  pointer-events: none; /* whole card is the click target, not the embedded page */
+  transform-origin: 0 0;
+}
+.browser-frame__fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+/* Static "image" mode (set directly in the markup for any project whose
+   headers block embedding) and the JS-triggered runtime fallback (added
+   when a live iframe fails to load in time) both just show the image. */
+.portfolio-card[data-mode="image"] .browser-frame__fallback,
+.portfolio-card.mode-image .browser-frame__fallback {
+  opacity: 1;
+}
+.portfolio-card[data-mode="image"] .browser-frame__iframe,
+.portfolio-card.mode-image .browser-frame__iframe {
+  display: none;
+}
+
+.portfolio-card__meta {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.portfolio-card__name {
+  margin: 0;
+  font-family: 'Jura', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: rgb(82, 82, 82);
+}
+.portfolio-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+.portfolio-card__link:hover {
+  color: rgb(10, 120, 160);
+}
+/* Stretched-link: keeps a single real, crawlable/keyboard-focusable <a>
+   (with the project name as its accessible text) while making the whole
+   card clickable - avoids nesting the iframe inside an <a>, which isn't
+   valid HTML (iframe is interactive content). */
+.portfolio-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+.portfolio-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.portfolio-card__tags span {
+  font-family: 'Jura', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4b5563;
+  background: #eef1f5;
+  border-radius: 10px;
+  padding: 3px 10px;
+}

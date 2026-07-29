@@ -20,8 +20,8 @@ height: 106%;
   background: #757F9A;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-  
+
+
   transform: skew(15deg);
 z-index: -1;
 
@@ -42,112 +42,21 @@ height: 106%;
 z-index: -2;
 
 }
-
-
-/* Base rules — hide swiper card overlay buttons on all screen sizes by default */
-.card .layer .project-layer-button
-{
-  display: none;
+.Projects-text {
+  padding: 0 6vw;
+  text-align: center;
+}
 }
 
 @media (min-width: 768px)
 {
- 
+
   .Projects_title_text
   {
     color:#64666d;
     font-weight: 900;
-   
-    font-size: 20px;
-  }
-  .card .layer
-  {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: -webkit-linear-gradient(to top, #2c3e50cc, #bdc3c7bb);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #2c3e50d0, #bdc3c7d5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    z-index: 1;
-    transition: 0.5s;
-  }
-  
-   .card:hover .layer
-  {
-   
-   bottom: 0%;
-    height: 35%;
-  
-  }
-  .card .layer .content
-  {
- 
-    position: relative;
-    z-index: 2;
-    display: none;
-    width: 100%;
-    top: 53px;
-   left: 50%;
-   transform: translateX(-50%);
-   display: flex;
-   text-align: center;
-   justify-content: center;
-  }
-  .card .layer .content span
-  {
-    display: none;
-    color: #fff;
-    justify-content: center;
-    order: 4;
-    max-height: 40px;
-    text-align: center;
-    font-size: 20px;
-    margin: 0px 10px 0px 10px;
 
-  }
-  .card:HOVER .content span
-  {
-    display: block;
-  }
-  /* .card:HOVER .content p
-  {
-    position: absolute;
-    bottom: -80px;
-    color: #fff;
-  } */
-  .card .layer .img-box
-  {
-    overflow: hidden;
-  }
-  .card .layer .project-layer-button
-  {
     font-size: 20px;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    display: none;
-    border: none;
-    color: #fff;
-    background-color: rgba(255,255,255,0.15);
-    text-decoration: none;
-    text-align: center;
-    transition: 0.5s;
-    height: 40px;
-    width: 100%;
-    line-height: 40px;
-  }
-  .card .layer .project-layer-button:hover
-  {
-    background-color: rgba(4, 226, 255, 0.562);
-    text-shadow: 0 0 5px #dddddd, 0 0 10px #c5c5c5, 0 0 10px #c7c7c7;
-    transition: 0.5s;
-    cursor: pointer;
-  }
-
-  .card:hover .layer .project-layer-button
-  {
-    display: block;
   }
 .Projects-text
 {
@@ -156,63 +65,6 @@ z-index: -2;
   margin-left: 15vw;
   text-align: center;
 }
-  .swiper-container {
-    overflow: visible !important;
-    clip-path: polygon(0 -10px, 100% -10px, 100% calc(100% + 260px), 0 calc(100% + 260px));
-    width: 100%;
-    padding-top: 40px;
-    padding-bottom: 60px;
-    background-color: rgb(255, 255, 255);
-  }
-
-  .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    background-color: rgb(255, 255, 255);
-    -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0006);
-    overflow: visible;
-    box-shadow:
-      8px 28px 55px rgba(0, 0, 0, 0.4),
-      4px 10px 22px rgba(0, 0, 0, 0.28);
-  }
-
-  .swiper-slide .card {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-  }
-
-  .swiper-slide .card {
-    border-radius: 6px;
-    overflow: hidden;
-  }
-
-  .swiper-slide .img-box img {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* .swiper-slide-active
-{
-  position: absolute;
-  top: 20%;
-  width: 100%;
-  height: 50px;
-  background-color: rgba(0, 0, 255, 0.486);
-  z-index: 5;
-  transition: 2S;
-} */
-  .Carousel
-  {
-    display: block;
-    background-color: #fff;
-    height: auto;
-    min-height: 83vh;
-    width: 100%;
-    margin-top: .6vh;
-  }
   .Projects h2
     {
         font-size: 70px;
@@ -227,34 +79,11 @@ z-index: -2;
        width: 380px;
        left: -67.5px;
     }
-   
-}
 
-@media (max-width: 768px)
-{
-  .Carousel
-  {
-    display: none;
-    overflow: hidden;
-  }
-}
-  @media (min-width: 769px) and (min-height: 600px) and (max-height: 800px)
-{
-  .Carousel
-  {
-    display: block;
-    background-color: #fff;
-    height: 100vh;
-    width: 100%;
-    margin-top: .6vh;
-  }
 }
 
 /* Landscape phone: compact projects section */
 @media (max-height: 500px) and (orientation: landscape) {
-  .swiper-slide {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
   .Projects h2 {
     font-size: 36px;
     margin-top: -4vh;
@@ -268,21 +97,5 @@ z-index: -2;
   }
   .Projects_title_text {
     font-size: 16px;
-  }
-  .Carousel {
-    display: block;
-    background-color: #fff;
-    min-height: auto;
-    padding-bottom: 20px;
-    width: 100%;
-  }
-  .swiper-container {
-    overflow: hidden !important;
-    clip-path: none;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  .swiper-slide {
-    -webkit-box-reflect: none;
   }
 }
