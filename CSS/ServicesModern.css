@@ -17,6 +17,17 @@
      new block formatting context - same fix as overflow:hidden used to,
      but without clipping the marker's intentional overflow above. */
   display: flow-root;
+  /* Shared top/bottom rhythm - see .Aboutme (Aboutme.css) for why this
+     exact value is repeated identically on every section's container. */
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (max-width: 768px) {
+  .skills-bg-wrap {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
 }
 .services-panel {
   padding: 32px 6vw 60px;

@@ -87,11 +87,14 @@
   max-width: 100%;
 }
 
-/* Anchor-scroll offset for the sticky navbar (75px, see Navbar.css) so
-   jumping to a section (nav click or a direct #hash URL) doesn't land
-   with its heading tucked under the fixed bar. Navbar.js's own
-   click-driven smoothScroll() applies the same offset in JS, since it
-   computes scroll position manually and never goes through this. */
+/* Anchor-scroll offset for the sticky navbar's compact ".show" state
+   (58px, see Navbar.css) so jumping to a section (nav click or a direct
+   #hash URL) doesn't land with its heading tucked under the fixed bar -
+   any nav click lands well past the point where .navbar has already
+   switched out of its taller 75px hero-adjacent size. Navbar.js's own
+   click-driven smoothScroll() applies the same offset (NAV_SCROLL_OFFSET)
+   in JS, since it computes scroll position manually and never goes
+   through this. */
 #About, #Skills, #Cennik, #Projects, #Contact {
-  scroll-margin-top: 90px;
+  scroll-margin-top: 70px;
 }

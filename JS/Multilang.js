@@ -2,11 +2,6 @@
 const langEl = document.querySelector('.langWrap');
 const link = document.querySelectorAll('input, a');
 
-const menuHeaderAbout = document.querySelector('.menu_header_About');
-const menuHeaderService = document.querySelector('.menu_header_Service');
-const menuHeaderProjects = document.querySelector('.menu_header_Projects');
-const menuHeaderContact = document.querySelector('.menu_header_Contact');
-
 const navbarHeaderAbout = document.querySelector('.navbar_header_About');
 const navbarHeaderService = document.querySelector('.navbar_header_Service');
 const navbarHeaderProjects = document.querySelector('.navbar_header_Projects');
@@ -62,7 +57,6 @@ const ProjectsTitleText = document.querySelector('.Projects_title_text');
 
 function getTranslatableElements() {
     return [
-        menuHeaderAbout, menuHeaderService, menuHeaderProjects, menuHeaderContact,
         navbarHeaderAbout, navbarHeaderService, navbarHeaderProjects, navbarHeaderContact,
         titleEl, descrEl,
         aboutLead, aboutText3, aboutTechLine, aboutWhyLabel, aboutWhy1, aboutWhy2, aboutWhy3,
@@ -80,11 +74,6 @@ function getTranslatableElements() {
 }
 
 function applyTranslation(attr) {
-    menuHeaderAbout.textContent = data[attr].menu_header_About;
-    menuHeaderService.textContent = data[attr].menu_header_Service;
-    menuHeaderProjects.textContent = data[attr].menu_header_Projects;
-    menuHeaderContact.textContent = data[attr].menu_header_Contact;
-
     navbarHeaderAbout.textContent = data[attr].navbar_header_About;
     navbarHeaderService.textContent = data[attr].navbar_header_Service;
     navbarHeaderProjects.textContent = data[attr].navbar_header_Projects;

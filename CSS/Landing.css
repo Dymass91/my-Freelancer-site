@@ -64,76 +64,12 @@
 }
 /* ── End Loader ── */
 
-/* nav.menu needs its own real stacking context here, not just the z-index
-   already set on its descendants (.langWrap). AnimationGsap.js runs a
-   one-time entrance tween on ".menu > div" (i.e. .menu-left) that leaves
-   a permanent inline transform (even once it settles at the identity
-   matrix, "transform: matrix(1,0,0,1,0,0)" is still not "none"). Per spec
-   any non-none transform creates a stacking context, which would trap
-   .langWrap's z-index inside .menu-left's own context otherwise. */
-nav.menu {
-  position: relative;
-  z-index: 15;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 20px 4vw;
-}
-
-.menu-left.menu-item {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  width: 100%;
-  justify-content: space-between;
-}
-
-/* Simple in-page nav row (no hexagon photo to wrap around anymore). */
-.Header-pages {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: clamp(14px, 2.5vw, 32px);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-weight: 700;
-}
-.Header-pages li {
-  position: static;
-  margin: 0;
-  line-height: normal;
-}
-.Header-pages a {
-  color: rgb(82, 82, 82);
-  font-size: clamp(13px, 1.6vw, 16px);
-  text-decoration: none;
-  transition: .3s;
-}
-.Header-pages a:hover {
-  color: rgb(10, 120, 160);
-  text-shadow: 0 0 5px rgba(10, 170, 219, 0.5);
-}
-
+/* The old in-hero nav.menu / .Header-pages have been removed - .navbar
+   (Navbar.css) is now the page's one persistent nav, copied 1:1 from
+   their styling. .langWrap (still used by .navbar's own copy) just needs
+   to stay a positioning context for its .lang-switcher dropdown. */
 .langWrap {
   position: relative;
-}
-/* .neumorphism-toggles (languageCSS.css) is 100px wide by default, but its
-   two 50x50 + 5px-margin buttons need 120px side by side - below this
-   width they wrap into a vertical stack instead. Matches the exact same
-   breakpoint languageCSS.css itself uses to shrink the buttons to 40x40
-   (100px fits then), so the two rules can never disagree. */
-.menu-left .langWrap .neumorphism-toggles {
-  width: 120px;
-  height: 60px;
-}
-@media (max-width: 1024px) and (orientation: portrait), (max-width: 1299px) and (orientation: landscape) {
-  .menu-left .langWrap .neumorphism-toggles {
-    width: 100px;
-    height: 50px;
-  }
 }
 
 .container-header {
@@ -142,6 +78,17 @@ nav.menu {
   position: relative;
   overflow: hidden;
   padding-bottom: 60px;
+  /* .navbar (Navbar.css) is permanently fixed to the top of the page now -
+     there's no separate in-hero nav to hand off from anymore, so hero
+     content needs its own clearance to start below the bar instead of
+     being covered by it. */
+  padding-top: 45px;
+}
+
+@media (min-width: 900px) {
+  .container-header {
+    padding-top: 120px;
+  }
 }
 
 /* ── Hero: split layout - intro left, live project preview right ── */
@@ -252,30 +199,13 @@ nav.menu {
 }
 
 /* Hero live-preview slider: cross-fades between the 3 latest projects.
-   Each slide reuses .portfolio-card (PortfolioGrid.css) for the
-   browser-frame styling/hover-lift and JS/Portfolio.js's iframe scaling +
-   fallback-timeout logic - same component as Portfolio, just sized for
-   the hero. All slides share one grid cell (stacked) so swapping which
-   one is active never shifts layout - same technique as .hero-rotator
-   (HeroRotator.css). JS/HeroPreviewSlider.js drives the rotation. */
-.hero-preview-slider {
-  position: relative;
-  display: grid;
+   Reuses .portfolio-card (PortfolioGrid.css) for the browser-frame
+   styling/hover-lift and JS/Portfolio.js's iframe scaling + fallback-
+   timeout logic - same component as Portfolio, just sized for the hero. */
+.hero-preview-card {
   width: 100%;
   max-width: 520px;
   margin: 0 auto;
-}
-.hero-preview-slide {
-  grid-area: 1 / 1;
-  width: 100%;
-  margin: 0;
-  opacity: 0;
-  transition: opacity .6s ease;
-  pointer-events: none;
-}
-.hero-preview-slide.is-active {
-  opacity: 1;
-  pointer-events: auto;
 }
 .hero-preview-card .browser-frame__viewport {
   aspect-ratio: 4 / 3;
@@ -288,12 +218,6 @@ nav.menu {
   font-size: 0.9rem;
   font-weight: 700;
   color: rgb(82, 82, 82);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-preview-slide {
-    transition: none !important;
-  }
 }
 
 .boxArrow {
@@ -348,7 +272,7 @@ nav.menu {
 @media (max-height: 500px) and (orientation: landscape) {
   .container-header {
     min-height: auto;
-    padding: 12px 0 20px;
+    padding: 30px 0 20px;
   }
   .hero-split {
     grid-template-columns: 1fr 1fr;

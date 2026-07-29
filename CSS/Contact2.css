@@ -7,6 +7,17 @@
      position:absolute and no longer occupies flow space), landing the
      heading flush against the top edge instead of clear of the marker. */
   display: flow-root;
+  /* Shared top/bottom rhythm - see .Aboutme (CSS/Aboutme.css) for why this
+     exact value is repeated identically on every section's container. */
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (max-width: 768px) {
+  .Contact_Social {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
 }
 
 .contact_container {

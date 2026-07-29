@@ -1,7 +1,10 @@
 /* cf-force 1778917823131 */
 .pricing-section {
     background-color: #fff;
-    padding: 6rem 2rem 7rem;
+    /* Shared top/bottom rhythm - see .Aboutme (CSS/Aboutme.css) for why
+       this exact value is repeated identically on every section's own
+       container (About/Skills/Cennik/Portfolio/Contact). */
+    padding: 96px 2rem;
     position: relative;
     /* No overflow-x:hidden here - per the CSS overflow spec, setting only
        one axis to non-visible forces the OTHER axis's used value to auto
@@ -212,7 +215,7 @@
 /* Mobile */
 @media (max-width: 768px) {
     .pricing-section {
-        padding: 5.5rem 1rem 6.5rem;
+        padding: 64px 1rem;
     }
     .pricing-cards {
         flex-direction: column;

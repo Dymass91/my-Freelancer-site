@@ -82,13 +82,6 @@ function exitLoader() {
         window.dispatchEvent(new Event('hero:reveal'));
     }, 700);
 
-    TweenMax.staggerFrom(".menu > div", 1.5, {
-        opacity: 0,
-        y: 20,
-        ease: Expo.easeInOut,
-        delay: 0.9
-    }, 0.1);
-
     TweenMax.staggerFrom(".hero-container > div", 1.5, {
         opacity: 0,
         y: 20,

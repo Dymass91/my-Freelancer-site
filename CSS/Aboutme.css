@@ -11,6 +11,19 @@
      position:absolute and no longer occupies flow space), landing the
      heading flush against the top edge instead of clear of the marker. */
   display: flow-root;
+  /* Shared top/bottom rhythm - same value on every section's own container
+     (About/Skills/Cennik/Portfolio/Contact), so the space from the marker
+     down to real content, and from the last piece of content down to the
+     next seam, reads consistently across the whole page. */
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (max-width: 768px) {
+  .Aboutme {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
 }
 
 @media (min-width: 360px), (max-width: 769px){
