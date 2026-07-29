@@ -82,28 +82,6 @@ function exitLoader() {
         window.dispatchEvent(new Event('hero:reveal'));
     }, 700);
 
-    var heroWrap = document.querySelector('.hero-photo-wrap');
-    if (heroWrap) {
-        var isMobile = window.innerWidth <= 801;
-        if (!isMobile) {
-            heroWrap.style.opacity = '0';
-            heroWrap.style.transform = 'translate(-50%, -55%) translateY(120px)';
-            anime({
-                targets: { ty: 120, op: 0 },
-                ty: 0,
-                op: 1,
-                easing: 'easeOutExpo',
-                duration: 1800,
-                delay: 800,
-                update: function(anim) {
-                    var s = anim.animatables[0].target;
-                    heroWrap.style.transform = 'translate(-50%, -55%) translateY(' + s.ty + 'px)';
-                    heroWrap.style.opacity   = s.op;
-                }
-            });
-        }
-    }
-
     TweenMax.staggerFrom(".menu > div", 1.5, {
         opacity: 0,
         y: 20,
@@ -120,47 +98,3 @@ function exitLoader() {
 }
 
 requestAnimationFrame(animateCounter);
-
-// ── First scroll snaps to #About ──
-(function () {
-    var about = document.getElementById('About');
-    if (!about) return;
-    var snapping = false;
-
-    window.addEventListener('wheel', function (e) {
-        if (snapping) { e.preventDefault(); return; }
-        if (window.scrollY > 80) return;
-        if (e.deltaY <= 0) return;
-
-        snapping = true;
-        e.preventDefault();
-        anime({
-            targets: { y: window.scrollY },
-            y: about.offsetTop,
-            duration: 1600,
-            easing: 'easeInOutQuart',
-            update: function (anim) {
-                window.scrollTo(0, anim.animatables[0].target.y);
-            },
-            complete: function () { snapping = false; }
-        });
-    }, { passive: false });
-})();
-
-// ── Hero scroll-out: fade + move up as user scrolls away ──
-(function () {
-  var wrap  = document.querySelector('.hero-photo-wrap');
-  var title = document.querySelector('.header-text');
-  var nav   = document.querySelector('.Header-pages');
-  var lang  = document.querySelector('.container-header .langWrap');
-
-  var isMobileScroll = window.innerWidth <= 801;
-  window.addEventListener('scroll', function () {
-    var ty = -(window.scrollY * 0.4);
-
-    if (wrap && !isMobileScroll)  { wrap.style.transform  = 'translate(-50%, -55%) translateY(' + ty + 'px)'; }
-    if (title) { title.style.transform = 'translate(-50%, -50%) translateY(' + ty + 'px)'; }
-    if (nav)   { nav.style.transform   = 'translateY(' + ty + 'px)'; }
-    if (lang)  { lang.style.transform  = 'translateY(' + ty + 'px)'; }
-  }, { passive: true });
-})();

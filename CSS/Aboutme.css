@@ -1,15 +1,30 @@
+/* Solid white for the whole section, not just .About-container - previously
+   only the container was white, so the page's textured body background
+   still showed through around the heading and section padding. */
+.Aboutme {
+  background-color: #fff;
+  /* Containing block for .section-marker (SectionHeader.css), which is
+     position:absolute and needs to sit on THIS section's own top edge. */
+  position: relative;
+  /* Without this, .section-heading's margin-top would collapse straight
+     through this section (its first in-flow child now that the marker is
+     position:absolute and no longer occupies flow space), landing the
+     heading flush against the top edge instead of clear of the marker. */
+  display: flow-root;
+}
+
 @media (min-width: 360px), (max-width: 769px){
 .descriptionAbout
 {
   margin-bottom: 1rem;
 }
 .Aboutme p{
-    
+
     color: rgb(75, 75, 75);
     font-size: 1rem;
-   
+
     text-align: inherit;
-} 
+}
 .AboutMe-hrefToContact
 {
   color: var(--span-color);
@@ -21,13 +36,6 @@
   color: var(--span-color);
   text-shadow:
   0 0 5px rgba(10, 170, 219, 0.5);
-}
-.aboutMe-myOffer_ul
-{
-  color: rgb(75, 75, 75);
-  font-size: 1rem;
- 
-  text-align: inherit;
 }
 .AboutMe_hrefToContact
     {
@@ -41,57 +49,6 @@
       text-shadow:
       0 0 5px rgba(10, 170, 219, 0.5);
     }
-.Aboutme h2
-{
-  color: rgb(255, 255, 255);
-  margin-top: 6%;
-  font-size: 40px;
-text-align: inherit;
-width: 75%;
-margin-left: 50%;
-transform: translate(-50%);
-}
-.Aboutme h2:before
-{
-  content: '';
-  position: absolute;
-  left: -1.1rem;
-  width: 190px;
-height: 106%;
-  /* background: rgb(175, 175, 175); */
-
-  background: #757F9A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  transform: skew(15deg);
-z-index: -1;
-
-}
-.Aboutme h2:After
-{
-  content: '';
-  position: absolute;
-height: 106%;
-  /* background: var(--main-color); */
-
-  background: #757F9A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #c6d3e2, #52596b);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #bec9d8, #454b5c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  transform: skew(15deg);
-z-index: -2;
-width: 215px;
-left: -1.9rem;
-}
-.Aboutme p span
-{
-  color: var(--span-color);
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.about-left
-  {
-    display: none;
-  }
   .about-text
   {
     width: 90vw;
@@ -99,106 +56,39 @@ left: -1.9rem;
   }
   .About-container
   {
-    background-color: #fff;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: .6vh;
-    padding: 4.5rem 1.5rem 5rem;
+    padding: 2rem 1.5rem 3.5rem;
   }
 }
 @media (min-width: 769px)
 {
-
-
   .About-container
   {
-    background-color: #fff;
-    min-height: 80vh;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
-    margin-top: .6vh;
-    padding: 6.5rem 8rem 7.5rem;
+    padding: 1rem 8rem 5rem;
   }
 
-  .about-left
-  {
-    display: block;
-    flex-shrink: 0;
-  }
   .about-text
   {
-    flex: 1;
-    max-width: 620px;
+    width: 100%;
+    max-width: 820px;
     font-weight: 900;
   }
-  .About-img
-  {
-    display: block;
-    width: 300px;
-    height: 340px;
-    border-radius: 18px;
-    position: relative;
-    overflow: hidden;
-  }
-  .About-img img
-  {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    top: 0;
-    left: 0;
-  }
-  .About-img::after
-  {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 32px;
-    background: linear-gradient(to bottom, transparent 0%, #fff 0%);
-    z-index: 3;
-  }
-  .Aboutme h2
-    {
-        font-size: 70px;
-    }
-    .Aboutme h2:before
-    {
-       width: 360px;
-       left: -37px;
-    }
-    .Aboutme h2:after
-    {
-      left: -52px;
-      width: 390px;
-    }
     .Aboutme p
     {
         font-size: 1.4em;
     margin-top: 2vh;
     margin-bottom: 1.5vh;
     }
-    
-    .aboutMe-myOffer_ul
-    {
-      color: rgb(75, 75, 75);
-      text-align: justify;
-      font-size: 1.4em;
-      margin-top: 1vh;
-    }
-    .aboutMe-myOffer_ul li + li
-    {
-      margin-top: 2vh;
-    }
+
     .AboutMe_hrefToContact
     {
       color: var(--span-color);
@@ -211,41 +101,13 @@ left: -1.9rem;
       text-shadow:
       0 0 5px rgba(10, 170, 219, 0.5);
     }
-    .Aboutme p span
-    {
-        font-size: 30px;
-    }
 }
 
-@media (max-width: 830px) and (orientation:landscape)
-{
-  .Aboutme h2:before
-  {
- 
-     left: -17px;
-  }
-  .Aboutme h2:after
-  {
-    left: -30px;
-
-  }
-}
 /* ── Landscape phone fix ── */
 @media (max-height: 500px) and (orientation: landscape) {
-  .Aboutme h2 {
-    font-size: 36px;
-    margin-top: 2%;
-  }
-  .Aboutme h2:before { width: 180px; left: -17px; }
-  .Aboutme h2:after  { width: 200px; left: -30px; }
   .About-container {
     padding: 1rem 1.5rem;
-    gap: 1.5rem;
     min-height: auto;
-    flex-direction: row;
-  }
-  .about-left {
-    display: none;
   }
   .about-text {
     max-width: 100%;
@@ -258,27 +120,13 @@ left: -1.9rem;
   .descriptionAbout {
     margin-bottom: 0.5rem;
   }
-  .aboutMe-myOffer_ul {
-    font-size: 0.92rem;
-    margin-top: 0.4vh;
-  }
-  .aboutMe-myOffer_ul li + li {
-    margin-top: 0.5vh;
-  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px)
 {
-  .aboutMe-myOffer_ul
-{
-
-  font-size: 1.3rem;
- 
-  text-align: inherit;
-}
   .Aboutme p
   {
       font-size: 1.3em;
   margin-top: 1vh;
   }
-} 
+}

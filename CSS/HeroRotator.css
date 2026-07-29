@@ -2,27 +2,16 @@
 .hero-rotator {
   position: relative;
   display: grid;
-  margin-top: calc(1.8em + 10px);
+  margin-top: 14px;
   max-width: 34rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
 }
 
-/* Excluded entirely on phones - no room under the hero heading for a 4th
-   line there. Shown again from iPad size up: iPad Mini portrait (768px)
-   / iPad Mini landscape (1024px), even though that's still within the
-   hero's own "mobile stacked" layout range (see Landing.css) - this is a
-   narrower, separate cutoff just for this element. */
-@media (max-width: 767px) and (orientation: portrait), (max-width: 1023px) and (orientation: landscape) {
-  .hero-rotator {
-    display: none;
-  }
-}
-
 /* Revealed once JS/AnimationGsap.js's entrance sequence fires the
-   'hero:reveal' event (in sync with the header-3 "Front-end Developer"
-   letter reveal) - see JS/HeroRotator.js. Stays at opacity:0 until then,
+   'hero:reveal' event (in sync with the header-3 subtitle letter
+   reveal) - see JS/HeroRotator.js. Stays at opacity:0 until then,
    so it doesn't flash in ahead of the rest of the hero text. */
 .hero-rotator.is-ready {
   opacity: 1;
@@ -46,9 +35,9 @@
   margin: 0;
   font-family: 'Jura', sans-serif;
   font-weight: 300;
-  font-size: clamp(19px, 1.4vw, 23px);
+  font-size: clamp(16px, 2vw, 19px);
   line-height: 1.5;
-  color: rgb(82, 82, 82); /* same gray as .header-text h1 (desktop) */
+  color: rgb(82, 82, 82);
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -71,24 +60,5 @@
   .hero-rotator,
   .hero-rotator__line {
     transition: none !important;
-  }
-}
-
-/* Matches the hero's own mobile/desktop split (Landing.css): portrait
-   <=1024px or landscape <=1299px runs the stacked mobile hero layout. */
-@media (max-width: 1024px) and (orientation: portrait), (max-width: 1299px) and (orientation: landscape) {
-  .hero-rotator {
-    /* Not 100%: .header-text spans 80vw here, but the unclipped top band
-       of hero-photo-img--front (the hair poking out above the hexagon)
-       sits opaque right up to hero-photo-wrap's left edge at this same
-       vertical position - a full-width line reaches under it and gets
-       visually cut off mid-word. 70% keeps every line clear of the photo
-       across 320-1024px portrait, verified empirically. */
-    max-width: 70%;
-    margin-top: calc(1.4em + 10px);
-  }
-  .hero-rotator__line {
-    font-size: clamp(17px, 4.1vw, 20px);
-    color: rgb(173, 185, 202); /* same gray as .header-text h1 (mobile) */
   }
 }

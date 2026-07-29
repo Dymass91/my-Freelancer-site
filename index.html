@@ -56,15 +56,17 @@
     }
     </script>
     <link rel="stylesheet" type="text/css" href="CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="CSS/SectionHeader.css">
     <link rel="stylesheet" type="text/css" href="CSS/Aboutme.css">
+    <link rel="stylesheet" type="text/css" href="CSS/AboutModern.css">
     <link rel="stylesheet" type="text/css" href="CSS/Service.css">
+    <link rel="stylesheet" type="text/css" href="CSS/ServicesModern.css">
     <link rel="stylesheet" type="text/css" href="CSS/Projects.css">
     <link rel="stylesheet" type="text/css" href="CSS/PortfolioGrid.css">
     <link rel="stylesheet" type="text/css" href="CSS/Navbar.css">
     <link rel="stylesheet" type="text/css" href="CSS/Footer.css">
     <link rel="stylesheet" type="text/css" href="CSS/Landing.css">
     <link rel="stylesheet" type="text/css" href="CSS/HeroRotator.css">
-    <link rel="stylesheet" type="text/css" href="CSS/SlideUpText.css">
     <link rel="stylesheet" type="text/css" href="CSS/Contact2.css">
     <link rel="stylesheet" type="text/css" href="CSS/languageCSS.css">
     <link rel="stylesheet" type="text/css" href="CSS/ScrollToTopCSS.css">
@@ -135,30 +137,82 @@
             </nav>
 
 
-            <!-- hero image  -->
-            <div class="hero-photo-wrap">
-                <div class="hero-photo-glow"></div>
-                <div class="hero-photo-hex-bg">
-                    <picture>
-                        <source type="image/webp" srcset="IMG/portrait4.webp">
-                        <img class="hero-photo-img hero-photo-img--back" src="IMG/portrait4.png" alt="Tomasz Matyszczak – Web Developer Piła">
-                    </picture>
+            <!-- hero: split layout, intro left / live project preview right -->
+            <div class="hero-split">
+                <div class="hero-split__left header-text">
+                    <div class="hero-intro-row">
+                        <div class="hero-avatar">
+                            <picture>
+                                <source type="image/webp" srcset="IMG/portrait4.webp">
+                                <img src="IMG/portrait4.png" alt="Tomasz Matyszczak – Web Developer Piła">
+                            </picture>
+                        </div>
+                        <div class="hero-name">
+                            <h1 class="header-1">Tomasz</h1>
+                            <h1 class="header-2">Matyszczak</h1>
+                        </div>
+                    </div>
+                    <h2 class="header-3">Strony internetowe, które rozumieją Twój biznes</h2>
+                    <div class="hero-rotator">
+                        <p class="hero-rotator__line is-active">Od <strong>1690 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.</p>
+                        <p class="hero-rotator__line">Buduję strony, które ładują się w <strong>2 sekundy</strong> i realnie <strong>przyciągają klientów</strong> &mdash; nie tylko ładnie wyglądają.</p>
+                        <p class="hero-rotator__line">Tworzę strony dla małych firm <strong>z Piły i okolic</strong> &mdash; od pomysłu do gotowej wizytówki w internecie.</p>
+                    </div>
+                    <p class="hero-secondary-line">Doświadczenie zdobyte na kilku rynkach — rozumiem różne sposoby prowadzenia biznesu.</p>
+                    <a href="#Contact" class="hero-cta">Napisz do mnie</a>
                 </div>
-                <picture>
-                    <source type="image/webp" srcset="IMG/portrait4.webp">
-                    <img class="hero-photo-img hero-photo-img--front" src="IMG/portrait4.png" alt="" aria-hidden="true">
-                </picture>
-            </div>
 
-            <!-- header  -->
-            <div class="header-text">
-                <h1 class="header-1">Tomasz</h1>
-                <h1 class="header-2">Matyszczak</h1>
-                <h2 class="header-3">Front-end Developer</h2>
-                <div class="hero-rotator">
-                    <p class="hero-rotator__line is-active">Od <strong>1449 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.</p>
-                    <p class="hero-rotator__line">Buduję strony, które ładują się w <strong>2 sekundy</strong> i realnie <strong>przyciągają klientów</strong> &mdash; nie tylko ładnie wyglądają.</p>
-                    <p class="hero-rotator__line">Tworzę strony dla małych firm <strong>z Piły i okolic</strong> &mdash; od pomysłu do gotowej wizytówki w internecie.</p>
+                <div class="hero-split__right">
+                    <div class="hero-preview-slider">
+                        <div class="hero-preview-slide portfolio-card hero-preview-card is-active" data-mode="live">
+                            <div class="browser-frame__bar">
+                                <span class="browser-frame__dot browser-frame__dot--red"></span>
+                                <span class="browser-frame__dot browser-frame__dot--yellow"></span>
+                                <span class="browser-frame__dot browser-frame__dot--green"></span>
+                                <span class="browser-frame__url">detweederondeeindhoven.nl</span>
+                            </div>
+                            <div class="browser-frame__viewport">
+                                <iframe class="browser-frame__iframe" src="https://detweederondeeindhoven.nl" loading="lazy" tabindex="-1" aria-hidden="true" title="Podgląd na żywo: Tweede Ronde Eindhoven"></iframe>
+                                <img class="browser-frame__fallback" src="IMG/detweederonde.png" alt="Tweede Ronde Eindhoven – strona HTML JS Tailwind" loading="lazy">
+                            </div>
+                            <div class="portfolio-card__meta">
+                                <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://detweederondeeindhoven.nl" target="_blank" rel="noopener noreferrer">Tweede Ronde Eindhoven</a></h3>
+                            </div>
+                        </div>
+
+                        <div class="hero-preview-slide portfolio-card hero-preview-card" data-mode="live">
+                            <div class="browser-frame__bar">
+                                <span class="browser-frame__dot browser-frame__dot--red"></span>
+                                <span class="browser-frame__dot browser-frame__dot--yellow"></span>
+                                <span class="browser-frame__dot browser-frame__dot--green"></span>
+                                <span class="browser-frame__url">slodki-zakatek.pages.dev</span>
+                            </div>
+                            <div class="browser-frame__viewport">
+                                <iframe class="browser-frame__iframe" src="https://slodki-zakatek.pages.dev/#hero" loading="lazy" tabindex="-1" aria-hidden="true" title="Podgląd na żywo: Słodki Zakątek"></iframe>
+                                <img class="browser-frame__fallback" src="IMG/slodkizakatek.jpg" alt="Słodki Zakątek – strona React Astro" loading="lazy">
+                            </div>
+                            <div class="portfolio-card__meta">
+                                <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://slodki-zakatek.pages.dev/#hero" target="_blank" rel="noopener noreferrer">Słodki Zakątek</a></h3>
+                            </div>
+                        </div>
+
+                        <div class="hero-preview-slide portfolio-card hero-preview-card" data-mode="live">
+                            <div class="browser-frame__bar">
+                                <span class="browser-frame__dot browser-frame__dot--red"></span>
+                                <span class="browser-frame__dot browser-frame__dot--yellow"></span>
+                                <span class="browser-frame__dot browser-frame__dot--green"></span>
+                                <span class="browser-frame__url">beata-nail-artist.matyszczak24.workers.dev</span>
+                            </div>
+                            <div class="browser-frame__viewport">
+                                <iframe class="browser-frame__iframe" src="https://beata-nail-artist.matyszczak24.workers.dev/#rezerwacja" loading="lazy" tabindex="-1" aria-hidden="true" title="Podgląd na żywo: Beata Wlizło Nail Artist"></iframe>
+                                <img class="browser-frame__fallback" src="IMG/stylistka.png" alt="Beata Wlizło Nail Artist – strona HTML CSS JS" loading="lazy">
+                            </div>
+                            <div class="portfolio-card__meta">
+                                <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://beata-nail-artist.matyszczak24.workers.dev/#rezerwacja" target="_blank" rel="noopener noreferrer">Beata Wlizło Nail Artist</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="hero-preview-caption">3 ostatnie projekty, nad którymi pracowałem</p>
                 </div>
             </div>
 
@@ -212,40 +266,40 @@
     <!-- Navigation point for scroll bar-->
 
     <section class="Aboutme" data-aos="fade-up">
-
-        <span class="line1"></span>
-        <span class="h2_under-background2"></span>
-        <h2 class="title">O mnie</h2>
-        <span class="line2"></span>
+        <div class="section-marker">
+            <span class="marker-line"></span>
+            <span class="marker-label">o mnie</span>
+            <span class="marker-line"></span>
+        </div>
+        <h2 class="title section-heading">Kim jestem i jak pracuję</h2>
         <div class="About-container">
-            <div class="about-left">
-                <div class="About-img">
-                    <img src="IMG/gif11.gif" alt="Technologie: HTML, CSS, JavaScript, React, WordPress, PHP" loading="lazy" />
-                    <div class="home-text">
-                        <p class="animate-text">
-                            <span>HTML5 <i class="fab fa-html5"></i></span>
-                            <span>CSS <i class="fab fa-css3-alt"></i></span>
-                            <span>Sass / Scss <i class="fab fa-sass"></i></span>
-                            <span>Bootstrap <i class="fab fa-bootstrap"></i></span>
-                            <span>Javascript <i class="fab fa-js"></i></span>
-                            <span>React <i class="fab fa-react"></i></span>
-                            <span>PHP</span>
-                            <span>MySql <i class="fas fa-database"></i></span>
-                            <span>WordPress <i class="fab fa-wordpress"></i></span>
-                            <span>RWD</span>
-                        </p>
+            <div class="about-text">
+                <p class="aboutMe_lead">Nie kupujesz strony. Kupujesz narzędzie, które ma dla Ciebie pracować.</p>
+
+                <p class="descriptionAbout">Cześć, jestem Tomasz — front-end developer z Piły. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.</p>
+
+                <p class="aboutMe_text3">Kilka lat pracowałem jako niezależny wykonawca za granicą — nauczyło mnie to patrzeć na biznes klienta z różnych stron, nie tylko przez pryzmat jednego rynku. Dziś realizuję strony dla firm o różnym profilu i skali — od prostych wizytówek po rozbudowane serwisy i sklepy internetowe.</p>
+
+                <p class="aboutMe_techLine">Strony pisane ręcznie, bez gotowych kreatorów — dzięki temu działają szybciej.</p>
+
+                <p class="aboutMe_whyLabel">Dlaczego warto pracować ze mną:</p>
+
+                <div class="about-why-grid">
+                    <div class="about-why-card">
+                        <i class="fas fa-code"></i>
+                        <p class="aboutMe_why1">Kod piszę ręcznie — strona jest szybsza niż z gotowych kreatorów stron</p>
+                    </div>
+                    <div class="about-why-card">
+                        <i class="fas fa-comments"></i>
+                        <p class="aboutMe_why2">Rozmawiasz bezpośrednio ze mną, nie z działem obsługi klienta</p>
+                    </div>
+                    <div class="about-why-card">
+                        <i class="fas fa-unlock-alt"></i>
+                        <p class="aboutMe_why3">Strona zostaje z Tobą — pełny dostęp do kodu, żadnego zamknięcia w platformie</p>
                     </div>
                 </div>
-            </div>
-            <div class="about-text">
-                <p class="descriptionAbout">Cześć! Tworzę nowoczesne strony internetowe od kilku lat — statyczne i dynamiczne, szyte na miarę potrzeb każdego klienta. Specjalizuję się w HTML, CSS i JavaScript, a także realizuję projekty w React i WordPress.</p>
 
-                <ul class="aboutMe-myOffer_ul">
-                    <li class="aboutMe_text1">Każda strona, którą tworzę, jest responsywna, szybka i zoptymalizowana pod kątem Google — dbam o każdy detal, który przekłada się na Twoje wyniki w sieci.</li>
-                    <li class="aboutMe_text2">Projektuję z myślą o użytkowniku — intuicyjna nawigacja i estetyczny design to standard, nie dodatek.</li>
-                </ul>
-
-                <p class="aboutMe_text5">Sprawdź moje usługi poniżej i <a href="#Contact" class="AboutMe_hrefToContact">napisz do mnie</a> — wspólnie znajdziemy rozwiązanie dopasowane do Twojego biznesu.</p>
+                <p class="aboutMe_text5"><span class="aboutMe_text5_before">Sprawdź moją ofertę poniżej i </span><a href="#Contact" class="AboutMe_hrefToContact">napisz do mnie</a><span class="aboutMe_text5_after"> — odpowiadam osobiście.</span></p>
             </div>
         </div>
     </section>
@@ -260,59 +314,46 @@
     <div id="Skills"></div>
     <!-- Navigation point for scroll bar-->
 
-    <span class="line1"></span>
-    <span class="h2_under-background"></span>
-    <h2 class="service_h2 my_service_h2">Moje usługi</h2>
-    <span class="line2"></span>
+    <div class="skills-bg-wrap">
+    <div class="section-marker">
+        <span class="marker-line"></span>
+        <span class="marker-label">usługi</span>
+        <span class="marker-line"></span>
+    </div>
+    <h2 class="service_h2 my_service_h2 section-heading">Czym się zajmuję</h2>
     <div class="Service_section">
-        <div class="service_container" data-aos="fade">
+        <div class="services-panel">
+            <div class="Service-text" data-aos="fade-up">
+                <p class="service_subtitle">Od prostej wizytówki po sklep internetowy — dopasowuję rozwiązanie do celu, nie odwrotnie.</p>
+            </div>
 
-            <div class="service-wrapper">
+            <div class="services-grid" data-aos="fade-up">
+                <div class="service-tile">
+                    <i class="fas fa-id-card service-tile__icon"></i>
+                    <h3 class="titleService1 service-tile__title">Strony wizytówkowe</h3>
+                    <p class="descriptionService1 service-tile__desc">Szybka, responsywna strona, która buduje zaufanie od pierwszego wejrzenia. Dla usługodawców i lokalnych firm, które chcą być widoczne w Google.</p>
+                </div>
 
+                <div class="service-tile">
+                    <i class="fas fa-shopping-cart service-tile__icon"></i>
+                    <h3 class="titleService2 service-tile__title">Sklepy internetowe</h3>
+                    <p class="description_Service2 service-tile__desc">Sprzedawaj 24 godziny na dobę, bez ograniczeń godzin otwarcia. Integracja płatności i panel zarządzania produktami gotowe od pierwszego dnia.</p>
+                </div>
 
-                <div class="row">
-                    <div class="service-card" data-aos="slide-up">
-                        <div class="service-box one">
-                            <div class="service-text" data-aos="slide-down" data-aos-duration='1000'>
-                                <h3 class="titleService1">Oferta</h3>
+                <div class="service-tile">
+                    <i class="fas fa-sync-alt service-tile__icon"></i>
+                    <h3 class="titleService3 service-tile__title">Modernizacja i redesign</h3>
+                    <p class="description_Service3 service-tile__desc">Masz stronę, która wygląda jak sprzed dekady albo ładuje się wolno? Odświeżam istniejące strony — nowy design, szybszy kod, bez utraty pozycji w Google.</p>
+                </div>
 
-
-                                <p class="descriptionPriceSpan">W pakiecie otrzymasz:</p>
-                                <p class="descriptionService1">Kompleksową realizację: projekt graficzny, programowanie, optymalizację SEO, zakup hostingu i domeny oraz szkolenie z samodzielnej edycji treści.</p>
-                                <div class="Price">
-                                    <p class="service_Price">od</p>
-                                    <p class="Price_strong"><strong> 1449zł</strong></p>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="service-card" data-aos="slide-up">
-                        <div class="service-box two">
-                            <div class="service-text" data-aos="slide-down" data-aos-duration='1000'>
-                                <h3 class="titleService2">Responsywność</h3>
-                                <p class="description_Service2">Każda strona działa perfekcyjnie na komputerach, tabletach i smartfonach. Układ automatycznie dostosowuje się do każdego rozmiaru ekranu — żaden klient Cię nie ominie.</p>
-                                <p class="description_Service2_Bottom">Nie masz jeszcze projektu graficznego? Zajmuję się również kreacją wizualną we współpracy ze sprawdzonym grafikiem.</p>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="service-card" data-aos="slide-up">
-                        <div class="service-box three">
-                            <div class="service-text" data-aos="slide-down" data-aos-duration='1000'>
-                                <h3>E-Commerce</h3>
-                                <p class="description_Service3">Sklep internetowy to inwestycja, która pracuje na Ciebie przez całą dobę. Poszerz zasięg swojego biznesu, zautomatyzuj sprzedaż i docieraj do klientów z całej Polski — bez ograniczeń geograficznych sklepu stacjonarnego.</p>
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="service-tile">
+                    <i class="fas fa-tachometer-alt service-tile__icon"></i>
+                    <h3 class="titleService4 service-tile__title">Optymalizacja i SEO</h3>
+                    <p class="descriptionService4 service-tile__desc">Strona, która ładuje się wolno, traci klientów, zanim zdążą ją zobaczyć. Dbam o szybkość i strukturę pod SEO od pierwszej linii kodu.</p>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     </div>
@@ -320,24 +361,26 @@
     <!--------------   PRICING  ------------>
 
     <section class="pricing-section" id="Cennik">
-        <span class="line1"></span>
-        <span class="h2_under-background2"></span>
-        <h2 class="pricing_h2">Cennik</h2>
-        <span class="line2"></span>
+        <div class="section-marker">
+            <span class="marker-line"></span>
+            <span class="marker-label">cennik</span>
+            <span class="marker-line"></span>
+        </div>
+        <h2 class="pricing_h2 section-heading">Ile to kosztuje</h2>
 
         <div class="pricing-cards">
 
             <!-- Card 1: Basic -->
             <div class="pricing-card">
                 <p class="pricing-name">Strona Wizytówka</p>
-                <p class="pricing-price">1 449 zł</p>
+                <p class="pricing-price">1 690 zł</p>
                 <p class="pricing-price-label">jednorazowo</p>
                 <div class="pricing-divider"></div>
                 <ul class="pricing-features">
                     <li>Projekt graficzny</li>
                     <li>Programowanie HTML / CSS / JS</li>
-                    <li>Responsywność (RWD)</li>
-                    <li>Optymalizacja SEO</li>
+                    <li>Dopasowanie do telefonu i komputera</li>
+                    <li>Optymalizacja pod Google</li>
                     <li>Hosting i domena</li>
                 </ul>
                 <p class="pricing-time">⏱ Realizacja: 1–2 tygodnie</p>
@@ -348,13 +391,13 @@
             <div class="pricing-card featured">
                 <span class="pricing-badge">Najpopularniejszy</span>
                 <p class="pricing-name">Strona Usługowa</p>
-                <p class="pricing-price">2 999 zł</p>
+                <p class="pricing-price">3 490 zł</p>
                 <p class="pricing-price-label">jednorazowo</p>
                 <div class="pricing-divider"></div>
                 <ul class="pricing-features">
-                    <li>Wszystko z pakietu Basic</li>
+                    <li>Wszystko z pakietu Wizytówka</li>
                     <li>Do 10 podstron</li>
-                    <li>System CMS (WordPress)</li>
+                    <li>Panel do samodzielnej edycji treści</li>
                     <li>Formularz kontaktowy</li>
                     <li>Blog / Aktualności</li>
                 </ul>
@@ -365,14 +408,14 @@
             <!-- Card 3: E-commerce -->
             <div class="pricing-card">
                 <p class="pricing-name">Sklep Internetowy</p>
-                <p class="pricing-price">4 999 zł</p>
+                <p class="pricing-price">5 990 zł</p>
                 <p class="pricing-price-label">jednorazowo</p>
                 <div class="pricing-divider"></div>
                 <ul class="pricing-features">
-                    <li>Wszystko z pakietu Standard</li>
-                    <li>WooCommerce / React</li>
+                    <li>Wszystko z pakietu Usługowa</li>
+                    <li>Sklep zbudowany w React — szybszy niż typowe platformy e-commerce</li>
                     <li>Integracja płatności</li>
-                    <li>Panel zarządzania</li>
+                    <li>Panel zarządzania produktami</li>
                     <li>Wdrożenie produktów</li>
                 </ul>
                 <p class="pricing-time">⏱ Realizacja: 4–8 tygodni</p>
@@ -390,15 +433,17 @@
 
 
     <section class="Projects">
-        <span class="line1"></span>
-        <span class="h2_under-background2"></span>
-        <h2 class="Projects_h2">Portfolio</h2>
-        <span class="line2"></span>
+        <div class="section-marker">
+            <span class="marker-line"></span>
+            <span class="marker-label">portfolio</span>
+            <span class="marker-line"></span>
+        </div>
+        <h2 class="Projects_h2 section-heading">Wybrane realizacje</h2>
 
         <div class="portfolio-panel">
         <div class="Projects-text" data-aos="fade-up">
             <p class="Projects_title_text">
-                Poniżej znajdziesz wybrane realizacje — projekty komercyjne oraz demonstracyjne, zbudowane w HTML/CSS/JS, React i WordPress.
+                Poniżej znajdziesz wybrane realizacje — projekty komercyjne i demonstracyjne, każdy napisany ręcznie w HTML/CSS/JS oraz React, bez gotowych motywów i zbędnych wtyczek.
             </p>
         </div>
 
@@ -527,10 +572,11 @@
         <div id="Contact"> </div>
         <!-- Navigation point for scroll bar-->
 
-        <span class="line1"></span>
-        <span class="h2_under-background"></span>
-        <h2 class="Contact_h2">Kontakt</h2>
-        <span class="line2"></span>
+        <div class="section-marker">
+            <span class="marker-line"></span>
+            <span class="marker-label">kontakt</span>
+            <span class="marker-line"></span>
+        </div>
 
         <div class="contact_container" data-aos="fade">
 
@@ -1049,8 +1095,8 @@ https://tools.google.com/dlpage/gaoptout?hl=pl
     <!-- <script src="JS/Skills.js"></script> -->
     <script src="JS/Navbar.js"></script>
     <script src="JS/HeroRotator.js"></script>
+    <script src="JS/HeroPreviewSlider.js"></script>
     <script src="JS/AnimationGsap.js"></script>
-    <script src="JS/SlideUpText.js"></script>
     <script src="JS/Multilang.js"></script>
     <script src="JS/Contact.js"></script>
     <script src="JS/ScrollToTopArrow.js"></script>

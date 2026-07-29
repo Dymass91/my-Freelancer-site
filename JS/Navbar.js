@@ -30,11 +30,19 @@ function navbarLinkClick(event) {
 
 /////// Smooth-Scrolling ////////////
 
+// Matches the sticky .navbar's height (75px, see Navbar.css) + a small
+// margin - mirrors the scroll-margin-top on section ids (SectionHeader.css),
+// which only covers native anchor jumps. This
+// function computes targetPosition manually and scrolls via its own
+// rAF loop instead of scrollIntoView(), so scroll-margin-top has no
+// effect here - the offset has to be applied directly.
+const NAV_SCROLL_OFFSET = 90;
+
 function smoothScroll(event) {
     event.preventDefault();
     const targetId = event.currentTarget.getAttribute("href") === "#" ? "header" :
         event.currentTarget.getAttribute("href");
-    const targetPosition = document.querySelector(targetId).offsetTop;
+    const targetPosition = Math.max(0, document.querySelector(targetId).offsetTop - NAV_SCROLL_OFFSET);
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     const duration = 1000;

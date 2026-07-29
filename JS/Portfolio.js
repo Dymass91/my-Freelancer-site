@@ -79,7 +79,10 @@ document.addEventListener('DOMContentLoaded', function () {
     ////// Technology filters //////
 
     var filterButtons = document.querySelectorAll('.portfolio-filter');
-    var cards = document.querySelectorAll('.portfolio-card');
+    // Scoped to the grid - the hero section reuses .portfolio-card for its
+    // flagship-project preview (same browser-frame styling/JS), and isn't
+    // part of the filterable set.
+    var cards = document.querySelectorAll('.portfolio-grid .portfolio-card');
 
     filterButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {

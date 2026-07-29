@@ -15,27 +15,33 @@ const navbarHeaderContact = document.querySelector('.navbar_header_Contact');
 const titleEl = document.querySelector('.title');
 const descrEl = document.querySelector('.descriptionAbout');
 
-const aboutText1 = document.querySelector('.aboutMe_text1');
-const aboutText2 = document.querySelector('.aboutMe_text2');
-const aboutText5 = document.querySelector('.aboutMe_text5');
+const aboutLead = document.querySelector('.aboutMe_lead');
+const aboutText3 = document.querySelector('.aboutMe_text3');
+const aboutTechLine = document.querySelector('.aboutMe_techLine');
+const aboutWhyLabel = document.querySelector('.aboutMe_whyLabel');
+const aboutWhy1 = document.querySelector('.aboutMe_why1');
+const aboutWhy2 = document.querySelector('.aboutMe_why2');
+const aboutWhy3 = document.querySelector('.aboutMe_why3');
+const aboutText5Before = document.querySelector('.aboutMe_text5_before');
+const aboutText5After = document.querySelector('.aboutMe_text5_after');
 const hrefToContact = document.querySelector('.AboutMe_hrefToContact');
 
 
 const Serviceh2 = document.querySelector('.service_h2');
+const ServiceSubtitle = document.querySelector('.service_subtitle');
 const Projectsh2 = document.querySelector('.Projects_h2');
-const Contacth2 = document.querySelector('.Contact_h2');
 
 const ServEl1 = document.querySelector('.titleService1');
 const discrEl1 = document.querySelector('.descriptionService1');
-const discrElSpan = document.querySelector('.descriptionPriceSpan');
-const ServPrice = document.querySelector('.service_Price');
-const PriceStr = document.querySelector('.Price_strong');
 
 const discServ2 = document.querySelector('.description_Service2');
-const discServ2Bot = document.querySelector('.description_Service2_Bottom');
 const ServEl2 = document.querySelector('.titleService2');
 
+const ServEl3 = document.querySelector('.titleService3');
 const discServ3 = document.querySelector('.description_Service3');
+
+const ServEl4 = document.querySelector('.titleService4');
+const discServ4 = document.querySelector('.descriptionService4');
 
 const ContactFormTitle = document.querySelector('.Contact_form_title');
 const contactTitle = document.querySelector('.contact_title');
@@ -59,11 +65,13 @@ function getTranslatableElements() {
         menuHeaderAbout, menuHeaderService, menuHeaderProjects, menuHeaderContact,
         navbarHeaderAbout, navbarHeaderService, navbarHeaderProjects, navbarHeaderContact,
         titleEl, descrEl,
-        aboutText1, aboutText2, aboutText5, hrefToContact,
-        Serviceh2, Projectsh2, Contacth2,
-        ServEl1, discrEl1, discrElSpan, ServPrice, PriceStr,
-        discServ2, discServ2Bot, ServEl2,
-        discServ3,
+        aboutLead, aboutText3, aboutTechLine, aboutWhyLabel, aboutWhy1, aboutWhy2, aboutWhy3,
+        aboutText5Before, aboutText5After, hrefToContact,
+        Serviceh2, ServiceSubtitle, Projectsh2,
+        ServEl1, discrEl1,
+        discServ2, ServEl2,
+        ServEl3, discServ3,
+        ServEl4, discServ4,
         ContactFormTitle, contactTitle, contactSocialTitle,
         informationCountry, contactInfoText, btn, contactName, contactMessage,
         footerText, footerPolicyText, PolicyButton,
@@ -85,28 +93,34 @@ function applyTranslation(attr) {
     titleEl.textContent = data[attr].title;
     descrEl.textContent = data[attr].descriptionAbout;
 
-    aboutText1.textContent = data[attr].aboutMe_text1;
-    aboutText2.textContent = data[attr].aboutMe_text2;
-    aboutText5.textContent = data[attr].aboutMe_text5;
+    aboutLead.textContent = data[attr].aboutMe_lead;
+    aboutText3.textContent = data[attr].aboutMe_text3;
+    aboutTechLine.textContent = data[attr].aboutMe_techLine;
+    aboutWhyLabel.textContent = data[attr].aboutMe_whyLabel;
+    aboutWhy1.textContent = data[attr].aboutMe_why1;
+    aboutWhy2.textContent = data[attr].aboutMe_why2;
+    aboutWhy3.textContent = data[attr].aboutMe_why3;
+    aboutText5Before.textContent = data[attr].aboutMe_text5_before;
+    aboutText5After.textContent = data[attr].aboutMe_text5_after;
     hrefToContact.textContent = data[attr].AboutMe_hrefToContact;
 
     Serviceh2.textContent = data[attr].service_h2;
+    ServiceSubtitle.textContent = data[attr].service_subtitle;
     Projectsh2.textContent = data[attr].Projects_h2;
-    Contacth2.textContent = data[attr].Contact_h2;
 
     ServEl1.textContent = data[attr].titleService1;
     discrEl1.textContent = data[attr].descriptionService1;
-    discrElSpan.textContent = data[attr].descriptionPriceSpan;
-    ServPrice.textContent = data[attr].service_Price;
-    PriceStr.textContent = data[attr].Price_strong;
 
     ProjectsTitleText.textContent = data[attr].Projects_title_text;
 
     ServEl2.textContent = data[attr].titleService2;
     discServ2.textContent = data[attr].description_Service2;
-    discServ2Bot.textContent = data[attr].description_Service2_Bottom;
 
+    ServEl3.textContent = data[attr].titleService3;
     discServ3.textContent = data[attr].description_Service3;
+
+    ServEl4.textContent = data[attr].titleService4;
+    discServ4.textContent = data[attr].descriptionService4;
 
     ContactFormTitle.textContent = data[attr].Contact_form_title;
     contactTitle.textContent = data[attr].contact_title;
@@ -168,38 +182,38 @@ var data = {
         "navbar_header_Projects": "Portfolio",
         "navbar_header_Contact": "Kontakt",
 
-        "title": "O mnie ",
-        "service_h2": "Moje usługi",
-        "Projects_h2": "Portfolio",
-        "Contact_h2": "Kontakt",
+        "title": "Kim jestem i jak pracuję",
+        "service_h2": "Czym się zajmuję",
+        "Projects_h2": "Wybrane realizacje",
 
 
-        "descriptionAbout": "Cześć! Jestem web developerem z Piły i tworzę nowoczesne strony internetowe od kilku lat — statyczne i dynamiczne, szyte na miarę potrzeb każdego klienta. Specjalizuję się w HTML, CSS i JavaScript, a także realizuję projekty w React i WordPress.",
-        "aboutMe_text1": "Każda strona, którą tworzę, jest responsywna, szybka i zoptymalizowana pod kątem Google — dbam o każdy detal, który przekłada się na Twoje wyniki w sieci.",
-        "aboutMe_text2": "Projektuję z myślą o użytkowniku — intuicyjna nawigacja i estetyczny design to standard, nie dodatek.",
-        "aboutMe_text3": "Po wdrożeniu przeprowadzam szkolenie z obsługi panelu, dzięki czemu samodzielnie zarządzasz swoimi treściami.",
-        "aboutMe_text4": "Oferuję stałe wsparcie techniczne — jesteś pod dobrą opieką długo po uruchomieniu strony.",
-        "aboutMe_text5": "Sprawdź moje usługi poniżej i napisz do mnie — wspólnie znajdziemy rozwiązanie dopasowane do Twojego biznesu.",
+        "descriptionAbout": "Cześć, jestem Tomasz — front-end developer z Piły. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.",
+        "aboutMe_lead": "Nie kupujesz strony. Kupujesz narzędzie, które ma dla Ciebie pracować.",
+        "aboutMe_text3": "Kilka lat pracowałem jako niezależny wykonawca za granicą — nauczyło mnie to patrzeć na biznes klienta z różnych stron, nie tylko przez pryzmat jednego rynku. Dziś realizuję strony dla firm o różnym profilu i skali — od prostych wizytówek po rozbudowane serwisy i sklepy internetowe.",
+        "aboutMe_techLine": "Strony pisane ręcznie, bez gotowych kreatorów — dzięki temu działają szybciej.",
+        "aboutMe_whyLabel": "Dlaczego warto pracować ze mną:",
+        "aboutMe_why1": "Kod piszę ręcznie — strona jest szybsza niż z gotowych kreatorów stron",
+        "aboutMe_why2": "Rozmawiasz bezpośrednio ze mną, nie z działem obsługi klienta",
+        "aboutMe_why3": "Strona zostaje z Tobą — pełny dostęp do kodu, żadnego zamknięcia w platformie",
+        "aboutMe_text5_before": "Sprawdź moją ofertę poniżej i ",
+        "aboutMe_text5_after": " — odpowiadam osobiście.",
         "AboutMe_hrefToContact": "napisz do mnie",
-        "titleService1": "Oferta",
 
-        "service_Price": "od",
+        "service_subtitle": "Od prostej wizytówki po sklep internetowy — dopasowuję rozwiązanie do celu, nie odwrotnie.",
 
-        "Price_strong": "1449zł",
+        "titleService1": "Strony wizytówkowe",
+        "descriptionService1": "Szybka, responsywna strona, która buduje zaufanie od pierwszego wejrzenia. Dla usługodawców i lokalnych firm, które chcą być widoczne w Google.",
 
-        "descriptionPriceSpan": "W pakiecie otrzymasz:",
+        "titleService2": "Sklepy internetowe",
+        "description_Service2": "Sprzedawaj 24 godziny na dobę, bez ograniczeń godzin otwarcia. Integracja płatności i panel zarządzania produktami gotowe od pierwszego dnia.",
 
-        "descriptionService1": "Kompleksową realizację: projekt graficzny, programowanie, optymalizację SEO, zakup hostingu i domeny.",
+        "titleService3": "Modernizacja i redesign",
+        "description_Service3": "Masz stronę, która wygląda jak sprzed dekady albo ładuje się wolno? Odświeżam istniejące strony — nowy design, szybszy kod, bez utraty pozycji w Google.",
 
-        "titleService2": "Responsywność",
+        "titleService4": "Optymalizacja i SEO",
+        "descriptionService4": "Strona, która ładuje się wolno, traci klientów, zanim zdążą ją zobaczyć. Dbam o szybkość i strukturę pod SEO od pierwszej linii kodu.",
 
-        "description_Service2": "Każda strona działa perfekcyjnie na komputerach, tabletach i smartfonach. Układ automatycznie dostosowuje się do każdego rozmiaru ekranu — żaden klient Cię nie ominie.",
-
-        "description_Service2_Bottom": "Nie masz jeszcze projektu graficznego? Zajmuję się również kreacją wizualną we współpracy ze sprawdzonym grafikiem.",
-
-        "description_Service3": "Sklep internetowy to inwestycja, która pracuje na Ciebie przez całą dobę. Poszerz zasięg swojego biznesu, zautomatyzuj sprzedaż i docieraj do klientów z całej Polski — bez ograniczeń geograficznych sklepu stacjonarnego.",
-
-        "Projects_title_text": "Poniżej znajdziesz wybrane realizacje — projekty komercyjne oraz demonstracyjne, zbudowane w HTML/CSS/JS, React i WordPress.",
+        "Projects_title_text": "Poniżej znajdziesz wybrane realizacje — projekty komercyjne i demonstracyjne, każdy napisany ręcznie w HTML/CSS/JS oraz React, bez gotowych motywów i zbędnych wtyczek.",
         "Project_Live_btn": "Wejdź na stronę",
 
         "contact_title": "Porozmawiajmy o Twoim projekcie",
@@ -226,33 +240,37 @@ var data = {
         "navbar_header_Projects": "Portfolio",
         "navbar_header_Contact": "Contact",
 
-        "title": "About me",
-        "service_h2": "My service",
-        "Projects_h2": "Portfolio",
-        "Contact_h2": "Contact",
+        "title": "Who I am and how I work",
+        "service_h2": "What I do",
+        "Projects_h2": "Selected work",
 
-        "descriptionAbout": "Hi! I'm a web developer based in Piła, Poland, and I build modern, high-performance websites tailored to each client's needs. With several years of experience in HTML, CSS, JavaScript, React and WordPress, I deliver solutions that look great and drive real results.",
-        "aboutMe_text1": "Every website I build is responsive, fast and SEO-optimised — every detail is crafted to boost your visibility online.",
-        "aboutMe_text2": "I design with the user in mind — clean layouts, intuitive navigation and polished aesthetics that keep visitors engaged.",
-        "aboutMe_text3": "After launch I walk you through managing your site, so you can update content independently from day one.",
-        "aboutMe_text4": "I offer ongoing technical support — you're in good hands long after your site goes live.",
-        "aboutMe_text5": "Browse my services below and get in touch — together we'll find the right solution for your business.",
+        "descriptionAbout": "Hi, I'm Tomasz — a front-end developer based in Piła, Poland. I'm not an agency juggling dozens of clients at once, or a bargain-bin off-the-shelf WordPress theme. I build every website myself, from scratch, in clean code — that's why it loads instantly and doesn't drag along kilograms of plugins nobody uses.",
+        "aboutMe_lead": "You're not buying a website. You're buying a tool that works for you.",
+        "aboutMe_text3": "I spent a few years working as an independent contractor abroad - it taught me to look at a client's business from different angles, not just through the lens of one market. Today I build sites for businesses of different profiles and scales - from simple business cards to full-featured services and online stores.",
+        "aboutMe_techLine": "Sites written by hand, no page builders - that's what makes them faster.",
+        "aboutMe_whyLabel": "Why work with me:",
+        "aboutMe_why1": "I write code by hand — your site is faster than one built with off-the-shelf website builders",
+        "aboutMe_why2": "You talk directly to me, not to a customer service department",
+        "aboutMe_why3": "The site stays with you — full access to the code, no lock-in to a platform",
+        "aboutMe_text5_before": "Check out my offer below and ",
+        "aboutMe_text5_after": " — I reply personally.",
         "AboutMe_hrefToContact": "get in touch",
-        "titleService1": "Offer",
 
-        "descriptionPriceSpan": "The package includes:",
+        "service_subtitle": "From a simple business-card site to a full online store — I match the solution to the goal, not the other way around.",
 
-        "descriptionService1": "Full delivery: design, development, SEO optimisation, hosting and domain setup.",
+        "titleService1": "Business-card websites",
+        "descriptionService1": "A fast, responsive website that builds trust from the first visit. For service providers and local businesses who want to be visible on Google.",
 
-        "service_Price": "from",
-        "Price_strong": "1449zł",
+        "titleService2": "Online stores",
+        "description_Service2": "Sell 24 hours a day, with no opening-hours limits. Payment integration and a product management panel ready from day one.",
 
-        "titleService2": "Responsiveness",
-        "description_Service2": "Every site works flawlessly on desktops, tablets and smartphones. The layout adapts automatically to every screen size — so no potential customer ever misses out.",
-        "description_Service2_Bottom": "No design brief yet? I also handle the visual concept in collaboration with a trusted graphic designer.",
-        "description_Service3": "An online store works for you around the clock. Expand your reach, automate your sales and connect with customers nationwide — without the limitations of a physical shop.",
+        "titleService3": "Modernization & redesign",
+        "description_Service3": "Got a site that looks a decade old or loads slowly? I refresh existing websites — new design, faster code, without losing your Google rankings.",
 
-        "Projects_title_text": "A selection of my work — commercial and demo projects built with HTML/CSS/JS, React and WordPress.",
+        "titleService4": "Optimization & SEO",
+        "descriptionService4": "A slow-loading site loses customers before they even see it. I take care of speed and SEO structure from the very first line of code.",
+
+        "Projects_title_text": "A selection of my work — commercial and demo projects, each hand-coded in HTML/CSS/JS and React, no page builders or bloated plugins.",
         "Project_Live_btn": "Live",
 
         "contact_title": "Let's talk about your project",

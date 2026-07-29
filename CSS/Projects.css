@@ -1,47 +1,19 @@
+/* Light neutral-gray section (same tone as Skills), covering the heading
+   area too - .portfolio-panel below matches so the section reads as one
+   seamless surface with white cards on top for contrast. */
+.Projects {
+  background-color: #f4f5f7;
+  /* Containing block for .section-marker (SectionHeader.css), which is
+     position:absolute and needs to sit on THIS section's own top edge. */
+  position: relative;
+  /* Without this, .section-heading's margin-top would collapse straight
+     through this section (its first in-flow child now that the marker is
+     position:absolute and no longer occupies flow space), landing the
+     heading flush against the top edge instead of clear of the marker. */
+  display: flow-root;
+}
+
 @media (min-width: 360px), (max-width: 767px){
-.Projects h2
-{
-  color: rgb(255, 255, 255);
-    margin-top: -12vh;
-    font-size: 40px;
-text-align: inherit;
-width: 75%;
-margin-left: 50%;
-transform: translate(-50%);
-}
-.Projects h2:before
-{
-  content: '';
-  position: absolute;
-  left: -1.1rem;
-  width: 180px;
-height: 106%;
-  /* background: rgb(175, 175, 175); */
-  background: #757F9A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-  transform: skew(15deg);
-z-index: -1;
-
-}
-.Projects h2:After
-{
-  content: '';
-  position: absolute;
-  left: -1.9rem;
-  width: 205px;
-height: 106%;
-  /* background: var(--main-color); */
-
-  background: #757F9A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #c5d3e2, #52596b);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #bec9d8, #454b5c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  transform: skew(15deg);
-z-index: -2;
-
-}
 .Projects-text {
   padding: 0 6vw;
   text-align: center;
@@ -65,31 +37,10 @@ z-index: -2;
   margin-left: 15vw;
   text-align: center;
 }
-  .Projects h2
-    {
-        font-size: 70px;
-    }
-    .Projects h2:before
-    {
-       width: 350px;
-       left: -53px;
-    }
-    .Projects h2:after
-    {
-       width: 380px;
-       left: -67.5px;
-    }
-
 }
 
 /* Landscape phone: compact projects section */
 @media (max-height: 500px) and (orientation: landscape) {
-  .Projects h2 {
-    font-size: 36px;
-    margin-top: -4vh;
-  }
-  .Projects h2:before { width: 175px; left: -17px; }
-  .Projects h2:after  { width: 195px; left: -30px; }
   .Projects-text {
     padding: 1.5vw;
     width: 90vw;

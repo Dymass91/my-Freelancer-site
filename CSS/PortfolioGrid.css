@@ -1,9 +1,7 @@
-/* ── Portfolio: white content panel (text + filters + grid), matching
-   the solid white background the old .Carousel/.Project_wrapper gave
-   this section - the heading above stays on the page's textured
-   background, same as every other section. ── */
+/* ── Portfolio: light neutral-gray panel (matches .Projects section
+   background so the heading area is seamless with it) - white cards sit
+   on top for contrast instead of white-on-white. ── */
 .portfolio-panel {
-  background: #fff;
   padding-top: 32px;
   padding-bottom: 8px;
 }

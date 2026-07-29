@@ -1,72 +1,21 @@
 /* cf-force 1778917823131 */
 .pricing-section {
-    padding: 10rem 2rem 11rem;
+    background-color: #fff;
+    padding: 6rem 2rem 7rem;
     position: relative;
-    overflow: hidden;
-}
-
-.pricing-section .h2_under-background2 {
-    background: transparent;
-}
-
-.pricing_h2 {
-    color: rgb(255, 255, 255);
-    margin-top: 0;
-    font-size: 40px;
-    text-align: inherit;
-    width: 75%;
-    margin-left: 50%;
-    transform: translate(-50%);
-    position: relative;
-}
-
-.pricing_h2:before {
-    content: '';
-    position: absolute;
-    left: -1.8rem;
-    width: 180px;
-    height: 106%;
-    background: #757F9A;
-    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A);
-    background: linear-gradient(to left, #D7DDE8, #757F9A);
-    transform: skew(15deg);
-    z-index: -1;
-}
-
-.pricing_h2:after {
-    content: '';
-    position: absolute;
-    left: -2.6rem;
-    width: 205px;
-    height: 106%;
-    background: #757F9A;
-    background: -webkit-linear-gradient(to left, #c5d3e2, #52596b);
-    background: linear-gradient(to left, #bec9d8, #454b5c);
-    transform: skew(15deg);
-    z-index: -2;
-}
-
-@media (min-width: 768px) {
-    .pricing_h2 {
-        font-size: 70px;
-        height: 80px;
-        line-height: 80px;
-    }
-    .pricing_h2:before {
-        width: 270px;
-    }
-    .pricing_h2:after {
-        width: 295px;
-    }
-}
-
-@media (max-height: 500px) and (orientation: landscape) {
-    .pricing_h2 {
-        font-size: 36px;
-        margin-top: -4vh;
-    }
-    .pricing_h2:before { width: 140px; left: -17px; }
-    .pricing_h2:after  { width: 158px; left: -30px; }
+    /* No overflow-x:hidden here - per the CSS overflow spec, setting only
+       one axis to non-visible forces the OTHER axis's used value to auto
+       as well, which clipped .section-marker's intentional overflow above
+       this section's own box (it needs to straddle the seam with Skills).
+       html{overflow-x:hidden} in styles.css already guards against any
+       horizontal overflow site-wide, so this was redundant anyway. */
+    /* No section-level z-index here - a whole-section z-index would beat
+       not just the PRECEDING section's content (the goal) but also the
+       NEXT section's own .section-marker (z-index:5, straddling the
+       Cennik/Portfolio seam), covering half of ITS pill instead. The
+       marker's own z-index:5 (SectionHeader.css) already wins against
+       ordinary in-flow content from the section before it, which is all
+       the original Cennik-pill-hidden-under-Skills bug needed. */
 }
 
 .pricing-cards {

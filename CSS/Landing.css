@@ -65,728 +65,316 @@
 /* ── End Loader ── */
 
 /* nav.menu needs its own real stacking context here, not just the z-index
-   already set on its descendants (.langWrap/.Header-pages). AnimationGsap.js
-   runs a one-time entrance tween on ".menu > div" (i.e. .menu-left) that
-   leaves a permanent inline transform (even once it settles at the identity
+   already set on its descendants (.langWrap). AnimationGsap.js runs a
+   one-time entrance tween on ".menu > div" (i.e. .menu-left) that leaves
+   a permanent inline transform (even once it settles at the identity
    matrix, "transform: matrix(1,0,0,1,0,0)" is still not "none"). Per spec
-   any non-none transform creates a stacking context, which traps
-   .langWrap's z-index:10 inside .menu-left's own context - so from
-   .container-header's point of view .menu-left only counts as stack-level
-   "0", tied with .header-text, and .header-text (later in the DOM) wins the
-   tie and paints over it, silently eating clicks on the PL/EN toggle
-   wherever the hero heading overlaps it (mostly on the stacked mobile
-   layout). Giving nav.menu its own z-index above every sibling it must
-   never lose to (.Header-pages is 12, .boxArrow is up to 11) fixes that
-   regardless of what GSAP leaves behind on its children. */
+   any non-none transform creates a stacking context, which would trap
+   .langWrap's z-index inside .menu-left's own context otherwise. */
 nav.menu {
   position: relative;
   z-index: 15;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px 4vw;
 }
 
-/* Desktop hero layout. Mirrors the mobile query below by construction
-   (per-orientation complement, no unconditional/orientation-less clause
-   so there's no gap or overlap):
-     portrait: desktop from 1025px  (mobile owns <=1024px portrait)
-     landscape: desktop from 1300px (mobile owns <=1299px landscape)
-   The landscape cutoff is high (not ~801px) because the existing
-   left: calc(65% + Npx) menu positions only fit without clipping
-   "Cennik"/"Portfolio" once the viewport is >=~1300px wide - verified
-   empirically; iPad Air/Mini landscape (1024-1180px) clip badly on this
-   layout, so they need to stay on the mobile layout instead. */
-@media (min-width: 1025px) and (orientation: portrait), (min-width: 1300px) and (orientation: landscape) {
-#box
-{
-  
-  position: absolute;
-  top: 100%;
-}
-.boxArrow
-{
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-.boxArrow a
-{
-  color: #64D3FF;
-  display: block;
-  font-size: 48px;
-  margin-bottom: -40px;
-  animation: animate3 2s infinite;
-  cursor: pointer;
-}
- .boxArrow a:nth-child(2)
- {
- 
-   animation-delay: -0.2s;
-   transform:  translate(0,-20px);
- }
-.boxArrow a:nth-child(3)
- {
-   animation-delay: -0.4s;
- }
-/* hero img  */
-/* .container-header #bg {
-  position: absolute;
+.menu-left.menu-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
   width: 100%;
-  height: 0vh;
-  background-color:  rgb(197, 197, 197);
-  background-size: cover;
-background-repeat: no-repeat;
-  z-index: 0;
-      background-position: right bottom; 
-  } */
-.Header-pages
-{
-  z-index: 12;
+  justify-content: space-between;
+}
+
+/* Simple in-page nav row (no hexagon photo to wrap around anymore). */
+.Header-pages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(14px, 2.5vw, 32px);
   list-style: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-weight: 900;
-  font-size: 40px;
-  /* This UL spans the full hero so its 5 absolutely-positioned li's can sit
-     wherever they need to, but that means its own (invisible) box also
-     covers .langWrap's PL/EN toggle underneath - and an element still
-     captures clicks over its box even with no background. pointer-events:
-     none here + auto back on the links (below) lets clicks fall through
-     the empty areas to whatever's underneath, while the actual nav links
-     stay clickable exactly where they're drawn. */
-  pointer-events: none;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
 }
-
-.Header-pages li
-{
-  position: absolute;
-  margin-left: 0;
-  line-height: 1;
+.Header-pages li {
+  position: static;
+  margin: 0;
+  line-height: normal;
 }
-
-.Header-pages li:nth-child(1) { top: calc(50vh - 265px); left: calc(65% + 220px); }
-.Header-pages li:nth-child(2) { top: calc(50vh - 145px); left: calc(65% + 283px); }
-.Header-pages li:nth-child(3) { top: calc(50vh -  25px); left: calc(65% + 325px); }
-.Header-pages li:nth-child(4) { top: calc(50vh +  95px); left: calc(65% + 283px); }
-.Header-pages li:nth-child(5) { top: calc(50vh + 215px); left: calc(65% + 220px); }
-
-.container-header .langWrap
-{
-  text-align: center;
-  line-height: 50px;
-  height: 50px;
-  width: 100px;
-  position: relative;
-  
-  
-top: 5vh;
-left: 88vw;
-z-index: 10;
-}
-.menu-left .langWrap .neumorphism-toggles {
-  position: relative;
-  width: 120px;
- height: 60px;
- background-color: #e3e6ec;
-  box-shadow:
-      10px 10px 15px rgba(209, 217, 230, 1),
-      -10px -10px 15px rgba(255, 255, 255, 1);
-  border-radius: 20px;
-  font-size: 0;
-}
-
-
-.Header-pages a
-{
-  color: rgb(82, 82, 82); /* same gray as .header-text h1 / .hero-rotator (desktop) - was rgb(156,156,156), ~2.75:1 against the light hero background, failed WCAG AA */
-  z-index: 12;
+.Header-pages a {
+  color: rgb(82, 82, 82);
+  font-size: clamp(13px, 1.6vw, 16px);
   text-decoration: none;
   transition: .3s;
-  pointer-events: auto; /* re-enable clicks on the actual links - .Header-pages itself is pointer-events:none, see above */
 }
-.Header-pages a:hover
-{
-
-  color: rgb(10, 120, 160); /* darkened version of the existing accent cyan (rgb(10,170,219) glow below) - was rgb(100,211,255), ~1.71:1, failed WCAG AA */
-  text-shadow:
-  0 0 5px rgba(10, 170, 219, 0.5);
-  z-index: 12;
-  transition: .3s;
-}
-.menu_header-1
-{
-  margin-left: -5vw;
+.Header-pages a:hover {
+  color: rgb(10, 120, 160);
+  text-shadow: 0 0 5px rgba(10, 170, 219, 0.5);
 }
 
-.container-header
-{
-  height: 100vh;
-}
-.wrapper-img {
-  overflow: hidden;
+.langWrap {
   position: relative;
-  top: 50% !important;
-  left: 55%;
-  transform: translate(-45%, -60%);
-  width: 30%;
-    height: 74vh;
-  margin-top: 2vh;
-animation: animate4 linear 12s;
-box-shadow: 0 0 60px 1px #000000;
-background: url(../IMG/Portrait.jpg);
-object-fit: cover;
-background-origin: border-box;
-background-position: bottom;
+}
+/* .neumorphism-toggles (languageCSS.css) is 100px wide by default, but its
+   two 50x50 + 5px-margin buttons need 120px side by side - below this
+   width they wrap into a vertical stack instead. Matches the exact same
+   breakpoint languageCSS.css itself uses to shrink the buttons to 40x40
+   (100px fits then), so the two rules can never disagree. */
+.menu-left .langWrap .neumorphism-toggles {
+  width: 120px;
+  height: 60px;
+}
+@media (max-width: 1024px) and (orientation: portrait), (max-width: 1299px) and (orientation: landscape) {
+  .menu-left .langWrap .neumorphism-toggles {
+    width: 100px;
+    height: 50px;
+  }
 }
 
-.image-header {
-  position: absolute;
+.container-header {
+  min-height: 100vh;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 60px;
+}
+
+/* ── Hero: split layout - intro left, live project preview right ── */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vh, 48px) 6vw 20px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-split {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    padding: clamp(20px, 4vh, 48px) 5vw 40px;
+  }
+}
+
+.hero-split__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-intro-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.hero-avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(23, 32, 44, 0.18);
+  border: 3px solid #fff;
+  flex-shrink: 0;
+}
+.hero-avatar img {
   width: 100%;
   height: 100%;
- 
-  object-fit: cover;
-  background-origin: border-box;
-  background-position: bottom;
-}
-
-.box-header {
-  background:  rgb(255, 255, 255);
-  opacity: 1;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
-}
-
-/* ── Hero hexagon photo ── */
-/* flat-top hex 557×483, rounded corners r=34
-   image 557×557, head protrusion = 74px ≈ 13% of 557             */
-.hero-photo-wrap {
-  position: absolute;
-  top: 50%;
-  left: calc(65% - 5px);
-  transform: translate(-50%, -55%);
-  width: 557px;
-  height: 557px;
-  z-index: 10;
-}
-
-.hero-photo-glow {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 557px;
-  height: 483px;
-  background:
-    radial-gradient(ellipse 80% 35% at 50% 108%, rgba(100, 211, 255, 1) 0%, rgba(64, 211, 255, 0.55) 40%, transparent 70%),
-    radial-gradient(ellipse at 50% 55%, rgba(64, 211, 255, 0.25) 0%, transparent 65%);
-  filter: blur(20px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* flat-top rounded hex 557×483, r=34
-   TL(139.25,0) TR(417.75,0) R(557,241.5) BR(417.75,483) BL(139.25,483) L(0,241.5) */
-.hero-photo-hex-bg {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 557px;
-  height: 483px;
-  background: linear-gradient(160deg, #3fe8c8 0%, #64D3FF 55%, #40c8ff 100%);
-  clip-path: path('M 173.25,0 L 383.75,0 Q 417.75,0 434.75,29.4 L 540,212.1 Q 557,241.5 540,270.9 L 434.75,453.6 Q 417.75,483 383.75,483 L 173.25,483 Q 139.25,483 122.25,453.6 L 17,270.9 Q 0,241.5 17,212.1 L 122.25,29.4 Q 139.25,0 173.25,0 Z');
-  z-index: 1;
-}
-
-.hero-photo-img {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 557px;
-  height: 557px;
   object-fit: cover;
   object-position: top center;
 }
 
-/* --back: clipped by parent flat-top hex-bg */
-.hero-photo-img--back  { z-index: 2; }
-/* --front: top portion of portrait protruding above the hex */
-.hero-photo-img--front { z-index: 20; clip-path: inset(0 0 83% 0); }
-
-/* header  */
-
-.header-text {
-  position: absolute;
-  top: 45%;
-  left: 28%;
-  transform: translate(-50%, -50%);
+.hero-name {
+  display: flex;
+  flex-direction: column;
 }
 
-.header-text h1 {
-  color: rgb(82, 82, 82);
-  font-size: 120px;
+.header-1, .header-2 {
+  font-size: clamp(32px, 5.2vw, 64px);
   font-weight: bold;
+  color: rgb(82, 82, 82);
   text-transform: uppercase;
   margin: 0;
-  mix-blend-mode: overlay;
+  line-height: 1.05;
 }
 
-.header-1 .letter {
+.header-1 .letter, .header-2 .letter {
   display: inline-block;
   line-height: 1em;
 }
-.header-2 .letter {
-  display: inline-block;
-  line-height: 1em;
-}
-.header-3
-{
-  letter-spacing: 6px;
-  font-size: 40px;
-  color :rgb(100, 211, 255);
+
+.header-3 {
+  font-size: clamp(17px, 2.1vw, 24px);
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: rgb(100, 211, 255);
   text-shadow:
-  0 0 5px rgba(10, 170, 219, 0.5),
-  0 0 15px rgba(10, 142, 219, 0.3);
+    0 0 5px rgba(10, 170, 219, 0.5),
+    0 0 15px rgba(10, 142, 219, 0.3);
+  margin: 10px 0 0;
+  max-width: 32rem;
 }
-/* hero-container */
 
-.sidebar-text {
+.hero-secondary-line {
+  font-family: 'Jura', sans-serif;
+  color: rgb(100, 130, 150);
+  font-size: 0.95rem;
+  margin: 14px 0 0;
+  max-width: 34rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 12px 32px;
+  border-radius: 25px;
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid rgb(100, 211, 255);
+  color: rgb(64, 170, 235);
+  background: transparent;
+  transition: .3s;
+}
+.hero-cta:hover {
+  background: rgb(100, 211, 255);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(100, 211, 255, 0.5);
+}
+
+/* Hero live-preview slider: cross-fades between the 3 latest projects.
+   Each slide reuses .portfolio-card (PortfolioGrid.css) for the
+   browser-frame styling/hover-lift and JS/Portfolio.js's iframe scaling +
+   fallback-timeout logic - same component as Portfolio, just sized for
+   the hero. All slides share one grid cell (stacked) so swapping which
+   one is active never shifts layout - same technique as .hero-rotator
+   (HeroRotator.css). JS/HeroPreviewSlider.js drives the rotation. */
+.hero-preview-slider {
+  position: relative;
+  display: grid;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.hero-preview-slide {
+  grid-area: 1 / 1;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+.hero-preview-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hero-preview-card .browser-frame__viewport {
+  aspect-ratio: 4 / 3;
+}
+.hero-preview-caption {
+  margin: 14px auto 0;
+  max-width: 520px;
+  text-align: center;
+  font-family: 'Jura', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgb(82, 82, 82);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-preview-slide {
+    transition: none !important;
+  }
+}
+
+.boxArrow {
   position: absolute;
-  top: 20%;
-  right: 7%;
-  transform: translate(-50%, -50%);
-  font-size: 40px;
-  color: transparent;
-  -webkit-text-stroke: 2px rgb(165, 165, 165);
-}
-
-
-
-.img-nav {
-  position: absolute;
-  right: 13%;
-  bottom: 13%;
-  transform: translate(-50%, -50%);
-  text-transform: uppercase;
-  color: grey;
-}
-
-}
-
-/* media queries  */
-
-/* Mobile hero layout (stacked, hex-scaled).
-     portrait:  <=1024px (iPad Air/Mini portrait included)
-     landscape: <=1299px (iPad Air/Mini landscape included - the desktop
-                 menu's left: calc(65% + Npx) positions clip "Cennik"/
-                 "Portfolio" below ~1300px wide, verified empirically, so
-                 landscape tablets stay on this stacked layout too)
-   See the desktop query above for the exact complementary condition. */
-@media (max-width: 1024px) and (orientation: portrait), (max-width: 1299px) and (orientation: landscape) {
-  #box
-{
-  
-  position: absolute;
-  top: 100%;
-}
-.boxArrow
-{
-  position: absolute;
-  top: 80%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  /* Was 30 (above everything, including the nav at 12) - on some phone
-     heights (e.g. 414x736, 360x740) this decorative scroll-down hint's
-     box overlaps the "Kontakt" link's bottom-right corner by a few px and
-     was stealing the tap. 11 keeps it above the hero photo (z-index:10)
-     but below .Header-pages (12), so real nav links always win. */
-  z-index: 11;
+  bottom: 60px;
+  transform: translateX(-50%);
 }
-.boxArrow a
-{
+.boxArrow a {
   color: #64D3FF;
   display: block;
-  font-size: 48px;
-  margin-bottom: -40px;
+  font-size: 40px;
+  margin-bottom: -32px;
   animation: animate3 2s infinite;
   cursor: pointer;
 }
- .boxArrow a:nth-child(2)
- {
+.boxArrow a:nth-child(2) {
+  animation-delay: -0.2s;
+  transform: translate(0, -16px);
+}
+.boxArrow a:nth-child(3) {
+  animation-delay: -0.4s;
+}
 
-   animation-delay: -0.2s;
-   transform:  translate(0,-20px);
- }
-.boxArrow a:nth-child(3)
- {
-   animation-delay: -0.4s;
- }
- .menu_header-1
-{
-  margin-left: -5vw;
-}
-  .container-header
-{
-  position: relative;
-  height: 100vh;
-  overflow: clip;
-  clip-path: inset(0);
-  /* Reference phone = 390px (iPhone 12/13 mini-ish / mid-range Android).
-     At vw >= 390px these resolve to the old fixed values (scale 1.035,
-     hex-size 576.495px) unchanged; below 390px they shrink continuously
-     so the hex + menu never overflow narrower screens (320-360px). */
-  --hex-scale: clamp(0.8, calc(1.035 * (100vw / 390px)), 1.035);
-  --hex-size: calc(557px * var(--hex-scale));
-  --hex-left-x: calc(100% - (var(--hex-size) / 2));
-}
-  .boxArrow a
-{font-size: 32px;
-  margin-bottom: -28px;
-}
-  .Header-pages
-{
-  z-index: 12;
-  list-style: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-weight: 900;
-  font-size: clamp(16px, calc(24px * (100vw / 390px)), 24px);
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px rgba(100, 211, 255, 0.4);
-  /* Same reasoning as the desktop rule above: this UL's own box spans the
-     full hero (for its absolutely-positioned li's) and would otherwise
-     swallow clicks meant for .langWrap's PL/EN toggle sitting underneath it
-     - pointer-events:none here + auto on the links restores that. */
-  pointer-events: none;
-}
-.Header-pages li {
-  position: absolute;
-  line-height: 1;
-}
-/* All 5 items keep the "right" model, each shifted by the same amount
-   --hex-left-x moves as the hex scales. At vw >= 390px (100% - var(--hex-left-x))
-   resolves to the old fixed --hex-size/2 (288.2475px), reproducing the
-   original 200/252/298/264/215 values - and the original ~9.25px whitespace
-   gap between Cennik and the hex - unchanged. Below 390px everything (menu
-   text + hex) shrinks/shifts together, so the gap stays constant instead of
-   the old design's fixed px values running "Cennik"/"Portfolio" off-screen.
-   (Kept as a small fixed gap rather than an exact zero-gap touch: at zero gap
-   most of "Cennik" renders on top of the hex's cyan fill, and its text color
-   (#64D3FF) nearly matches that fill, making the word unreadable.) */
-.Header-pages li:nth-child(1) { top: calc(50vh - 143px); right: calc(100% - var(--hex-left-x) - 88.25px); }
-.Header-pages li:nth-child(2) { top: calc(50vh -  58px); right: calc(100% - var(--hex-left-x) - 36.25px); }
-.Header-pages li:nth-child(3) { top: calc(50vh +  27px); right: calc(100% - var(--hex-left-x) + 9.75px); }
-.Header-pages li:nth-child(4) { top: calc(50vh + 112px); right: calc(100% - var(--hex-left-x) - 24.25px); }
-.Header-pages li:nth-child(5) { top: calc(50vh + 197px); right: calc(100% - var(--hex-left-x) - 73.25px); }
-.Header-pages a
-{
-  color: rgb(82, 82, 82); /* same gray as .header-text h1 / .hero-rotator (desktop) - was rgb(100,211,255), ~1.71:1 against the light hero background, failed WCAG AA */
-  z-index: 12;
-  text-decoration: none;
-  transition: .3s;
-  pointer-events: auto; /* re-enable clicks on the actual links - .Header-pages itself is pointer-events:none, see above */
-}
-.Header-pages a:hover
-{
-  color: rgb(10, 120, 160); /* darkened version of the existing accent cyan (rgb(10,170,219) glow below) - was rgb(100,211,255), ~1.71:1, failed WCAG AA */
-  text-shadow:
-  0 0 5px rgba(10, 170, 219, 0.5);
-  z-index: 12;
-  transition: .3s;
-}
-  .box-header {
-    background:  rgb(255, 255, 255);
+@keyframes animate3 {
+  0% {
+    opacity: 0;
+    transform: translate(0, -20px);
+  }
+  50% {
     opacity: 1;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
   }
-  .hero-photo-wrap {
-    display: block;
-    position: absolute;
-    top: calc(50% - 275px);
-    left: auto;
-    right: -278px;
-    width: 557px;
-    height: 557px;
-    /* width/height/right stay fixed: transform-origin is the box's own
-       center, so scaling here never moves that center - it's already
-       pinned at the container's right edge. Only the scale needs to
-       respond to viewport width, via --hex-scale (set on .container-header
-       above); the visible hex geometry (--hex-size, --hex-left-x) is
-       derived from that same scale, so hero-photo-hex-bg's clip-path
-       (which uses absolute path() coordinates and can't scale on its own)
-       stays correct at any size. */
-    transform: scale(var(--hex-scale));
-    transform-origin: center center;
-    z-index: 10;
-    overflow: hidden;
-    /* Purely decorative (no links/handlers on it or its children - see
-       AnimationGsap.js, it only ever touches .style.transform/.opacity).
-       z-index already puts .Header-pages (12) above this (10), but this
-       removes any chance of the photo - or the un-clipped rectangular top
-       sliver of .hero-photo-img--front, which isn't masked to the hex
-       shape - ever intercepting a tap meant for the nav menu underneath. */
-    pointer-events: none;
+  100% {
+    opacity: 0;
+    transform: translate(0, 20px);
   }
-  .hero-photo-glow {
+}
+
+/* Below the hero-split two-column breakpoint (900px, see .hero-split above)
+   the left/right columns stack, pushing .container-header's real height
+   well past 100vh - .boxArrow's bottom:60px then lands on top of
+   .hero-preview-caption instead of clear space below it. The arrow is
+   redundant once the layout already visibly continues below the fold on
+   these narrower/stacked layouts, so just hide it. */
+@media (max-width: 899px) {
+  .boxArrow {
     display: none;
   }
-  .hero-photo-hex-bg {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 557px;
-    height: 483px;
-    background: linear-gradient(160deg, #3fe8c8 0%, #64D3FF 55%, #40c8ff 100%);
-    clip-path: path('M 173.25,0 L 383.75,0 Q 417.75,0 434.75,29.4 L 540,212.1 Q 557,241.5 540,270.9 L 434.75,453.6 Q 417.75,483 383.75,483 L 173.25,483 Q 139.25,483 122.25,453.6 L 17,270.9 Q 0,241.5 17,212.1 L 122.25,29.4 Q 139.25,0 173.25,0 Z');
-    z-index: 1;
-  }
-  .hero-photo-img {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 557px;
-    height: 557px;
-    object-fit: cover;
-    object-position: top center;
-  }
-  .hero-photo-img--back  { z-index: 2; }
-  .hero-photo-img--front { z-index: 20; clip-path: inset(0 0 83% 0); }
-  .wrapper-img {
-    display: none;
-    overflow: hidden;
-    position: relative;
-    top: 20% !important;
-    right: 0;
-    left: 75%;
-    transform: translatex( -60%);
-    width: 60%;
-    height: 60vh;
-    margin-top: 2vh;
-  animation: animate4 linear 12s;
-  box-shadow: 0 0 60px 1px #000000;
-
-  }
-  
-  .image-header {
-    position: absolute;
-    background: url(../IMG/PortraitSmall.jpg);
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-origin: border-box;
-    background-position: bottom;
-  }
-  .header-text {
-    position: absolute;
-    width: 80%;
-    top: 14%;
-    left: 50%;
-    transform: translate(-50%, -50%) ;
-  }
-  
-  .header-text h1 {
-
-    color: rgb(82, 82, 82); /* same dark gray as .Header-pages (menu) - was rgb(173,185,202), too light/low-contrast on mobile */
-    font-size: 42px;
-    text-transform: uppercase;
-    margin: 0;
-    mix-blend-mode: overlay;
-  }
-  
-  .header-1 .letter {
-    display: inline-block;
-    line-height: 1em;
-  }
-  .header-2 .letter {
-    display: inline-block;
-    line-height: 1em;
-  }
-  .header-3
-  {
-    letter-spacing: 6px;
-    font-size: 26px;
-    color :rgb(100, 211, 255);
-    text-shadow:
-    0 0 5px rgba(10, 170, 219, 0.5),
-    0 0 15px rgba(10, 142, 219, 0.3);
-  }
- 
-  .header {
-    top: 50%;
-    left: 50%;
-    text-align: center;
-  }
-  .header h1 {
-    font-size: 40px;
-  }
-
-  .projects,
-  .img-nav {
-    display: none;
-  }
-  
-.container-header .langWrap
-{
-  text-align: center;
-  line-height: 50px;
-  height: 50px;
-  width: 100px;
-  position: relative;
-  
-  
-top: 2vh;
-left: 68vw;
-z-index: 10;
 }
-.menu-left .langWrap .neumorphism-toggles {
-  position: relative;
-  width: 100px;
- height: 50px;
- background-color: #e3e6ec;
 
-  border-radius: 20px;
-  font-size: 0;
-}
-}
-/* Tablet-scale tweaks, restricted to 768-801px (any orientation). The rest
-   of the old 768-1024px range (802-1024px, either orientation) now runs
-   the mobile hero layout unconditionally - see the media queries above,
-   where mobile owns portrait <=1024px AND landscape <=1299px - so it's
-   deliberately excluded here: it should keep the mobile layout's own
-   font-size clamp instead of this desktop-oriented 30px/80px override. */
-@media (min-width: 768px) and (max-width: 801px)
-{
-  .header-text h1 {
-
-    color: rgb(173, 185, 202);
-    font-size: 80px;
-    text-transform: uppercase;
-    margin: 0;
-    mix-blend-mode: overlay;
-  }
-  .header-text h3 {
-    font-size: 45px;
-  }
-  .Header-pages
-  {
-    font-size: 30px;
-  }
-  .container-header .langWrap
-{
-top: 5vh;
-left: 84vw;
-}
-}
-/* Portrait-only: at this width, landscape is still the mobile hero layout
-   (mobile owns landscape <=1299px - see above), so this desktop-oriented
-   size must not apply there. */
-@media (min-width: 1025px) and (max-width: 1280px) and (orientation: portrait)
-{
-  .header-text h1 {
-
-
-    font-size: 90px;
-    text-transform: uppercase;
-    margin: 0;
-    mix-blend-mode: overlay;
-  }
-}
-@media (min-width: 10240px) and (max-width: 1480px)
-{
-  .header-text h1 {
-
-
-    font-size: 95px;
-    text-transform: uppercase;
-    margin: 0;
-    mix-blend-mode: overlay;
-  }
-  }
 /* ── Landscape phone fix (phones rotated sideways, height < 500px) ── */
 @media (max-height: 500px) and (orientation: landscape) {
-  .hero-photo-wrap { display: none; }
   .container-header {
-    background: url(../IMG/portrait4.webp);
-    background-color: rgb(255, 255, 255);
-    height: 100vh;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-origin: border-box;
-    background-position: center right;
+    min-height: auto;
+    padding: 12px 0 20px;
   }
-  .header-text {
-    position: absolute;
-    width: 55%;
-    top: 42%;
-    left: 28%;
-    transform: translate(-50%, -50%);
+  .hero-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 8px 4vw;
   }
-  .header-text h1 {
-    color: rgb(173, 185, 202);
-    font-size: 52px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0;
-    mix-blend-mode: overlay;
+  .hero-intro-row {
+    margin-bottom: 10px;
+  }
+  .hero-avatar {
+    width: 64px;
+    height: 64px;
+  }
+  .header-1, .header-2 {
+    font-size: clamp(22px, 4vw, 32px);
   }
   .header-3 {
-    font-size: 24px;
-    letter-spacing: 4px;
+    font-size: 15px;
+  }
+  .hero-secondary-line {
+    display: none;
+  }
+  .hero-preview-card {
+    max-width: 100%;
   }
   .boxArrow {
-    top: 70%;
+    display: none;
   }
 }
-
-@keyframes animate4
-{
-  0%
-  {
-    box-shadow: 0 0 0px 0px #000000;
-  }
-  45%
-  {
-    box-shadow: 0 0 0px 0px #000000;
-  }
-  100%
-  {
-    box-shadow: 0 0 60px 1px #000000;
-  }
-}
-
-@keyframes animate3
-{
- 0%
- {
-   opacity: 0;
-   transform:  translate(0,-20px);
- }
- 
- 50%
-  {
-    opacity: 1;
-  }
-  100%
-  {
-    opacity: 0;
-    transform:  translate(0,20px);
-  }
- }

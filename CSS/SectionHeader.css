@@ -1,0 +1,97 @@
+/* ── Shared section header: divider-with-label marker + fluid heading ──
+   Replaces the old fixed-width skewed-ribbon headings (which cut off
+   longer text and overlapped the sticky navbar on scroll) across every
+   content section.
+
+   Classic "divider with a label in the middle" pattern - one flex row
+   with a line, the label, then another line. Positioned absolutely so it
+   sits ON the seam between this section's background and the previous
+   section's, rather than inside this section's own top padding:
+
+   <section class="Aboutme">           <!-- needs position:relative -->
+     <div class="section-marker">
+       <span class="marker-line"></span>
+       <span class="marker-label">o mnie</span>
+       <span class="marker-line"></span>
+     </div>
+     <h2 class="section-heading">...</h2>
+   </section>
+
+   The section itself must be position:relative (set per-section below,
+   next to each one's own background-color rule) - .section-marker's
+   top:0 + translateY(-50%) is relative to THAT section's own top edge,
+   which is exactly the color seam. */
+.section-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  /* Higher than a plain 1 - needs to clear the FOLLOWING section's own
+     stacking (e.g. #Skills' service-tile cards), not just its own parent's
+     content, since it visually overlaps the section immediately above it. */
+  z-index: 5;
+}
+.marker-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-accent);
+}
+/* A <span>, deliberately not a <p> - some sections have their own generic
+   "<section-class> p { font-size: ... }" rule (e.g. .Aboutme p) that
+   would otherwise out-specificity this class selector and silently
+   inflate the label's font-size. */
+.marker-label {
+  flex-shrink: 0;
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(64, 170, 235);
+  /* Fallback fill for any section with no single solid background of its
+     own to match (see the per-section overrides below) - e.g. Contact,
+     which stays on the page's textured body background by design. */
+  background: rgba(100, 211, 255, 0.08);
+  border: 1px solid var(--border-accent);
+  border-radius: 999px;
+  padding: 8px 22px;
+  white-space: nowrap;
+}
+/* Solid fill matching each section's own background-color, so the
+   previous section's half of the line doesn't show through the pill's
+   middle (a semi-transparent fill would let it bleed through). */
+.Aboutme .marker-label { background: #fff; }
+.skills-bg-wrap .marker-label { background: #f4f5f7; }
+.pricing-section .marker-label { background: #fff; }
+.Projects .marker-label { background: #f4f5f7; }
+/* .Contact_Social intentionally has no override - it has no solid
+   background-color of its own (left on the page's textured background,
+   same as Header, per the site's dark/textured-section exception), so
+   there's no single color to match; the default tint above is used. */
+
+.section-heading {
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.15;
+  color: rgb(82, 82, 82);
+  text-align: center;
+  /* Clears .section-marker above it, which no longer takes up flow space
+     now that it's position:absolute - roughly half the marker's own
+     height plus a bit of breathing room. */
+  margin: 48px 0 8px;
+  max-width: 100%;
+}
+
+/* Anchor-scroll offset for the sticky navbar (75px, see Navbar.css) so
+   jumping to a section (nav click or a direct #hash URL) doesn't land
+   with its heading tucked under the fixed bar. Navbar.js's own
+   click-driven smoothScroll() applies the same offset in JS, since it
+   computes scroll position manually and never goes through this. */
+#About, #Skills, #Cennik, #Projects, #Contact {
+  scroll-margin-top: 90px;
+}

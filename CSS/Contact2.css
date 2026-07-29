@@ -1,47 +1,14 @@
-.Contact_Social h2
-{
-  color: rgb(255, 255, 255);
-  font-size: 70px;
-width: 75%;
-margin-left: 50%;
-transform: translate(-50%);
+/* Containing block for .section-marker (SectionHeader.css), which is
+   position:absolute and needs to sit on THIS section's own top edge. */
+.Contact_Social {
+  position: relative;
+  /* Without this, .section-heading's margin-top would collapse straight
+     through this section (its first in-flow child now that the marker is
+     position:absolute and no longer occupies flow space), landing the
+     heading flush against the top edge instead of clear of the marker. */
+  display: flow-root;
 }
-.Contact_Social h2:before
-{
-    content: '';
-    position: absolute;
-    left: -52px;
-    width: 340px;
-  height: 106%;
-  
-    transform: skew(15deg);
-  z-index: -1;
 
-background: #757F9A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  transform: skew(15deg);
-z-index: -1;
-
-}
-.Contact_Social h2:After
-{
-
-    content: '';
-    position: absolute;
-    left: -67px;
-    width: 370px;
-
-height: 106%;
-  /* background: var(--main-color); */
-
-  background: #757F9A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #c5d3e2, #52596b);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #bec9d8, #454b5c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  transform: skew(15deg);
-z-index: -2;
-
-}
 .contact_container {
   position: relative;
   width: 100%;
@@ -403,45 +370,6 @@ z-index: -1;
       color:  rgb(255, 255, 255);
       transition: 0.5s;
   }
-    .Contact_Social h2
-{
-  color: rgb(255, 255, 255);
-    font-size: 40px;
-width: 75%;
-margin-left: 50%;
-transform: translate(-50%);
-}
-.Contact_Social h2:before
-{
-  content: '';
-  position: absolute;
-  left: -1.1rem;
-  width: 160px;
-height: 106%;
-
-background: #757F9A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  transform: skew(15deg);
-z-index: -1;
-
-}
-.Contact_Social h2:After
-{
-  content: '';
-  position: absolute;
-  left: -1.9rem;
-  width: 185px;
-height: 106%;
-  /* background: var(--main-color); */
-
-  background: #757F9A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #c5d3e2, #52596b);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #bec9d8, #454b5c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  transform: skew(15deg);
-z-index: -2;
-
-}
   .form {
     grid-template-columns: 1fr;
   }
@@ -507,21 +435,9 @@ z-index: -2;
   textarea.input {
     min-height: 80px;
   }
-  .Contact_Social h2 {
-    font-size: 40px;
-  }
 }
 
 @media (max-width: 480px) {
-  .Contact_Social h2
-{
-
-  color: rgb(255, 255, 255);
-    font-size: 40px;
-width: 75%;
-margin-left: 50%;
-transform: translate(-50%);
-}
   .contact_container {
     padding: 1.5rem;
   }

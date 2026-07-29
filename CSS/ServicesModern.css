@@ -1,0 +1,85 @@
+/* ── Services: light neutral-gray section, white cards on top for
+   contrast (same idea as .Projects/.portfolio-panel) - covers the
+   heading area too so the page's textured body background never shows
+   through. ── */
+.skills-bg-wrap {
+  background-color: #f4f5f7;
+  /* Containing block for .section-marker (SectionHeader.css), which is
+     position:absolute and needs to sit on THIS section's own top edge -
+     specifically, its top half must be able to overflow ABOVE this box
+     to straddle the seam, so this can't use overflow:hidden/clip to
+     contain margins (see below) - that would clip the marker itself. */
+  position: relative;
+  /* .Service_section's own margin-top/bottom would otherwise collapse
+     straight through this wrapper (no padding/border of its own to stop
+     it), showing the page's textured body background in that gap instead
+     of this wrapper's background-color. display:flow-root establishes a
+     new block formatting context - same fix as overflow:hidden used to,
+     but without clipping the marker's intentional overflow above. */
+  display: flow-root;
+}
+.services-panel {
+  padding: 32px 6vw 60px;
+}
+
+.Service-text {
+  max-width: 700px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+.service_subtitle {
+  font-family: 'Jura', sans-serif;
+  color: #64666d;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ── Services: 2x2 icon-card grid, same card language as .portfolio-card ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 700px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+.service-tile {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.14), 0 2px 8px rgba(23, 32, 44, 0.06);
+  padding: 32px 28px;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.service-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgb(100, 211, 255);
+  box-shadow: 0 16px 40px rgba(100, 211, 255, 0.3), 0 2px 8px rgba(23, 32, 44, 0.1);
+}
+.service-tile__icon {
+  font-size: 32px;
+  color: rgb(100, 211, 255);
+  margin-bottom: 16px;
+}
+.service-tile__title {
+  font-family: 'Jura', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(82, 82, 82);
+  margin: 0 0 10px;
+}
+.service-tile__desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgb(75, 75, 75);
+  margin: 0;
+}
