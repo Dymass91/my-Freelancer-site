@@ -35,7 +35,7 @@
 .form {
   width: 100%;
   max-width: 1220px;
-  border-radius: 10px;
+  border-radius: 16px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
   z-index: 1;
   overflow: hidden;
@@ -44,8 +44,7 @@
 }
 
 .contact-form {
-    background: -webkit-linear-gradient(to right bottom, #c5d3e2 30%, #52596b);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right bottom, #bec9d8 30%, #454b5c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right bottom, var(--main-color) 30%, var(--contact-deep-blue));
   position: relative;
 }
 
@@ -54,7 +53,7 @@
   position: absolute;
   width: 26px;
   height: 26px;
-  background-color: #bec9d8;
+  background-color: var(--main-color);
   transform: rotate(45deg);
   top: 50px;
   left: -13px;
@@ -256,18 +255,18 @@ width: 100%;
       text-align: center;
       position: relative;
       display: block;
-      background:#757F9A;
-      border-radius: 5px;
+      background: var(--main-color);
+      border-radius: 8px;
       color:  rgb(255, 255, 255);
       transition: 0.5s;
   }
-  .social-icons  a:hover 
+  .social-icons  a:hover
 {
-    
-  color: #00d5f1;
+
+  color: var(--span-color);
     transition: 0.5s;
     background:  rgb(255, 255, 255);
-    box-shadow: 0 0 10px #00eeff, 0 0 10px #0089c9, 0 0 20px #00b9f1;
+    box-shadow: 0 0 10px var(--span-color), 0 0 10px rgba(100, 211, 255, 0.7), 0 0 20px rgba(100, 211, 255, 0.4);
 }
 .social-icons  a:before
 {
@@ -277,18 +276,18 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-border-radius: 5px;
-background: rgb(0, 0, 0);
+border-radius: 8px;
+background: var(--contact-deep-blue);
 transition: 0.5s;
 transform: scale(0.9);
 z-index: -1;
-} 
+}
 .social-icons  a:hover:before
 {
     transform: scale(1.15);
     transition: 0.5s;
-    background: rgb(0, 195, 255);
-    box-shadow: 0 0 10px rgb(0, 195, 255), 0 0 10px rgba(0, 195, 255, 0.897), 0 0 20px rgba(0, 195, 255, 0.555);
+    background: var(--span-color);
+    box-shadow: 0 0 10px var(--span-color), 0 0 10px rgba(100, 211, 255, 0.7), 0 0 20px rgba(100, 211, 255, 0.4);
 }
 .icon {
     font-size: 1.3rem;
@@ -376,8 +375,8 @@ z-index: -1;
       text-align: center;
       position: relative;
       display: block;
-      background:#757F9A;
-      border-radius: 5px;
+      background: var(--main-color);
+      border-radius: 8px;
       color:  rgb(255, 255, 255);
       transition: 0.5s;
   }

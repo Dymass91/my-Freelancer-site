@@ -29,6 +29,9 @@
   padding: 0 6vw;
   text-align: center;
 }
+.Projects_title_text {
+  padding-bottom: 20px;
+}
 }
 
 @media (min-width: 768px)

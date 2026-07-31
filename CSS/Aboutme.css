@@ -132,6 +132,7 @@
   justify-content: center;
   gap: 12px;
   width: 100%;
+  margin-top: 4px;
 }
 .about-photo-badge {
   font-family: 'Jura', sans-serif;
@@ -260,31 +261,50 @@
      works within a normal block formatting context (a flex/grid
      container would size and position the photo column as a grid/flex
      item instead of letting text flow around it as a float). */
+  /* max-width matches .about-text's own 700px cap plus this container's
+     horizontal padding (700 + 4rem + 4rem = 828) - .about-text's box
+     already spans the full width behind the float (floats shorten line
+     boxes, not the block's own box), so 700px is the cluster's true
+     rendered width, not 700+the float's width on top of it. Sizing the
+     container to exactly that width (instead of the wider photo+text
+     sum) is what actually centers the visible cluster via margin:auto,
+     rather than centering an oversized box with dead space on one side. */
   .About-container
   {
     width: 100%;
+    max-width: 828px;
+    margin: 0 auto;
     display: block;
     padding: 1rem 4rem 5rem;
   }
 
-  /* Mobile-only intro card and its badge copy - the float column
-     below (and .about-text's own copy of the badges further down)
-     takes over at this breakpoint instead. */
-  .about-mobile-card,
-  .about-photo-badges--mobile {
+  /* Mobile-only intro card - the float column below takes over here. */
+  .about-mobile-card {
     display: none;
   }
+}
+
+@media (min-width: 769px)
+{
 
   /* Floated, not a flex item and not sticky - text (.about-text, a
      later sibling in the same block formatting context) wraps around
      it like a classic magazine/blog image float, rather than sitting in
      a rigid side-by-side column. margin-right/bottom give the wrapping
-     text some breathing room instead of hugging the hexagon's edges. */
+     text some breathing room instead of hugging the hexagon's edges.
+     Bordered/padded like .about-mobile-card (16px radius, accent
+     border) so desktop gets the same framed-card look as mobile -
+     width grows from 220px (the hexagon's own width) to 260px to make
+     room for the 20px padding on each side without shrinking the photo. */
   .about-photo-column {
-    display: block;
+    display: flex;
     float: left;
-    width: 240px;
+    width: 260px;
     margin: 0 32px 24px 0;
+    border: 1.5px solid var(--border-accent);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
   }
   .hexagon-photo-wrap {
     width: 220px;

@@ -124,8 +124,8 @@
 
 .header-1, .header-2 {
   font-size: clamp(22px, 3.4vw, 36px);
-  font-weight: bold;
-  color: rgb(82, 82, 82);
+  font-weight: 800;
+  color: rgb(31, 92, 138);
   margin: 0;
   line-height: 1.2;
 }
@@ -161,21 +161,36 @@
   max-width: 34rem;
 }
 
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 26px;
+}
 .hero-cta {
   display: inline-block;
-  margin-top: 26px;
   padding: 12px 32px;
   border-radius: 25px;
   font-family: 'Jura', sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
+  transition: .3s;
+}
+.hero-cta--primary {
+  border: 2px solid rgb(100, 211, 255);
+  color: #fff;
+  background: rgb(100, 211, 255);
+}
+.hero-cta--primary:hover {
+  box-shadow: 0 0 15px rgba(100, 211, 255, 0.5);
+}
+.hero-cta--secondary {
   border: 2px solid rgb(100, 211, 255);
   color: rgb(64, 170, 235);
   background: transparent;
-  transition: .3s;
 }
-.hero-cta:hover {
+.hero-cta--secondary:hover {
   background: rgb(100, 211, 255);
   color: #fff;
   box-shadow: 0 0 15px rgba(100, 211, 255, 0.5);

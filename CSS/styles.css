@@ -19,6 +19,10 @@ html, body {
        background (SectionHeader.css) - both must match exactly, so both
        read from this one variable instead of duplicating the value. */
     --border-accent: rgba(100, 211, 255, 0.45);
+    /* Scoped dark end for Contact's gradient/social-icon fills - the
+       palette above has nothing dark enough to host white text/icons,
+       so this stays in the same blue hue family purely for contrast. */
+    --contact-deep-blue: rgb(28, 46, 74);
 }
 
 body {
