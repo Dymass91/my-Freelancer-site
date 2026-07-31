@@ -118,19 +118,11 @@
             <!-- hero: split layout, intro left / live project preview right -->
             <div class="hero-split">
                 <div class="hero-split__left header-text">
-                    <div class="hero-intro-row">
-                        <div class="hero-avatar">
-                            <picture>
-                                <source type="image/webp" srcset="IMG/portrait4.webp">
-                                <img src="IMG/portrait4.png" alt="Tomasz Matyszczak – Web Developer Piła">
-                            </picture>
-                        </div>
-                        <div class="hero-name">
-                            <h1 class="header-1">Tomasz</h1>
-                            <h1 class="header-2">Matyszczak</h1>
-                        </div>
+                    <div class="hero-name">
+                        <h1 class="header-1">Strony, które pracują</h1>
+                        <h1 class="header-2">na Twój biznes.</h1>
                     </div>
-                    <h2 class="header-3">Strony internetowe, które rozumieją Twój biznes</h2>
+                    <h2 class="header-3">Piszę każdą stronę ręcznie — bez gotowych kreatorów i wtyczek, które spowalniają.</h2>
                     <div class="hero-rotator">
                         <p class="hero-rotator__line is-active">Od <strong>1690 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.</p>
                         <p class="hero-rotator__line">Buduję strony, które ładują się w <strong>2 sekundy</strong> i realnie <strong>przyciągają klientów</strong> &mdash; nie tylko ładnie wyglądają.</p>
@@ -208,6 +200,36 @@
         </div>
         <h2 class="title section-heading">Kim jestem i jak pracuję</h2>
         <div class="About-container">
+            <!-- Mobile-only intro card (hidden on desktop, see @media
+                 min-width:769px in Aboutme.css) - desktop keeps the
+                 float-based .about-photo-column below untouched. -->
+            <div class="about-mobile-card">
+                <div class="hexagon-photo-wrap">
+                    <div class="hexagon-photo-glow"></div>
+                    <div class="hexagon-photo-border"></div>
+                    <div class="hexagon-photo-bg"></div>
+                    <div class="hexagon-photo">
+                        <img src="IMG/portrait4.png" alt="Tomasz Matyszczak" />
+                    </div>
+                </div>
+                <p class="about-mobile-intro">Cześć, jestem Tomasz. Buduję szybkie strony internetowe dla małych firm — ręcznie, bez agencji i szablonów.</p>
+            </div>
+
+            <!-- Desktop-only float column (hidden on mobile). -->
+            <div class="about-photo-column">
+                <div class="hexagon-photo-wrap">
+                    <div class="hexagon-photo-glow"></div>
+                    <div class="hexagon-photo-border"></div>
+                    <div class="hexagon-photo-bg"></div>
+                    <div class="hexagon-photo">
+                        <img src="IMG/portrait4.png" alt="Tomasz Matyszczak" />
+                    </div>
+                </div>
+                <div class="about-photo-badges">
+                    <div class="about-photo-badge">Bezpłatna wycena Twojego projektu</div>
+                    <div class="about-photo-badge">Odpowiadam osobiście w ciągu 24h</div>
+                </div>
+            </div>
             <div class="about-text">
                 <p class="aboutMe_lead">Nie kupujesz strony. Kupujesz narzędzie, które ma dla Ciebie pracować.</p>
 
@@ -216,6 +238,15 @@
                 <p class="aboutMe_text3">Kilka lat pracowałem jako niezależny wykonawca za granicą — nauczyło mnie to patrzeć na biznes klienta z różnych stron, nie tylko przez pryzmat jednego rynku. Dziś realizuję strony dla firm o różnym profilu i skali — od prostych wizytówek po rozbudowane serwisy i sklepy internetowe.</p>
 
                 <p class="aboutMe_techLine">Strony pisane ręcznie, bez gotowych kreatorów — dzięki temu działają szybciej.</p>
+
+                <!-- Mobile-only copy of the badges, placed here in the
+                     flowing text just above the cards (hidden on
+                     desktop, where the .about-photo-column copy above
+                     is used instead). -->
+                <div class="about-photo-badges about-photo-badges--mobile">
+                    <div class="about-photo-badge">Bezpłatna wycena Twojego projektu</div>
+                    <div class="about-photo-badge">Odpowiadam osobiście w ciągu 24h</div>
+                </div>
 
                 <p class="aboutMe_whyLabel">Dlaczego warto pracować ze mną:</p>
 

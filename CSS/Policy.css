@@ -5,11 +5,12 @@
     left: 60vw;
    
   margin-left: .3vw;
-   color: rgb(122, 122, 122);
-   text-decoration: none;
+   color: var(--span-color);
+   text-decoration: underline;
+   text-underline-offset: 2px;
    transition: .2s;
    cursor: pointer;
-   font-weight: 900;
+   font-weight: 700;
 }
 .Policy_button:hover{
     color: var(--span-color);
@@ -138,11 +139,12 @@
     left: 60vw;
    
   margin-left: .3vw;
-   color: rgb(122, 122, 122);
-   text-decoration: none;
+   color: var(--span-color);
+   text-decoration: underline;
+   text-underline-offset: 2px;
    transition: .2s;
    cursor: pointer;
-   font-weight: 900;
+   font-weight: 700;
 }
 .Policy_button:hover{
     color: var(--span-color);

@@ -1,11 +1,27 @@
+// Wraps each WORD in its own inline-block span (one atomic box per word,
+// so the line can only wrap between words, same as plain text), with the
+// per-letter animation spans nested inside it. Splitting straight into
+// per-letter spans (the old approach) removed word boundaries entirely -
+// every letter became its own independent inline-block box, so the
+// browser could break a line between ANY two letters, not just at
+// spaces. Invisible while this only ever held short single words
+// ("Tomasz" / "Matyszczak"), but breaks visibly on longer text.
+function splitIntoAnimatedLetters(el) {
+    el.innerHTML = el.textContent.split(' ').map(function (word) {
+        return "<span class='word-wrap' style='display:inline-block'>" +
+            word.replace(/\S/g, "<span class='letter'>$&</span>") +
+            "</span>";
+    }).join(' ');
+}
+
 var textWrapper = document.querySelector('.header-1');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+splitIntoAnimatedLetters(textWrapper);
 
 var textWrapper2 = document.querySelector('.header-2');
-textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+splitIntoAnimatedLetters(textWrapper2);
 
 var textWrapper3 = document.querySelector('.header-3');
-textWrapper3.innerHTML = textWrapper3.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+splitIntoAnimatedLetters(textWrapper3);
 
 var counterEl = document.querySelector('.counter-number');
 var barFill = document.querySelector('.loader-bar-fill');

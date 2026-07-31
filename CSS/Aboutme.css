@@ -26,6 +26,161 @@
   }
 }
 
+/* ── About photo: a single image clipped directly to a flat-top/flat-
+   bottom hexagon (pointy sides), with a decorative hexagon-shaped fill
+   sitting BEHIND it (same shape, 10px bigger on every side) so it reads
+   as a colored frame/halo around the photo. Fill color is
+   var(--span-color) - the exact same accent used for .marker-label's
+   border (var(--border-accent), which is this same rgb value at 45%
+   opacity - see styles.css), the Portfolio/Skills card hover border,
+   and .hero-cta's border/hover fill, so this stays visually consistent
+   with the rest of the site rather than introducing a new color.
+   .hexagon-photo-wrap carries the width/height (see media queries below
+   for the smaller mobile size) - both the photo and the bg fill it at
+   100%/100%, with the bg additionally offset -10px on each side via
+   top/left/right/bottom so it's uniformly bigger. The polygon()'s
+   percentages define the hexagon itself and don't need to change when
+   the box size does. */
+.hexagon-photo-wrap {
+  position: relative;
+  width: 220px;
+  height: 250px;
+  margin: 0 auto;
+}
+/* Neon glow pooling under the hexagon - same accent color as the
+   hexagon fill (var(--span-color)), just blurred into a soft ellipse
+   instead of a hard hex edge, like light spilling out from underneath. */
+.hexagon-photo-glow {
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 26px;
+  background: var(--span-color);
+  border-radius: 50%;
+  filter: blur(18px);
+  opacity: 0.8;
+  z-index: -2;
+  pointer-events: none;
+}
+/* Border for the hexagon - a plain CSS border doesn't follow a
+   clip-path shape, so this is the same "bigger duplicate shape behind
+   it" trick used for hexagon-photo-bg itself: a third hex, a few px
+   bigger still, sitting one layer further back, so a thin strip of it
+   peeks out as an outline. Color is rgb(64, 170, 235) - already used
+   elsewhere on the site (.marker-label's text color, SectionHeader.css;
+   the darker end of the Portfolio card gradient, PortfolioGrid.css), a
+   deeper shade of the same accent family as hexagon-photo-bg's fill. */
+/* Rounded-corner hexagons use clip-path: path() instead of polygon() -
+   border-radius doesn't apply to clip-path shapes, and polygon() has no
+   rounding mechanism of its own. path() coordinates are absolute pixels
+   in this element's own border-box (not percentages), so unlike
+   polygon() the path has to be recomputed for each layer's actual
+   rendered size (this box, hexagon-photo-bg's box, hexagon-photo-
+   border's box are all slightly different) AND for the mobile size
+   below - see scratch hexpath.js. Each path already bakes in a ~16px
+   (desktop) / ~13px (mobile) corner radius. */
+.hexagon-photo-border {
+  position: absolute;
+  top: 6px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+  background: rgb(64, 170, 235);
+  clip-path: path('M 73,0 L 155,0 Q 171,0 177.683,14.538 L 221.317,109.462 Q 228,124 221.317,138.538 L 177.683,233.462 Q 171,248 155,248 L 73,248 Q 57,248 50.317,233.462 L 6.683,138.538 Q 0,124 6.683,109.462 L 50.317,14.538 Q 57,0 73,0 Z');
+  z-index: -1;
+}
+.hexagon-photo-bg {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: var(--span-color);
+  clip-path: path('M 71,0 L 149,0 Q 165,0 171.666,14.545 L 213.334,105.455 Q 220,120 213.334,134.545 L 171.666,225.455 Q 165,240 149,240 L 71,240 Q 55,240 48.334,225.455 L 6.666,134.545 Q 0,120 6.666,105.455 L 48.334,14.545 Q 55,0 71,0 Z');
+  z-index: 0;
+}
+.hexagon-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  clip-path: path('M 71,0 L 149,0 Q 165,0 171.444,14.645 L 213.556,110.355 Q 220,125 213.556,139.645 L 171.444,235.355 Q 165,250 149,250 L 71,250 Q 55,250 48.556,235.355 L 6.444,139.645 Q 0,125 6.444,110.355 L 48.556,14.645 Q 55,0 71,0 Z');
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hexagon-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Badges under the photo - same pill language as .marker-label
+   (SectionHeader.css): border-accent border, rounded-full, tinted fill.
+   Narrower/plainer than the "why work with me" cards since these sit in
+   the tighter photo column, not the full text column. Row + wrap (not a
+   fixed column) so the two badges sit side by side whenever they fit
+   the available width, and drop to stacked automatically otherwise -
+   same rule for both breakpoints, no separate mobile-only override
+   needed. */
+.about-photo-badges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+.about-photo-badge {
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  text-align: center;
+  color: rgb(64, 170, 235);
+  background: rgba(100, 211, 255, 0.08);
+  border: 1px solid var(--border-accent);
+  border-radius: 999px;
+  padding: 10px 18px;
+}
+
+/* ── Photo column: photo + badges as one unit. Desktop-only (float,
+   see @media min-width:769px below) - hidden on mobile, which uses
+   .about-mobile-card instead. Visibility toggle lives in the two
+   breakpoint blocks below, not here, matching how the rest of this
+   file already splits mobile/desktop rules. */
+.about-photo-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── Mobile-only intro card: photo + one short line, in a bordered
+   card matching the site's existing card language (.about-why-card /
+   .portfolio-card: 16px radius, accent border) - hidden on desktop,
+   see @media min-width:769px below, where .about-photo-column (the
+   float) is used instead. */
+.about-mobile-card {
+  border: 1.5px solid var(--border-accent);
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+}
+.about-mobile-card .hexagon-photo-wrap {
+  margin: 0 auto 18px;
+}
+.about-mobile-intro {
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgb(82, 82, 82);
+  margin: 0;
+}
+
 @media (min-width: 360px), (max-width: 769px){
 .descriptionAbout
 {
@@ -74,26 +229,101 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 28px;
     padding: 2rem 1.5rem 3.5rem;
+  }
+  /* Desktop-only float column - .about-mobile-card is used instead here. */
+  .about-photo-column {
+    display: none;
+  }
+  .hexagon-photo-wrap {
+    width: 180px;
+    height: 205px;
+  }
+  /* Same rounded hexagon shape, recomputed for this smaller size's own
+     pixel dimensions (path() can't scale via percentages like
+     polygon() could) - see scratch hexpath.js. */
+  .hexagon-photo-border {
+    clip-path: path('M 60,0 L 128,0 Q 141,0 146.462,11.797 L 182.538,89.703 Q 188,101.5 182.538,113.297 L 146.462,191.203 Q 141,203 128,203 L 60,203 Q 47,203 41.538,191.203 L 5.462,113.297 Q 0,101.5 5.462,89.703 L 41.538,11.797 Q 47,0 60,0 Z');
+  }
+  .hexagon-photo-bg {
+    clip-path: path('M 58,0 L 122,0 Q 135,0 140.448,11.803 L 174.552,85.697 Q 180,97.5 174.552,109.303 L 140.448,183.197 Q 135,195 122,195 L 58,195 Q 45,195 39.552,183.197 L 5.448,109.303 Q 0,97.5 5.448,85.697 L 39.552,11.803 Q 45,0 58,0 Z');
+  }
+  .hexagon-photo {
+    clip-path: path('M 58,0 L 122,0 Q 135,0 140.226,11.903 L 174.774,90.597 Q 180,102.5 174.774,114.403 L 140.226,193.097 Q 135,205 122,205 L 58,205 Q 45,205 39.774,193.097 L 5.226,114.403 Q 0,102.5 5.226,90.597 L 39.774,11.903 Q 45,0 58,0 Z');
   }
 }
 @media (min-width: 769px)
 {
+  /* Plain block, not a flex row - .about-text's paragraphs need to be
+     free to wrap around .about-photo-column's float below, which only
+     works within a normal block formatting context (a flex/grid
+     container would size and position the photo column as a grid/flex
+     item instead of letting text flow around it as a float). */
   .About-container
   {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 8rem 5rem;
+    display: block;
+    padding: 1rem 4rem 5rem;
   }
 
+  /* Mobile-only intro card and its badge copy - the float column
+     below (and .about-text's own copy of the badges further down)
+     takes over at this breakpoint instead. */
+  .about-mobile-card,
+  .about-photo-badges--mobile {
+    display: none;
+  }
+
+  /* Floated, not a flex item and not sticky - text (.about-text, a
+     later sibling in the same block formatting context) wraps around
+     it like a classic magazine/blog image float, rather than sitting in
+     a rigid side-by-side column. margin-right/bottom give the wrapping
+     text some breathing room instead of hugging the hexagon's edges. */
+  .about-photo-column {
+    display: block;
+    float: left;
+    width: 240px;
+    margin: 0 32px 24px 0;
+  }
+  .hexagon-photo-wrap {
+    width: 220px;
+    height: 250px;
+  }
+  /* Explicit desktop-size paths, needed here and not just in the base
+     rule - the "mobile" block above (@media (min-width:360px),
+     (max-width:769px)) is a pre-existing quirk that matches virtually
+     every real screen width (min-width:360px alone is true almost
+     always), so its clip-path also applies at this width unless
+     overridden here too, mismatching this box's real 220x250 size. */
+  .hexagon-photo-border {
+    clip-path: path('M 73,0 L 155,0 Q 171,0 177.683,14.538 L 221.317,109.462 Q 228,124 221.317,138.538 L 177.683,233.462 Q 171,248 155,248 L 73,248 Q 57,248 50.317,233.462 L 6.683,138.538 Q 0,124 6.683,109.462 L 50.317,14.538 Q 57,0 73,0 Z');
+  }
+  .hexagon-photo-bg {
+    clip-path: path('M 71,0 L 149,0 Q 165,0 171.666,14.545 L 213.334,105.455 Q 220,120 213.334,134.545 L 171.666,225.455 Q 165,240 149,240 L 71,240 Q 55,240 48.334,225.455 L 6.666,134.545 Q 0,120 6.666,105.455 L 48.334,14.545 Q 55,0 71,0 Z');
+  }
+  .hexagon-photo {
+    clip-path: path('M 71,0 L 149,0 Q 165,0 171.444,14.645 L 213.556,110.355 Q 220,125 213.556,139.645 L 171.444,235.355 Q 165,250 149,250 L 71,250 Q 55,250 48.556,235.355 L 6.444,139.645 Q 0,125 6.444,110.355 L 48.556,14.645 Q 55,0 71,0 Z');
+  }
+
+  /* max-width:700px matches .Service-text's own intro-paragraph width
+     (ServicesModern.css) - the previous full-container width read as
+     too wide/inconsistent with how other sections constrain their body
+     text. Only the first few lines are narrowed further still by
+     .about-photo-column's float next to them (standard float-wrap
+     behavior, not an explicit width rule). */
   .about-text
   {
     width: 100%;
-    max-width: 820px;
+    max-width: 700px;
     font-weight: 900;
+  }
+  /* Guarantees the cards grid (and everything after it) starts at full
+     width regardless of exactly how many lines of text the float ends
+     up sharing space with - clear:both ends the wrap unconditionally
+     here even if the float were taller than the paragraphs above it. */
+  .about-why-grid {
+    clear: both;
   }
     .Aboutme p
     {

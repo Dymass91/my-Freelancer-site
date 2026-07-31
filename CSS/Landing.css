@@ -116,41 +116,24 @@
   align-items: flex-start;
 }
 
-.hero-intro-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.hero-avatar {
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(23, 32, 44, 0.18);
-  border: 3px solid #fff;
-  flex-shrink: 0;
-}
-.hero-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
 .hero-name {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .header-1, .header-2 {
-  font-size: clamp(32px, 5.2vw, 64px);
+  font-size: clamp(22px, 3.4vw, 36px);
   font-weight: bold;
   color: rgb(82, 82, 82);
-  text-transform: uppercase;
   margin: 0;
-  line-height: 1.05;
+  line-height: 1.2;
+}
+
+@media (min-width: 900px) {
+  .header-1, .header-2 {
+    font-size: clamp(24px, 2.4vw, 32px);
+  }
 }
 
 .header-1 .letter, .header-2 .letter {
@@ -204,7 +187,7 @@
    timeout logic - same component as Portfolio, just sized for the hero. */
 .hero-preview-card {
   width: 100%;
-  max-width: 520px;
+  max-width: 580px;
   margin: 0 auto;
 }
 .hero-preview-card .browser-frame__viewport {
@@ -212,7 +195,7 @@
 }
 .hero-preview-caption {
   margin: 14px auto 0;
-  max-width: 520px;
+  max-width: 580px;
   text-align: center;
   font-family: 'Jura', sans-serif;
   font-size: 0.9rem;
@@ -279,15 +262,11 @@
     gap: 24px;
     padding: 8px 4vw;
   }
-  .hero-intro-row {
+  .hero-name {
     margin-bottom: 10px;
   }
-  .hero-avatar {
-    width: 64px;
-    height: 64px;
-  }
   .header-1, .header-2 {
-    font-size: clamp(22px, 4vw, 32px);
+    font-size: clamp(16px, 3vw, 24px);
   }
   .header-3 {
     font-size: 15px;
