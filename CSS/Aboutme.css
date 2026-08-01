@@ -117,66 +117,28 @@
   display: block;
 }
 
-/* ── Badges under the photo - same pill language as .marker-label
-   (SectionHeader.css): border-accent border, rounded-full, tinted fill.
-   Narrower/plainer than the "why work with me" cards since these sit in
-   the tighter photo column, not the full text column. Row + wrap (not a
-   fixed column) so the two badges sit side by side whenever they fit
-   the available width, and drop to stacked automatically otherwise -
-   same rule for both breakpoints, no separate mobile-only override
-   needed. */
-.about-photo-badges {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  margin-top: 4px;
-}
-.about-photo-badge {
-  font-family: 'Jura', sans-serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-  line-height: 1.35;
-  text-align: center;
-  color: rgb(64, 170, 235);
-  background: rgba(100, 211, 255, 0.08);
-  border: 1px solid var(--border-accent);
-  border-radius: 999px;
-  padding: 10px 18px;
-}
-
-/* ── Photo column: photo + badges as one unit. Desktop-only (float,
-   see @media min-width:769px below) - hidden on mobile, which uses
-   .about-mobile-card instead. Visibility toggle lives in the two
-   breakpoint blocks below, not here, matching how the rest of this
-   file already splits mobile/desktop rules. */
-.about-photo-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-/* ── Mobile-only intro card: photo + one short line, in a bordered
-   card matching the site's existing card language (.about-why-card /
-   .portfolio-card: 16px radius, accent border) - hidden on desktop,
-   see @media min-width:769px below, where .about-photo-column (the
-   float) is used instead. */
-.about-mobile-card {
+/* ── Photo card: photo + intro line, in a bordered card matching the
+   site's existing card language (.about-why-card / .portfolio-card:
+   16px radius, accent border). Same markup and styling at every
+   breakpoint - on desktop it additionally floats left (see @media
+   min-width:769px below) so the flowing text wraps around it. */
+.about-photo-card {
   border: 1.5px solid var(--border-accent);
   border-radius: 16px;
   padding: 28px 20px;
   text-align: center;
 }
-.about-mobile-card .hexagon-photo-wrap {
+.about-photo-card .hexagon-photo-wrap {
   margin: 0 auto 18px;
 }
-.about-mobile-intro {
+/* Selector scoped to two classes (not just ".about-photo-intro" alone)
+   so it beats ".Aboutme p" (Aboutme.css, class+element = higher
+   specificity than a single class) at the 769px+ breakpoint, which
+   would otherwise silently win and force this back up to 1.4em. */
+.Aboutme .about-photo-intro {
   font-family: 'Jura', sans-serif;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   line-height: 1.5;
   color: rgb(82, 82, 82);
   margin: 0;
@@ -233,10 +195,6 @@
     gap: 28px;
     padding: 2rem 1.5rem 3.5rem;
   }
-  /* Desktop-only float column - .about-mobile-card is used instead here. */
-  .about-photo-column {
-    display: none;
-  }
   .hexagon-photo-wrap {
     width: 180px;
     height: 205px;
@@ -257,30 +215,25 @@
 @media (min-width: 769px)
 {
   /* Plain block, not a flex row - .about-text's paragraphs need to be
-     free to wrap around .about-photo-column's float below, which only
+     free to wrap around .about-photo-card's float below, which only
      works within a normal block formatting context (a flex/grid
-     container would size and position the photo column as a grid/flex
+     container would size and position the photo card as a grid/flex
      item instead of letting text flow around it as a float). */
-  /* max-width matches .about-text's own 700px cap plus this container's
-     horizontal padding (700 + 4rem + 4rem = 828) - .about-text's box
+  /* max-width matches .about-text's own 820px cap plus this container's
+     horizontal padding (820 + 4rem + 4rem = 948) - .about-text's box
      already spans the full width behind the float (floats shorten line
-     boxes, not the block's own box), so 700px is the cluster's true
-     rendered width, not 700+the float's width on top of it. Sizing the
+     boxes, not the block's own box), so 820px is the cluster's true
+     rendered width, not 820+the float's width on top of it. Sizing the
      container to exactly that width (instead of the wider photo+text
      sum) is what actually centers the visible cluster via margin:auto,
      rather than centering an oversized box with dead space on one side. */
   .About-container
   {
     width: 100%;
-    max-width: 828px;
+    max-width: 948px;
     margin: 0 auto;
     display: block;
     padding: 1rem 4rem 5rem;
-  }
-
-  /* Mobile-only intro card - the float column below takes over here. */
-  .about-mobile-card {
-    display: none;
   }
 }
 
@@ -291,20 +244,22 @@
      later sibling in the same block formatting context) wraps around
      it like a classic magazine/blog image float, rather than sitting in
      a rigid side-by-side column. margin-right/bottom give the wrapping
-     text some breathing room instead of hugging the hexagon's edges.
-     Bordered/padded like .about-mobile-card (16px radius, accent
-     border) so desktop gets the same framed-card look as mobile -
-     width grows from 220px (the hexagon's own width) to 260px to make
-     room for the 20px padding on each side without shrinking the photo. */
-  .about-photo-column {
-    display: flex;
+     text some breathing room instead of hugging the card's edges.
+     Widened to 420px (well past the 220px hexagon + padding) to read
+     closer to how roomy the card looks on mobile, while still leaving
+     .about-text (max-width:820px) enough room beside it for the
+     wrapped lines to stay readable. */
+  .about-photo-card {
     float: left;
-    width: 260px;
-    margin: 0 32px 24px 0;
-    border: 1.5px solid var(--border-accent);
-    border-radius: 16px;
-    padding: 20px;
-    text-align: center;
+    width: 420px;
+    margin: 0 44px 24px 0;
+    padding: 32px 28px;
+  }
+  /* Smaller than the shared 0.9rem base - reads too large next to the
+     wrapping body text beside it otherwise. Scoped to two classes for
+     the same specificity reason as the base rule above. */
+  .Aboutme .about-photo-intro {
+    font-size: 0.8rem;
   }
   .hexagon-photo-wrap {
     width: 220px;
@@ -326,16 +281,16 @@
     clip-path: path('M 71,0 L 149,0 Q 165,0 171.444,14.645 L 213.556,110.355 Q 220,125 213.556,139.645 L 171.444,235.355 Q 165,250 149,250 L 71,250 Q 55,250 48.556,235.355 L 6.444,139.645 Q 0,125 6.444,110.355 L 48.556,14.645 Q 55,0 71,0 Z');
   }
 
-  /* max-width:700px matches .Service-text's own intro-paragraph width
-     (ServicesModern.css) - the previous full-container width read as
-     too wide/inconsistent with how other sections constrain their body
-     text. Only the first few lines are narrowed further still by
-     .about-photo-column's float next to them (standard float-wrap
+  /* 820px - wider than the original 700px (which matched
+     .Service-text's own intro-paragraph width, ServicesModern.css) at
+     the user's request for a roomier, less cramped desktop layout.
+     Only the first few lines are narrowed further still by
+     .about-photo-card's float next to them (standard float-wrap
      behavior, not an explicit width rule). */
   .about-text
   {
     width: 100%;
-    max-width: 700px;
+    max-width: 820px;
     font-weight: 900;
   }
   /* Guarantees the cards grid (and everything after it) starts at full

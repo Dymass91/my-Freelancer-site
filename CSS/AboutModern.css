@@ -1,22 +1,14 @@
-/* ── About: intro copy ── */
+/* ── About: intro copy ──
+   .aboutMe_lead itself now only lives in the hero (index.html,
+   styled by .hero-tagline in CSS/Landing.css) - this base rule is kept
+   because JS/Multilang.js still looks the element up by this class for
+   PL/EN text swapping. */
 .aboutMe_lead {
   font-family: 'Jura', sans-serif;
   font-weight: 700;
   font-size: 1.3em;
   color: rgb(82, 82, 82);
   margin-bottom: 1rem;
-}
-
-/* Moved out of .about-text (where it used to sit right beside the
-   photo card and visually clashed with it) - now a standalone,
-   centered tagline for the whole section, between the heading and the
-   photo+text cluster. Selector is scoped to two classes so it beats
-   ".Aboutme p" (Aboutme.css)'s own font-size/margin override, which
-   would otherwise win on specificity alone. */
-.Aboutme .about-tagline {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto 2.5rem;
 }
 
 /* ── About: one-line "how I build" statement (replaces the old

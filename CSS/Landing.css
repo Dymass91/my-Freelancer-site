@@ -1,8 +1,17 @@
 /* ── Page Loader ── */
+/* Light background (#f4f5f7, same tone as Skills/Portfolio/Footer)
+   with the site's blue accent for the counter/progress bar - replaces
+   the old black-with-white-text treatment, which was a leftover from
+   before the site's light/blue redesign and no longer matched anything
+   else on the page. */
 .wrapper {
   position: fixed;
   inset: 0;
-  background: #0e0e0e;
+  background: #f4f5f7;
+  /* A plain light/white border here would disappear against this same
+     light background - the accent blue keeps it visible as a deliberate
+     edge instead of vanishing. */
+  border-bottom: 4px solid rgb(100, 211, 255);
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -22,7 +31,7 @@
   font-weight: 300;
   font-size: 10px;
   letter-spacing: 8px;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(82, 82, 82, 0.55);
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -40,27 +49,27 @@
   font-weight: 300;
   line-height: 1;
   letter-spacing: 6px;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgb(31, 92, 138);
 }
 
 .counter-percent {
   font-size: clamp(13px, 1.5vw, 18px);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(82, 82, 82, 0.45);
   letter-spacing: 3px;
 }
 
 .loader-bar-track {
   width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
+  height: 2px;
+  background: var(--border-accent);
   margin-top: clamp(20px, 3vh, 36px);
 }
 
 .loader-bar-fill {
   height: 100%;
   width: 0%;
-  background: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, rgb(100, 211, 255), rgb(64, 170, 235));
 }
 /* ── End Loader ── */
 
@@ -136,19 +145,24 @@
   }
 }
 
-.header-1 .letter, .header-2 .letter {
-  display: inline-block;
-  line-height: 1em;
-}
-
+/* Same deep blue as .header-1/.header-2 (unified palette instead of a
+   separate glowing cyan) - hierarchy between headline and subtitle
+   comes from weight/size alone now, not a second color. */
 .header-3 {
   font-size: clamp(17px, 2.1vw, 24px);
   font-weight: 600;
   letter-spacing: .5px;
-  color: rgb(100, 211, 255);
-  text-shadow:
-    0 0 5px rgba(10, 170, 219, 0.5),
-    0 0 15px rgba(10, 142, 219, 0.3);
+  color: rgb(31, 92, 138);
+  margin: 10px 0 0;
+  max-width: 32rem;
+}
+
+/* Relocated from the About section (CSS/AboutModern.css's .aboutMe_lead
+   supplies the base font styling) - compound-selected so it reliably
+   overrides that base rule's centered About-section positioning. */
+.aboutMe_lead.hero-tagline {
+  font-size: 1.05rem;
+  color: rgb(31, 92, 138);
   margin: 10px 0 0;
   max-width: 32rem;
 }
@@ -216,6 +230,16 @@
   font-size: 0.9rem;
   font-weight: 700;
   color: rgb(82, 82, 82);
+}
+
+/* .hero-rotator (JS/HeroRotator.js, base rules in CSS/HeroRotator.css)
+   now sits here under the caption instead of the left column - self-
+   centers the same way .hero-preview-card/.hero-preview-caption above
+   it do, rather than staying left-aligned at its original 34rem cap. */
+.hero-split__right .hero-rotator {
+  margin: 14px auto 0;
+  max-width: 580px;
+  text-align: center;
 }
 
 .boxArrow {

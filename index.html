@@ -123,11 +123,7 @@
                         <h1 class="header-2">na Twój biznes.</h1>
                     </div>
                     <h2 class="header-3">Piszę każdą stronę ręcznie — bez gotowych kreatorów i wtyczek, które spowalniają.</h2>
-                    <div class="hero-rotator">
-                        <p class="hero-rotator__line is-active">Od <strong>1690 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.</p>
-                        <p class="hero-rotator__line">Buduję strony, które ładują się w <strong>2 sekundy</strong> i realnie <strong>przyciągają klientów</strong> &mdash; nie tylko ładnie wyglądają.</p>
-                        <p class="hero-rotator__line">Tworzę strony dla małych firm <strong>z Piły i okolic</strong> &mdash; od pomysłu do gotowej wizytówki w internecie.</p>
-                    </div>
+                    <p class="aboutMe_lead hero-tagline">Nie kupujesz strony. Kupujesz narzędzie, które ma dla Ciebie pracować.</p>
                     <p class="hero-secondary-line">Doświadczenie zdobyte na kilku rynkach — rozumiem różne sposoby prowadzenia biznesu.</p>
                     <div class="hero-ctas">
                         <a href="#Contact" class="hero-cta hero-cta--primary">Napisz do mnie</a>
@@ -151,7 +147,12 @@
                             <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://detweederondeeindhoven.nl" target="_blank" rel="noopener noreferrer">Tweede Ronde Eindhoven</a></h3>
                         </div>
                     </div>
-                    <p class="hero-preview-caption">Mój ostatni zrealizowany projekt</p>
+                    <p class="hero-preview-caption">Ostatnia realizacja dla klienta z Holandii</p>
+                    <div class="hero-rotator">
+                        <p class="hero-rotator__line is-active">Od <strong>1690 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.</p>
+                        <p class="hero-rotator__line">Buduję strony, które ładują się w <strong>2 sekundy</strong> i realnie <strong>przyciągają klientów</strong> &mdash; nie tylko ładnie wyglądają.</p>
+                        <p class="hero-rotator__line">Tworzę strony dla małych firm <strong>z Piły i okolic</strong> &mdash; od pomysłu do gotowej wizytówki w internecie.</p>
+                    </div>
                 </div>
             </div>
 
@@ -202,12 +203,12 @@
             <span class="marker-line"></span>
         </div>
         <h2 class="title section-heading">Kim jestem i jak pracuję</h2>
-        <p class="aboutMe_lead about-tagline">Nie kupujesz strony. Kupujesz narzędzie, które ma dla Ciebie pracować.</p>
         <div class="About-container">
-            <!-- Mobile-only intro card (hidden on desktop, see @media
-                 min-width:769px in Aboutme.css) - desktop keeps the
-                 float-based .about-photo-column below untouched. -->
-            <div class="about-mobile-card">
+            <!-- Same card at every breakpoint - floats left on desktop
+                 (see @media min-width:769px in Aboutme.css) so text
+                 wraps around it, sits as a plain block above the text
+                 on mobile. -->
+            <div class="about-photo-card">
                 <div class="hexagon-photo-wrap">
                     <div class="hexagon-photo-glow"></div>
                     <div class="hexagon-photo-border"></div>
@@ -216,26 +217,10 @@
                         <img src="IMG/portrait4.png" alt="Tomasz Matyszczak" />
                     </div>
                 </div>
-                <p class="about-mobile-intro">Od kilku lat projektuję i koduję strony internetowe dla małych firm — ręcznie, bez agencji i pluginów, dzięki czemu działają szybciej i wyglądają tak, jak sobie wymarzyłeś.</p>
-            </div>
-
-            <!-- Desktop-only float column (hidden on mobile). -->
-            <div class="about-photo-column">
-                <div class="hexagon-photo-wrap">
-                    <div class="hexagon-photo-glow"></div>
-                    <div class="hexagon-photo-border"></div>
-                    <div class="hexagon-photo-bg"></div>
-                    <div class="hexagon-photo">
-                        <img src="IMG/portrait4.png" alt="Tomasz Matyszczak" />
-                    </div>
-                </div>
-                <div class="about-photo-badges">
-                    <div class="about-photo-badge">Bezpłatna wycena Twojego projektu</div>
-                    <div class="about-photo-badge">Odpowiadam osobiście w ciągu 24h</div>
-                </div>
+                <p class="about-photo-intro">Cześć, jestem Tomasz. Od kilku lat projektuję i koduję strony internetowe dla małych firm — ręcznie, bez agencji i pluginów, dzięki czemu działają szybciej i wyglądają tak, jak sobie wymarzyłeś.</p>
             </div>
             <div class="about-text">
-                <p class="descriptionAbout">Cześć, jestem Tomasz — front-end developer z Piły. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.</p>
+                <p class="descriptionAbout">Jestem front-end developerem z Piły. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.</p>
 
                 <p class="aboutMe_text3">Kilka lat pracowałem jako niezależny wykonawca za granicą — nauczyło mnie to patrzeć na biznes klienta z różnych stron, nie tylko przez pryzmat jednego rynku. Dziś realizuję strony dla firm o różnym profilu i skali — od prostych wizytówek po rozbudowane serwisy i sklepy internetowe.</p>
 
@@ -1048,7 +1033,6 @@ https://tools.google.com/dlpage/gaoptout?hl=pl
 
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
     <!-- <script src="JS/Header.js"></script> -->
     <!-- <script src="JS/Skills.js"></script> -->
@@ -1073,7 +1057,7 @@ https://tools.google.com/dlpage/gaoptout?hl=pl
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({ once: true });
     </script>
 
 
