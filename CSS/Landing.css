@@ -172,7 +172,11 @@
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: .3s;
+  /* transform (the press-down effect) transitions much faster than the
+     other properties - at .3s for everything, the button visually
+     lagged behind an actual click/tap, reading as "did that register?"
+     and prompting a second click. */
+  transition: transform .1s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
 }
 .hero-cta--primary {
   border: 2px solid rgb(100, 211, 255);
@@ -182,6 +186,10 @@
 .hero-cta--primary:hover {
   box-shadow: 0 0 15px rgba(100, 211, 255, 0.5);
   transform: translateY(3px);
+}
+.hero-cta--primary:active {
+  transform: translateY(3px);
+  transition: transform .05s ease;
 }
 .hero-cta--secondary {
   border: 2px solid rgb(100, 211, 255);
@@ -193,6 +201,10 @@
   color: #fff;
   box-shadow: 0 0 15px rgba(100, 211, 255, 0.5);
   transform: translateY(3px);
+}
+.hero-cta--secondary:active {
+  transform: translateY(3px);
+  transition: transform .05s ease;
 }
 
 /* Smaller padding/font/gap so both buttons still fit on one row at
@@ -232,24 +244,38 @@
 .hero-preview-card .browser-frame__viewport {
   aspect-ratio: 4 / 3;
 }
-.hero-preview-caption {
-  margin: 14px auto 0;
-  max-width: 580px;
-  text-align: center;
-  font-family: 'Jura', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgb(82, 82, 82);
-}
-
 /* .hero-rotator (JS/HeroRotator.js, base rules in CSS/HeroRotator.css)
-   now sits here under the caption instead of the left column - self-
-   centers the same way .hero-preview-card/.hero-preview-caption above
-   it do, rather than staying left-aligned at its original 34rem cap. */
+   now sits here under the preview card instead of the left column -
+   self-centers the same way .hero-preview-card above it does, rather
+   than staying left-aligned at its original 34rem cap. */
 .hero-split__right .hero-rotator {
   margin: 14px auto 0;
   max-width: 580px;
   text-align: center;
+}
+
+/* Mobile-only teaser pointing at the live preview further down the
+   page (that preview sits in .hero-split__right, which stacks below
+   .hero-split__left once the two-column grid collapses under 900px -
+   see .hero-split's own media query). Hidden on desktop, where the
+   preview is already visible side-by-side and needs no teaser. */
+.hero-preview-teaser {
+  display: none;
+}
+@media (max-width: 899px) {
+  .hero-preview-teaser {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border-accent);
+    font-family: 'Jura', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-style: italic;
+    color: rgb(64, 170, 235);
+  }
 }
 
 .boxArrow {
