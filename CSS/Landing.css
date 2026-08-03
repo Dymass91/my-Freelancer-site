@@ -117,6 +117,18 @@
     gap: 60px;
     padding: clamp(20px, 4vh, 48px) 5vw 40px;
   }
+  /* Exact height match with .hero-preview-card is set at runtime by
+     JS/HeroCardHeight.js (can't be done precisely in pure CSS since
+     the two cards sit in separate flex columns with different
+     trailing content). display:flex + justify-content:center here
+     keeps the photo/name/text vertically centered once JS sets an
+     explicit height, instead of stuck at the top with dead space
+     below. */
+  .hero-photo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .hero-split__left {
@@ -125,59 +137,30 @@
   align-items: flex-start;
 }
 
-.hero-name {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+/* .about-photo-card (base styling in CSS/Aboutme.css: border, radius,
+   padding, hexagon photo, name, intro line) now IS the hero's main
+   content, replacing the old headline/subtitle text - this modifier
+   just sizes/spaces it for the hero column instead of the About
+   section's float-wrap layout. */
+.hero-photo-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 0 8px;
+  /* Same shadow as .form (CSS/Contact2.css) - no background tint, the
+     card stays fully transparent over the page's pattern, just lifted
+     off it with a soft shadow. */
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
 }
 
-.header-1, .header-2 {
-  font-size: clamp(22px, 3.4vw, 36px);
-  font-weight: 800;
-  color: rgb(31, 92, 138);
-  margin: 0;
-  line-height: 1.2;
-}
-
-@media (min-width: 900px) {
-  .header-1, .header-2 {
-    font-size: clamp(24px, 2.4vw, 32px);
-  }
-}
-
-/* Same deep blue as .header-1/.header-2 (unified palette instead of a
-   separate glowing cyan) - hierarchy between headline and subtitle
-   comes from weight/size alone now, not a second color. */
-.header-3 {
-  font-size: clamp(17px, 2.1vw, 24px);
-  font-weight: 600;
-  letter-spacing: .5px;
-  color: rgb(31, 92, 138);
-  margin: 10px 0 0;
-  max-width: 32rem;
-}
-
-/* Relocated from the About section (CSS/AboutModern.css's .aboutMe_lead
-   supplies the base font styling) - compound-selected so it reliably
-   overrides that base rule's centered About-section positioning. */
-.aboutMe_lead.hero-tagline {
-  font-size: 1.05rem;
-  color: rgb(31, 92, 138);
-  margin: 10px 0 0;
-  max-width: 32rem;
-}
-
-.hero-secondary-line {
-  font-family: 'Jura', sans-serif;
-  color: rgb(100, 130, 150);
-  font-size: 0.95rem;
-  margin: 14px 0 0;
-  max-width: 34rem;
-}
-
+/* Same width band as .hero-photo-card above (100% up to the same
+   400px cap) so justify-content:center centers the buttons directly
+   under the card instead of under the wider column. */
 .hero-ctas {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
   gap: 16px;
   margin-top: 26px;
 }
@@ -198,6 +181,7 @@
 }
 .hero-cta--primary:hover {
   box-shadow: 0 0 15px rgba(100, 211, 255, 0.5);
+  transform: translateY(3px);
 }
 .hero-cta--secondary {
   border: 2px solid rgb(100, 211, 255);
@@ -208,6 +192,32 @@
   background: rgb(100, 211, 255);
   color: #fff;
   box-shadow: 0 0 15px rgba(100, 211, 255, 0.5);
+  transform: translateY(3px);
+}
+
+/* Smaller padding/font/gap so both buttons still fit on one row at
+   narrow phone widths instead of .hero-ctas's flex-wrap dropping
+   "Zobacz portfolio" to its own line. */
+@media (max-width: 480px) {
+  .hero-ctas {
+    gap: 10px;
+  }
+  .hero-cta {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Very small/older phones (e.g. 320px) - the 480px sizing above still
+   wraps at this width, so shrink once more. */
+@media (max-width: 340px) {
+  .hero-ctas {
+    gap: 6px;
+  }
+  .hero-cta {
+    padding: 9px 12px;
+    font-size: 0.78rem;
+  }
 }
 
 /* Hero live-preview slider: cross-fades between the 3 latest projects.
@@ -301,17 +311,8 @@
     gap: 24px;
     padding: 8px 4vw;
   }
-  .hero-name {
-    margin-bottom: 10px;
-  }
-  .header-1, .header-2 {
-    font-size: clamp(16px, 3vw, 24px);
-  }
-  .header-3 {
-    font-size: 15px;
-  }
-  .hero-secondary-line {
-    display: none;
+  .hero-photo-card {
+    max-width: 260px;
   }
   .hero-preview-card {
     max-width: 100%;

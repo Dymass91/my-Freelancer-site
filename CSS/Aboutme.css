@@ -117,11 +117,11 @@
   display: block;
 }
 
-/* ── Photo card: photo + intro line, in a bordered card matching the
-   site's existing card language (.about-why-card / .portfolio-card:
-   16px radius, accent border). Same markup and styling at every
-   breakpoint - on desktop it additionally floats left (see @media
-   min-width:769px below) so the flowing text wraps around it. */
+/* ── Photo card: photo + name + intro line, in a bordered card matching
+   the site's existing card language (.about-why-card / .portfolio-card:
+   16px radius, accent border). Lives in the hero now (index.html), not
+   the About section - .hero-photo-card (CSS/Landing.css) adds the
+   hero-specific sizing/spacing on top of this shared base. */
 .about-photo-card {
   border: 1.5px solid var(--border-accent);
   border-radius: 16px;
@@ -131,11 +131,14 @@
 .about-photo-card .hexagon-photo-wrap {
   margin: 0 auto 18px;
 }
-/* Selector scoped to two classes (not just ".about-photo-intro" alone)
-   so it beats ".Aboutme p" (Aboutme.css, class+element = higher
-   specificity than a single class) at the 769px+ breakpoint, which
-   would otherwise silently win and force this back up to 1.4em. */
-.Aboutme .about-photo-intro {
+.hero-card-name {
+  font-family: 'Jura', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: rgb(31, 92, 138);
+  margin: 0 0 10px;
+}
+.about-photo-intro {
   font-family: 'Jura', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
@@ -214,19 +217,10 @@
 }
 @media (min-width: 769px)
 {
-  /* Plain block, not a flex row - .about-text's paragraphs need to be
-     free to wrap around .about-photo-card's float below, which only
-     works within a normal block formatting context (a flex/grid
-     container would size and position the photo card as a grid/flex
-     item instead of letting text flow around it as a float). */
   /* max-width matches .about-text's own 820px cap plus this container's
-     horizontal padding (820 + 4rem + 4rem = 948) - .about-text's box
-     already spans the full width behind the float (floats shorten line
-     boxes, not the block's own box), so 820px is the cluster's true
-     rendered width, not 820+the float's width on top of it. Sizing the
-     container to exactly that width (instead of the wider photo+text
-     sum) is what actually centers the visible cluster via margin:auto,
-     rather than centering an oversized box with dead space on one side. */
+     horizontal padding (820 + 4rem + 4rem = 948), centered via
+     margin:auto now that .about-text is the container's only child
+     (the photo card moved to the hero - see index.html/Landing.css). */
   .About-container
   {
     width: 100%;
@@ -240,27 +234,9 @@
 @media (min-width: 769px)
 {
 
-  /* Floated, not a flex item and not sticky - text (.about-text, a
-     later sibling in the same block formatting context) wraps around
-     it like a classic magazine/blog image float, rather than sitting in
-     a rigid side-by-side column. margin-right/bottom give the wrapping
-     text some breathing room instead of hugging the card's edges.
-     Widened to 420px (well past the 220px hexagon + padding) to read
-     closer to how roomy the card looks on mobile, while still leaving
-     .about-text (max-width:820px) enough room beside it for the
-     wrapped lines to stay readable. */
-  .about-photo-card {
-    float: left;
-    width: 420px;
-    margin: 0 44px 24px 0;
-    padding: 32px 28px;
-  }
-  /* Smaller than the shared 0.9rem base - reads too large next to the
-     wrapping body text beside it otherwise. Scoped to two classes for
-     the same specificity reason as the base rule above. */
-  .Aboutme .about-photo-intro {
-    font-size: 0.8rem;
-  }
+  /* Desktop-size hexagon (see CSS/Landing.css's .hero-photo-card for
+     this card's hero-specific sizing/spacing - it now lives there, not
+     in this section). */
   .hexagon-photo-wrap {
     width: 220px;
     height: 250px;
@@ -283,20 +259,13 @@
 
   /* 820px - wider than the original 700px (which matched
      .Service-text's own intro-paragraph width, ServicesModern.css) at
-     the user's request for a roomier, less cramped desktop layout.
-     Only the first few lines are narrowed further still by
-     .about-photo-card's float next to them (standard float-wrap
-     behavior, not an explicit width rule). */
+     the user's request for a roomier, less cramped desktop layout. */
   .about-text
   {
     width: 100%;
     max-width: 820px;
     font-weight: 900;
   }
-  /* Guarantees the cards grid (and everything after it) starts at full
-     width regardless of exactly how many lines of text the float ends
-     up sharing space with - clear:both ends the wrap unconditionally
-     here even if the float were taller than the paragraphs above it. */
   .about-why-grid {
     clear: both;
   }

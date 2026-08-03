@@ -2,6 +2,15 @@
 html {
   max-width: 100vw;
   overflow-x: hidden;
+  /* In-page anchor links (nav, hero CTAs, scroll-to-top) jump to their
+     target instantly without this - smooth scroll applies site-wide. */
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 html, body {

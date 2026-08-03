@@ -10,7 +10,6 @@ const navbarHeaderContact = document.querySelector('.navbar_header_Contact');
 const titleEl = document.querySelector('.title');
 const descrEl = document.querySelector('.descriptionAbout');
 
-const aboutLead = document.querySelector('.aboutMe_lead');
 const aboutText3 = document.querySelector('.aboutMe_text3');
 const aboutTechLine = document.querySelector('.aboutMe_techLine');
 const aboutWhyLabel = document.querySelector('.aboutMe_whyLabel');
@@ -59,7 +58,7 @@ function getTranslatableElements() {
     return [
         navbarHeaderAbout, navbarHeaderService, navbarHeaderProjects, navbarHeaderContact,
         titleEl, descrEl,
-        aboutLead, aboutText3, aboutTechLine, aboutWhyLabel, aboutWhy1, aboutWhy2, aboutWhy3,
+        aboutText3, aboutTechLine, aboutWhyLabel, aboutWhy1, aboutWhy2, aboutWhy3,
         aboutText5Before, aboutText5After, hrefToContact,
         Serviceh2, ServiceSubtitle, Projectsh2,
         ServEl1, discrEl1,
@@ -82,7 +81,6 @@ function applyTranslation(attr) {
     titleEl.textContent = data[attr].title;
     descrEl.textContent = data[attr].descriptionAbout;
 
-    aboutLead.textContent = data[attr].aboutMe_lead;
     aboutText3.textContent = data[attr].aboutMe_text3;
     aboutTechLine.textContent = data[attr].aboutMe_techLine;
     aboutWhyLabel.textContent = data[attr].aboutMe_whyLabel;
@@ -176,8 +174,7 @@ var data = {
         "Projects_h2": "Wybrane realizacje",
 
 
-        "descriptionAbout": "Cześć, jestem Tomasz — front-end developer z Piły. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.",
-        "aboutMe_lead": "Nie kupujesz strony. Kupujesz narzędzie, które ma dla Ciebie pracować.",
+        "descriptionAbout": "Jestem freelancerem z Piły, tworzę strony internetowe dla małych firm. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.",
         "aboutMe_text3": "Kilka lat pracowałem jako niezależny wykonawca za granicą — nauczyło mnie to patrzeć na biznes klienta z różnych stron, nie tylko przez pryzmat jednego rynku. Dziś realizuję strony dla firm o różnym profilu i skali — od prostych wizytówek po rozbudowane serwisy i sklepy internetowe.",
         "aboutMe_techLine": "Strony pisane ręcznie, bez gotowych kreatorów — dzięki temu działają szybciej.",
         "aboutMe_whyLabel": "Dlaczego warto pracować ze mną:",
@@ -209,7 +206,7 @@ var data = {
         "information_country": "Polska, Piła",
         "Contact_form_title": "Napisz do mnie",
         "contact_title_social": "Połącz się ze mną:",
-        "text": "Masz pomysł na stronę lub sklep internetowy? Napisz do mnie — odpowiem w ciągu 24 godzin i ustalimy szczegóły współpracy.",
+        "text": "Jeśli chcesz ze mną współpracować, poniżej znajdziesz moje dane kontaktowe i linki do moich kont społecznościowych. Realizuję projekty dla klientów z Piły i okolic (Trzcianka, Wyrzysk, Złotów, Chodzież) oraz zdalnie z całej Polski.",
         "btn": "Wyślij",
         "contact_name": "Imię",
         "contact_message": "Wiadomość",
@@ -233,8 +230,7 @@ var data = {
         "service_h2": "What I do",
         "Projects_h2": "Selected work",
 
-        "descriptionAbout": "Hi, I'm Tomasz — a front-end developer based in Piła, Poland. I'm not an agency juggling dozens of clients at once, or a bargain-bin off-the-shelf WordPress theme. I build every website myself, from scratch, in clean code — that's why it loads instantly and doesn't drag along kilograms of plugins nobody uses.",
-        "aboutMe_lead": "You're not buying a website. You're buying a tool that works for you.",
+        "descriptionAbout": "I'm a freelancer based in Piła, Poland, building websites for small businesses. I'm not an agency juggling dozens of clients at once, or a bargain-bin off-the-shelf WordPress theme. I build every website myself, from scratch, in clean code — that's why it loads instantly and doesn't drag along kilograms of plugins nobody uses.",
         "aboutMe_text3": "I spent a few years working as an independent contractor abroad - it taught me to look at a client's business from different angles, not just through the lens of one market. Today I build sites for businesses of different profiles and scales - from simple business cards to full-featured services and online stores.",
         "aboutMe_techLine": "Sites written by hand, no page builders - that's what makes them faster.",
         "aboutMe_whyLabel": "Why work with me:",
@@ -266,7 +262,7 @@ var data = {
         "information_country": "Poland, Piła",
         "Contact_form_title": "Contact me",
         "contact_title_social": "Connect with me:",
-        "text": "Have an idea for a website or online store? Send me a message — I'll reply within 24 hours and we'll map out the details together.",
+        "text": "If you'd like to work together, you'll find my contact details and social media links below. I take on projects for clients in Piła and the surrounding area (Trzcianka, Wyrzysk, Złotów, Chodzież), as well as remotely across Poland.",
         "btn": "Send",
         "contact_name": "Name",
         "contact_message": "Message",

@@ -11,14 +11,14 @@
     <meta name="keywords" content="strony internetowe Piła, tworzenie stron internetowych, web developer Piła, sklep internetowy, WordPress, React, SEO, responsywne strony www">
     <meta name="author" content="Tomasz Matyszczak">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://my-freelancer-site.matyszczak24.workers.dev/">
+    <link rel="canonical" href="https://tomaszmatyszczak.pl/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Tomasz Matyszczak – Strony Internetowe Piła | Web Developer">
     <meta property="og:description" content="Profesjonalne strony internetowe i sklepy online na zamówienie. HTML, CSS, JavaScript, React, WordPress. Od 1449 zł.">
-    <meta property="og:url" content="https://my-freelancer-site.matyszczak24.workers.dev/">
-    <meta property="og:image" content="https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait4.png">
+    <meta property="og:url" content="https://tomaszmatyszczak.pl/">
+    <meta property="og:image" content="https://tomaszmatyszczak.pl/IMG/portrait4.png">
     <meta property="og:locale" content="pl_PL">
     <meta property="og:site_name" content="Tomasz Matyszczak – Web Developer">
 
@@ -26,7 +26,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tomasz Matyszczak – Strony Internetowe Piła | Web Developer">
     <meta name="twitter:description" content="Profesjonalne strony internetowe i sklepy online na zamówienie. Od 1449 zł.">
-    <meta name="twitter:image" content="https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait4.png">
+    <meta name="twitter:image" content="https://tomaszmatyszczak.pl/IMG/portrait4.png">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -35,9 +35,10 @@
       "@type": "ProfessionalService",
       "name": "Tomasz Matyszczak – Web Developer",
       "description": "Tworzenie nowoczesnych stron internetowych i sklepów online. Specjalizacja: HTML, CSS, JavaScript, React, WordPress.",
-      "url": "https://my-freelancer-site.matyszczak24.workers.dev/",
-      "image": "https://my-freelancer-site.matyszczak24.workers.dev/IMG/portrait4.png",
+      "url": "https://tomaszmatyszczak.pl/",
+      "image": "https://tomaszmatyszczak.pl/IMG/portrait4.png",
       "priceRange": "od 1449 zł",
+      "telephone": "+48575255608",
       "email": "matyszczak24@gmail.com",
       "address": {
         "@type": "PostalAddress",
@@ -45,7 +46,27 @@
         "addressRegion": "Wielkopolska",
         "addressCountry": "PL"
       },
-      "areaServed": { "@type": "Country", "name": "Polska" },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 53.1500,
+        "longitude": 16.7333
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Piła" },
+        { "@type": "City", "name": "Trzcianka" },
+        { "@type": "City", "name": "Wyrzysk" },
+        { "@type": "City", "name": "Ujście" },
+        { "@type": "City", "name": "Złotów" },
+        { "@type": "City", "name": "Chodzież" },
+        { "@type": "Country", "name": "Polska" }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/tomasz-matyszczak-972ba9173/",
+        "https://github.com/Dymass91",
+        "https://www.facebook.com/Tomasz-Matyszczak-Projektowanie-stron-internetowych-103347338438586",
+        "https://www.google.com/maps?cid=11414881517070165747"
+      ],
+      "hasMap": "https://www.google.com/maps?cid=11414881517070165747",
       "founder": {
         "@type": "Person",
         "name": "Tomasz Matyszczak",
@@ -118,13 +139,18 @@
             <!-- hero: split layout, intro left / live project preview right -->
             <div class="hero-split">
                 <div class="hero-split__left header-text">
-                    <div class="hero-name">
-                        <h1 class="header-1">Strony, które pracują</h1>
-                        <h1 class="header-2">na Twój biznes.</h1>
+                    <div class="about-photo-card hero-photo-card">
+                        <div class="hexagon-photo-wrap">
+                            <div class="hexagon-photo-glow"></div>
+                            <div class="hexagon-photo-border"></div>
+                            <div class="hexagon-photo-bg"></div>
+                            <div class="hexagon-photo">
+                                <img src="IMG/portrait4.png" alt="Tomasz Matyszczak" />
+                            </div>
+                        </div>
+                        <h1 class="hero-card-name">Tomasz Matyszczak</h1>
+                        <p class="about-photo-intro">Cześć, jestem Tomasz. Od kilku lat projektuję i koduję strony internetowe dla małych firm — ręcznie, bez agencji i pluginów, dzięki czemu działają szybciej i wyglądają tak, jak sobie wymarzyłeś.</p>
                     </div>
-                    <h2 class="header-3">Piszę każdą stronę ręcznie — bez gotowych kreatorów i wtyczek, które spowalniają.</h2>
-                    <p class="aboutMe_lead hero-tagline">Nie kupujesz strony. Kupujesz narzędzie, które ma dla Ciebie pracować.</p>
-                    <p class="hero-secondary-line">Doświadczenie zdobyte na kilku rynkach — rozumiem różne sposoby prowadzenia biznesu.</p>
                     <div class="hero-ctas">
                         <a href="#Contact" class="hero-cta hero-cta--primary">Napisz do mnie</a>
                         <a href="#Projects" class="hero-cta hero-cta--secondary">Zobacz portfolio</a>
@@ -204,23 +230,8 @@
         </div>
         <h2 class="title section-heading">Kim jestem i jak pracuję</h2>
         <div class="About-container">
-            <!-- Same card at every breakpoint - floats left on desktop
-                 (see @media min-width:769px in Aboutme.css) so text
-                 wraps around it, sits as a plain block above the text
-                 on mobile. -->
-            <div class="about-photo-card">
-                <div class="hexagon-photo-wrap">
-                    <div class="hexagon-photo-glow"></div>
-                    <div class="hexagon-photo-border"></div>
-                    <div class="hexagon-photo-bg"></div>
-                    <div class="hexagon-photo">
-                        <img src="IMG/portrait4.png" alt="Tomasz Matyszczak" />
-                    </div>
-                </div>
-                <p class="about-photo-intro">Cześć, jestem Tomasz. Od kilku lat projektuję i koduję strony internetowe dla małych firm — ręcznie, bez agencji i pluginów, dzięki czemu działają szybciej i wyglądają tak, jak sobie wymarzyłeś.</p>
-            </div>
             <div class="about-text">
-                <p class="descriptionAbout">Jestem front-end developerem z Piły. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.</p>
+                <p class="descriptionAbout">Jestem freelancerem z Piły, tworzę strony internetowe dla małych firm. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.</p>
 
                 <p class="aboutMe_text3">Kilka lat pracowałem jako niezależny wykonawca za granicą — nauczyło mnie to patrzeć na biznes klienta z różnych stron, nie tylko przez pryzmat jednego rynku. Dziś realizuję strony dla firm o różnym profilu i skali — od prostych wizytówek po rozbudowane serwisy i sklepy internetowe.</p>
 
@@ -530,7 +541,8 @@
                     <h3 class="contact_title">Skontaktuj się ze mną</h3>
                     <p class="text">
                         Jeśli chcesz ze mną współpracować, poniżej znajdziesz moje dane kontaktowe i linki do moich kont
-                        społecznościowych.
+                        społecznościowych. Realizuję projekty dla klientów z Piły i okolic (Trzcianka, Wyrzysk, Złotów,
+                        Chodzież) oraz zdalnie z całej Polski.
                     </p>
 
                     <div class="info">
@@ -1038,6 +1050,7 @@ https://tools.google.com/dlpage/gaoptout?hl=pl
     <!-- <script src="JS/Skills.js"></script> -->
     <script src="JS/Navbar.js"></script>
     <script src="JS/HeroRotator.js"></script>
+    <script src="JS/HeroCardHeight.js"></script>
     <script src="JS/AnimationGsap.js"></script>
     <script src="JS/LangSwitcher.js"></script>
     <script src="JS/Multilang.js"></script>

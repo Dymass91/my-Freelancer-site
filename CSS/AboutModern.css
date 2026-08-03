@@ -20,6 +20,15 @@
   font-size: 0.95em;
 }
 
+/* Scoped to two classes so it beats ".Aboutme p" (Aboutme.css)'s own
+   margin-top/bottom override at the 769px+ breakpoint, which would
+   otherwise win on specificity and leave this line flush against its
+   neighbors. */
+.Aboutme .aboutMe_techLine {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .aboutMe_whyLabel {
   font-family: 'Jura', sans-serif;
   font-weight: 700;
