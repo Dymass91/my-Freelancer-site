@@ -14,6 +14,23 @@ html, body {
   touch-action: pan-y;
 }
 
+/* Standard visually-hidden pattern - keeps content readable to screen
+   readers/search engines while removing it from sighted view. Used on
+   .hero-card-name (index.html): the visible "Tomasz Matyszczak" label
+   was removed from the hero photo card, but the element stays as the
+   page's semantic <h1>. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 *{
     margin: 0;
     padding: 0;
