@@ -1,11 +1,31 @@
 
 const langEl = document.querySelector('.langWrap');
-const link = document.querySelectorAll('input, a');
+// Scoped to .btn_language only (was "input, a" - every link/input on the
+// page, including hero CTAs, social icons, the contact form fields and
+// the "to-top" arrow) - clicking any of those doesn't switch language
+// (guarded further down by the `language` attribute check) but was still
+// running the active-button bookkeeping every time, desyncing the PL/EN/NL
+// indicator from the page's actual language whenever an unrelated link
+// was clicked.
+const link = document.querySelectorAll('.btn_language');
 
 const navbarHeaderAbout = document.querySelector('.navbar_header_About');
 const navbarHeaderService = document.querySelector('.navbar_header_Service');
+const navbarHeaderCennik = document.querySelector('.navbar_header_Cennik');
 const navbarHeaderProjects = document.querySelector('.navbar_header_Projects');
 const navbarHeaderContact = document.querySelector('.navbar_header_Contact');
+
+const loaderLabel = document.querySelector('.loader-label');
+
+const heroCtaPrimary = document.querySelector('.hero-cta--primary');
+const heroCtaSecondary = document.querySelector('.hero-cta--secondary');
+const aboutPhotoIntro = document.querySelector('.about-photo-intro');
+// Two instances (.hero-split__left, .hero-split__right - see index.html) -
+// both always show the same text, so every match gets the same value.
+const heroPreviewTeasers = document.querySelectorAll('.hero-preview-teaser');
+// Contains inline <strong> markup, so these are set via innerHTML, not
+// textContent (see applyTranslation below).
+const heroRotatorLines = document.querySelectorAll('.hero-rotator__line');
 
 const titleEl = document.querySelector('.title');
 const descrEl = document.querySelector('.descriptionAbout');
@@ -20,6 +40,15 @@ const aboutText5Before = document.querySelector('.aboutMe_text5_before');
 const aboutText5After = document.querySelector('.aboutMe_text5_after');
 const hrefToContact = document.querySelector('.AboutMe_hrefToContact');
 
+// .marker-label repeats once per section (About/Services/Pricing/
+// Projects/Contact) with different text each time - a plain
+// ".marker-label" query would only ever reach the first (About's) - each
+// is scoped to its own section container instead.
+const markerAbout = document.querySelector('.Aboutme .marker-label');
+const markerServices = document.querySelector('.skills-bg-wrap .marker-label');
+const markerPricing = document.querySelector('.pricing-section .marker-label');
+const markerProjects = document.querySelector('.Projects .marker-label');
+const markerContact = document.querySelector('.Contact_Social .marker-label');
 
 const Serviceh2 = document.querySelector('.service_h2');
 const ServiceSubtitle = document.querySelector('.service_subtitle');
@@ -37,6 +66,11 @@ const discServ3 = document.querySelector('.description_Service3');
 const ServEl4 = document.querySelector('.titleService4');
 const discServ4 = document.querySelector('.descriptionService4');
 
+const pricingH2 = document.querySelector('.pricing_h2');
+// .pricing-name/.pricing-price/etc. each repeat once per card (3 cards) -
+// scoped per-card below instead of via a page-wide querySelector.
+const pricingCards = document.querySelectorAll('.pricing-card');
+
 const ContactFormTitle = document.querySelector('.Contact_form_title');
 const contactTitle = document.querySelector('.contact_title');
 const contactSocialTitle = document.querySelector('.contact_title_social');
@@ -51,75 +85,104 @@ const footerText = document.querySelector('.footer_text');
 
 const footerPolicyText = document.querySelector('.footer_policy_text');
 const PolicyButton = document.querySelector('.Policy_button');
+// Was ".title" - collided with the About section's <h2 class="title">
+// (the first ".title" match in the DOM), so the modal's own title was
+// silently never reached by applyTranslation() at all.
+const policyModalTitle = document.querySelector('.policy-modal-title');
 
 const ProjectsTitleText = document.querySelector('.Projects_title_text');
 
-function getTranslatableElements() {
-    return [
-        navbarHeaderAbout, navbarHeaderService, navbarHeaderProjects, navbarHeaderContact,
-        titleEl, descrEl,
-        aboutText3, aboutTechLine, aboutWhyLabel, aboutWhy1, aboutWhy2, aboutWhy3,
-        aboutText5Before, aboutText5After, hrefToContact,
-        Serviceh2, ServiceSubtitle, Projectsh2,
-        ServEl1, discrEl1,
-        discServ2, ServEl2,
-        ServEl3, discServ3,
-        ServEl4, discServ4,
-        ContactFormTitle, contactTitle, contactSocialTitle,
-        informationCountry, contactInfoText, btn, contactName, contactMessage,
-        footerText, footerPolicyText, PolicyButton,
-        ProjectsTitleText
-    ].filter(Boolean);
-}
-
 function applyTranslation(attr) {
-    navbarHeaderAbout.textContent = data[attr].navbar_header_About;
-    navbarHeaderService.textContent = data[attr].navbar_header_Service;
-    navbarHeaderProjects.textContent = data[attr].navbar_header_Projects;
-    navbarHeaderContact.textContent = data[attr].navbar_header_Contact;
+    const t = data[attr];
 
-    titleEl.textContent = data[attr].title;
-    descrEl.textContent = data[attr].descriptionAbout;
+    navbarHeaderAbout.textContent = t.navbar_header_About;
+    navbarHeaderService.textContent = t.navbar_header_Service;
+    navbarHeaderCennik.textContent = t.navbar_header_Cennik;
+    navbarHeaderProjects.textContent = t.navbar_header_Projects;
+    navbarHeaderContact.textContent = t.navbar_header_Contact;
 
-    aboutText3.textContent = data[attr].aboutMe_text3;
-    aboutTechLine.textContent = data[attr].aboutMe_techLine;
-    aboutWhyLabel.textContent = data[attr].aboutMe_whyLabel;
-    aboutWhy1.textContent = data[attr].aboutMe_why1;
-    aboutWhy2.textContent = data[attr].aboutMe_why2;
-    aboutWhy3.textContent = data[attr].aboutMe_why3;
-    aboutText5Before.textContent = data[attr].aboutMe_text5_before;
-    aboutText5After.textContent = data[attr].aboutMe_text5_after;
-    hrefToContact.textContent = data[attr].AboutMe_hrefToContact;
+    if (loaderLabel) loaderLabel.textContent = t.loader_label;
 
-    Serviceh2.textContent = data[attr].service_h2;
-    ServiceSubtitle.textContent = data[attr].service_subtitle;
-    Projectsh2.textContent = data[attr].Projects_h2;
+    if (heroCtaPrimary) heroCtaPrimary.textContent = t.hero_cta_primary;
+    if (heroCtaSecondary) heroCtaSecondary.textContent = t.hero_cta_secondary;
+    if (aboutPhotoIntro) aboutPhotoIntro.textContent = t.about_photo_intro;
+    heroPreviewTeasers.forEach(function (el) { el.textContent = t.hero_preview_teaser; });
+    heroRotatorLines.forEach(function (el, i) {
+        if (t.hero_rotator[i]) el.innerHTML = t.hero_rotator[i];
+    });
 
-    ServEl1.textContent = data[attr].titleService1;
-    discrEl1.textContent = data[attr].descriptionService1;
+    titleEl.textContent = t.title;
+    descrEl.textContent = t.descriptionAbout;
 
-    ProjectsTitleText.textContent = data[attr].Projects_title_text;
+    if (markerAbout) markerAbout.textContent = t.marker_about;
+    if (markerServices) markerServices.textContent = t.marker_services;
+    if (markerPricing) markerPricing.textContent = t.marker_pricing;
+    if (markerProjects) markerProjects.textContent = t.marker_projects;
+    if (markerContact) markerContact.textContent = t.marker_contact;
 
-    ServEl2.textContent = data[attr].titleService2;
-    discServ2.textContent = data[attr].description_Service2;
+    aboutText3.textContent = t.aboutMe_text3;
+    aboutTechLine.textContent = t.aboutMe_techLine;
+    aboutWhyLabel.textContent = t.aboutMe_whyLabel;
+    aboutWhy1.textContent = t.aboutMe_why1;
+    aboutWhy2.textContent = t.aboutMe_why2;
+    aboutWhy3.textContent = t.aboutMe_why3;
+    aboutText5Before.textContent = t.aboutMe_text5_before;
+    aboutText5After.textContent = t.aboutMe_text5_after;
+    hrefToContact.textContent = t.AboutMe_hrefToContact;
 
-    ServEl3.textContent = data[attr].titleService3;
-    discServ3.textContent = data[attr].description_Service3;
+    Serviceh2.textContent = t.service_h2;
+    ServiceSubtitle.textContent = t.service_subtitle;
+    Projectsh2.textContent = t.Projects_h2;
 
-    ServEl4.textContent = data[attr].titleService4;
-    discServ4.textContent = data[attr].descriptionService4;
+    ServEl1.textContent = t.titleService1;
+    discrEl1.textContent = t.descriptionService1;
 
-    ContactFormTitle.textContent = data[attr].Contact_form_title;
-    contactTitle.textContent = data[attr].contact_title;
-    contactSocialTitle.textContent = data[attr].contact_title_social;
-    informationCountry.textContent = data[attr].information_country;
-    contactInfoText.textContent = data[attr].text;
-    btn.textContent = data[attr].btn;
-    contactName.textContent = data[attr].contact_name;
-    contactMessage.textContent = data[attr].contact_message;
-    footerText.textContent = data[attr].footer_text;
-    PolicyButton.textContent = data[attr].Policy_button;
-    footerPolicyText.textContent = data[attr].footer_policy_text;
+    ProjectsTitleText.textContent = t.Projects_title_text;
+
+    ServEl2.textContent = t.titleService2;
+    discServ2.textContent = t.description_Service2;
+
+    ServEl3.textContent = t.titleService3;
+    discServ3.textContent = t.description_Service3;
+
+    ServEl4.textContent = t.titleService4;
+    discServ4.textContent = t.descriptionService4;
+
+    if (pricingH2) pricingH2.textContent = t.pricing_h2;
+    pricingCards.forEach(function (card, i) {
+        const p = t.pricing[i];
+        if (!p) return;
+        var nameEl = card.querySelector('.pricing-name');
+        var priceEl = card.querySelector('.pricing-price');
+        var priceLabelEl = card.querySelector('.pricing-price-label');
+        var badgeEl = card.querySelector('.pricing-badge');
+        var featureEls = card.querySelectorAll('.pricing-features li');
+        var timeEl = card.querySelector('.pricing-time');
+        var btnEl = card.querySelector('.pricing-btn');
+
+        if (nameEl) nameEl.textContent = p.name;
+        if (priceEl) priceEl.textContent = p.price;
+        if (priceLabelEl) priceLabelEl.textContent = p.priceLabel;
+        if (badgeEl) badgeEl.textContent = p.badge;
+        featureEls.forEach(function (li, j) {
+            if (p.features[j] !== undefined) li.textContent = p.features[j];
+        });
+        if (timeEl) timeEl.textContent = p.time;
+        if (btnEl) btnEl.textContent = p.btn;
+    });
+
+    ContactFormTitle.textContent = t.Contact_form_title;
+    contactTitle.textContent = t.contact_title;
+    contactSocialTitle.textContent = t.contact_title_social;
+    informationCountry.textContent = t.information_country;
+    contactInfoText.textContent = t.text;
+    btn.textContent = t.btn;
+    contactName.textContent = t.contact_name;
+    contactMessage.textContent = t.contact_message;
+    footerText.textContent = t.footer_text;
+    PolicyButton.textContent = t.Policy_button;
+    footerPolicyText.textContent = t.footer_policy_text;
+    if (policyModalTitle) policyModalTitle.textContent = t.policy_modal_title;
 }
 
 link.forEach(el => {
@@ -166,13 +229,31 @@ var data = {
 
         "navbar_header_About": "O mnie",
         "navbar_header_Service": "Usługi",
+        "navbar_header_Cennik": "Cennik",
         "navbar_header_Projects": "Portfolio",
         "navbar_header_Contact": "Kontakt",
+
+        "loader_label": "Loading",
+
+        "hero_cta_primary": "Napisz do mnie",
+        "hero_cta_secondary": "Zobacz portfolio",
+        "about_photo_intro": "Cześć, jestem Tomasz. Od kilku lat projektuję i koduję strony internetowe dla małych firm — ręcznie, bez agencji i pluginów, dzięki czemu działają szybciej i wyglądają tak, jak sobie wymarzyłeś.",
+        "hero_preview_teaser": "Poniżej zobaczysz mój ostatni projekt dla klienta z Holandii.",
+        "hero_rotator": [
+            "Od <strong>1599 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.",
+            "Buduję strony, które ładują się w <strong>2 sekundy</strong> i realnie <strong>przyciągają klientów</strong> &mdash; nie tylko ładnie wyglądają.",
+            "Tworzę strony dla małych firm <strong>z Piły i okolic</strong> &mdash; od pomysłu do gotowej wizytówki w internecie."
+        ],
 
         "title": "Kim jestem i jak pracuję",
         "service_h2": "Czym się zajmuję",
         "Projects_h2": "Wybrane realizacje",
 
+        "marker_about": "o mnie",
+        "marker_services": "usługi",
+        "marker_pricing": "cennik",
+        "marker_projects": "portfolio",
+        "marker_contact": "kontakt",
 
         "descriptionAbout": "Jestem freelancerem z Piły, tworzę strony internetowe dla małych firm. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.",
         "aboutMe_text3": "Kilka lat pracowałem jako niezależny wykonawca za granicą — nauczyło mnie to patrzeć na biznes klienta z różnych stron, nie tylko przez pryzmat jednego rynku. Dziś realizuję strony dla firm o różnym profilu i skali — od prostych wizytówek po rozbudowane serwisy i sklepy internetowe.",
@@ -202,6 +283,37 @@ var data = {
         "Projects_title_text": "Poniżej znajdziesz wybrane realizacje — projekty komercyjne i demonstracyjne, każdy napisany ręcznie w HTML/CSS/JS oraz React, bez gotowych motywów i zbędnych wtyczek.",
         "Project_Live_btn": "Wejdź na stronę",
 
+        "pricing_h2": "Ile to kosztuje",
+        "pricing": [
+            {
+                "name": "Strona Wizytówka",
+                "price": "1 599 zł",
+                "priceLabel": "jednorazowo",
+                "badge": "",
+                "features": ["Projekt graficzny", "Programowanie HTML / CSS / JS", "Dopasowanie do telefonu i komputera", "Optymalizacja pod Google", "Hosting i domena"],
+                "time": "⏱ Realizacja: 1–2 tygodnie",
+                "btn": "Zamów"
+            },
+            {
+                "name": "Strona Usługowa",
+                "price": "3 499 zł",
+                "priceLabel": "jednorazowo",
+                "badge": "Najpopularniejszy",
+                "features": ["Wszystko z pakietu Wizytówka", "Do 10 podstron", "Panel do samodzielnej edycji treści", "Formularz kontaktowy", "Blog / Aktualności"],
+                "time": "⏱ Realizacja: 2–4 tygodnie",
+                "btn": "Zamów"
+            },
+            {
+                "name": "Sklep Internetowy",
+                "price": "5 999 zł",
+                "priceLabel": "jednorazowo",
+                "badge": "",
+                "features": ["Wszystko z pakietu Usługowa", "Sklep zbudowany w React — szybszy niż typowe platformy e-commerce", "Integracja płatności", "Panel zarządzania produktami", "Wdrożenie produktów"],
+                "time": "⏱ Realizacja: 4–8 tygodni",
+                "btn": "Zamów"
+            }
+        ],
+
         "contact_title": "Porozmawiajmy o Twoim projekcie",
         "information_country": "Polska, Piła",
         "Contact_form_title": "Napisz do mnie",
@@ -212,7 +324,8 @@ var data = {
         "contact_message": "Wiadomość",
         "footer_text": " Wszelkie prawa zastrzeżone © 2021",
         "footer_policy_text": "Korzystając z tej strony proszę zapoznać się z  ",
-        "Policy_button": " Polityką prywatności"
+        "Policy_button": " Polityką prywatności",
+        "policy_modal_title": "Polityka prywatności"
     },
     "english":
     {
@@ -223,12 +336,31 @@ var data = {
 
         "navbar_header_About": "About",
         "navbar_header_Service": "Service",
+        "navbar_header_Cennik": "Pricing",
         "navbar_header_Projects": "Portfolio",
         "navbar_header_Contact": "Contact",
+
+        "loader_label": "Loading",
+
+        "hero_cta_primary": "Get in touch",
+        "hero_cta_secondary": "View portfolio",
+        "about_photo_intro": "Hi, I'm Tomasz. For the past few years I've been designing and coding websites for small businesses — by hand, without agencies or plugins, so they run faster and look exactly how you imagined.",
+        "hero_preview_teaser": "Below you'll see my latest project for a client from the Netherlands.",
+        "hero_rotator": [
+            "From <strong>1599 zł</strong>. A finished website in 1&ndash;2 weeks. No hidden costs.",
+            "I build websites that load in <strong>2 seconds</strong> and actually <strong>attract customers</strong> &mdash; not just look pretty.",
+            "I create websites for small businesses <strong>in Piła and the surrounding area</strong> &mdash; from idea to a finished online presence."
+        ],
 
         "title": "Who I am and how I work",
         "service_h2": "What I do",
         "Projects_h2": "Selected work",
+
+        "marker_about": "about",
+        "marker_services": "services",
+        "marker_pricing": "pricing",
+        "marker_projects": "portfolio",
+        "marker_contact": "contact",
 
         "descriptionAbout": "I'm a freelancer based in Piła, Poland, building websites for small businesses. I'm not an agency juggling dozens of clients at once, or a bargain-bin off-the-shelf WordPress theme. I build every website myself, from scratch, in clean code — that's why it loads instantly and doesn't drag along kilograms of plugins nobody uses.",
         "aboutMe_text3": "I spent a few years working as an independent contractor abroad - it taught me to look at a client's business from different angles, not just through the lens of one market. Today I build sites for businesses of different profiles and scales - from simple business cards to full-featured services and online stores.",
@@ -258,6 +390,37 @@ var data = {
         "Projects_title_text": "A selection of my work — commercial and demo projects, each hand-coded in HTML/CSS/JS and React, no page builders or bloated plugins.",
         "Project_Live_btn": "Live",
 
+        "pricing_h2": "How much does it cost",
+        "pricing": [
+            {
+                "name": "Business Card Website",
+                "price": "1 599 zł",
+                "priceLabel": "one-time",
+                "badge": "",
+                "features": ["Graphic design", "HTML / CSS / JS development", "Mobile & desktop responsive", "Optimized for Google", "Hosting & domain"],
+                "time": "⏱ Delivery: 1–2 weeks",
+                "btn": "Order"
+            },
+            {
+                "name": "Service Website",
+                "price": "3 499 zł",
+                "priceLabel": "one-time",
+                "badge": "Most popular",
+                "features": ["Everything from the Business Card package", "Up to 10 subpages", "Self-service content editing panel", "Contact form", "Blog / News section"],
+                "time": "⏱ Delivery: 2–4 weeks",
+                "btn": "Order"
+            },
+            {
+                "name": "Online Store",
+                "price": "5 999 zł",
+                "priceLabel": "one-time",
+                "badge": "",
+                "features": ["Everything from the Service package", "Store built in React — faster than typical e-commerce platforms", "Payment integration", "Product management panel", "Product setup"],
+                "time": "⏱ Delivery: 4–8 weeks",
+                "btn": "Order"
+            }
+        ],
+
         "contact_title": "Let's talk about your project",
         "information_country": "Poland, Piła",
         "Contact_form_title": "Contact me",
@@ -268,7 +431,114 @@ var data = {
         "contact_message": "Message",
         "footer_text": " All rights reserved © 2021",
         "footer_policy_text": "When using this page, please read the  ",
-        "Policy_button": " Privacy policy"
+        "Policy_button": " Privacy policy",
+        "policy_modal_title": "Privacy Policy"
+    },
+    "dutch":
+    {
+        "menu_header_About": "Over mij",
+        "menu_header_Service": "Diensten",
+        "menu_header_Projects": "Portfolio",
+        "menu_header_Contact": "Contact",
 
+        "navbar_header_About": "Over mij",
+        "navbar_header_Service": "Diensten",
+        "navbar_header_Cennik": "Tarieven",
+        "navbar_header_Projects": "Portfolio",
+        "navbar_header_Contact": "Contact",
+
+        "loader_label": "Laden",
+
+        "hero_cta_primary": "Neem contact op",
+        "hero_cta_secondary": "Bekijk portfolio",
+        "about_photo_intro": "Hoi, ik ben Tomasz. Al een paar jaar ontwerp en bouw ik websites voor kleine bedrijven — met de hand, zonder bureaus of plugins, waardoor ze sneller draaien en er precies zo uitzien als jij je had voorgesteld.",
+        "hero_preview_teaser": "Hieronder zie je mijn laatste project voor een klant uit Nederland.",
+        "hero_rotator": [
+            "Vanaf <strong>1599 zł</strong>. Een kant-en-klare website in 1&ndash;2 weken. Geen verborgen kosten.",
+            "Ik bouw websites die in <strong>2 seconden</strong> laden en echt <strong>klanten aantrekken</strong> &mdash; niet alleen mooi zijn.",
+            "Ik maak websites voor kleine bedrijven <strong>in Piła en omgeving</strong> &mdash; van idee tot een kant-en-klare online aanwezigheid."
+        ],
+
+        "title": "Wie ik ben en hoe ik werk",
+        "service_h2": "Wat ik doe",
+        "Projects_h2": "Geselecteerd werk",
+
+        "marker_about": "over mij",
+        "marker_services": "diensten",
+        "marker_pricing": "tarieven",
+        "marker_projects": "portfolio",
+        "marker_contact": "contact",
+
+        "descriptionAbout": "Ik ben een freelancer uit Piła, Polen, en bouw websites voor kleine bedrijven. Ik ben geen bureau dat tientallen klanten tegelijk jongleert, of een goedkoop kant-en-klaar WordPress-thema. Ik bouw elke website zelf, vanaf nul, in schone code — daarom laadt hij razendsnel en sleept hij geen kilo's aan plugins mee die niemand gebruikt.",
+        "aboutMe_text3": "Ik heb een paar jaar als zelfstandig contractor in het buitenland gewerkt — dat leerde me om het bedrijf van een klant vanuit verschillende invalshoeken te bekijken, niet alleen door de lens van één markt. Vandaag bouw ik sites voor bedrijven van verschillend profiel en schaal — van eenvoudige visitekaartjes tot volwaardige diensten en webshops.",
+        "aboutMe_techLine": "Sites met de hand geschreven, geen page builders — daardoor zijn ze sneller.",
+        "aboutMe_whyLabel": "Waarom met mij werken:",
+        "aboutMe_why1": "Ik schrijf code met de hand — je site is sneller dan een met kant-en-klare websitebouwers",
+        "aboutMe_why2": "Je spreekt direct met mij, niet met een klantenservice-afdeling",
+        "aboutMe_why3": "De site blijft van jou — volledige toegang tot de code, geen platformafhankelijkheid",
+        "aboutMe_text5_before": "Bekijk hieronder mijn aanbod en ",
+        "aboutMe_text5_after": " — ik reageer persoonlijk.",
+        "AboutMe_hrefToContact": "neem contact op",
+
+        "service_subtitle": "Van een eenvoudige visitekaartjes-site tot een volledige webshop — ik stem de oplossing af op het doel, niet andersom.",
+
+        "titleService1": "Visitekaartjes-websites",
+        "descriptionService1": "Een snelle, responsieve website die vanaf het eerste bezoek vertrouwen wekt. Voor dienstverleners en lokale bedrijven die zichtbaar willen zijn op Google.",
+
+        "titleService2": "Webshops",
+        "description_Service2": "Verkoop 24 uur per dag, zonder openingstijden. Betaalintegratie en een productbeheerpaneel klaar vanaf dag één.",
+
+        "titleService3": "Modernisering & redesign",
+        "description_Service3": "Heb je een site die er tien jaar oud uitziet of traag laadt? Ik vernieuw bestaande websites — nieuw design, snellere code, zonder je Google-posities te verliezen.",
+
+        "titleService4": "Optimalisatie & SEO",
+        "descriptionService4": "Een traag ladende site verliest klanten voordat ze hem zelfs maar zien. Ik zorg voor snelheid en SEO-structuur vanaf de allereerste regel code.",
+
+        "Projects_title_text": "Een selectie van mijn werk — commerciële en demoprojecten, elk met de hand gecodeerd in HTML/CSS/JS en React, geen page builders of opgeblazen plugins.",
+        "Project_Live_btn": "Live",
+
+        "pricing_h2": "Wat kost het",
+        "pricing": [
+            {
+                "name": "Visitekaartjes-website",
+                "price": "1 599 zł",
+                "priceLabel": "eenmalig",
+                "badge": "",
+                "features": ["Grafisch ontwerp", "HTML / CSS / JS ontwikkeling", "Responsief voor telefoon en computer", "Geoptimaliseerd voor Google", "Hosting en domein"],
+                "time": "⏱ Levertijd: 1–2 weken",
+                "btn": "Bestellen"
+            },
+            {
+                "name": "Dienstenwebsite",
+                "price": "3 499 zł",
+                "priceLabel": "eenmalig",
+                "badge": "Meest populair",
+                "features": ["Alles uit het Visitekaartjes-pakket", "Tot 10 subpagina's", "Paneel voor zelfstandige contentbewerking", "Contactformulier", "Blog / Nieuws"],
+                "time": "⏱ Levertijd: 2–4 weken",
+                "btn": "Bestellen"
+            },
+            {
+                "name": "Webshop",
+                "price": "5 999 zł",
+                "priceLabel": "eenmalig",
+                "badge": "",
+                "features": ["Alles uit het Diensten-pakket", "Webshop gebouwd in React — sneller dan typische e-commerceplatforms", "Betaalintegratie", "Productbeheerpaneel", "Product-implementatie"],
+                "time": "⏱ Levertijd: 4–8 weken",
+                "btn": "Bestellen"
+            }
+        ],
+
+        "contact_title": "Laten we het over jouw project hebben",
+        "information_country": "Polen, Piła",
+        "Contact_form_title": "Neem contact op",
+        "contact_title_social": "Verbind met mij:",
+        "text": "Als je met mij wilt samenwerken, vind je hieronder mijn contactgegevens en links naar mijn sociale media. Ik neem projecten aan voor klanten in Piła en omgeving (Trzcianka, Wyrzysk, Złotów, Chodzież), en ook op afstand in heel Polen.",
+        "btn": "Verzenden",
+        "contact_name": "Naam",
+        "contact_message": "Bericht",
+        "footer_text": " Alle rechten voorbehouden © 2021",
+        "footer_policy_text": "Lees bij het gebruik van deze pagina de  ",
+        "Policy_button": " Privacyverklaring",
+        "policy_modal_title": "Privacybeleid"
     }
 }

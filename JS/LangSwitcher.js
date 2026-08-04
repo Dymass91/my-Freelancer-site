@@ -15,7 +15,7 @@
   const LANGUAGES = [
     { attr: 'Polish', code: 'PL', label: 'Polski' },
     { attr: 'english', code: 'EN', label: 'English' },
-    // { attr: 'dutch', code: 'NL', label: 'Nederlands' },
+    { attr: 'dutch', code: 'NL', label: 'Nederlands' },
   ];
   const DEFAULT_INDEX = 0;
 
