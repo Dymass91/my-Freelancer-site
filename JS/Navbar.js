@@ -1,5 +1,5 @@
 
-const navbarLinks = document.querySelectorAll(".navbar a, .boxArrow a , .to-top, .AboutMe_hrefToContact");
+const navbarLinks = document.querySelectorAll(".navbar a, .boxArrow a , .to-top, .AboutMe_hrefToContact, .hero-cta");
 
 for (let i = 0; i < navbarLinks.length; i++) {
     navbarLinks[i].addEventListener("click", navbarLinkClick);

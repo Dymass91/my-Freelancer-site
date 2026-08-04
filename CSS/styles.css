@@ -2,15 +2,12 @@
 html {
   max-width: 100vw;
   overflow-x: hidden;
-  /* In-page anchor links (nav, hero CTAs, scroll-to-top) jump to their
-     target instantly without this - smooth scroll applies site-wide. */
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  /* Deliberately NOT scroll-behavior:smooth - JS/Navbar.js already
+     drives every in-page anchor link (nav, boxArrow, to-top, hero
+     CTAs) through its own requestAnimationFrame loop with a fixed
+     easeInOutCubic curve. Turning this on made every scrollTo() call
+     inside that loop *also* get smoothed by the browser on top of the
+     JS's own easing, stacking two animations into uneven, laggy motion. */
 }
 
 html, body {
