@@ -120,6 +120,19 @@ textarea.input {
   transform: translateY(0);
 }
 
+/* Sits outside .input-container (not overlapping the floating-label
+   overlay, which occupies the same top-left corner of the textarea in
+   its resting state) - a separate small caption below the field
+   instead of the textarea's native placeholder, avoiding the two
+   texts stacking on top of each other. */
+.contact_message_hint {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: -1rem 0 1.3rem;
+}
+
 .btn {
   padding: 0.6rem 1.3rem;
   background-color: #fff;
@@ -215,8 +228,15 @@ textarea.input {
 .text {
     color:#9c9fa7;
   font-weight: 900;
-  margin: 1.5rem 0 2rem 0;
+  margin: 1.5rem 0 0.6rem 0;
   font-size: 18px;
+}
+.contact_text_secondary {
+  color: #9c9fa7;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 2rem 0;
 }
 .info{
     padding: .5rem;

@@ -81,12 +81,17 @@ const faqItems = document.querySelectorAll('.faq-item');
 
 const ContactFormTitle = document.querySelector('.Contact_form_title');
 const contactTitle = document.querySelector('.contact_title');
+const contactTextSecondary = document.querySelector('.contact_text_secondary');
+const contactNameDisplay = document.querySelector('.contact_name_display');
 const contactSocialTitle = document.querySelector('.contact_title_social');
 const informationCountry = document.querySelector('.information_country');
 const contactInfoText = document.querySelector('.text');
 const btn = document.querySelector('.btn');
 const contactName = document.querySelector('.contact_name');
+const contactEmailLabel = document.querySelector('.contact_email_label');
+const contactPhoneLabel = document.querySelector('.contact_phone_label');
 const contactMessage = document.querySelector('.contact_message');
+const contactMessageHint = document.querySelector('.contact_message_hint');
 
 
 const footerText = document.querySelector('.footer_text');
@@ -196,12 +201,17 @@ function applyTranslation(attr) {
 
     ContactFormTitle.textContent = t.Contact_form_title;
     contactTitle.textContent = t.contact_title;
+    if (contactTextSecondary) contactTextSecondary.textContent = t.contact_text_secondary;
+    if (contactNameDisplay) contactNameDisplay.textContent = t.contact_name_display;
     contactSocialTitle.textContent = t.contact_title_social;
     informationCountry.textContent = t.information_country;
     contactInfoText.textContent = t.text;
     btn.textContent = t.btn;
     contactName.textContent = t.contact_name;
+    if (contactEmailLabel) contactEmailLabel.textContent = t.contact_email_label;
+    if (contactPhoneLabel) contactPhoneLabel.textContent = t.contact_phone_label;
     contactMessage.textContent = t.contact_message;
+    if (contactMessageHint) contactMessageHint.textContent = t.contact_message_hint;
     footerText.textContent = t.footer_text;
     PolicyButton.textContent = t.Policy_button;
     footerPolicyText.textContent = t.footer_policy_text;
@@ -359,14 +369,19 @@ var data = {
             { "q": "Jak rozpocząć współpracę?", "a": "Napisz lub zadzwoń. Opowiedz mi krótko o swojej firmie i czego potrzebujesz, a wspólnie ustalimy najlepsze rozwiązanie." }
         ],
 
-        "contact_title": "Porozmawiajmy o Twoim projekcie",
-        "information_country": "Polska, Piła",
+        "contact_title": "Masz pomysł na stronę?",
+        "contact_text_secondary": "Nie musisz dokładnie wiedzieć, jak powinna wyglądać strona — wspólnie ustalimy najlepsze rozwiązanie.",
+        "contact_name_display": "Tomasz Matyszczak",
+        "information_country": "Piła i cała Polska",
         "Contact_form_title": "Napisz do mnie",
         "contact_title_social": "Połącz się ze mną:",
-        "text": "Jeśli chcesz ze mną współpracować, poniżej znajdziesz moje dane kontaktowe i linki do moich kont społecznościowych. Realizuję projekty dla klientów z Piły i okolic (Trzcianka, Wyrzysk, Złotów, Chodzież) oraz zdalnie z całej Polski.",
-        "btn": "Wyślij",
-        "contact_name": "Imię",
-        "contact_message": "Wiadomość",
+        "text": "Napisz kilka zdań o swojej firmie i tym, czego potrzebujesz.",
+        "btn": "Wyślij zapytanie",
+        "contact_name": "Imię i nazwisko",
+        "contact_email_label": "Adres e-mail",
+        "contact_phone_label": "Telefon (opcjonalnie)",
+        "contact_message": "Czego potrzebujesz?",
+        "contact_message_hint": "Napisz kilka zdań o swojej firmie i stronie, której potrzebujesz.",
         "footer_text": " Wszelkie prawa zastrzeżone © 2021",
         "footer_policy_text": "Korzystając z tej strony proszę zapoznać się z  ",
         "Policy_button": " Polityką prywatności",
@@ -488,14 +503,19 @@ var data = {
             { "q": "How do I get started?", "a": "Send a message or give me a call. Tell me briefly about your business and what you need, and we'll work out the best solution together." }
         ],
 
-        "contact_title": "Let's talk about your project",
-        "information_country": "Poland, Piła",
+        "contact_title": "Have an idea for a website?",
+        "contact_text_secondary": "You don't need to know exactly what the website should look like — we'll work out the best solution together.",
+        "contact_name_display": "Tomasz Matyszczak",
+        "information_country": "Piła and all of Poland",
         "Contact_form_title": "Contact me",
         "contact_title_social": "Connect with me:",
-        "text": "If you'd like to work together, you'll find my contact details and social media links below. I take on projects for clients in Piła and the surrounding area (Trzcianka, Wyrzysk, Złotów, Chodzież), as well as remotely across Poland.",
-        "btn": "Send",
-        "contact_name": "Name",
-        "contact_message": "Message",
+        "text": "Write a few sentences about your business and what you need.",
+        "btn": "Send inquiry",
+        "contact_name": "Full name",
+        "contact_email_label": "Email address",
+        "contact_phone_label": "Phone (optional)",
+        "contact_message": "What do you need?",
+        "contact_message_hint": "Write a few sentences about your business and the website you need.",
         "footer_text": " All rights reserved © 2021",
         "footer_policy_text": "When using this page, please read the  ",
         "Policy_button": " Privacy policy",
@@ -617,14 +637,19 @@ var data = {
             { "q": "Hoe start ik de samenwerking?", "a": "Stuur een bericht of bel me. Vertel kort iets over je bedrijf en wat je nodig hebt, dan bepalen we samen de beste oplossing." }
         ],
 
-        "contact_title": "Laten we het over jouw project hebben",
-        "information_country": "Polen, Piła",
+        "contact_title": "Heb je een idee voor een website?",
+        "contact_text_secondary": "Je hoeft niet precies te weten hoe de website eruit moet zien — samen bepalen we de beste oplossing.",
+        "contact_name_display": "Tomasz Matyszczak",
+        "information_country": "Piła en heel Polen",
         "Contact_form_title": "Neem contact op",
         "contact_title_social": "Verbind met mij:",
-        "text": "Als je met mij wilt samenwerken, vind je hieronder mijn contactgegevens en links naar mijn sociale media. Ik neem projecten aan voor klanten in Piła en omgeving (Trzcianka, Wyrzysk, Złotów, Chodzież), en ook op afstand in heel Polen.",
-        "btn": "Verzenden",
-        "contact_name": "Naam",
-        "contact_message": "Bericht",
+        "text": "Schrijf een paar zinnen over je bedrijf en wat je nodig hebt.",
+        "btn": "Aanvraag versturen",
+        "contact_name": "Volledige naam",
+        "contact_email_label": "E-mailadres",
+        "contact_phone_label": "Telefoon (optioneel)",
+        "contact_message": "Wat heb je nodig?",
+        "contact_message_hint": "Schrijf een paar zinnen over je bedrijf en de website die je nodig hebt.",
         "footer_text": " Alle rechten voorbehouden © 2021",
         "footer_policy_text": "Lees bij het gebruik van deze pagina de  ",
         "Policy_button": " Privacyverklaring",

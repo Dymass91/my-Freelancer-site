@@ -25,6 +25,7 @@ form.addEventListener("submit", async function (e) {
 
     const name = form.querySelector(".name").value.trim();
     const email = form.querySelector(".email").value.trim();
+    const phone = form.querySelector(".phone").value.trim();
     const message = form.querySelector(".message").value.trim();
     const btn = form.querySelector(".btn");
 
@@ -44,6 +45,7 @@ form.addEventListener("submit", async function (e) {
         access_key: "e9e0c568-a4ad-46fe-b521-db7793560cd1",
         name,
         email,
+        phone: phone || "nie podano",
         message,
         subject: "Nowa wiadomość z tomaszmatyszczak.pl",
     };
@@ -76,6 +78,6 @@ form.addEventListener("submit", async function (e) {
         status.classList.add("visible");
     }
 
-    btn.textContent = "Wyślij";
+    btn.textContent = "Wyślij zapytanie";
     btn.disabled = false;
 });
