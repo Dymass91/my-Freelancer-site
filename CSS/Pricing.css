@@ -21,6 +21,20 @@
        the original Cennik-pill-hidden-under-Skills bug needed. */
 }
 
+/* Same style as .service_subtitle (ServicesModern.css) - the Services
+   section's own intro line under its heading, reused here for
+   consistency across the site's section subtitles. */
+.pricing_subtitle {
+    font-family: 'Jura', sans-serif;
+    color: #64666d;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-align: center;
+    max-width: 640px;
+    margin: 12px auto 0;
+    padding: 0 1rem;
+}
+
 .pricing-cards {
     display: flex;
     justify-content: center;
@@ -111,6 +125,18 @@
 
 .pricing-card.featured .pricing-price-label {
     color: rgba(255,255,255,0.75);
+}
+
+.pricing-description {
+    font-size: 0.88rem;
+    color: #757F9A;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card.featured .pricing-description {
+    color: rgba(255,255,255,0.85);
 }
 
 .pricing-divider {

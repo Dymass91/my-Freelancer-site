@@ -67,6 +67,7 @@ const ServEl4 = document.querySelector('.titleService4');
 const discServ4 = document.querySelector('.descriptionService4');
 
 const pricingH2 = document.querySelector('.pricing_h2');
+const pricingSubtitle = document.querySelector('.pricing_subtitle');
 // .pricing-name/.pricing-price/etc. each repeat once per card (3 cards) -
 // scoped per-card below instead of via a page-wide querySelector.
 const pricingCards = document.querySelectorAll('.pricing-card');
@@ -149,6 +150,7 @@ function applyTranslation(attr) {
     discServ4.textContent = t.descriptionService4;
 
     if (pricingH2) pricingH2.textContent = t.pricing_h2;
+    if (pricingSubtitle) pricingSubtitle.textContent = t.pricing_subtitle;
     pricingCards.forEach(function (card, i) {
         const p = t.pricing[i];
         if (!p) return;
@@ -156,6 +158,7 @@ function applyTranslation(attr) {
         var priceEl = card.querySelector('.pricing-price');
         var priceLabelEl = card.querySelector('.pricing-price-label');
         var badgeEl = card.querySelector('.pricing-badge');
+        var descriptionEl = card.querySelector('.pricing-description');
         var featureEls = card.querySelectorAll('.pricing-features li');
         var timeEl = card.querySelector('.pricing-time');
         var btnEl = card.querySelector('.pricing-btn');
@@ -164,6 +167,7 @@ function applyTranslation(attr) {
         if (priceEl) priceEl.textContent = p.price;
         if (priceLabelEl) priceLabelEl.textContent = p.priceLabel;
         if (badgeEl) badgeEl.textContent = p.badge;
+        if (descriptionEl) descriptionEl.textContent = p.description;
         featureEls.forEach(function (li, j) {
             if (p.features[j] !== undefined) li.textContent = p.features[j];
         });
@@ -283,33 +287,37 @@ var data = {
         "Projects_title_text": "Poniżej znajdziesz wybrane realizacje — projekty komercyjne i demonstracyjne, każdy napisany ręcznie w HTML/CSS/JS oraz React, bez gotowych motywów i zbędnych wtyczek.",
         "Project_Live_btn": "Wejdź na stronę",
 
-        "pricing_h2": "Ile to kosztuje",
+        "pricing_h2": "Ile kosztuje strona internetowa?",
+        "pricing_subtitle": "Wybierz rozwiązanie dopasowane do potrzeb Twojej firmy. Jeśli nie wiesz, który wariant będzie odpowiedni, pomogę Ci wybrać najlepszą opcję.",
         "pricing": [
             {
-                "name": "Strona Wizytówka",
-                "price": "1 599 zł",
-                "priceLabel": "jednorazowo",
-                "badge": "",
-                "features": ["Projekt graficzny", "Programowanie HTML / CSS / JS", "Dopasowanie do telefonu i komputera", "Optymalizacja pod Google", "Hosting i domena"],
-                "time": "⏱ Realizacja: 1–2 tygodnie",
-                "btn": "Zamów"
-            },
-            {
-                "name": "Strona Usługowa",
-                "price": "3 499 zł",
+                "name": "START",
+                "price": "1599 zł",
                 "priceLabel": "jednorazowo",
                 "badge": "Najpopularniejszy",
-                "features": ["Wszystko z pakietu Wizytówka", "Do 10 podstron", "Panel do samodzielnej edycji treści", "Formularz kontaktowy", "Blog / Aktualności"],
-                "time": "⏱ Realizacja: 2–4 tygodnie",
+                "description": "Dla małych firm i osób, które potrzebują prostej, profesjonalnej strony.",
+                "features": ["strona główna + najważniejsze informacje", "responsywny projekt", "formularz kontaktowy", "podstawowa optymalizacja SEO", "wdrożenie pod własną domeną"],
+                "time": "Realizacja: 1–2 tygodnie",
                 "btn": "Zamów"
             },
             {
-                "name": "Sklep Internetowy",
-                "price": "5 999 zł",
+                "name": "FIRMA",
+                "price": "3499 zł",
                 "priceLabel": "jednorazowo",
                 "badge": "",
-                "features": ["Wszystko z pakietu Usługowa", "Sklep zbudowany w React — szybszy niż typowe platformy e-commerce", "Integracja płatności", "Panel zarządzania produktami", "Wdrożenie produktów"],
-                "time": "⏱ Realizacja: 4–8 tygodni",
+                "description": "Dla firm, które potrzebują rozbudowanej prezentacji swojej oferty.",
+                "features": ["kilka podstron", "indywidualny projekt", "formularze i dodatkowe funkcje", "podstawowe SEO", "pełna responsywność", "wdrożenie i konfiguracja"],
+                "time": "Realizacja: 2–4 tygodnie",
+                "btn": "Zamów"
+            },
+            {
+                "name": "SKLEP",
+                "price": "5999 zł",
+                "priceLabel": "jednorazowo",
+                "badge": "",
+                "description": "Dla firm, które chcą sprzedawać produkty lub usługi online.",
+                "features": ["sklep internetowy", "katalog produktów", "koszyk i zamówienia", "płatności online", "responsywny projekt", "konfiguracja i wdrożenie"],
+                "time": "Realizacja: od 3–5 tygodni",
                 "btn": "Zamów"
             }
         ],
@@ -390,33 +398,37 @@ var data = {
         "Projects_title_text": "A selection of my work — commercial and demo projects, each hand-coded in HTML/CSS/JS and React, no page builders or bloated plugins.",
         "Project_Live_btn": "Live",
 
-        "pricing_h2": "How much does it cost",
+        "pricing_h2": "How much does a website cost?",
+        "pricing_subtitle": "Choose the solution that fits your business needs. If you're not sure which option is right, I'll help you pick the best one.",
         "pricing": [
             {
-                "name": "Business Card Website",
-                "price": "1 599 zł",
-                "priceLabel": "one-time",
-                "badge": "",
-                "features": ["Graphic design", "HTML / CSS / JS development", "Mobile & desktop responsive", "Optimized for Google", "Hosting & domain"],
-                "time": "⏱ Delivery: 1–2 weeks",
-                "btn": "Order"
-            },
-            {
-                "name": "Service Website",
-                "price": "3 499 zł",
+                "name": "START",
+                "price": "1599 zł",
                 "priceLabel": "one-time",
                 "badge": "Most popular",
-                "features": ["Everything from the Business Card package", "Up to 10 subpages", "Self-service content editing panel", "Contact form", "Blog / News section"],
-                "time": "⏱ Delivery: 2–4 weeks",
+                "description": "For small businesses and individuals who need a simple, professional website.",
+                "features": ["homepage + key information", "responsive design", "contact form", "basic SEO optimization", "deployment on your own domain"],
+                "time": "Delivery: 1–2 weeks",
                 "btn": "Order"
             },
             {
-                "name": "Online Store",
-                "price": "5 999 zł",
+                "name": "BUSINESS",
+                "price": "3499 zł",
                 "priceLabel": "one-time",
                 "badge": "",
-                "features": ["Everything from the Service package", "Store built in React — faster than typical e-commerce platforms", "Payment integration", "Product management panel", "Product setup"],
-                "time": "⏱ Delivery: 4–8 weeks",
+                "description": "For businesses that need a more extensive presentation of their offer.",
+                "features": ["several subpages", "custom design", "forms and additional features", "basic SEO", "full responsiveness", "deployment and configuration"],
+                "time": "Delivery: 2–4 weeks",
+                "btn": "Order"
+            },
+            {
+                "name": "STORE",
+                "price": "5999 zł",
+                "priceLabel": "one-time",
+                "badge": "",
+                "description": "For businesses that want to sell products or services online.",
+                "features": ["online store", "product catalog", "cart and orders", "online payments", "responsive design", "configuration and deployment"],
+                "time": "Delivery: from 3–5 weeks",
                 "btn": "Order"
             }
         ],
@@ -497,33 +509,37 @@ var data = {
         "Projects_title_text": "Een selectie van mijn werk — commerciële en demoprojecten, elk met de hand gecodeerd in HTML/CSS/JS en React, geen page builders of opgeblazen plugins.",
         "Project_Live_btn": "Live",
 
-        "pricing_h2": "Wat kost het",
+        "pricing_h2": "Wat kost een website?",
+        "pricing_subtitle": "Kies de oplossing die bij de behoeften van jouw bedrijf past. Weet je niet welke optie geschikt is? Dan help ik je de beste keuze te maken.",
         "pricing": [
             {
-                "name": "Visitekaartjes-website",
-                "price": "1 599 zł",
-                "priceLabel": "eenmalig",
-                "badge": "",
-                "features": ["Grafisch ontwerp", "HTML / CSS / JS ontwikkeling", "Responsief voor telefoon en computer", "Geoptimaliseerd voor Google", "Hosting en domein"],
-                "time": "⏱ Levertijd: 1–2 weken",
-                "btn": "Bestellen"
-            },
-            {
-                "name": "Dienstenwebsite",
-                "price": "3 499 zł",
+                "name": "START",
+                "price": "1599 zł",
                 "priceLabel": "eenmalig",
                 "badge": "Meest populair",
-                "features": ["Alles uit het Visitekaartjes-pakket", "Tot 10 subpagina's", "Paneel voor zelfstandige contentbewerking", "Contactformulier", "Blog / Nieuws"],
-                "time": "⏱ Levertijd: 2–4 weken",
+                "description": "Voor kleine bedrijven en particulieren die een eenvoudige, professionele website nodig hebben.",
+                "features": ["homepage + belangrijkste informatie", "responsief ontwerp", "contactformulier", "basis SEO-optimalisatie", "implementatie op je eigen domein"],
+                "time": "Levertijd: 1–2 weken",
                 "btn": "Bestellen"
             },
             {
-                "name": "Webshop",
-                "price": "5 999 zł",
+                "name": "BEDRIJF",
+                "price": "3499 zł",
                 "priceLabel": "eenmalig",
                 "badge": "",
-                "features": ["Alles uit het Diensten-pakket", "Webshop gebouwd in React — sneller dan typische e-commerceplatforms", "Betaalintegratie", "Productbeheerpaneel", "Product-implementatie"],
-                "time": "⏱ Levertijd: 4–8 weken",
+                "description": "Voor bedrijven die een uitgebreidere presentatie van hun aanbod nodig hebben.",
+                "features": ["meerdere subpagina's", "op maat gemaakt ontwerp", "formulieren en extra functies", "basis SEO", "volledig responsief", "implementatie en configuratie"],
+                "time": "Levertijd: 2–4 weken",
+                "btn": "Bestellen"
+            },
+            {
+                "name": "WINKEL",
+                "price": "5999 zł",
+                "priceLabel": "eenmalig",
+                "badge": "",
+                "description": "Voor bedrijven die producten of diensten online willen verkopen.",
+                "features": ["webshop", "productcatalogus", "winkelwagen en bestellingen", "online betalingen", "responsief ontwerp", "configuratie en implementatie"],
+                "time": "Levertijd: vanaf 3–5 weken",
                 "btn": "Bestellen"
             }
         ],
