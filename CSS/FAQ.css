@@ -1,0 +1,110 @@
+/* ── FAQ section - accordion list between Portfolio and Contact ── */
+.faq-section {
+  background-color: #f4f5f7;
+  position: relative;
+  /* Without this, .section-heading's margin-top would collapse straight
+     through this section (its first in-flow child now that the marker is
+     position:absolute and no longer occupies flow space), landing the
+     heading flush against the top edge instead of clear of the marker. */
+  display: flow-root;
+  /* Shared top/bottom rhythm - see .Aboutme (CSS/Aboutme.css) for why this
+     exact value is repeated identically on every section's own container. */
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+.faq-list {
+  max-width: 760px;
+  margin: 48px auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Same card language as .about-why-card (AboutModern.css) / .pricing-card
+   (Pricing.css): white background, 16px radius, soft shadow. */
+.faq-item {
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.1), 0 2px 8px rgba(23, 32, 44, 0.05);
+  overflow: hidden;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.faq-item:has(.faq-question[aria-expanded="true"]) {
+  border-color: rgb(100, 211, 255);
+  box-shadow: 0 16px 40px rgba(100, 211, 255, 0.2), 0 2px 8px rgba(23, 32, 44, 0.08);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Jura', sans-serif;
+}
+
+.faq-question-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgb(82, 82, 82);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: rgb(100, 211, 255);
+  transition: transform .3s ease;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* grid-template-rows 0fr -> 1fr is what makes the expand/collapse
+   animate smoothly without JS ever measuring/setting an explicit
+   pixel height - the inner .faq-answer-text wrapper is needed because
+   a grid track's height can't be transitioned directly, but the
+   fr-unit trick on the row can. */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .35s ease;
+}
+
+.faq-question[aria-expanded="true"] + .faq-answer {
+  grid-template-rows: 1fr;
+}
+
+/* padding-bottom only applies once expanded (below), not here - padding
+   is part of the box regardless of content height, so a permanent
+   padding-bottom would leave a fixed-height sliver of empty space (with
+   the answer text still technically inside it) visible even at
+   grid-template-rows:0fr, undermining the collapse-to-zero trick. */
+.faq-answer-text {
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 24px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgb(100, 130, 150);
+}
+
+.faq-question[aria-expanded="true"] + .faq-answer .faq-answer-text {
+  padding-bottom: 22px;
+}

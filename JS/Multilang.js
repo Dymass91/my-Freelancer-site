@@ -13,6 +13,7 @@ const navbarHeaderAbout = document.querySelector('.navbar_header_About');
 const navbarHeaderService = document.querySelector('.navbar_header_Service');
 const navbarHeaderCennik = document.querySelector('.navbar_header_Cennik');
 const navbarHeaderProjects = document.querySelector('.navbar_header_Projects');
+const navbarHeaderFAQ = document.querySelector('.navbar_header_FAQ');
 const navbarHeaderContact = document.querySelector('.navbar_header_Contact');
 
 const loaderLabel = document.querySelector('.loader-label');
@@ -48,6 +49,7 @@ const markerAbout = document.querySelector('.Aboutme .marker-label');
 const markerServices = document.querySelector('.skills-bg-wrap .marker-label');
 const markerPricing = document.querySelector('.pricing-section .marker-label');
 const markerProjects = document.querySelector('.Projects .marker-label');
+const markerFAQ = document.querySelector('.faq-section .marker-label');
 const markerContact = document.querySelector('.Contact_Social .marker-label');
 
 const Serviceh2 = document.querySelector('.service_h2');
@@ -71,6 +73,11 @@ const pricingSubtitle = document.querySelector('.pricing_subtitle');
 // .pricing-name/.pricing-price/etc. each repeat once per card (3 cards) -
 // scoped per-card below instead of via a page-wide querySelector.
 const pricingCards = document.querySelectorAll('.pricing-card');
+
+const faqH2 = document.querySelector('.faq_h2');
+// .faq-question-text/.faq-answer-text each repeat once per FAQ item -
+// scoped per-item below instead of via a page-wide querySelector.
+const faqItems = document.querySelectorAll('.faq-item');
 
 const ContactFormTitle = document.querySelector('.Contact_form_title');
 const contactTitle = document.querySelector('.contact_title');
@@ -100,6 +107,7 @@ function applyTranslation(attr) {
     navbarHeaderService.textContent = t.navbar_header_Service;
     navbarHeaderCennik.textContent = t.navbar_header_Cennik;
     navbarHeaderProjects.textContent = t.navbar_header_Projects;
+    if (navbarHeaderFAQ) navbarHeaderFAQ.textContent = t.navbar_header_FAQ;
     navbarHeaderContact.textContent = t.navbar_header_Contact;
 
     if (loaderLabel) loaderLabel.textContent = t.loader_label;
@@ -119,6 +127,7 @@ function applyTranslation(attr) {
     if (markerServices) markerServices.textContent = t.marker_services;
     if (markerPricing) markerPricing.textContent = t.marker_pricing;
     if (markerProjects) markerProjects.textContent = t.marker_projects;
+    if (markerFAQ) markerFAQ.textContent = t.marker_faq;
     if (markerContact) markerContact.textContent = t.marker_contact;
 
     aboutText3.textContent = t.aboutMe_text3;
@@ -173,6 +182,16 @@ function applyTranslation(attr) {
         });
         if (timeEl) timeEl.textContent = p.time;
         if (btnEl) btnEl.textContent = p.btn;
+    });
+
+    if (faqH2) faqH2.textContent = t.faq_h2;
+    faqItems.forEach(function (item, i) {
+        const f = t.faq && t.faq[i];
+        if (!f) return;
+        var qEl = item.querySelector('.faq-question-text');
+        var aEl = item.querySelector('.faq-answer-text');
+        if (qEl) qEl.textContent = f.q;
+        if (aEl) aEl.textContent = f.a;
     });
 
     ContactFormTitle.textContent = t.Contact_form_title;
@@ -235,6 +254,7 @@ var data = {
         "navbar_header_Service": "Usługi",
         "navbar_header_Cennik": "Cennik",
         "navbar_header_Projects": "Portfolio",
+        "navbar_header_FAQ": "FAQ",
         "navbar_header_Contact": "Kontakt",
 
         "loader_label": "Loading",
@@ -263,6 +283,7 @@ var data = {
         "marker_services": "usługi",
         "marker_pricing": "cennik",
         "marker_projects": "portfolio",
+        "marker_faq": "faq",
         "marker_contact": "kontakt",
 
         "descriptionAbout": "Jestem freelancerem z Piły, tworzę strony internetowe dla małych firm. Nie jestem agencją z dziesiątkami klientów naraz ani gotowym motywem WordPress za 49 zł z marketu. Każdą stronę piszę osobiście, od zera, w czystym kodzie — dlatego ładuje się błyskawicznie i nie ciągnie za sobą kilogramów wtyczek, których nikt nie używa.",
@@ -328,6 +349,16 @@ var data = {
             }
         ],
 
+        "faq_h2": "Najczęściej zadawane pytania",
+        "faq": [
+            { "q": "Ile trwa stworzenie strony?", "a": "Prosta strona może być gotowa nawet w 1–2 tygodnie. Czas realizacji zależy od zakresu projektu i sprawności przekazywania materiałów." },
+            { "q": "Czy strona będzie działać na telefonie?", "a": "Tak. Każda tworzona przeze mnie strona jest responsywna i dostosowana do różnych rozmiarów ekranów." },
+            { "q": "Czy muszę mieć własną domenę i hosting?", "a": "Nie. Jeśli ich nie posiadasz, mogę pomóc Ci w wyborze i konfiguracji odpowiednich usług." },
+            { "q": "Czy mogę później rozbudować stronę?", "a": "Tak. Stronę można później rozwijać o kolejne podstrony, funkcje lub sklep internetowy." },
+            { "q": "Czy pomagasz z treścią?", "a": "Tak. Mogę pomóc uporządkować treść i przygotować ją w taki sposób, żeby była czytelna dla klientów." },
+            { "q": "Jak rozpocząć współpracę?", "a": "Napisz lub zadzwoń. Opowiedz mi krótko o swojej firmie i czego potrzebujesz, a wspólnie ustalimy najlepsze rozwiązanie." }
+        ],
+
         "contact_title": "Porozmawiajmy o Twoim projekcie",
         "information_country": "Polska, Piła",
         "Contact_form_title": "Napisz do mnie",
@@ -352,6 +383,7 @@ var data = {
         "navbar_header_Service": "Service",
         "navbar_header_Cennik": "Pricing",
         "navbar_header_Projects": "Portfolio",
+        "navbar_header_FAQ": "FAQ",
         "navbar_header_Contact": "Contact",
 
         "loader_label": "Loading",
@@ -380,6 +412,7 @@ var data = {
         "marker_services": "services",
         "marker_pricing": "pricing",
         "marker_projects": "portfolio",
+        "marker_faq": "faq",
         "marker_contact": "contact",
 
         "descriptionAbout": "I'm a freelancer based in Piła, Poland, building websites for small businesses. I'm not an agency juggling dozens of clients at once, or a bargain-bin off-the-shelf WordPress theme. I build every website myself, from scratch, in clean code — that's why it loads instantly and doesn't drag along kilograms of plugins nobody uses.",
@@ -445,6 +478,16 @@ var data = {
             }
         ],
 
+        "faq_h2": "Frequently asked questions",
+        "faq": [
+            { "q": "How long does it take to build a website?", "a": "A simple website can be ready in as little as 1–2 weeks. The timeline depends on the scope of the project and how quickly materials are provided." },
+            { "q": "Will the website work on mobile?", "a": "Yes. Every website I build is responsive and adapts to different screen sizes." },
+            { "q": "Do I need my own domain and hosting?", "a": "No. If you don't have them, I can help you choose and set up the right services." },
+            { "q": "Can I expand the website later?", "a": "Yes. The website can later be extended with additional subpages, features, or an online store." },
+            { "q": "Do you help with the content?", "a": "Yes. I can help organize the content and prepare it so it's clear and easy for customers to read." },
+            { "q": "How do I get started?", "a": "Send a message or give me a call. Tell me briefly about your business and what you need, and we'll work out the best solution together." }
+        ],
+
         "contact_title": "Let's talk about your project",
         "information_country": "Poland, Piła",
         "Contact_form_title": "Contact me",
@@ -469,6 +512,7 @@ var data = {
         "navbar_header_Service": "Diensten",
         "navbar_header_Cennik": "Tarieven",
         "navbar_header_Projects": "Portfolio",
+        "navbar_header_FAQ": "FAQ",
         "navbar_header_Contact": "Contact",
 
         "loader_label": "Laden",
@@ -497,6 +541,7 @@ var data = {
         "marker_services": "diensten",
         "marker_pricing": "tarieven",
         "marker_projects": "portfolio",
+        "marker_faq": "faq",
         "marker_contact": "contact",
 
         "descriptionAbout": "Ik ben een freelancer uit Piła, Polen, en bouw websites voor kleine bedrijven. Ik ben geen bureau dat tientallen klanten tegelijk jongleert, of een goedkoop kant-en-klaar WordPress-thema. Ik bouw elke website zelf, vanaf nul, in schone code — daarom laadt hij razendsnel en sleept hij geen kilo's aan plugins mee die niemand gebruikt.",
@@ -560,6 +605,16 @@ var data = {
                 "time": "Levertijd: vanaf 3–5 weken",
                 "btn": "Bestellen"
             }
+        ],
+
+        "faq_h2": "Veelgestelde vragen",
+        "faq": [
+            { "q": "Hoe lang duurt het om een website te bouwen?", "a": "Een eenvoudige website kan al binnen 1–2 weken klaar zijn. De doorlooptijd hangt af van de omvang van het project en hoe snel materialen worden aangeleverd." },
+            { "q": "Werkt de website ook op mobiel?", "a": "Ja. Elke website die ik bouw is responsief en past zich aan verschillende schermformaten aan." },
+            { "q": "Heb ik mijn eigen domein en hosting nodig?", "a": "Nee. Als je die niet hebt, help ik je graag bij het kiezen en instellen van de juiste diensten." },
+            { "q": "Kan ik de website later uitbreiden?", "a": "Ja. De website kan later worden uitgebreid met extra subpagina's, functies of een webshop." },
+            { "q": "Help je ook met de inhoud?", "a": "Ja. Ik kan helpen de inhoud te structureren en zo voor te bereiden dat deze duidelijk is voor klanten." },
+            { "q": "Hoe start ik de samenwerking?", "a": "Stuur een bericht of bel me. Vertel kort iets over je bedrijf en wat je nodig hebt, dan bepalen we samen de beste oplossing." }
         ],
 
         "contact_title": "Laten we het over jouw project hebben",
