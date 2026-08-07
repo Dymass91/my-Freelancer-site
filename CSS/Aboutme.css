@@ -138,13 +138,27 @@
   color: rgb(31, 92, 138);
   margin: 0 0 10px;
 }
+/* Now a multi-paragraph container (was a single <p>) - the greeting
+   line reads as a friendly opener (bolder/darker) standing in for the
+   hidden .hero-card-name, the rest is regular body copy. */
 .about-photo-intro {
+  text-align: left;
+}
+.about-photo-intro p {
   font-family: 'Jura', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9rem;
   line-height: 1.5;
   color: rgb(82, 82, 82);
-  margin: 0;
+  margin: 0 0 12px;
+}
+.about-photo-intro p:last-child {
+  margin-bottom: 0;
+}
+.about-photo-intro p:first-child {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: rgb(31, 92, 138);
 }
 
 @media (min-width: 360px), (max-width: 769px){

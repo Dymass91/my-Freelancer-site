@@ -106,7 +106,7 @@ function applyTranslation(attr) {
 
     if (heroCtaPrimary) heroCtaPrimary.textContent = t.hero_cta_primary;
     if (heroCtaSecondary) heroCtaSecondary.textContent = t.hero_cta_secondary;
-    if (aboutPhotoIntro) aboutPhotoIntro.textContent = t.about_photo_intro;
+    if (aboutPhotoIntro) aboutPhotoIntro.innerHTML = t.about_photo_intro.map(function (p) { return '<p>' + p + '</p>'; }).join('');
     heroPreviewTeasers.forEach(function (el) { el.textContent = t.hero_preview_teaser; });
     heroRotatorLines.forEach(function (el, i) {
         if (t.hero_rotator[i]) el.innerHTML = t.hero_rotator[i];
@@ -241,7 +241,13 @@ var data = {
 
         "hero_cta_primary": "Napisz do mnie",
         "hero_cta_secondary": "Zobacz portfolio",
-        "about_photo_intro": "Cześć, jestem Tomasz. Od kilku lat projektuję i koduję strony internetowe dla małych firm — ręcznie, bez agencji i pluginów, dzięki czemu działają szybciej i wyglądają tak, jak sobie wymarzyłeś.",
+        "about_photo_intro": [
+            "Cześć, jestem Tomasz",
+            "Projektuję i tworzę strony internetowe dla małych firm, dbając o to, żeby były nie tylko estetyczne, ale przede wszystkim czytelne, szybkie i wygodne dla klientów.",
+            "Zajmuję się całym procesem — od projektu i kodowania, przez wdrożenie, aż po uruchomienie strony.",
+            "Współpracując ze mną, masz bezpośredni kontakt z osobą, która faktycznie tworzy Twoją stronę.",
+            "Działam z Piły i współpracuję z firmami zarówno lokalnie, jak i zdalnie w całej Polsce."
+        ],
         "hero_preview_teaser": "Poniżej zobaczysz mój ostatni projekt dla klienta z Holandii.",
         "hero_rotator": [
             "Od <strong>1599 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.",
@@ -352,7 +358,13 @@ var data = {
 
         "hero_cta_primary": "Get in touch",
         "hero_cta_secondary": "View portfolio",
-        "about_photo_intro": "Hi, I'm Tomasz. For the past few years I've been designing and coding websites for small businesses — by hand, without agencies or plugins, so they run faster and look exactly how you imagined.",
+        "about_photo_intro": [
+            "Hi, I'm Tomasz",
+            "I design and build websites for small businesses, making sure they're not just visually appealing but, above all, clear, fast, and easy for customers to use.",
+            "I handle the whole process — from design and coding, through deployment, to launching the site.",
+            "When you work with me, you're in direct contact with the person actually building your website.",
+            "I'm based in Piła and work with businesses both locally and remotely across all of Poland."
+        ],
         "hero_preview_teaser": "Below you'll see my latest project for a client from the Netherlands.",
         "hero_rotator": [
             "From <strong>1599 zł</strong>. A finished website in 1&ndash;2 weeks. No hidden costs.",
@@ -463,7 +475,13 @@ var data = {
 
         "hero_cta_primary": "Neem contact op",
         "hero_cta_secondary": "Bekijk portfolio",
-        "about_photo_intro": "Hoi, ik ben Tomasz. Al een paar jaar ontwerp en bouw ik websites voor kleine bedrijven — met de hand, zonder bureaus of plugins, waardoor ze sneller draaien en er precies zo uitzien als jij je had voorgesteld.",
+        "about_photo_intro": [
+            "Hoi, ik ben Tomasz",
+            "Ik ontwerp en bouw websites voor kleine bedrijven, met aandacht voor niet alleen esthetiek, maar vooral duidelijkheid, snelheid en gebruiksgemak voor klanten.",
+            "Ik verzorg het hele proces — van ontwerp en codering, via implementatie, tot de lancering van de site.",
+            "Als je met mij samenwerkt, heb je direct contact met de persoon die daadwerkelijk jouw website bouwt.",
+            "Ik werk vanuit Piła en werk samen met bedrijven, zowel lokaal als op afstand in heel Polen."
+        ],
         "hero_preview_teaser": "Hieronder zie je mijn laatste project voor een klant uit Nederland.",
         "hero_rotator": [
             "Vanaf <strong>1599 zł</strong>. Een kant-en-klare website in 1&ndash;2 weken. Geen verborgen kosten.",

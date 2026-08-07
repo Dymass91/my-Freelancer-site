@@ -18,14 +18,17 @@
 
   function syncHeight() {
     if (!desktopQuery.matches) {
-      card.style.height = '';
+      card.style.minHeight = '';
       card.style.marginTop = '';
       return;
     }
     // Reset marginTop before measuring - a stale value from a previous
     // run would throw off both the height read and the offset below.
     card.style.marginTop = '0px';
-    card.style.height = preview.getBoundingClientRect().height + 'px';
+    // min-height, not height - the card's own copy can be longer than
+    // the preview card (e.g. more paragraphs than fit in that space),
+    // in which case it should grow instead of clipping its content.
+    card.style.minHeight = preview.getBoundingClientRect().height + 'px';
 
     const cardColumnTop = card.parentElement.getBoundingClientRect().top;
     const previewTop = preview.getBoundingClientRect().top;
