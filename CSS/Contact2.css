@@ -138,7 +138,7 @@ textarea.input {
   background-color: #fff;
   border: 2px solid #fafafa;
   font-size: 0.95rem;
-  color:  #69728b;
+  color: rgb(64, 170, 235);
   line-height: 1;
   border-radius: 25px;
   outline: none;
@@ -203,9 +203,9 @@ textarea.input {
   transform: translateY(-50%);
   left: 25px;
   font-size: 0.8rem;
-  background-color: #bec9d8;
+  background-color: var(--main-color);
   border-radius: 20px;
-  
+
 }
 
 .input-container.focus span:before,
@@ -220,19 +220,19 @@ textarea.input {
 }
 
 .contact-info .contact_title {
-  color: #707788;
+  color: rgb(31, 92, 138);
   font-weight: 900;
   font-size: 40px;
 }
 
 .text {
-    color:#9c9fa7;
+    color: rgb(100, 130, 150);
   font-weight: 900;
   margin: 1.5rem 0 0.6rem 0;
   font-size: 18px;
 }
 .contact_text_secondary {
-  color: #9c9fa7;
+  color: rgb(100, 130, 150);
   font-weight: 700;
   font-size: 15px;
   line-height: 1.5;
@@ -243,7 +243,7 @@ textarea.input {
 }
 .information {
   display: flex;
-  color: #9c9fa7;
+  color: rgb(100, 130, 150);
   margin: 0.7rem 0;
   align-items: center;
   font-size: 1.15rem;
@@ -321,7 +321,7 @@ z-index: -1;
 }
 
 .social-media p {
-    color:#9c9fa7;
+    color: rgb(100, 130, 150);
   font-weight: 900;
   font-size: 18px;
 }
