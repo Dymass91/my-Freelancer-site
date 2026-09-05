@@ -299,30 +299,26 @@
   text-align: center;
 }
 
-/* Two instances of this element exist in index.html - one in
-   .hero-split__left (below the CTAs, pointing down at the preview
-   once the two-column grid collapses under 900px) and one in
-   .hero-split__right (below the preview card itself, for desktop,
-   where the mobile instance's wording/position wouldn't fit). Scoped
-   by parent so only one is ever visible at a given width. */
+/* Single instance, in .hero-split__right, above the preview card it
+   points at. Used to be duplicated (one copy per column, CSS toggling
+   which was visible) to control spacing separately per breakpoint -
+   that left the same sentence twice in the rendered DOM for crawlers.
+   .hero-split stacks to one column under 900px (grid-template-
+   columns:1fr), so this single copy already lands in the same visual
+   spot on mobile too: right after .hero-split__left's content, since
+   .hero-split__right's first child follows it in the stack. */
 .hero-preview-teaser {
-  display: none;
   width: 100%;
   text-align: center;
   font-family: 'Jura', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: rgb(82, 82, 82);
-}
-@media (max-width: 899px) {
-  .hero-split__left .hero-preview-teaser {
-    display: block;
-    margin-top: 22px;
-  }
+  margin-top: 22px;
 }
 @media (min-width: 900px) {
-  .hero-split__right .hero-preview-teaser {
-    display: block;
+  .hero-preview-teaser {
+    margin-top: 0;
     margin-bottom: 14px;
   }
 }
