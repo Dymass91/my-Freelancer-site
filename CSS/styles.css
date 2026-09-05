@@ -16,9 +16,10 @@ html, body {
 
 /* Standard visually-hidden pattern - keeps content readable to screen
    readers/search engines while removing it from sighted view. Used on
-   .hero-card-name (index.html): the visible "Tomasz Matyszczak" label
-   was removed from the hero photo card, but the element stays as the
-   page's semantic <h1>. */
+   .hero-card-name (index.html): the name label was removed from
+   visible display in the hero photo card, but the element (a <p>,
+   not the page's <h1> - see .hero-seo-heading in CSS/Landing.css for
+   that) stays in the DOM for assistive tech. */
 .sr-only {
   position: absolute;
   width: 1px;
