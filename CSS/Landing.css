@@ -90,8 +90,21 @@
   /* .navbar (Navbar.css) is permanently fixed to the top of the page now -
      there's no separate in-hero nav to hand off from anymore, so hero
      content needs its own clearance to start below the bar instead of
-     being covered by it. */
-  padding-top: 45px;
+     being covered by it. 45px was tuned before the navbar had a FAQ
+     link - at <=385px screen widths the extra link makes it wrap onto
+     a second row (measured real height 70px, not ~40px), so 45px let
+     the fixed bar cover the H1's first line. 96px covers that 2-row
+     case (70px navbar + ~26px breathing room) at the narrow end; the
+     401-899px tier below covers the single-row case. */
+  padding-top: 96px;
+}
+
+@media (min-width: 401px) and (max-width: 899px) {
+  .container-header {
+    /* Single-row navbar here (~40px) - a flat 96px everywhere would
+       leave an oversized gap once the bar no longer wraps. */
+    padding-top: 64px;
+  }
 }
 
 @media (min-width: 900px) {
