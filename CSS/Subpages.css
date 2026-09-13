@@ -240,6 +240,8 @@
   background: #eef1f5;
 }
 .case-preview__frame img.case-preview__shot {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -247,6 +249,8 @@
   display: block;
 }
 .case-preview__frame iframe {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
