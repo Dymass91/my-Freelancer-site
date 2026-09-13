@@ -28,12 +28,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // If the target blocks embedding (X-Frame-Options/CSP), the iframe
     // stays visually blank rather than erroring loudly - fall back to
     // the screenshot + a note instead of leaving an empty box.
+    // 30s, not JS/Portfolio.js's 20s: measured directly (Playwright,
+    // "load" event timing) that AeroGlass's heavy 60+-frame WebP hero
+    // animation + video genuinely takes ~20s to finish loading on a
+    // real connection - a 20s fallback was racing almost exactly
+    // against that real load time and intermittently "won", falsely
+    // flagging a perfectly embeddable site as blocked. 30s gives real
+    // margin above the slowest real target measured so far.
     var settled = false;
     var fallbackTimer = setTimeout(function () {
       if (settled) return;
       settled = true;
       showBlockedFallback();
-    }, 8000);
+    }, 30000);
     iframe.addEventListener('load', function () {
       settled = true;
       clearTimeout(fallbackTimer);
@@ -49,8 +56,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var note = document.createElement('p');
     note.className = 'case-preview__note';
     note.style.cssText = 'position:absolute;inset:auto 0 12px 0;text-align:center;margin:0;';
-    note.textContent = 'Ta strona blokuje podgląd w ramce — otwórz ją w nowej karcie powyżej.';
+    note.textContent = 'Podgląd osadzony nie jest dostępny — skorzystaj z linku poniżej.';
     panel.appendChild(note);
+
+    // Promote the quiet "otwórz w nowej karcie" text link to a proper
+    // button once the embed is actually confirmed unavailable - it's
+    // now the only way to see the site, not a redundant second option.
+    var openLink = panel.parentElement.querySelector('.case-preview__open-link');
+    if (openLink) {
+      openLink.classList.remove('case-preview__open-link');
+      openLink.classList.add('hero-cta', 'hero-cta--secondary');
+      openLink.textContent = 'Otwórz stronę w nowej karcie';
+    }
   }
 
   if (launchBtn) {

@@ -280,6 +280,20 @@
   gap: 12px;
   margin-top: 16px;
 }
+/* Discreet text link, not a competing button - the live iframe itself
+   is the primary way to see the site; this is a quiet secondary
+   option, not a duplicate CTA. */
+.case-preview__open-link {
+  display: inline-block;
+  font-family: 'Jura', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgb(64, 170, 235);
+  text-decoration: none;
+}
+.case-preview__open-link:hover {
+  text-decoration: underline;
+}
 .case-preview__note {
   font-family: 'Jura', sans-serif;
   font-size: 0.85rem;
