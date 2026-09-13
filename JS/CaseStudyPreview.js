@@ -1,21 +1,16 @@
 //// Big live-preview panel on case-study pages (.case-preview__frame).
-//// Desktop: loads the real iframe once the panel scrolls near the
-//// viewport (IntersectionObserver), same lazy spirit as the homepage
-//// portfolio cards' native loading="lazy", but explicit here since
-//// this iframe is much larger (up to ~780px tall) and shouldn't force
-//// a full external page load until it's actually about to be seen.
-//// Mobile (<768px): stays on the screenshot until the visitor taps
-//// "Uruchom podgląd na żywo" - avoids loading the whole external site
-//// automatically on a metered mobile connection. "Otwórz w nowej
-//// karcie" always stays available regardless of iframe state. ////
+//// Loads the real iframe as soon as the panel scrolls near the
+//// viewport (IntersectionObserver) - on both desktop and mobile, since
+//// the panel sits right below the hero and is visible on arrival, this
+//// is effectively immediate: visitors land on the case study and see
+//// the live site with no extra click needed. "Otwórz w nowej karcie"
+//// always stays available regardless of iframe state. ////
 
 document.addEventListener('DOMContentLoaded', function () {
   var panel = document.querySelector('.case-preview__frame[data-live-src]');
   if (!panel) return;
 
   var src = panel.getAttribute('data-live-src');
-  var launchBtn = panel.querySelector('.case-preview__launch');
-  var isMobile = window.matchMedia('(max-width: 767px)').matches;
 
   function loadIframe() {
     if (panel.querySelector('iframe')) return;
@@ -46,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
       clearTimeout(fallbackTimer);
     });
 
-    if (launchBtn) launchBtn.remove();
     panel.appendChild(iframe);
   }
 
@@ -70,15 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  if (launchBtn) {
-    launchBtn.addEventListener('click', loadIframe);
-  }
-
-  // The hero's own "Zobacz stronę na żywo" CTA just scroll-links to this
-  // panel's section (#live-preview, handled by Navbar.js) - it doesn't
-  // load the iframe on its own. Wire it up too, so both that button and
-  // the in-panel "Uruchom podgląd na żywo" button actually start the
-  // live preview, matching what each one's label promises.
+  // The hero CTA just scroll-links to this panel's section (#live-preview,
+  // handled by Navbar.js) - wire it to also (re-)trigger loadIframe, in
+  // case a visitor clicks it before the observer below has fired yet.
   var section = panel.closest('section[id]');
   if (section) {
     document.querySelectorAll('a[href="#' + section.id + '"]').forEach(function (link) {
@@ -86,17 +74,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  if (!isMobile) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          loadIframe();
-          observer.disconnect();
-        }
-      });
-    }, { rootMargin: '200px' });
-    observer.observe(panel);
-  }
-  // On mobile, no auto-load and no observer - stays on the screenshot
-  // until the visitor taps the launch button.
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        loadIframe();
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '200px' });
+  observer.observe(panel);
 });

@@ -256,28 +256,6 @@
   border: 0;
   display: block;
 }
-.case-preview__launch {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  background: rgba(28, 46, 74, 0.55);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-family: 'Jura', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-}
-.case-preview__launch i {
-  font-size: 30px;
-}
-.case-preview__launch:hover {
-  background: rgba(28, 46, 74, 0.68);
-}
 .case-preview__actions {
   display: flex;
   flex-wrap: wrap;
