@@ -31,3 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 180);
   });
 });
+
+// Back/forward navigation can restore a page straight from the
+// browser's bfcache, frozen exactly as it was at the moment it was
+// left - mid fade-out, with page-transition-out (opacity:0) still on
+// body. Nothing re-runs on a bfcache restore (no DOMContentLoaded), so
+// without this the page would stay invisible until a manual reload.
+window.addEventListener('pageshow', function (event) {
+  if (event.persisted) {
+    document.body.classList.remove('page-transition-out');
+  }
+});
