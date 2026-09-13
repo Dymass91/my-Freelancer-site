@@ -245,9 +245,9 @@
 
 /* ── Case study: large live-preview panel ── */
 .case-preview {
-  max-width: 1140px;
+  max-width: 1360px;
   margin: 40px auto;
-  padding: 0 6vw;
+  padding: 0 4vw;
 }
 .case-preview__frame {
   position: relative;
