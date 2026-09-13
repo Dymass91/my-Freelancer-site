@@ -94,10 +94,17 @@ body {
 }
   }
 
-/* Fix background-attachment:fixed bug on Android WebView/mobile */
+/* Fix background-attachment:fixed bug on Android WebView/mobile.
+   Exception: html.bg-fixed-capable (set by inline script in <head>
+   based on deviceMemory/hardwareConcurrency, excluding iOS Safari -
+   the main known offender) re-enables the desktop-like fixed effect
+   on phones/tablets that can actually handle it without jank. */
 @media (max-width: 1024px) {
   body {
     background-attachment: scroll;
+  }
+  html.bg-fixed-capable body {
+    background-attachment: fixed;
   }
 }
 

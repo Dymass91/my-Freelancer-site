@@ -6,6 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <script>
+    // Runs before first paint so the body background renders in the
+    // right mode immediately (no flash of scroll->fixed). iOS Safari is
+    // excluded outright - it's the main known offender for glitchy
+    // background-attachment:fixed rendering, regardless of hardware.
+    // deviceMemory/hardwareConcurrency aren't exposed on iOS/Firefox;
+    // missing data defaults to "not capable" (safe/scroll) rather than
+    // guessing a device can handle it.
+    (function () {
+      try {
+        var isIOS = /iP(hone|od|ad)/.test(navigator.platform) ||
+          (navigator.userAgent.indexOf('Mac') !== -1 && 'ontouchend' in document);
+        if (isIOS) return;
+        var mem = navigator.deviceMemory;
+        var cores = navigator.hardwareConcurrency;
+        if (mem >= 4 && cores >= 4) {
+          document.documentElement.classList.add('bg-fixed-capable');
+        }
+      } catch (e) {}
+    })();
+    </script>
+
     <title>Strony internetowe Piła – Tomasz Matyszczak | Web Developer</title>
     <meta name="description" content="Tworzę nowoczesne strony internetowe dla firm z Piły i całej Polski. Strony wizytówkowe, sklepy internetowe, redesign i optymalizacja SEO. Sprawdź realizacje i ofertę.">
     <meta name="author" content="Tomasz Matyszczak">
