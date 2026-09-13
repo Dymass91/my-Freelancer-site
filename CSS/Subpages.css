@@ -26,17 +26,6 @@
   text-shadow: 0 0 5px rgba(10, 170, 219, 0.5);
 }
 
-/* Simple fade-out on navigation between subpages (see
-   JS/PageTransition.js). This is scoped to subpages only because only
-   they load this stylesheet - the homepage keeps its own existing
-   loader/hero animation untouched. */
-body {
-  transition: opacity .2s ease;
-}
-body.page-transition-out {
-  opacity: 0;
-}
-
 .subpage-header {
   padding: 140px 6vw 48px;
   max-width: 900px;

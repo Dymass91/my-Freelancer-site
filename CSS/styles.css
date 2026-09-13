@@ -14,6 +14,18 @@ html, body {
   touch-action: pan-y;
 }
 
+/* Simple fade-out on navigation, site-wide (see JS/PageTransition.js).
+   Only affects leaving a page via an internal link click - the
+   homepage's own existing loader/hero animation on arrival is a
+   separate mechanism (AnimationGsap.js/HeroCardHeight.js) and is
+   untouched by this. */
+body {
+  transition: opacity .2s ease;
+}
+body.page-transition-out {
+  opacity: 0;
+}
+
 /* Inline links added to Skills/Pricing/Projects body copy (pointing to
    /sklepy-internetowe/, /modernizacja-stron/, /ile-kosztuje-strona-internetowa/,
    /realizacje/) had no color/underline override, so they fell back to
