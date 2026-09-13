@@ -227,7 +227,7 @@
 .case-preview__frame {
   position: relative;
   width: 100%;
-  height: clamp(340px, 55vw, 780px);
+  height: clamp(340px, 58vw, 840px);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.15), 0 2px 8px rgba(23, 32, 44, 0.08);
