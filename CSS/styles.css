@@ -14,6 +14,25 @@ html, body {
   touch-action: pan-y;
 }
 
+/* Inline links added to Skills/Pricing/Projects body copy (pointing to
+   /sklepy-internetowe/, /modernizacja-stron/, /ile-kosztuje-strona-internetowa/,
+   /realizacje/) had no color/underline override, so they fell back to
+   the browser's plain default blue/purple instead of the site's
+   --span-color link language (see .Policy_button in Policy.css). */
+.service-tile__desc a,
+.pricing_subtitle a,
+.Projects_title_text a {
+  color: var(--span-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 700;
+}
+.service-tile__desc a:hover,
+.pricing_subtitle a:hover,
+.Projects_title_text a:hover {
+  text-shadow: 0 0 5px rgba(10, 170, 219, 0.5);
+}
+
 /* Standard visually-hidden pattern - keeps content readable to screen
    readers/search engines while removing it from sighted view. Used on
    .hero-card-name (index.html): the name label was removed from

@@ -226,3 +226,30 @@
   border-radius: 10px;
   padding: 3px 10px;
 }
+
+/* Status badge overlay + "see more" hint - was mistakenly defined in
+   Subpages.css, which the homepage never loads, so these rendered as
+   unstyled plain text instead of a pill/inline hint. */
+.portfolio-card__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: .3px;
+  color: #fff;
+  background: rgba(28, 46, 74, 0.72);
+  border-radius: 999px;
+  padding: 3px 11px;
+  pointer-events: none;
+}
+.portfolio-card__cta {
+  font-family: 'Jura', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgb(64, 170, 235);
+  margin-top: auto;
+  padding-top: 2px;
+}
