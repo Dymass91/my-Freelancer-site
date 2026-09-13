@@ -233,13 +233,52 @@
 .case-preview__frame {
   position: relative;
   width: 100%;
-  height: clamp(340px, 58vw, 840px);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.15), 0 2px 8px rgba(23, 32, 44, 0.08);
+  background: #fff;
+}
+/* Mini browser-window chrome, matching the homepage portfolio cards'
+   .browser-frame__bar language, scaled up for this much larger panel. */
+.case-preview__bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 14px;
+  background: #e9ebef;
+  border-bottom: 1px solid #d7dce3;
+}
+.case-preview__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex: none;
+}
+.case-preview__dot--red { background: #ff5f57; }
+.case-preview__dot--yellow { background: #febc2e; }
+.case-preview__dot--green { background: #28c840; }
+.case-preview__url {
+  margin-left: 10px;
+  font-family: 'Jura', sans-serif;
+  font-size: 13px;
+  color: #6b7280;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 12px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.case-preview__viewport {
+  position: relative;
+  width: 100%;
+  height: clamp(320px, 56vw, 800px);
+  overflow: hidden;
   background: #eef1f5;
 }
-.case-preview__frame img.case-preview__shot {
+.case-preview__viewport img.case-preview__shot {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -248,7 +287,7 @@
   object-position: top;
   display: block;
 }
-.case-preview__frame iframe {
+.case-preview__viewport iframe {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -283,9 +322,9 @@
   margin-top: 10px;
 }
 
-/* ── Case study: static screenshot only (no live site, e.g. Słodki
-   Zakątek) - same frame chrome as the live-preview, no button/JS. ── */
-.case-preview__frame.is-static-only img.case-preview__shot {
+/* ── Case study: static screenshot only, no live site - same frame
+   chrome as the live-preview, no button/JS. ── */
+.case-preview__viewport.is-static-only img.case-preview__shot {
   object-fit: contain;
   background: #fff;
 }

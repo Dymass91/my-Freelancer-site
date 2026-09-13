@@ -11,9 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!panel) return;
 
   var src = panel.getAttribute('data-live-src');
+  var viewport = panel.querySelector('.case-preview__viewport') || panel;
 
   function loadIframe() {
-    if (panel.querySelector('iframe')) return;
+    if (viewport.querySelector('iframe')) return;
     var iframe = document.createElement('iframe');
     iframe.src = src;
     iframe.loading = 'lazy';
@@ -41,17 +42,17 @@ document.addEventListener('DOMContentLoaded', function () {
       clearTimeout(fallbackTimer);
     });
 
-    panel.appendChild(iframe);
+    viewport.appendChild(iframe);
   }
 
   function showBlockedFallback() {
-    var iframe = panel.querySelector('iframe');
+    var iframe = viewport.querySelector('iframe');
     if (iframe) iframe.remove();
     var note = document.createElement('p');
     note.className = 'case-preview__note';
     note.style.cssText = 'position:absolute;inset:auto 0 12px 0;text-align:center;margin:0;';
     note.textContent = 'Podgląd osadzony nie jest dostępny — skorzystaj z linku poniżej.';
-    panel.appendChild(note);
+    viewport.appendChild(note);
 
     // Promote the quiet "otwórz w nowej karcie" text link to a proper
     // button once the embed is actually confirmed unavailable - it's
