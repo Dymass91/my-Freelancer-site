@@ -191,9 +191,10 @@
   width: 100%;
   max-width: 400px;
   margin: 0 0 8px;
-  /* Same shadow as .form (CSS/Contact2.css) - no background tint, the
-     card stays fully transparent over the page's pattern, just lifted
-     off it with a soft shadow. */
+  /* Same shadow as .form (CSS/Contact2.css). A light white wash keeps
+     the card readable over the page's background pattern (more visible
+     now than the old faint triangles) without going fully opaque/flat. */
+  background: rgba(255, 255, 255, 0.55);
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
 }
 
