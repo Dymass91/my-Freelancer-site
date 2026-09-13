@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // neutral placeholder background until the real preview pops in.
     var FALLBACK_TIMEOUT = 20000;
 
-    document.querySelectorAll('.portfolio-card[data-mode="live"]').forEach(function (card) {
+    document.querySelectorAll('.portfolio-card[data-mode="live"], .realizacje-card[data-mode="live"]').forEach(function (card) {
         var iframe = card.querySelector('.browser-frame__iframe');
         if (!iframe) return;
 

@@ -158,11 +158,15 @@
    headers block embedding) and the JS-triggered runtime fallback (added
    when a live iframe fails to load in time) both just show the image. */
 .portfolio-card[data-mode="image"] .browser-frame__fallback,
-.portfolio-card.mode-image .browser-frame__fallback {
+.portfolio-card.mode-image .browser-frame__fallback,
+.realizacje-card[data-mode="image"] .browser-frame__fallback,
+.realizacje-card.mode-image .browser-frame__fallback {
   opacity: 1;
 }
 .portfolio-card[data-mode="image"] .browser-frame__iframe,
-.portfolio-card.mode-image .browser-frame__iframe {
+.portfolio-card.mode-image .browser-frame__iframe,
+.realizacje-card[data-mode="image"] .browser-frame__iframe,
+.realizacje-card.mode-image .browser-frame__iframe {
   display: none;
 }
 
