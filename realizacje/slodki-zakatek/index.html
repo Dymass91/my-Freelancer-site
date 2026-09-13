@@ -108,18 +108,21 @@
         <div class="case-hero__top">
             <span class="project-badge">Pro bono</span>
             <h1 class="subpage-h1">Słodki Zakątek — strona przygotowana pro bono</h1>
-            <p class="subpage-lede">Stronę przygotowałem bezpłatnie dla lokalnej pracowni cukierniczej Słodki Zakątek Agnieszka Włodarczyk — jako formę wsparcia dla właścicielki w okresie, w którym działalność musiała zostać czasowo wstrzymana. Witryna jest gotowa do uruchomienia, gdy firma wznowi działalność.</p>
+            <p class="subpage-lede">Stronę przygotowałem bezpłatnie dla lokalnej pracowni cukierniczej Słodki Zakątek Agnieszka Włodarczyk — jako formę wsparcia dla właścicielki w okresie, w którym działalność musiała zostać czasowo wstrzymana. Strona jest gotowa i możesz zobaczyć ją poniżej — działalność samej pracowni jest obecnie wstrzymana.</p>
         </div>
         <div class="subpage-cta-row">
+            <a href="#live-preview" class="hero-cta hero-cta--primary">Uruchom podgląd na żywo</a>
             <a href="https://www.facebook.com/profile.php?id=100063707095880" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta--secondary">Słodki Zakątek na Facebooku</a>
         </div>
     </header>
 
-    <section class="case-preview">
-        <div class="case-preview__frame is-static-only">
+    <section class="case-preview" id="live-preview">
+        <div class="case-preview__frame" data-live-src="https://slodki-zakatek.pages.dev" data-live-title="Podgląd na żywo: Słodki Zakątek">
             <img class="case-preview__shot" src="../../IMG/slodkizakatek.jpg" alt="Zrzut ekranu strony Słodki Zakątek">
         </div>
-        <p class="case-preview__note">Strona nie jest jeszcze publicznie dostępna, dlatego pokazuję ją w formie zrzutu ekranu.</p>
+        <div class="case-preview__actions">
+            <a href="https://slodki-zakatek.pages.dev" target="_blank" rel="noopener noreferrer" class="case-preview__open-link">Otwórz pełną stronę w nowej karcie</a>
+        </div>
     </section>
 
     <section class="subpage-section">
@@ -145,7 +148,8 @@
             <div class="subpage-card">
                 <h3>Status</h3>
                 <ul>
-                    <li>Gotowa, nieuruchomiona publicznie</li>
+                    <li>Strona gotowa i dostępna do podglądu</li>
+                    <li>Działalność pracowni obecnie wstrzymana</li>
                 </ul>
             </div>
         </div>
@@ -172,6 +176,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
     <script src="../../JS/Navbar.js"></script>
     <script src="../../JS/ScrollToTopArrow.js"></script>
+    <script src="../../JS/CaseStudyPreview.js"></script>
 </body>
 
 </html>
