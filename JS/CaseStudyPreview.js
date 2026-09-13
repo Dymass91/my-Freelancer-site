@@ -57,6 +57,18 @@ document.addEventListener('DOMContentLoaded', function () {
     launchBtn.addEventListener('click', loadIframe);
   }
 
+  // The hero's own "Zobacz stronę na żywo" CTA just scroll-links to this
+  // panel's section (#live-preview, handled by Navbar.js) - it doesn't
+  // load the iframe on its own. Wire it up too, so both that button and
+  // the in-panel "Uruchom podgląd na żywo" button actually start the
+  // live preview, matching what each one's label promises.
+  var section = panel.closest('section[id]');
+  if (section) {
+    document.querySelectorAll('a[href="#' + section.id + '"]').forEach(function (link) {
+      link.addEventListener('click', loadIframe);
+    });
+  }
+
   if (!isMobile) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
