@@ -26,6 +26,33 @@ body.page-transition-out {
   opacity: 0;
 }
 
+/* Interactive cursor-glow re-render of IMG/subtle-prism.svg (see
+   JS/PrismBackground.js). Only built on hover-capable, fine-pointer,
+   motion-OK devices; everywhere else body's own plain SVG background
+   (above) is what's shown, untouched. Sits behind all real content and
+   never intercepts clicks. */
+#prism-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+body.prism-js-active {
+  background-image: none;
+}
+.prism-glow-tri {
+  fill: #8fe6ff;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(100, 211, 255, 0.55));
+  transition: opacity .45s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .prism-glow-tri {
+    transition: none;
+  }
+}
+
 /* Inline links added to Skills/Pricing/Projects body copy (pointing to
    /sklepy-internetowe/, /modernizacja-stron/, /ile-kosztuje-strona-internetowa/,
    /realizacje/) had no color/underline override, so they fell back to
@@ -81,7 +108,7 @@ body.page-transition-out {
 }
 
 body {
-  background: url(../IMG/gplaypattern_@2X.png);
+  background: url(../IMG/pattern-randomized-4.svg) center center / cover no-repeat;
   width: 100%;
   max-width: 100vw;
   /* No overflow-x:hidden here - html (above) already guards the whole
