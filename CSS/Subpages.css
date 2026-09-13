@@ -1,0 +1,346 @@
+/* ── Shared styles for /realizacje/, case-study pages, and the
+   service pages (/sklepy-internetowe/, /modernizacja-stron/,
+   /ile-kosztuje-strona-internetowa/). Reuses the homepage's existing
+   tokens/components (--main-color, --span-color, --border-accent,
+   .hero-cta, .about-why-card, .section-heading, .marker-label
+   pattern) rather than introducing a second design system. These
+   pages skip the homepage's animated loader/hero (JS/AnimationGsap.js,
+   HeroCardHeight.js aren't included) - just a plain page header. */
+
+.subpage-header {
+  padding: 140px 6vw 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 899px) {
+  .subpage-header {
+    padding: 96px 6vw 32px;
+  }
+}
+@media (max-width: 385px) {
+  .subpage-header {
+    padding: 110px 6vw 32px;
+  }
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-family: 'Jura', sans-serif;
+  font-size: 0.85rem;
+  color: rgb(100, 130, 150);
+  margin-bottom: 18px;
+}
+.breadcrumb a {
+  color: rgb(64, 170, 235);
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb .breadcrumb-sep {
+  color: rgb(180, 190, 200);
+}
+.breadcrumb [aria-current="page"] {
+  color: rgb(82, 82, 82);
+  font-weight: 600;
+}
+
+.subpage-h1 {
+  font-family: 'Jura', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 4vw, 40px);
+  line-height: 1.25;
+  color: rgb(31, 92, 138);
+  margin: 0 0 14px;
+}
+
+.subpage-lede {
+  font-family: 'Jura', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: rgb(75, 75, 75);
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+/* Generic content section shared by service pages/case studies -
+   matches .Aboutme/.pricing-section's own top/bottom rhythm. */
+.subpage-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 6vw;
+}
+.subpage-section h2 {
+  font-family: 'Jura', sans-serif;
+  font-weight: 800;
+  font-size: clamp(20px, 2.6vw, 28px);
+  color: rgb(31, 92, 138);
+  margin: 0 0 14px;
+}
+.subpage-section p {
+  font-family: 'Jura', sans-serif;
+  font-size: 1rem;
+  color: rgb(75, 75, 75);
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+.subpage-section ul {
+  margin: 0 0 14px;
+  padding-left: 1.2rem;
+}
+.subpage-section li {
+  font-family: 'Jura', sans-serif;
+  font-size: 1rem;
+  color: rgb(75, 75, 75);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+/* Reuses .about-why-card's own visual language (16px radius, lift on
+   hover) for "dlaczego warto"/"zakres prac"-type feature grids. */
+.subpage-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+@media (min-width: 640px) {
+  .subpage-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.subpage-grid.cols-3 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .subpage-grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.subpage-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.1), 0 2px 8px rgba(23, 32, 44, 0.05);
+  padding: 20px 22px;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.subpage-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(100, 211, 255);
+  box-shadow: 0 16px 40px rgba(100, 211, 255, 0.25), 0 2px 8px rgba(23, 32, 44, 0.08);
+}
+.subpage-card i {
+  font-size: 22px;
+  color: rgb(100, 211, 255);
+  margin-bottom: 8px;
+  display: block;
+}
+.subpage-card h3 {
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: rgb(82, 82, 82);
+  margin: 0 0 6px;
+}
+.subpage-card p {
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ── Status badges (Realizacje hub + case study headers) ── */
+.project-badge {
+  display: inline-block;
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: .3px;
+  color: rgb(64, 170, 235);
+  background: rgba(100, 211, 255, 0.1);
+  border: 1px solid var(--border-accent);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 14px;
+}
+
+/* ── /realizacje/ hub: featured real-project cards ── */
+.realizacje-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .realizacje-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.realizacje-card {
+  display: block;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.1), 0 2px 8px rgba(23, 32, 44, 0.05);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.realizacje-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(100, 211, 255, 0.25), 0 2px 8px rgba(23, 32, 44, 0.08);
+}
+.realizacje-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+.realizacje-card__body {
+  padding: 18px 20px 22px;
+}
+.realizacje-card__body h3 {
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: rgb(82, 82, 82);
+  margin: 0 0 6px;
+}
+.realizacje-card__body p {
+  font-family: 'Jura', sans-serif;
+  font-size: 0.9rem;
+  color: rgb(100, 130, 150);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Case study: large live-preview panel ── */
+.case-preview {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 6vw;
+}
+.case-preview__frame {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 55vw, 780px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.15), 0 2px 8px rgba(23, 32, 44, 0.08);
+  background: #eef1f5;
+}
+.case-preview__frame img.case-preview__shot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.case-preview__frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.case-preview__launch {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(28, 46, 74, 0.55);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.case-preview__launch i {
+  font-size: 30px;
+}
+.case-preview__launch:hover {
+  background: rgba(28, 46, 74, 0.68);
+}
+.case-preview__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.case-preview__note {
+  font-family: 'Jura', sans-serif;
+  font-size: 0.85rem;
+  color: rgb(100, 130, 150);
+  margin-top: 10px;
+}
+
+/* ── Case study: static screenshot only (no live site, e.g. Słodki
+   Zakątek) - same frame chrome as the live-preview, no button/JS. ── */
+.case-preview__frame.is-static-only img.case-preview__shot {
+  object-fit: contain;
+  background: #fff;
+}
+
+.subpage-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.subpage-facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+@media (min-width: 640px) {
+  .subpage-facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.subpage-fact {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 6px 6px 16px rgba(209, 217, 230, 0.85), -6px -6px 16px rgba(255, 255, 255, 0.9);
+  padding: 14px 16px;
+}
+.subpage-fact dt {
+  font-family: 'Jura', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: rgb(100, 130, 150);
+  margin-bottom: 4px;
+}
+.subpage-fact dd {
+  font-family: 'Jura', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgb(82, 82, 82);
+  margin: 0;
+}
+
+.related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  font-family: 'Jura', sans-serif;
+  font-size: 0.92rem;
+}
+.related-links a {
+  color: rgb(64, 170, 235);
+  text-decoration: none;
+  font-weight: 700;
+}
+.related-links a:hover {
+  text-decoration: underline;
+}

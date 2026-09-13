@@ -30,13 +30,16 @@ function getNavScrollOffset() {
 }
 
 function smoothScroll(event) {
-    const targetId = event.currentTarget.getAttribute("href") === "#" ? "header" :
-        event.currentTarget.getAttribute("href");
-    // .navbar a (navbarLinks selector above) matches every anchor inside the
-    // sticky navbar, including the language-switcher options, which have no
-    // href at all (they carry a "language" attribute instead) - bail out
-    // instead of crashing on document.querySelector(null).
-    if (!targetId) return;
+    const href = event.currentTarget.getAttribute("href");
+    // .navbar a (navbarLinks selector above) now also includes real links to
+    // other pages (e.g. /realizacje/) and, on subpages, cross-page anchors
+    // like /#Contact - only a same-page "#..." fragment should be
+    // intercepted for the custom scroll; anything else must navigate
+    // normally. document.querySelector() throws on a non-"#" string like
+    // "/realizacje/" (not a valid CSS selector), so this check has to
+    // happen before calling it, not just on a null href.
+    if (!href || !href.startsWith("#")) return;
+    const targetId = href === "#" ? "header" : href;
     const targetEl = document.querySelector(targetId);
     if (!targetEl) return;
     event.preventDefault();

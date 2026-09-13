@@ -8,7 +8,6 @@
 
     <title>Strony internetowe Piła – Tomasz Matyszczak | Web Developer</title>
     <meta name="description" content="Tworzę nowoczesne strony internetowe dla firm z Piły i całej Polski. Strony wizytówkowe, sklepy internetowe, redesign i optymalizacja SEO. Sprawdź realizacje i ofertę.">
-    <meta name="keywords" content="strony internetowe Piła, tworzenie stron internetowych, web developer Piła, sklep internetowy, WordPress, React, SEO, responsywne strony www">
     <meta name="author" content="Tomasz Matyszczak">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://tomaszmatyszczak.pl/">
@@ -34,48 +33,69 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Tomasz Matyszczak – Web Developer",
-      "description": "Tworzenie nowoczesnych stron internetowych i sklepów online. Specjalizacja: HTML, CSS, JavaScript, React, WordPress.",
-      "url": "https://tomaszmatyszczak.pl/",
-      "image": "https://tomaszmatyszczak.pl/IMG/og-image.png",
-      "priceRange": "od 1449 zł",
-      "telephone": "+48575255608",
-      "email": "kontakt@tomaszmatyszczak.pl",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Piła",
-        "addressRegion": "Wielkopolska",
-        "addressCountry": "PL"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 53.1500,
-        "longitude": 16.7333
-      },
-      "areaServed": [
-        { "@type": "City", "name": "Piła" },
-        { "@type": "City", "name": "Trzcianka" },
-        { "@type": "City", "name": "Wyrzysk" },
-        { "@type": "City", "name": "Ujście" },
-        { "@type": "City", "name": "Złotów" },
-        { "@type": "City", "name": "Chodzież" },
-        { "@type": "Country", "name": "Polska" }
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/in/tomasz-matyszczak-972ba9173/",
-        "https://github.com/Dymass91",
-        "https://www.facebook.com/Tomasz-Matyszczak-Projektowanie-stron-internetowych-103347338438586",
-        "https://www.google.com/maps?cid=11414881517070165747"
-      ],
-      "hasMap": "https://www.google.com/maps?cid=11414881517070165747",
-      "founder": {
-        "@type": "Person",
-        "name": "Tomasz Matyszczak",
-        "jobTitle": "Web Developer",
-        "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "WordPress", "PHP", "MySQL", "SEO", "Tailwind CSS"]
-      },
-      "serviceType": ["Tworzenie stron internetowych", "Sklepy internetowe", "Strony WordPress", "Aplikacje React", "Pozycjonowanie SEO"]
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://tomaszmatyszczak.pl/#business",
+          "name": "Tomasz Matyszczak – Web Developer",
+          "description": "Tworzenie nowoczesnych stron internetowych i sklepów online. Specjalizacja: HTML, CSS, JavaScript, React, WordPress.",
+          "url": "https://tomaszmatyszczak.pl/",
+          "image": "https://tomaszmatyszczak.pl/IMG/og-image.png",
+          "priceRange": "od 1599 zł",
+          "telephone": "+48575255608",
+          "email": "kontakt@tomaszmatyszczak.pl",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Piła",
+            "addressRegion": "Wielkopolska",
+            "addressCountry": "PL"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 53.1500,
+            "longitude": 16.7333
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Piła" },
+            { "@type": "City", "name": "Trzcianka" },
+            { "@type": "City", "name": "Wyrzysk" },
+            { "@type": "City", "name": "Ujście" },
+            { "@type": "City", "name": "Złotów" },
+            { "@type": "City", "name": "Chodzież" },
+            { "@type": "Country", "name": "Polska" }
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/tomasz-matyszczak-972ba9173/",
+            "https://github.com/Dymass91",
+            "https://www.facebook.com/Tomasz-Matyszczak-Projektowanie-stron-internetowych-103347338438586",
+            "https://www.google.com/maps?cid=11414881517070165747"
+          ],
+          "hasMap": "https://www.google.com/maps?cid=11414881517070165747",
+          "founder": { "@id": "https://tomaszmatyszczak.pl/#person" },
+          "serviceType": ["Tworzenie stron internetowych", "Sklepy internetowe", "Strony WordPress", "Aplikacje React", "Pozycjonowanie SEO"]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://tomaszmatyszczak.pl/#person",
+          "name": "Tomasz Matyszczak",
+          "jobTitle": "Web Developer",
+          "url": "https://tomaszmatyszczak.pl/",
+          "worksFor": { "@id": "https://tomaszmatyszczak.pl/#business" },
+          "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "WordPress", "PHP", "MySQL", "SEO", "Tailwind CSS"],
+          "sameAs": [
+            "https://www.linkedin.com/in/tomasz-matyszczak-972ba9173/",
+            "https://github.com/Dymass91"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://tomaszmatyszczak.pl/#website",
+          "name": "Tomasz Matyszczak – Web Developer",
+          "url": "https://tomaszmatyszczak.pl/",
+          "inLanguage": "pl-PL",
+          "publisher": { "@id": "https://tomaszmatyszczak.pl/#business" }
+        }
+      ]
     }
     </script>
     <link rel="stylesheet" type="text/css" href="CSS/styles.css">
@@ -220,7 +240,7 @@
             <li><a href="#About" class="navbar_header_About">O mnie</a></li>
             <li><a href="#Skills" class="navbar_header_Service">Usługi</a></li>
             <li><a href="#Cennik" class="navbar_header_Cennik">Cennik</a></li>
-            <li><a href="#Projects" class="navbar_header_Projects">Portfolio</a></li>
+            <li><a href="/realizacje/" class="navbar_header_Realizacje">Realizacje</a></li>
             <li><a href="#FAQ" class="navbar_header_FAQ">FAQ</a></li>
             <li><a href="#Contact" class="navbar_header_Contact">Kontakt</a></li>
             <li class="navbar-lang-item"><div class="langWrap"></div></li>
@@ -304,13 +324,13 @@
                 <div class="service-tile">
                     <i class="fas fa-shopping-cart service-tile__icon"></i>
                     <h3 class="titleService2 service-tile__title">Sklepy internetowe</h3>
-                    <p class="description_Service2 service-tile__desc">Sprzedawaj 24 godziny na dobę, bez ograniczeń godzin otwarcia. Integracja płatności i panel zarządzania produktami gotowe od pierwszego dnia.</p>
+                    <p class="description_Service2 service-tile__desc">Sprzedawaj 24 godziny na dobę, bez ograniczeń godzin otwarcia. Integracja płatności i panel zarządzania produktami gotowe od pierwszego dnia. <a href="/sklepy-internetowe/">Zobacz ofertę sklepów internetowych →</a></p>
                 </div>
 
                 <div class="service-tile">
                     <i class="fas fa-sync-alt service-tile__icon"></i>
                     <h3 class="titleService3 service-tile__title">Modernizacja i redesign</h3>
-                    <p class="description_Service3 service-tile__desc">Masz stronę, która wygląda jak sprzed dekady albo ładuje się wolno? Odświeżam istniejące strony — nowy design, szybszy kod, bez utraty pozycji w Google.</p>
+                    <p class="description_Service3 service-tile__desc">Masz stronę, która wygląda jak sprzed dekady albo ładuje się wolno? Odświeżam istniejące strony — nowy design, szybszy kod, bez utraty pozycji w Google. <a href="/modernizacja-stron/">Sprawdź, jak wygląda modernizacja strony →</a></p>
                 </div>
 
                 <div class="service-tile">
@@ -334,7 +354,7 @@
             <span class="marker-line"></span>
         </div>
         <h2 class="pricing_h2 section-heading">Ile kosztuje strona internetowa?</h2>
-        <p class="pricing_subtitle">Wybierz rozwiązanie dopasowane do potrzeb Twojej firmy. Jeśli nie wiesz, który wariant będzie odpowiedni, pomogę Ci wybrać najlepszą opcję.</p>
+        <p class="pricing_subtitle">Wybierz rozwiązanie dopasowane do potrzeb Twojej firmy. Jeśli nie wiesz, który wariant będzie odpowiedni, pomogę Ci wybrać najlepszą opcję. Zobacz też, <a href="/ile-kosztuje-strona-internetowa/">od czego zależy cena strony internetowej</a>.</p>
 
         <div class="pricing-cards">
 
@@ -416,7 +436,7 @@
         <div class="portfolio-panel">
         <div class="Projects-text" data-aos="fade-up">
             <p class="Projects_title_text">
-                Poniżej znajdziesz wybrane realizacje — projekty komercyjne i demonstracyjne, każdy napisany ręcznie w HTML/CSS/JS oraz React, bez gotowych motywów i zbędnych wtyczek.
+                Poniżej znajdziesz wybrane realizacje — projekty komercyjne i demonstracyjne, każdy napisany ręcznie w HTML/CSS/JS oraz React, bez gotowych motywów i zbędnych wtyczek. Pełne opisy projektów znajdziesz na <a href="/realizacje/">stronie realizacji</a>.
             </p>
         </div>
 
@@ -442,7 +462,7 @@
                     <img class="browser-frame__fallback" src="IMG/detweederonde.png" alt="De Tweede Ronde Eindhoven – strona HTML CSS JS Tailwind" loading="lazy">
                 </div>
                 <div class="portfolio-card__meta">
-                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://detweederondeeindhoven.nl" target="_blank" rel="noopener noreferrer">De Tweede Ronde Eindhoven</a></h3>
+                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="/realizacje/de-tweede-ronde-eindhoven/">De Tweede Ronde Eindhoven</a></h3>
                     <p class="portfolio-card__desc">Montaż mebli biurowych, kabin i paneli akustycznych w Beneluksie i Niemczech.</p>
                     <div class="portfolio-card__tags"><span>HTML5</span><span>CSS</span><span>JS</span></div>
                 </div>
@@ -494,24 +514,23 @@
                     <img class="browser-frame__fallback" src="IMG/transwojer.png" alt="Trans-Wojer – strona HTML CSS JS firmy transportowej" loading="lazy">
                 </div>
                 <div class="portfolio-card__meta">
-                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://trans-wojer.pl" target="_blank" rel="noopener noreferrer">Trans-Wojer</a></h3>
+                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="/realizacje/trans-wojer/">Trans-Wojer</a></h3>
                     <div class="portfolio-card__tags"><span>HTML5</span><span>CSS</span><span>JS</span></div>
                 </div>
             </article>
 
-            <article class="portfolio-card" data-tags="React" data-mode="live">
+            <article class="portfolio-card mode-image" data-tags="React">
                 <div class="browser-frame__bar">
                     <span class="browser-frame__dot browser-frame__dot--red"></span>
                     <span class="browser-frame__dot browser-frame__dot--yellow"></span>
                     <span class="browser-frame__dot browser-frame__dot--green"></span>
-                    <span class="browser-frame__url">slodki-zakatek.pages.dev</span>
+                    <span class="browser-frame__url">Słodki Zakątek — projekt pro bono</span>
                 </div>
                 <div class="browser-frame__viewport">
-                    <iframe class="browser-frame__iframe" src="https://slodki-zakatek.pages.dev/#hero" loading="lazy" tabindex="-1" aria-hidden="true" title="Podgląd na żywo: Słodki Zakątek"></iframe>
-                    <img class="browser-frame__fallback" src="IMG/slodkizakatek.jpg" alt="Słodki Zakątek – strona React Astro" loading="lazy">
+                    <img class="browser-frame__fallback" src="IMG/slodkizakatek.jpg" alt="Słodki Zakątek – strona pracowni cukierniczej" loading="lazy">
                 </div>
                 <div class="portfolio-card__meta">
-                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://slodki-zakatek.pages.dev/#hero" target="_blank" rel="noopener noreferrer">Słodki Zakątek</a></h3>
+                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="/realizacje/slodki-zakatek/">Słodki Zakątek</a></h3>
                     <div class="portfolio-card__tags"><span>React</span></div>
                 </div>
             </article>
@@ -528,7 +547,7 @@
                     <img class="browser-frame__fallback" src="IMG/Naprawtologo.png" alt="Napraw to – aplikacja React" loading="lazy">
                 </div>
                 <div class="portfolio-card__meta">
-                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://naprawtoagd.pl" target="_blank" rel="noopener noreferrer">Napraw to</a></h3>
+                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="/realizacje/naprawto-agd/">Napraw to</a></h3>
                     <div class="portfolio-card__tags"><span>React</span></div>
                 </div>
             </article>
@@ -562,7 +581,7 @@
                     <img class="browser-frame__fallback" src="IMG/aeroglass.png" alt="AeroGlass – mycie elewacji dronami, strona React" loading="lazy">
                 </div>
                 <div class="portfolio-card__meta">
-                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="https://aeroglass.pages.dev" target="_blank" rel="noopener noreferrer">AeroGlass</a></h3>
+                    <h3 class="portfolio-card__name"><a class="portfolio-card__link" href="/realizacje/aeroglass/">AeroGlass</a></h3>
                     <div class="portfolio-card__tags"><span>React</span></div>
                 </div>
             </article>
