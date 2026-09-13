@@ -20,10 +20,12 @@
 ////    itself, and follows the cursor directly.
 ////
 //// Both use a plain CSS opacity transition for smooth ramp up/down
-//// rather than a hand-rolled per-frame easing loop, and both are
-//// skipped entirely (leaving the plain background untouched) on
-//// touch/coarse-pointer devices, devices without hover, and
-//// prefers-reduced-motion. ////
+//// rather than a hand-rolled per-frame easing loop, follow either the
+//// mouse or a single touch point (tap-and-drag; the glow eases out on
+//// release, same as a mouse leaving the window), and are skipped
+//// entirely (leaving the plain background untouched) only on
+//// prefers-reduced-motion or on a device with neither a fine pointer
+//// nor touch. ////
 
 (function () {
   var SVG_NS = 'http://www.w3.org/2000/svg';
@@ -45,15 +47,35 @@
   function supportsEffect() {
     try {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-      if (!window.matchMedia('(hover: hover)').matches) return false;
-      if (!window.matchMedia('(pointer: fine)').matches) return false;
-      return true;
+      var mouseCapable = window.matchMedia('(hover: hover)').matches && window.matchMedia('(pointer: fine)').matches;
+      var touchCapable = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+      return mouseCapable || touchCapable;
     } catch (e) {
       return false;
     }
   }
 
   if (!supportsEffect()) return;
+
+  // Shared mouse+touch binding: onMove(x, y) gets called with the
+  // pointer/first-touch position; onLeave() when the mouse leaves the
+  // window or the touch is released/cancelled (the glow then eases
+  // out via each mode's own CSS opacity transition).
+  function bindPointer(onMove, onLeave) {
+    window.addEventListener('mousemove', function (e) {
+      onMove(e.clientX, e.clientY);
+    }, { passive: true });
+    window.addEventListener('mouseleave', onLeave, { passive: true });
+
+    window.addEventListener('touchstart', function (e) {
+      if (e.touches.length) onMove(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    window.addEventListener('touchmove', function (e) {
+      if (e.touches.length) onMove(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    window.addEventListener('touchend', onLeave, { passive: true });
+    window.addEventListener('touchcancel', onLeave, { passive: true });
+  }
 
   // The source file's polygon points are plain space-separated numbers
   // ("90 150 0 300 180 300"), not the more common "x,y x,y" comma
@@ -181,9 +203,9 @@
 
     var pendingX = null, pendingY = null, ticking = false, pointerInside = false;
 
-    function onMove(e) {
-      pendingX = e.clientX;
-      pendingY = e.clientY;
+    function onMove(x, y) {
+      pendingX = x;
+      pendingY = y;
       pointerInside = true;
       schedule();
     }
@@ -225,8 +247,7 @@
       active = newActive;
     }
 
-    window.addEventListener('mousemove', onMove, { passive: true });
-    window.addEventListener('mouseleave', onLeave, { passive: true });
+    bindPointer(onMove, onLeave);
 
     var resizeTimer;
     window.addEventListener('resize', function () {
@@ -329,9 +350,9 @@
 
     var pendingX = null, pendingY = null, ticking = false, pointerInside = false;
 
-    function onMove(e) {
-      pendingX = e.clientX;
-      pendingY = e.clientY;
+    function onMove(x, y) {
+      pendingX = x;
+      pendingY = y;
       pointerInside = true;
       schedule();
     }
@@ -357,8 +378,7 @@
       }
     }
 
-    window.addEventListener('mousemove', onMove, { passive: true });
-    window.addEventListener('mouseleave', onLeave, { passive: true });
+    bindPointer(onMove, onLeave);
 
     var resizeTimer;
     window.addEventListener('resize', function () {
