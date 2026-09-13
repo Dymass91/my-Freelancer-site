@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <script>
+    // Same capability check as the homepage - see index.html for the
+    // full rationale. Keeps background-attachment behavior consistent
+    // across the whole site.
+    (function () {
+      try {
+        var isIOS = /iP(hone|od|ad)/.test(navigator.platform) ||
+          (navigator.userAgent.indexOf('Mac') !== -1 && 'ontouchend' in document);
+        if (isIOS) return;
+        var mem = navigator.deviceMemory;
+        var cores = navigator.hardwareConcurrency;
+        if (mem >= 4 && cores >= 4) {
+          document.documentElement.classList.add('bg-fixed-capable');
+        }
+      } catch (e) {}
+    })();
+    </script>
+
     <title>NaprawTo AGD – strona własnego serwisu AGD | Case study</title>
     <meta name="description" content="Case study: strona internetowa NaprawTo AGD — mojej własnej działalności zajmującej się naprawą AGD. Projekt, wykonanie i lokalne SEO od strony developera i właściciela firmy jednocześnie.">
     <meta name="author" content="Tomasz Matyszczak">
