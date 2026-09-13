@@ -344,3 +344,113 @@
 .related-links a:hover {
   text-decoration: underline;
 }
+
+/* ── /realizacje/ hub: one unified grid, badge overlay on the shot
+   instead of a separate "concepts" section with its own heading. ── */
+.realizacje-grid.is-unified {
+  grid-template-columns: 1fr;
+  max-width: 1100px;
+}
+@media (min-width: 640px) {
+  .realizacje-grid.is-unified {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .realizacje-grid.is-unified {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.realizacje-card__media {
+  position: relative;
+}
+.realizacje-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: .3px;
+  color: #fff;
+  background: rgba(28, 46, 74, 0.72);
+  backdrop-filter: blur(2px);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+.realizacje-card__cta {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: 'Jura', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgb(64, 170, 235);
+}
+
+/* ── Case study hero: badge + title + lede + CTA together, screenshot
+   comes right after so the page reads visually before it reads as text. ── */
+.case-hero {
+  padding: 130px 6vw 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 899px) {
+  .case-hero { padding-top: 92px; }
+}
+@media (max-width: 385px) {
+  .case-hero { padding-top: 104px; }
+}
+.case-hero__top {
+  max-width: 720px;
+}
+.case-hero .subpage-cta-row {
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+
+/* ── Case study: compact fact/scope cards replacing long prose blocks ── */
+.case-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 18px 0 8px;
+}
+@media (min-width: 640px) {
+  .case-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.case-columns .subpage-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.case-columns .subpage-card li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+/* ── Portfolio (homepage): subtle status badge + "see more" hint,
+   without turning the card into a second competing CTA. ── */
+.portfolio-card__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: .3px;
+  color: #fff;
+  background: rgba(28, 46, 74, 0.72);
+  border-radius: 999px;
+  padding: 3px 11px;
+  pointer-events: none;
+}
+.portfolio-card__cta {
+  font-family: 'Jura', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgb(64, 170, 235);
+  margin-top: -2px;
+}

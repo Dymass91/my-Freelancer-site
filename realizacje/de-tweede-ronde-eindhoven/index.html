@@ -79,7 +79,7 @@
         </ul>
     </nav>
 
-    <header class="subpage-header">
+    <header class="case-hero">
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="/">Strona główna</a>
             <span class="breadcrumb-sep">/</span>
@@ -87,40 +87,18 @@
             <span class="breadcrumb-sep">/</span>
             <span aria-current="page">De Tweede Ronde Eindhoven</span>
         </nav>
-        <span class="project-badge">Realizacja dla klienta</span>
-        <h1 class="subpage-h1">De Tweede Ronde Eindhoven — strona dla firmy z Holandii</h1>
-        <p class="subpage-lede">Stronę zrobiłem dla znajomego z Holandii, z którym kiedyś pracowałem. Firma zajmuje się montażem mebli biurowych, kabin i paneli akustycznych i działa pod adresem <a href="https://detweederondeeindhoven.nl" target="_blank" rel="noopener noreferrer">detweederondeeindhoven.nl</a>. To ciekawy przykład współpracy międzynarodowej: freelancer z Polski dla firmy działającej w Holandii.</p>
+        <div class="case-hero__top">
+            <span class="project-badge">Realizacja</span>
+            <h1 class="subpage-h1">De Tweede Ronde Eindhoven — strona dla firmy z Holandii</h1>
+            <p class="subpage-lede">Stronę zrobiłem dla znajomego z Holandii, z którym kiedyś pracowałem. Firma zajmuje się montażem mebli biurowych, kabin i paneli akustycznych i działa pod adresem <a href="https://detweederondeeindhoven.nl" target="_blank" rel="noopener noreferrer">detweederondeeindhoven.nl</a> — ciekawy przykład współpracy: freelancer z Polski dla firmy działającej w Holandii.</p>
+        </div>
+        <div class="subpage-cta-row">
+            <a href="#live-preview" class="hero-cta hero-cta--primary">Zobacz stronę na żywo</a>
+            <a href="https://detweederondeeindhoven.nl" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta--secondary">Otwórz w nowej karcie</a>
+        </div>
     </header>
 
-    <section class="subpage-section">
-        <h2>Kontekst</h2>
-        <p>Firma potrzebowała profesjonalnej strony prezentującej ofertę i zrealizowane wdrożenia (m.in. montaż kabin akustycznych). Klient jest zadowolony z efektu — projekt został przygotowany również z myślą o lokalnej widoczności w wyszukiwarce.</p>
-
-        <h2>Zakres prac</h2>
-        <ul>
-            <li>Projekt i wdrożenie responsywnej strony, wykonanej ręcznie w HTML, CSS i JavaScript (z wykorzystaniem Tailwind CSS)</li>
-            <li>Struktura strony dopasowana do prezentacji usług i realizacji</li>
-            <li>Podstawowa optymalizacja pod kątem lokalnego wyszukiwania</li>
-        </ul>
-
-        <dl class="subpage-facts">
-            <div class="subpage-fact">
-                <dt>Technologie</dt>
-                <dd>HTML, CSS, JS, Tailwind</dd>
-            </div>
-            <div class="subpage-fact">
-                <dt>Branża</dt>
-                <dd>Montaż mebli biurowych i akustyki</dd>
-            </div>
-            <div class="subpage-fact">
-                <dt>Rynek</dt>
-                <dd>Holandia</dd>
-            </div>
-        </dl>
-    </section>
-
-    <section class="case-preview">
-        <h2 style="font-family:'Jura',sans-serif;font-weight:800;color:rgb(31,92,138);margin-bottom:14px;">Zobacz stronę na żywo</h2>
+    <section class="case-preview" id="live-preview">
         <div class="case-preview__frame" data-live-src="https://detweederondeeindhoven.nl" data-live-title="Podgląd na żywo: De Tweede Ronde Eindhoven">
             <img class="case-preview__shot" src="../../IMG/detweederonde.png" alt="Zrzut ekranu strony De Tweede Ronde Eindhoven">
             <button type="button" class="case-preview__launch">
@@ -134,10 +112,41 @@
     </section>
 
     <section class="subpage-section">
+        <h2>O projekcie</h2>
+        <p>Firmie zależało na profesjonalnej stronie prezentującej ofertę i zrealizowane wdrożenia, m.in. montaż kabin akustycznych. Klient jest zadowolony z efektu — projekt został przygotowany również z myślą o lokalnej widoczności w wyszukiwarce.</p>
+
+        <div class="case-columns">
+            <div class="subpage-card">
+                <h3>Zakres prac</h3>
+                <ul>
+                    <li>Responsywna strona wykonana ręcznie</li>
+                    <li>Struktura pod usługi i realizacje</li>
+                    <li>Podstawy pod lokalne SEO</li>
+                </ul>
+            </div>
+            <div class="subpage-card">
+                <h3>Technologie</h3>
+                <ul>
+                    <li>HTML, CSS, JS</li>
+                    <li>Tailwind CSS</li>
+                </ul>
+            </div>
+            <div class="subpage-card">
+                <h3>Kontekst</h3>
+                <ul>
+                    <li>Branża: montaż mebli biurowych i akustyki</li>
+                    <li>Rynek: Holandia</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="subpage-section">
+        <p>Podobne strony firmowe realizuję też dla klientów w Polsce — zobacz np. <a href="/realizacje/trans-wojer/">stronę firmy transportowej Trans-Wojer</a>.</p>
         <div class="related-links">
             <a href="/realizacje/">← Wszystkie realizacje</a>
             <a href="/modernizacja-stron/">Modernizacja stron</a>
-            <a href="/#Contact">Zamów podobną stronę</a>
+            <a href="/#Contact">Napisz w sprawie podobnej strony</a>
         </div>
     </section>
 

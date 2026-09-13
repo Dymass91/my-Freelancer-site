@@ -79,7 +79,7 @@
         </ul>
     </nav>
 
-    <header class="subpage-header">
+    <header class="case-hero">
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="/">Strona główna</a>
             <span class="breadcrumb-sep">/</span>
@@ -87,40 +87,18 @@
             <span class="breadcrumb-sep">/</span>
             <span aria-current="page">AeroGlass</span>
         </nav>
-        <span class="project-badge">Projekt przed uruchomieniem</span>
-        <h1 class="subpage-h1">AeroGlass — strona przygotowana przed startem działalności</h1>
-        <p class="subpage-lede">Projekt przygotowałem dla mojego kolegi Krystiana, który planuje uruchomić firmę pod marką AeroGlass, zajmującą się myciem elewacji i przeszkleń za pomocą dronów. To nie jest obecnie działająca firma — strona jest gotowa, jeszcze przed startem działalności.</p>
+        <div class="case-hero__top">
+            <span class="project-badge">Przed startem</span>
+            <h1 class="subpage-h1">AeroGlass — strona przed startem działalności</h1>
+            <p class="subpage-lede">Projekt przygotowałem dla kolegi Krystiana, który planuje uruchomić firmę pod marką AeroGlass, zajmującą się myciem elewacji i przeszkleń dronami. To jeszcze nie działająca firma — strona jest gotowa, czeka na start.</p>
+        </div>
+        <div class="subpage-cta-row">
+            <a href="#live-preview" class="hero-cta hero-cta--primary">Zobacz stronę na żywo</a>
+            <a href="https://aeroglass.pages.dev" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta--secondary">Otwórz w nowej karcie</a>
+        </div>
     </header>
 
-    <section class="subpage-section">
-        <h2>Przygotowanie marki przed startem</h2>
-        <p>Ten projekt pokazuje inny scenariusz niż zwykle: zamiast poprawiać istniejącą obecność w sieci, przygotowałem ją od zera, jeszcze przed pierwszym dniem działalności. Strona prezentuje ofertę i sposób działania usługi w sposób gotowy do uruchomienia w dowolnym momencie.</p>
-
-        <h2>Zakres prac</h2>
-        <ul>
-            <li>Projekt wizualny i struktura witryny dla marki, która jeszcze nie działa</li>
-            <li>Prezentacja usług i procesu (mycie elewacji dronami)</li>
-            <li>Responsywny, techniczny przygotowany kod, wykonany w React</li>
-        </ul>
-
-        <dl class="subpage-facts">
-            <div class="subpage-fact">
-                <dt>Technologie</dt>
-                <dd>React</dd>
-            </div>
-            <div class="subpage-fact">
-                <dt>Branża</dt>
-                <dd>Mycie elewacji dronami</dd>
-            </div>
-            <div class="subpage-fact">
-                <dt>Status</dt>
-                <dd>Przed uruchomieniem działalności</dd>
-            </div>
-        </dl>
-    </section>
-
-    <section class="case-preview">
-        <h2 style="font-family:'Jura',sans-serif;font-weight:800;color:rgb(31,92,138);margin-bottom:14px;">Zobacz stronę na żywo</h2>
+    <section class="case-preview" id="live-preview">
         <div class="case-preview__frame" data-live-src="https://aeroglass.pages.dev" data-live-title="Podgląd na żywo: AeroGlass">
             <img class="case-preview__shot" src="../../IMG/aeroglass.png" alt="Zrzut ekranu strony AeroGlass">
             <button type="button" class="case-preview__launch">
@@ -130,6 +108,35 @@
         </div>
         <div class="case-preview__actions">
             <a href="https://aeroglass.pages.dev" target="_blank" rel="noopener noreferrer" class="hero-cta hero-cta--secondary">Otwórz stronę w nowej karcie</a>
+        </div>
+    </section>
+
+    <section class="subpage-section">
+        <h2>Przygotowanie marki przed startem</h2>
+        <p>Ten projekt to inny scenariusz niż zwykle: zamiast poprawiać istniejącą obecność w sieci, przygotowałem ją od zera, jeszcze przed pierwszym dniem działalności. Strona jest gotowa do uruchomienia w dowolnym momencie.</p>
+
+        <div class="case-columns">
+            <div class="subpage-card">
+                <h3>Zakres prac</h3>
+                <ul>
+                    <li>Projekt wizualny i struktura</li>
+                    <li>Prezentacja usługi i procesu</li>
+                    <li>Responsywny kod w React</li>
+                </ul>
+            </div>
+            <div class="subpage-card">
+                <h3>Technologie</h3>
+                <ul>
+                    <li>React</li>
+                </ul>
+            </div>
+            <div class="subpage-card">
+                <h3>Kontekst</h3>
+                <ul>
+                    <li>Branża: mycie elewacji dronami</li>
+                    <li>Status: przed startem</li>
+                </ul>
+            </div>
         </div>
     </section>
 
