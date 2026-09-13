@@ -245,7 +245,7 @@
 
 /* ── Case study: large live-preview panel ── */
 .case-preview {
-  max-width: 900px;
+  max-width: 1140px;
   margin: 40px auto;
   padding: 0 6vw;
 }
@@ -296,6 +296,15 @@
   height: clamp(320px, 56vw, 800px);
   overflow: hidden;
   background: #eef1f5;
+}
+/* Real (non-scaled) iframe: on a narrow phone the container itself is
+   narrow, so a width-based vw height reads as a short, cramped strip
+   of whatever the live site happens to show at that width. Taller on
+   mobile gives a real, scrollable look at the actual page instead. */
+@media (max-width: 640px) {
+  .case-preview__viewport {
+    height: clamp(560px, 140vw, 760px);
+  }
 }
 .case-preview__viewport img.case-preview__shot {
   position: absolute;
