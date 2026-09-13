@@ -7,6 +7,25 @@
    pages skip the homepage's animated loader/hero (JS/AnimationGsap.js,
    HeroCardHeight.js aren't included) - just a plain page header. */
 
+/* Inline links inside subpage body copy (lede, paragraphs) and the
+   simplified footer's privacy-policy link had no color/underline
+   override, so they fell back to the browser's plain default blue -
+   inconsistent with the homepage's --span-color link language (see
+   .Policy_button in Policy.css, the model this matches). */
+.subpage-lede a,
+.subpage-section p a,
+.footer_policy_text a {
+  color: var(--span-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 700;
+}
+.subpage-lede a:hover,
+.subpage-section p a:hover,
+.footer_policy_text a:hover {
+  text-shadow: 0 0 5px rgba(10, 170, 219, 0.5);
+}
+
 .subpage-header {
   padding: 140px 6vw 48px;
   max-width: 900px;
