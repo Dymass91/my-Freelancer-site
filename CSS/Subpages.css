@@ -547,13 +547,17 @@
 }
 
 /* ── "sp-" (service page) visual language ──────────────────────────
-   A small, deliberately separate set of reusable pieces for a more
-   premium/glassmorphism-leaning content layer over the animated square
-   background. Prefixed "sp-" and kept in their own block so they don't
-   collide with or alter .subpage-panel/.subpage-card/.subpage-eyebrow
-   above (still used as-is by the other service pages) or the site-wide
-   .section-heading (SectionHeader.css). Only /modernizacja-stron/ opts
-   into these for now - rolling out further is a separate decision.
+   Shared reusable pieces for the premium/glassmorphism-leaning content
+   layer over the animated square background, used by all four service
+   pages (/modernizacja-stron/, /sklepy-internetowe/,
+   /strony-internetowe-pila/, /ile-kosztuje-strona-internetowa/) as one
+   system - /modernizacja-stron/ is the source of truth for these
+   values; changes here affect all four, so keep it that way rather
+   than forking a second near-identical set per page. Prefixed "sp-"
+   so it doesn't collide with the older .subpage-panel/.subpage-card/
+   .subpage-eyebrow rules above (kept only for /realizacje/ and the
+   case-study pages, not migrated yet) or the site-wide .section-
+   heading (SectionHeader.css).
    Not every block gets a glass surface: headings/short paragraphs sit
    directly on the background on purpose (see the design brief this
    was built from), so use sp-glass-panel only where a real, longer
