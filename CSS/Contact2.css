@@ -66,6 +66,31 @@
   user-select: none;
 }
 
+/* Second use of the same pixel-burst asset, this time as a quiet
+   corner accent on the glass panel itself (replacing the old
+   triangle motif) - a decorative layer sitting behind the panel's
+   real content, not a background-image on .contact-info (its
+   glass/transparency is untouched by this). z-index:-1 is safe here
+   only because .form (the nearest positioned ancestor with its own
+   z-index) already establishes a stacking context above the page's
+   fixed pixel background, so this can't be pushed behind it. */
+.contact-corner-burst {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 140px;
+  height: auto;
+  opacity: 0.65;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 768px) {
+  .contact-corner-burst {
+    display: none;
+  }
+}
+
 form {
   padding: 2.3rem 2.2rem 2rem 2.2rem;
   z-index: 10;
