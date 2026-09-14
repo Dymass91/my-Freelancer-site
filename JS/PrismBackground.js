@@ -62,6 +62,44 @@
 
   if (!supportsEffect()) return;
 
+  // Idle-activity fade: wraps the whole effect group (not the existing
+  // per-triangle/per-mask proximity opacity, which is untouched) in an
+  // extra opacity layer that fades in on movement and fades back out
+  // ~1.2s after the pointer stops - so the effect is invisible at rest
+  // and only appears while the mouse/finger is actually active. Call
+  // .poke() from each mode's onMove; CSS transitions handle the actual
+  // easing, so retargeting mid-transition (e.g. moving again during a
+  // fade-out) just smoothly redirects from whatever the current
+  // interpolated opacity is - no jump/flicker.
+  var FADE_IN_MS = 300;    // squares/triangles fading IN after movement resumes
+  var FADE_OUT_MS = 1200;  // fading OUT once idle
+  var IDLE_DELAY_MS = 1200; // how long to wait after the last move before fading out
+
+  function createActivityFade(el) {
+    el.style.transition = 'opacity ' + FADE_IN_MS + 'ms ease-out';
+    el.style.opacity = '0'; // invisible until the first movement
+    var isActive = false;
+    var idleTimer = null;
+
+    function goIdle() {
+      isActive = false;
+      el.style.transition = 'opacity ' + FADE_OUT_MS + 'ms ease-out';
+      el.style.opacity = '0';
+    }
+
+    return {
+      poke: function () {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(goIdle, IDLE_DELAY_MS);
+        if (!isActive) {
+          isActive = true;
+          el.style.transition = 'opacity ' + FADE_IN_MS + 'ms ease-out';
+          el.style.opacity = '1';
+        }
+      },
+    };
+  }
+
   // Shared mouse+touch binding: onMove(x, y) gets called with the
   // pointer/first-touch position; onLeave() when the mouse leaves the
   // window or the touch is released/cancelled (the glow then eases
@@ -169,6 +207,7 @@
 
     var registry = []; // { cx, cy, el, opacity }
     var active = [];
+    var activityFade = createActivityFade(glowGroup);
 
     function buildGrid() {
       var vw = window.innerWidth;
@@ -209,6 +248,7 @@
     var pendingX = null, pendingY = null, ticking = false, pointerInside = false;
 
     function onMove(x, y) {
+      activityFade.poke();
       pendingX = x;
       pendingY = y;
       pointerInside = true;
@@ -344,6 +384,8 @@
 
     highlightGroup.setAttribute('mask', 'url(#' + maskId + ')');
 
+    var activityFade = createActivityFade(highlightGroup);
+
     var HIGHLIGHT_SCREEN_RADIUS = 170; // px on screen - the local zone squares light up within
 
     function currentScale() {
@@ -372,6 +414,7 @@
     var pendingX = null, pendingY = null, ticking = false, pointerInside = false;
 
     function onMove(x, y) {
+      activityFade.poke();
       pendingX = x;
       pendingY = y;
       pointerInside = true;

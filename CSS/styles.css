@@ -65,6 +65,7 @@ body.prism-js-active {
     transition: none;
   }
 }
+
 /* Inline links added to Skills/Pricing/Projects body copy (pointing to
    /sklepy-internetowe/, /modernizacja-stron/, /ile-kosztuje-strona-internetowa/,
    /realizacje/) had no color/underline override, so they fell back to
