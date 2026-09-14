@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script>
+    // Same capability check as the homepage - see index.html for the
+    // full rationale. Keeps background-attachment behavior consistent
+    // across the whole site.
+    (function () {
+      try {
+        var isIOS = /iP(hone|od|ad)/.test(navigator.platform) ||
+          (navigator.userAgent.indexOf('Mac') !== -1 && 'ontouchend' in document);
+        if (isIOS) return;
+        var mem = navigator.deviceMemory;
+        var cores = navigator.hardwareConcurrency;
+        if (mem >= 4 && cores >= 4) {
+          document.documentElement.classList.add('bg-fixed-capable');
+        }
+      } catch (e) {}
+    })();
+    </script>
+
+    <title>Strony internetowe Piła | Projektowanie stron WWW – Tomasz Matyszczak</title>
+    <meta name="description" content="Projektuję nowoczesne strony internetowe dla firm z Piły i okolic. Strony WWW, landing page, redesign i optymalizacja. Sprawdź realizacje.">
+    <meta name="author" content="Tomasz Matyszczak">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tomaszmatyszczak.pl/strony-internetowe-pila/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Strony internetowe Piła – projektowanie i tworzenie stron WWW">
+    <meta property="og:description" content="Projektuję nowoczesne strony internetowe dla firm z Piły i okolic. Strony WWW, landing page, redesign i optymalizacja.">
+    <meta property="og:url" content="https://tomaszmatyszczak.pl/strony-internetowe-pila/">
+    <meta property="og:image" content="https://tomaszmatyszczak.pl/IMG/og-image.png">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="og:site_name" content="Tomasz Matyszczak – Web Developer">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Strony internetowe Piła – projektowanie i tworzenie stron WWW">
+    <meta name="twitter:description" content="Projektuję nowoczesne strony internetowe dla firm z Piły i okolic. Strony WWW, landing page, redesign i optymalizacja.">
+    <meta name="twitter:image" content="https://tomaszmatyszczak.pl/IMG/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://tomaszmatyszczak.pl/" },
+            { "@type": "ListItem", "position": 2, "name": "Strony internetowe Piła", "item": "https://tomaszmatyszczak.pl/strony-internetowe-pila/" }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://tomaszmatyszczak.pl/strony-internetowe-pila/",
+          "name": "Strony internetowe Piła",
+          "url": "https://tomaszmatyszczak.pl/strony-internetowe-pila/",
+          "provider": { "@id": "https://tomaszmatyszczak.pl/#business" },
+          "areaServed": {
+            "@type": "City",
+            "name": "Piła"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "PLN",
+            "price": "1599"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Ile kosztuje strona internetowa dla firmy z Piły?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Prosta strona wizytówkowa zaczyna się od 1599 zł. Dokładna cena zależy od liczby podstron, funkcji i tego, czy potrzebny jest sklep internetowy. Szczegóły znajdziesz w cenniku na stronie głównej."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Czy projektujesz strony tylko dla firm z Piły?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nie - współpracuję z firmami z całej Polski, ale ponieważ sam mieszkam w Pile, spotkanie na miejscu jest łatwe do zorganizowania, co ułatwia komunikację przy projektach lokalnych."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Ile trwa wykonanie strony internetowej?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "W zależności od zakresu, prosta strona wizytówkowa powstaje zwykle w ciągu 1-2 tygodni od zaakceptowania projektu graficznego."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Czy strona będzie widoczna w Google?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Każda strona, którą wykonuję, ma zadbane podstawy techniczne pod SEO - strukturę nagłówków, szybkość ładowania i wersję mobilną - co ułatwia jej indeksowanie i pozycjonowanie."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/SectionHeader.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Footer.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Landing.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/ScrollToTopCSS.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Subpages.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../IMG/Logo.png">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Saira+Condensed&family=Baumans&display=swap" rel="stylesheet">
+    <script defer src="https://kit.fontawesome.com/a9043bc812.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/#About" class="navbar_header_About">O mnie</a></li>
+            <li><a href="/#Skills" class="navbar_header_Service">Usługi</a></li>
+            <li><a href="/#Cennik" class="navbar_header_Cennik">Cennik</a></li>
+            <li><a href="/#Projects" class="navbar_header_Realizacje">Realizacje</a></li>
+            <li><a href="/#FAQ" class="navbar_header_FAQ">FAQ</a></li>
+            <li><a href="/#Contact" class="navbar_header_Contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <header class="subpage-header">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Strona główna</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">Strony internetowe Piła</span>
+        </nav>
+        <h1 class="subpage-h1">Strony internetowe Piła – projektowanie i tworzenie stron WWW</h1>
+        <p class="subpage-lede">Projektuję strony internetowe dla firm z Piły i okolic — od prostej wizytówki po rozbudowaną witrynę ze sklepem. Strona dopasowana do Twojego biznesu, szybka i widoczna w Google.</p>
+    </header>
+
+    <section class="subpage-section">
+        <h2>Strony WWW dla firm z Piły i okolic</h2>
+        <p>Mieszkam i pracuję w Pile, dlatego dobrze znam lokalny rynek i specyfikę małych oraz średnich firm z regionu — od usługodawców i gabinetów, przez warsztaty i sklepy, po firmy transportowe czy budowlane. Projektowanie stron internetowych w Pile prowadzę od pierwszej rozmowy o celach biznesowych, przez projekt graficzny, aż po wdrożenie gotowej witryny i wsparcie po uruchomieniu. Spotkanie na miejscu jest możliwe, ale całą współpracę da się też swobodnie prowadzić zdalnie.</p>
+
+        <h2>Jak wygląda proces tworzenia strony internetowej</h2>
+        <div class="subpage-grid cols-3">
+            <div class="subpage-card">
+                <h3>1. Rozmowa i wycena</h3>
+                <p>Ustalamy cel strony, zakres treści i funkcje, których potrzebuje Twoja firma. Otrzymujesz jasną wycenę bez ukrytych kosztów.</p>
+            </div>
+            <div class="subpage-card">
+                <h3>2. Projekt graficzny</h3>
+                <p>Przygotowuję układ i wygląd strony dopasowany do branży i grupy odbiorców, z myślą o czytelności i wiarygodności marki.</p>
+            </div>
+            <div class="subpage-card">
+                <h3>3. Wdrożenie i uruchomienie</h3>
+                <p>Koduję stronę od podstaw, konfiguruję domenę i hosting, a na koniec wspólnie sprawdzamy działanie na telefonie i komputerze.</p>
+            </div>
+        </div>
+
+        <h2>Zakres usług</h2>
+        <div class="subpage-grid cols-3">
+            <div class="subpage-card">
+                <h3>Strony wizytówkowe</h3>
+                <p>Tworzenie stron internetowych w Pile dla usługodawców i lokalnych firm, które chcą budować zaufanie i być widoczne w Google.</p>
+            </div>
+            <div class="subpage-card">
+                <h3>Sklepy internetowe</h3>
+                <p>Strony WWW dla firm z Piły, które chcą sprzedawać online — katalog produktów, koszyk i płatności. <a href="/sklepy-internetowe/">Zobacz ofertę sklepów internetowych →</a></p>
+            </div>
+            <div class="subpage-card">
+                <h3>Modernizacja i redesign</h3>
+                <p>Odświeżenie istniejącej strony — nowy wygląd i szybszy kod, bez utraty dotychczasowych pozycji w Google. <a href="/modernizacja-stron/">Sprawdź, jak wygląda modernizacja strony →</a></p>
+            </div>
+        </div>
+
+        <h2>Responsywność, wydajność i SEO</h2>
+        <p>Każda strona internetowa, którą wykonuję, działa poprawnie na telefonie, tablecie i komputerze — dziś to warunek konieczny, nie dodatek. Dbam też o szybkość ładowania i czysty kod bez zbędnych wtyczek, co przekłada się na lepsze wrażenia użytkowników i lepszą ocenę strony przez Google. Projektowanie stron internetowych w Pile prowadzę z zadbaną strukturą nagłówków i podstawami technicznymi pod SEO od pierwszej linii kodu — to fundament, na którym można później budować widoczność w wynikach wyszukiwania.</p>
+        <p>Orientacyjna cena strony internetowej zaczyna się od <strong>1599 zł</strong> — dokładny koszt zależy od zakresu i funkcji. Szczegóły znajdziesz na <a href="/#Cennik">stronie głównej</a> lub w artykule o tym, <a href="/ile-kosztuje-strona-internetowa/">od czego zależy cena strony internetowej</a>.</p>
+    </section>
+
+    <section class="subpage-section">
+        <h2>Wybrane realizacje</h2>
+        <p>Zasady, na których pracuję przy każdym projekcie — indywidualny projekt, czysty kod i dbałość o UX — najlepiej widać na przykładach z portfolio:</p>
+        <div class="subpage-grid cols-3">
+            <div class="subpage-card">
+                <h3>NaprawTo AGD</h3>
+                <p>Własna działalność serwisowa, gdzie postawiłem na kontakt, szybkość strony i lokalne SEO. <a href="/realizacje/naprawto-agd/">Zobacz realizację →</a></p>
+            </div>
+            <div class="subpage-card">
+                <h3>Trans-Wojer</h3>
+                <p>Strona dla lokalnej firmy transportowej, prezentująca ofertę i ułatwiająca kontakt klientom. <a href="/realizacje/trans-wojer/">Zobacz realizację →</a></p>
+            </div>
+            <div class="subpage-card">
+                <h3>De Tweede Ronde Eindhoven</h3>
+                <p>Strona dla firmy z Holandii zajmującej się montażem mebli biurowych. <a href="/realizacje/de-tweede-ronde-eindhoven/">Zobacz realizację →</a></p>
+            </div>
+        </div>
+        <div class="subpage-cta-row">
+            <a href="/#Contact" class="hero-cta hero-cta--primary">Zapytaj o wycenę strony</a>
+            <a href="/realizacje/" class="hero-cta hero-cta--secondary">Zobacz wszystkie realizacje</a>
+        </div>
+    </section>
+
+    <section class="subpage-section">
+        <h2>Najczęstsze pytania</h2>
+        <div class="subpage-grid cols-3">
+            <div class="subpage-card">
+                <h3>Ile kosztuje strona internetowa dla firmy z Piły?</h3>
+                <p>Prosta strona wizytówkowa zaczyna się od 1599 zł. Dokładna cena zależy od liczby podstron, funkcji i tego, czy potrzebny jest sklep internetowy.</p>
+            </div>
+            <div class="subpage-card">
+                <h3>Czy projektujesz strony tylko dla firm z Piły?</h3>
+                <p>Nie — współpracuję z firmami z całej Polski, ale mieszkając w Pile, łatwo mogę zorganizować spotkanie na miejscu przy projektach lokalnych.</p>
+            </div>
+            <div class="subpage-card">
+                <h3>Ile trwa wykonanie strony internetowej?</h3>
+                <p>Prosta strona wizytówkowa powstaje zwykle w ciągu 1–2 tygodni od zaakceptowania projektu graficznego.</p>
+            </div>
+            <div class="subpage-card">
+                <h3>Czy strona będzie widoczna w Google?</h3>
+                <p>Każda strona ma zadbane podstawy techniczne pod SEO — strukturę nagłówków, szybkość i wersję mobilną — co ułatwia jej pozycjonowanie.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="subpage-section">
+        <div class="related-links">
+            <a href="/sklepy-internetowe/">Sklepy internetowe</a>
+            <a href="/modernizacja-stron/">Modernizacja stron</a>
+            <a href="/ile-kosztuje-strona-internetowa/">Ile kosztuje strona internetowa</a>
+            <a href="/#Contact">Kontakt</a>
+        </div>
+    </section>
+
+    <div id="overlay"></div>
+    <footer>
+        <div class="footer_info">
+            <p class="footer_policy_text">Korzystając z tej strony proszę zapoznać się z <a href="/">Polityką prywatności</a>.</p>
+            <p class="footer_text"> Wszelkie prawa zastrzeżone © 2021</p>
+        </div>
+    </footer>
+
+    <a href="#" class="to-top" aria-label="Wróć na górę"><i class="fas fa-chevron-up"></i></a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="../JS/Navbar.js"></script>
+    <script src="../JS/ScrollToTopArrow.js"></script>
+    <script src="../JS/PageTransition.js"></script>
+    <script src="../JS/PrismBackground.js"></script>
+</body>
+
+</html>
