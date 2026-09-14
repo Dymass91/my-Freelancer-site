@@ -132,7 +132,13 @@
 .subpage-panel {
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 20px 45px rgba(23, 32, 44, 0.08), 0 4px 14px rgba(23, 32, 44, 0.05);
+  /* Soft white glow instead of a dark drop shadow - the card should
+     read as gently lit from within, not as paper sitting on the
+     pattern. A faint cool-tinted shadow underneath keeps just enough
+     depth to separate it from the background. */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6),
+              0 20px 60px rgba(255, 255, 255, 0.9),
+              0 8px 24px rgba(148, 163, 184, 0.12);
   padding: 32px 36px;
   margin: 0 0 32px;
 }
