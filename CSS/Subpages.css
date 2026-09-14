@@ -528,13 +528,24 @@
 .case-columns {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 20px;
   margin: 18px 0 8px;
 }
 @media (min-width: 640px) {
   .case-columns {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+
+/* "Kontekst projektu" section on case-study pages (all 5 share this
+   exact markup - see realizacje/*/index.html): widens just this
+   section to the same container other wide elements on the site use
+   (sp-wide, already shared by the service pages) instead of staying
+   capped at .subpage-section's 900px like a normal text section. The
+   heading+paragraph stay reading-width via .case-context-text; only
+   .case-columns (the 3 cards) uses the section's full new width. */
+.case-context-text {
+  max-width: 700px;
 }
 .case-columns .subpage-card ul {
   margin: 0;
