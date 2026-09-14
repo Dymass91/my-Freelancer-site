@@ -24,12 +24,11 @@
 ////    finger/moving away lets them fade back in.
 ////
 //// Both use a plain CSS opacity transition for smooth ramp up/down
-//// rather than a hand-rolled per-frame easing loop, follow either the
-//// mouse or a single touch point (tap-and-drag; the glow eases out on
-//// release, same as a mouse leaving the window), and are skipped
-//// entirely (leaving the plain background untouched) only on
-//// prefers-reduced-motion or on a device with neither a fine pointer
-//// nor touch. ////
+//// rather than a hand-rolled per-frame easing loop, and follow a
+//// single touch point (tap-and-drag; the glow eases out on release).
+//// Touch/mobile only - desktop (mouse/trackpad) always gets the
+//// plain, fully static background, no matter how capable the device
+//// is, and prefers-reduced-motion disables this everywhere. ////
 
 (function () {
   var SVG_NS = 'http://www.w3.org/2000/svg';
@@ -48,12 +47,13 @@
   var CATCHMENT = RADIUS * 1.4; // slightly wider net so fade-out isn't clipped early
   var MAX_OPACITY = 0.55; // glow twin's peak opacity right at the cursor
 
+  // Touch/mobile only - desktop (mouse/trackpad) keeps the plain,
+  // fully static background with no interactive glow or erase-squares
+  // effect at all.
   function supportsEffect() {
     try {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-      var mouseCapable = window.matchMedia('(hover: hover)').matches && window.matchMedia('(pointer: fine)').matches;
-      var touchCapable = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
-      return mouseCapable || touchCapable;
+      return window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
     } catch (e) {
       return false;
     }
