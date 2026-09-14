@@ -82,7 +82,7 @@
   font-family: 'Jura', sans-serif;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #4b5563;
+  color: #4f5967;
   line-height: 1.6;
   max-width: 720px;
 }
@@ -104,7 +104,7 @@
 .subpage-section p {
   font-family: 'Jura', sans-serif;
   font-size: 1rem;
-  color: #4b5563;
+  color: #4f5967;
   line-height: 1.7;
   margin: 0 0 14px;
 }
@@ -115,29 +115,25 @@
 .subpage-section li {
   font-family: 'Jura', sans-serif;
   font-size: 1rem;
-  color: #4b5563;
+  color: #4f5967;
   line-height: 1.7;
   margin-bottom: 6px;
 }
 
 /* ── Readability panel ──
    The animated square background (JS/PrismBackground.js, untouched)
-   shows straight through .subpage-section's transparent body, which
-   reads fine next to text but gets busy directly underneath it. This
-   is a purely visual, local "readability layer" - not a card - sitting
-   between the background and the text blocks that need it most (intro
-   copy, the pricing/SEO paragraph block), while grids/cards and the
-   portfolio section keep the open background showing around them.
-   Tune intensity here: background alpha, blur amount, and shadow are
-   the three knobs that control how strong the separation reads. */
+   can get busy directly under longer runs of body copy, so key text
+   blocks (heading + paragraphs together) sit on a plain white card
+   instead - rounded, soft-shadowed, no border - while grids/cards and
+   the portfolio section's own heading stay directly on the open
+   background around them. Tune intensity here: box-shadow's alpha and
+   spread are the main knob for how strongly the card lifts off the
+   background. */
 .subpage-panel {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(23, 32, 44, 0.05);
-  padding: 28px 32px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(23, 32, 44, 0.08), 0 4px 14px rgba(23, 32, 44, 0.05);
+  padding: 32px 36px;
   margin: 0 0 32px;
 }
 .subpage-panel:last-child {
@@ -145,16 +141,23 @@
 }
 @media (max-width: 640px) {
   .subpage-panel {
-    padding: 20px 18px;
-    border-radius: 14px;
+    padding: 22px 20px;
+    border-radius: 16px;
   }
 }
-/* backdrop-filter isn't universally supported - fall back to a slightly
-   more opaque solid panel so the separation still holds without blur. */
-@supports not (backdrop-filter: blur(1px)) {
-  .subpage-panel {
-    background: rgba(255, 255, 255, 0.92);
-  }
+
+/* Small uppercase label above a heading, on the panel or directly on
+   the background (e.g. above "Wybrane realizacje") - same accent blue
+   as links/icons elsewhere on the page. */
+.subpage-eyebrow {
+  display: block;
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgb(64, 170, 235);
+  margin-bottom: 10px;
 }
 
 /* Reuses .about-why-card's own visual language (16px radius, lift on
