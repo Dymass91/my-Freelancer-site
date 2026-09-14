@@ -538,14 +538,39 @@
 }
 
 /* "Kontekst projektu" section on case-study pages (all 5 share this
-   exact markup - see realizacje/*/index.html): widens just this
-   section to the same container other wide elements on the site use
+   exact markup - see each realizacje case folder's index.html): widens
+   just this section to the same container other wide elements use
    (sp-wide, already shared by the service pages) instead of staying
    capped at .subpage-section's 900px like a normal text section. The
    heading+paragraph stay reading-width via .case-context-text; only
    .case-columns (the 3 cards) uses the section's full new width. */
 .case-context-text {
   max-width: 700px;
+  /* Same "readable dialog" language as the homepage hero's
+     .hero-photo-card/.about-photo-card (Landing.css/Aboutme.css):
+     var(--border-accent) hairline border, 16px radius, translucent
+     white fill. Blur is new here (the hero card doesn't use one) but
+     keeps the same border/radius/fill so it reads as one system,
+     not a copy-paste of the hero card. Only wraps the heading+intro
+     paragraph - the 3 cards below (.case-columns) are untouched. */
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid var(--border-accent);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 24px rgba(35, 80, 120, 0.05);
+  padding: 24px 28px;
+}
+@media (max-width: 640px) {
+  .case-context-text {
+    padding: 20px 20px;
+    border-radius: 14px;
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .case-context-text {
+    background: rgba(255, 255, 255, 0.9);
+  }
 }
 .case-columns .subpage-card ul {
   margin: 0;
