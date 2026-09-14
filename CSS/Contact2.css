@@ -41,22 +41,29 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-}
-
-.contact-form {
-  background: linear-gradient(to right bottom, var(--main-color) 30%, var(--contact-deep-blue));
   position: relative;
 }
 
-.contact-form:before {
-  content: "";
+.contact-form {
+  background: linear-gradient(135deg, var(--main-color) 0%, var(--contact-deep-blue) 100%);
+  position: relative;
+}
+
+/* Small decorative cluster (IMG/variant_c_pixel_burst.svg) straddling
+   the glass/blue seam near the form header - echoes the site's pixel-
+   square background language instead of the old chevron/diamond
+   notch this replaces. Hidden on the stacked mobile layout since
+   there's no seam to sit on there (see the 768px media query below). */
+.pixel-burst {
   position: absolute;
-  width: 26px;
-  height: 26px;
-  background-color: var(--main-color);
-  transform: rotate(45deg);
-  top: 50px;
-  left: -13px;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: auto;
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
 }
 
 form {
@@ -82,9 +89,9 @@ form {
 .input {
   width: 100%;
   outline: none;
-  border: 2px solid #fafafa;
-  background: none;
-  padding: 0.6rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.09);
+  padding: 0.6rem 1.2rem 0.6rem 2.6rem;
   color: #fff;
   font-weight: 500;
   font-size: 0.95rem;
@@ -92,19 +99,44 @@ form {
   border-radius: 25px;
   transition: 0.3s;
 }
+.input:focus {
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12);
+}
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
 
 textarea.input {
-  padding: 0.8rem 1.2rem;
+  padding: 0.8rem 1.2rem 0.8rem 2.6rem;
   min-height: 150px;
   border-radius: 22px;
   resize: none;
   overflow-y: auto;
 }
 
+/* Small field icon, reusing the site's already-loaded Font Awesome
+   kit (same icons already used in .information on the left panel) -
+   no new icon library. Purely decorative, so input/label/JS field
+   selection are untouched; only the icon's own left inset needs the
+   input's/label's padding shifted to clear it. */
+.input-icon {
+  position: absolute;
+  top: 1.35rem;
+  left: 1.1rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 2;
+}
+.input-container.textarea .input-icon {
+  top: 1.5rem;
+}
+
 .input-container label {
   position: absolute;
   top: 50%;
-  left: 15px;
+  left: 44px;
   transform: translateY(-50%);
   padding: 0 0.4rem;
   color: #fafafa;
@@ -117,6 +149,7 @@ textarea.input {
 
 .input-container.textarea label {
   top: 1rem;
+  left: 44px;
   transform: translateY(0);
 }
 
@@ -134,17 +167,29 @@ textarea.input {
 }
 
 .btn {
-  padding: 0.6rem 1.3rem;
+  padding: 0.7rem 1.5rem;
   background-color: #fff;
   border: 2px solid #fafafa;
   font-size: 0.95rem;
+  font-weight: 700;
   color: rgb(64, 170, 235);
   line-height: 1;
   border-radius: 25px;
   outline: none;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform .25s ease, box-shadow .25s ease;
   margin: 0;
+}
+.btn::after {
+  content: "\2192";
+  margin-left: 8px;
+  display: inline-block;
+}
+@media (min-width: 769px) {
+  .btn {
+    width: 60%;
+    min-width: 220px;
+  }
 }
 
 @keyframes fadeIn {
@@ -172,8 +217,8 @@ textarea.input {
 }
 
 .btn:hover {
-  background-color: transparent;
-  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 40, 65, 0.25);
 }
 
 .input-container span {
@@ -201,7 +246,7 @@ textarea.input {
 .input-container.focus label {
   top: 0;
   transform: translateY(-50%);
-  left: 25px;
+  left: 44px;
   font-size: 0.8rem;
   background-color: var(--main-color);
   border-radius: 20px;
@@ -217,6 +262,19 @@ textarea.input {
 .contact-info {
   padding: 5.3rem 2.2rem;
   position: relative;
+  /* Glass, not card: the page's animated pixel background stays
+     visible through this panel (body has no opaque background behind
+     .contact_container) - a light translucent fill plus blur keeps
+     the text readable without turning this into a solid white card. */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(80, 190, 240, 0.35);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .contact-info {
+    background: rgba(255, 255, 255, 0.6);
+  }
 }
 
 .contact-info .contact_title {
@@ -275,32 +333,22 @@ width: 100%;
       text-align: center;
       position: relative;
       display: block;
-      background: var(--main-color);
+      background: rgba(100, 211, 255, 0.12);
+      border: 1px solid rgba(80, 190, 240, 0.4);
       border-radius: 8px;
-      color:  rgb(255, 255, 255);
-      transition: 0.5s;
+      color: rgb(31, 92, 138);
+      transition: 0.3s;
   }
   .social-icons  a:hover
 {
-
-  color: var(--span-color);
-    transition: 0.5s;
-    background:  rgb(255, 255, 255);
-    box-shadow: 0 0 10px var(--span-color), 0 0 10px rgba(100, 211, 255, 0.7), 0 0 20px rgba(100, 211, 255, 0.4);
+  color: rgb(31, 92, 138);
+    transition: 0.3s;
+    background: rgba(100, 211, 255, 0.25);
+    border-color: rgba(80, 190, 240, 0.65);
 }
 .social-icons  a:before
 {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-border-radius: 8px;
-background: var(--contact-deep-blue);
-transition: 0.5s;
-transform: scale(0.9);
-z-index: -1;
+content: none;
 }
 .social-icons  a:hover:before
 {
@@ -347,30 +395,6 @@ z-index: -1;
   transform: scale(1.05);
 } */
 
-.contact-info:before {
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  border: 27px solid #959eac;
- transform: rotate(35deg) skew(-25deg);
-  bottom: -60px;
-  right: 74px;
-  opacity: 0.3;
-}
-.contact-info:after {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border: 27px solid #959eac;
-   transform: rotate(35deg) skew(-25deg);
-    top: -60px;
-    left: -34px;
-    opacity: 0.3;
-  }
-
-
 .square {
   position: absolute;
   height: 400px;
@@ -404,17 +428,13 @@ z-index: -1;
     grid-template-columns: 1fr;
   }
 
-  .contact-info:before {
-    bottom: initial;
-    top: -75px;
-    right: 65px;
-    transform: scale(0.95);
+  .contact-info {
+    border-right: none;
+    border-bottom: 1px solid rgba(80, 190, 240, 0.35);
   }
 
-  .contact-form:before {
-    top: -13px;
-    left: initial;
-    right: 70px;
+  .pixel-burst {
+    display: none;
   }
 
   .square {
@@ -470,10 +490,6 @@ z-index: -1;
 @media (max-width: 480px) {
   .contact_container {
     padding: 1.5rem;
-  }
-
-  .contact-info:before {
-    display: none;
   }
 
   .square,
