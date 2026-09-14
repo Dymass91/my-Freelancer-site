@@ -68,7 +68,7 @@
   // whatever the current interpolated opacity is - no jump/flicker.
   var FADE_IN_MS = 300;    // squares/triangles fading IN after movement resumes
   var FADE_OUT_MS = 1200;  // fading OUT once idle
-  var IDLE_DELAY_MS = 1200; // how long to wait after the last move before fading out
+  var IDLE_DELAY_MS = 500; // how long to wait after the last move before fading out
 
   function createActivityFade(el) {
     el.style.transition = 'opacity ' + FADE_IN_MS + 'ms ease-out';
