@@ -546,3 +546,213 @@
   margin-bottom: 4px;
 }
 
+/* ── "sp-" (service page) visual language ──────────────────────────
+   A small, deliberately separate set of reusable pieces for a more
+   premium/glassmorphism-leaning content layer over the animated square
+   background. Prefixed "sp-" and kept in their own block so they don't
+   collide with or alter .subpage-panel/.subpage-card/.subpage-eyebrow
+   above (still used as-is by the other service pages) or the site-wide
+   .section-heading (SectionHeader.css). Only /modernizacja-stron/ opts
+   into these for now - rolling out further is a separate decision.
+   Not every block gets a glass surface: headings/short paragraphs sit
+   directly on the background on purpose (see the design brief this
+   was built from), so use sp-glass-panel only where a real, longer
+   text block actually needs the separation. */
+
+.sp-eyebrow {
+  display: block;
+  font-family: 'Jura', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(64, 170, 235);
+  margin-bottom: 10px;
+}
+
+.sp-heading {
+  font-family: 'Jura', sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, 2.8vw, 30px);
+  color: rgb(31, 92, 138);
+  margin: 0 0 16px;
+}
+
+.sp-lead {
+  font-family: 'Jura', sans-serif;
+  font-size: 1.05rem;
+  color: #4f5967;
+  line-height: 1.75;
+  max-width: 680px;
+  margin: 0 0 16px;
+}
+.sp-lead strong {
+  color: #1f3a52;
+}
+
+/* Extra breathing room between major sections - applied on top of
+   .subpage-section's own padding, not replacing it. */
+.sp-section-gap {
+  margin-top: 24px;
+}
+.sp-section-gap:first-child {
+  margin-top: 0;
+}
+
+/* Frosted-glass surface: the pixel background stays faintly visible
+   through it (that's the point - a surface, not an opaque card). Used
+   sparingly, only around text that genuinely needs it. */
+.sp-glass-panel {
+  position: relative;
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 16px 40px rgba(30, 70, 110, 0.07);
+  border-radius: 20px;
+  padding: 36px 40px;
+}
+@media (max-width: 640px) {
+  .sp-glass-panel {
+    padding: 24px 22px;
+    border-radius: 16px;
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .sp-glass-panel {
+    background: rgba(255, 255, 255, 0.88);
+  }
+}
+
+/* Subtle local blue glow, e.g. behind an eyebrow/heading pair - a
+   single small radial gradient, not a section-wide wash. Position the
+   element position:relative and this sits behind its content. */
+.sp-glow {
+  position: relative;
+  isolation: isolate;
+}
+.sp-glow::before {
+  content: "";
+  position: absolute;
+  /* No horizontal bleed - a fixed inset here previously extended past
+     the viewport edge on narrow screens (the glow sits near the page's
+     6vw side padding), inflating document scrollWidth into a real
+     horizontal-scroll bug. Vertical-only bleed still reads as a glow
+     since the gradient itself fades out well before the box edge. */
+  inset: -40px 0 auto 0;
+  height: 220px;
+  background: radial-gradient(circle, rgba(70, 180, 240, 0.10), transparent 65%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Checklist: replaces plain <ul><li> bullets with a small circled
+   check mark, more spacing between points, matching the icon language
+   used in .sp-feature-icon below. */
+.sp-check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sp-check-list li {
+  position: relative;
+  padding-left: 34px;
+  font-family: 'Jura', sans-serif;
+  font-size: 1rem;
+  color: #4f5967;
+  line-height: 1.6;
+}
+/* Icon markup (<i class="fas fa-check">), not CSS content - matches
+   the site's existing Font Awesome kit-script convention (see the
+   .to-top arrow, .social-icons) instead of guessing at a bundled
+   icon font's internal family name/glyph codepoint. */
+.sp-check-list li i {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 22px;
+  height: 22px;
+  font-size: 0.68rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(64, 170, 235);
+  background: rgba(100, 211, 255, 0.14);
+  border-radius: 50%;
+}
+.sp-check-list li strong {
+  color: #1f3a52;
+}
+
+/* Feature cards: translucent glass tiles (not flat white boxes),
+   equal height via the grid, small icon badge, gentle lift on hover. */
+.sp-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 0;
+}
+@media (min-width: 640px) {
+  .sp-feature-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.sp-feature-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(30, 70, 110, 0.06);
+  padding: 26px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.sp-feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(30, 70, 110, 0.1);
+  border-color: rgba(100, 211, 255, 0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sp-feature-card {
+    transition: none;
+  }
+  .sp-feature-card:hover {
+    transform: none;
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .sp-feature-card {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+.sp-feature-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(100, 211, 255, 0.16);
+  border: 1px solid rgba(100, 211, 255, 0.3);
+  color: rgb(64, 170, 235);
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+}
+.sp-feature-card h3 {
+  font-family: 'Jura', sans-serif;
+  font-weight: 700;
+  font-size: 1.08rem;
+  color: rgb(82, 82, 82);
+  margin: 0 0 8px;
+}
+.sp-feature-card p {
+  font-family: 'Jura', sans-serif;
+  font-size: 0.92rem;
+  color: #4f5967;
+  line-height: 1.6;
+  margin: 0;
+}
+
