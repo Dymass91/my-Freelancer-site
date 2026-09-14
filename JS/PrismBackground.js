@@ -13,11 +13,15 @@
 ////    triangle - nearest triangle brightest, falling off with
 ////    distance.
 ////  - Noise/square patterns (e.g. pattern-randomized*.svg): the whole
-////    original SVG is cloned inline as-is (unmodified appearance),
-////    with one added radial-gradient rect inserted UNDER the square
-////    layers and ABOVE the white base rect - so the glow only shows
-////    through the gaps between squares, never recoloring a square
-////    itself, and follows the cursor directly.
+////    original SVG is cloned inline as-is (unmodified appearance).
+////    A radial-gradient rect is inserted UNDER the square layers and
+////    ABOVE the white base rect (glow shows through the gaps, never
+////    recoloring a square). The square layers themselves are also
+////    wrapped in a group with an SVG mask - a soft, blurred circle in
+////    that mask follows the cursor/touch and locally erases the
+////    squares there, so they visibly fade away right where you point
+////    rather than just tinting the gaps between them; lifting the
+////    finger/moving away lets them fade back in.
 ////
 //// Both use a plain CSS opacity transition for smooth ramp up/down
 //// rather than a hand-rolled per-frame easing loop, follow either the
@@ -75,47 +79,6 @@
     }, { passive: true });
     window.addEventListener('touchend', onLeave, { passive: true });
     window.addEventListener('touchcancel', onLeave, { passive: true });
-  }
-
-  // "Fingerprint" marks: touch-only (not mouse) - a soft glow stamp at
-  // the touch point that fades in quickly, then eases out slowly over
-  // ~1.5s, like a print left on the surface after lifting the finger.
-  // Independent of the live glow above (which continues to follow a
-  // drag) and of each other, so tapping several spots leaves several
-  // marks fading at once. Appended into the same #prism-bg layer so it
-  // sits with the rest of the background, behind real content.
-  function setupFingerprints(container) {
-    var layer = document.createElement('div');
-    layer.id = 'prism-fingerprints';
-    container.appendChild(layer);
-
-    function stamp(x, y) {
-      var el = document.createElement('div');
-      el.className = 'prism-fingerprint';
-      el.style.left = x + 'px';
-      el.style.top = y + 'px';
-      el.style.transition = 'opacity .15s ease-out, transform .15s ease-out';
-      layer.appendChild(el);
-      requestAnimationFrame(function () {
-        el.style.opacity = '0.85';
-        el.style.transform = 'translate(-50%, -50%) scale(1)';
-      });
-      setTimeout(function () {
-        el.style.transition = 'opacity 1.3s ease-out, transform 1.3s ease-out';
-        el.style.opacity = '0';
-      }, 220);
-      setTimeout(function () {
-        if (el.parentNode) el.parentNode.removeChild(el);
-      }, 1600);
-    }
-
-    window.addEventListener('touchstart', function (e) {
-      if (e.touches.length) stamp(e.touches[0].clientX, e.touches[0].clientY);
-    }, { passive: true });
-    window.addEventListener('touchend', function (e) {
-      var t = e.changedTouches && e.changedTouches[0];
-      if (t) stamp(t.clientX, t.clientY);
-    }, { passive: true });
   }
 
   // The source file's polygon points are plain space-separated numbers
@@ -297,7 +260,6 @@
     });
 
     buildGrid();
-    setupFingerprints(container);
 
     // The re-render is visually identical to the plain background at
     // rest (same points/colors/opacity) - swap it in now that it's built.
@@ -365,7 +327,57 @@
       svg.appendChild(glowRect);
     }
 
+    // Erase mask: every remaining pattern-filled rect (the squares) is
+    // still a sibling at this point, after glowRect - move them all
+    // into one group and mask it, rather than trying to mask each rect
+    // separately (they're stacked, overlapping layers).
+    var squareRects = Array.prototype.slice.call(svg.querySelectorAll('rect')).filter(function (r) {
+      return r !== firstRect && r !== glowRect;
+    });
+    var squaresGroup = document.createElementNS(SVG_NS, 'g');
+    squareRects.forEach(function (r) { squaresGroup.appendChild(r); });
+    svg.appendChild(squaresGroup);
+
+    var maskId = 'prism-erase-mask';
+    var mask = document.createElementNS(SVG_NS, 'mask');
+    mask.setAttribute('id', maskId);
+    mask.setAttribute('maskUnits', 'userSpaceOnUse');
+    mask.setAttribute('x', '0');
+    mask.setAttribute('y', '0');
+    mask.setAttribute('width', vbW);
+    mask.setAttribute('height', vbH);
+    var maskBase = document.createElementNS(SVG_NS, 'rect');
+    maskBase.setAttribute('x', '0');
+    maskBase.setAttribute('y', '0');
+    maskBase.setAttribute('width', '100%');
+    maskBase.setAttribute('height', '100%');
+    maskBase.setAttribute('fill', '#ffffff');
+    mask.appendChild(maskBase);
+
+    var eraseHole = document.createElementNS(SVG_NS, 'circle');
+    eraseHole.setAttribute('cx', vbW / 2);
+    eraseHole.setAttribute('cy', vbH / 2);
+    eraseHole.setAttribute('fill', '#000000');
+    eraseHole.setAttribute('filter', 'url(#prism-erase-blur)');
+    eraseHole.style.opacity = '0';
+    eraseHole.style.transition = 'opacity .4s ease-out';
+    mask.appendChild(eraseHole);
+
+    var blurFilter = document.createElementNS(SVG_NS, 'filter');
+    blurFilter.setAttribute('id', 'prism-erase-blur');
+    blurFilter.setAttribute('x', '-50%');
+    blurFilter.setAttribute('y', '-50%');
+    blurFilter.setAttribute('width', '200%');
+    blurFilter.setAttribute('height', '200%');
+    var blur = document.createElementNS(SVG_NS, 'feGaussianBlur');
+    blurFilter.appendChild(blur);
+    defs.appendChild(blurFilter);
+    defs.appendChild(mask);
+
+    squaresGroup.setAttribute('mask', 'url(#' + maskId + ')');
+
     var GLOW_SCREEN_RADIUS = 190; // px on screen - middle of the requested 150-220px range
+    var ERASE_SCREEN_RADIUS = 130; // px - a bit tighter than the glow, reads as a focused "wipe"
 
     function currentScale() {
       var box = svg.getBoundingClientRect();
@@ -386,7 +398,11 @@
     }
 
     function updateRadius() {
-      gradient.setAttribute('r', GLOW_SCREEN_RADIUS / currentScale());
+      var scale = currentScale();
+      gradient.setAttribute('r', GLOW_SCREEN_RADIUS / scale);
+      var eraseR = ERASE_SCREEN_RADIUS / scale;
+      eraseHole.setAttribute('r', eraseR);
+      blur.setAttribute('stdDeviation', eraseR * 0.22);
     }
     updateRadius();
 
@@ -414,14 +430,17 @@
         var pt = mapToUserSpace(pendingX, pendingY, scale);
         gradient.setAttribute('cx', pt[0]);
         gradient.setAttribute('cy', pt[1]);
+        eraseHole.setAttribute('cx', pt[0]);
+        eraseHole.setAttribute('cy', pt[1]);
         glowRect.style.opacity = '1';
+        eraseHole.style.opacity = '1';
       } else {
         glowRect.style.opacity = '0';
+        eraseHole.style.opacity = '0';
       }
     }
 
     bindPointer(onMove, onLeave);
-    setupFingerprints(container);
 
     var resizeTimer;
     window.addEventListener('resize', function () {
