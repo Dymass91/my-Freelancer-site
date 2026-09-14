@@ -809,3 +809,122 @@
   margin: 0;
 }
 
+/* ── CTA panel: the page's closing pitch ─────────────────────────
+   Same "sp-" family as the rest of this system, not a parallel one -
+   a deliberately bolder, blue variant of the glass surface (still
+   blur+border+shadow, same shape language) reserved for a page's
+   single final call-to-action, so it doesn't compete with the
+   quieter sp-glass-panel used for regular content above it. */
+.sp-cta-panel {
+  position: relative;
+  background: linear-gradient(135deg, rgba(75, 180, 235, 0.88), rgba(45, 105, 165, 0.92));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(31, 70, 105, 0.12);
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+@media (min-width: 1024px) {
+  .sp-cta-panel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+}
+@media (max-width: 640px) {
+  .sp-cta-panel {
+    padding: 28px 24px;
+    border-radius: 16px;
+  }
+}
+.sp-cta-panel__content {
+  flex: 1 1 auto;
+}
+.sp-cta-panel .sp-eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+}
+.sp-cta-panel .sp-heading {
+  color: #fff;
+}
+.sp-cta-panel__content p {
+  font-family: 'Jura', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 520px;
+}
+.sp-cta-panel__content p a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.sp-cta-panel__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+.sp-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 11px;
+  font-family: 'Jura', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.sp-cta-btn--primary {
+  background: #fff;
+  color: rgb(31, 92, 138);
+}
+.sp-cta-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 40, 65, 0.2);
+}
+.sp-cta-btn--secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.sp-cta-btn--secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sp-cta-btn {
+    transition: none;
+  }
+  .sp-cta-btn:hover {
+    transform: none;
+  }
+}
+
+/* Quiet secondary-nav treatment for the small internal-linking row
+   that follows the CTA panel - same links/markup as before, just
+   visually turned down so they read as "see also", not a second CTA. */
+.sp-secondary-links {
+  margin-top: 40px;
+}
+.sp-secondary-links .sp-eyebrow {
+  margin-bottom: 14px;
+}
+
+/* Scoped footer polish (opt-in via footer.sp-footer) - a small
+   contrast bump only, not a redesign of the shared Footer.css rules
+   every other page still uses untouched. */
+footer.sp-footer .footer_text,
+footer.sp-footer .footer_policy_text {
+  color: #46505e;
+}
+
