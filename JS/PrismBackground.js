@@ -13,22 +13,21 @@
 ////    triangle - nearest triangle brightest, falling off with
 ////    distance.
 ////  - Noise/square patterns (e.g. pattern-randomized*.svg): the whole
-////    original SVG is cloned inline as-is (unmodified appearance).
-////    A radial-gradient rect is inserted UNDER the square layers and
-////    ABOVE the white base rect (glow shows through the gaps, never
-////    recoloring a square). The square layers themselves are also
-////    wrapped in a group with an SVG mask - a soft, blurred circle in
-////    that mask follows the cursor/touch and locally erases the
-////    squares there, so they visibly fade away right where you point
-////    rather than just tinting the gaps between them; lifting the
-////    finger/moving away lets them fade back in.
+////    original SVG is cloned inline as-is (unmodified appearance, no
+////    added glow/tint). The square layers are wrapped in a group with
+////    an SVG mask: the mask's "hole" is a soft circle filled with a
+////    white-center-to-black-edge radial gradient that follows the
+////    cursor/touch, so the square(s) right at the pointer stay fully
+////    visible while the ones farther out (toward the circle's own
+////    edge) fade away; everywhere outside that local radius is
+////    untouched. Lifting the finger/moving the mouse away lets them
+////    fade back in.
 ////
 //// Both use a plain CSS opacity transition for smooth ramp up/down
 //// rather than a hand-rolled per-frame easing loop, and follow a
-//// single touch point (tap-and-drag; the glow eases out on release).
-//// Touch/mobile only - desktop (mouse/trackpad) always gets the
-//// plain, fully static background, no matter how capable the device
-//// is, and prefers-reduced-motion disables this everywhere. ////
+//// single pointer (mouse, or tap-and-drag on touch; eases out on
+//// mouseleave/release). Works on both desktop (mouse/trackpad) and
+//// touch; prefers-reduced-motion disables this everywhere. ////
 
 (function () {
   var SVG_NS = 'http://www.w3.org/2000/svg';
@@ -47,13 +46,14 @@
   var CATCHMENT = RADIUS * 1.4; // slightly wider net so fade-out isn't clipped early
   var MAX_OPACITY = 0.55; // glow twin's peak opacity right at the cursor
 
-  // Touch/mobile only - desktop (mouse/trackpad) keeps the plain,
-  // fully static background with no interactive glow or erase-squares
-  // effect at all.
+  // Both desktop (mouse/trackpad) and touch get the effect;
+  // prefers-reduced-motion is the only opt-out.
   function supportsEffect() {
     try {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-      return window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+      var mouseCapable = window.matchMedia('(pointer: fine)').matches || window.matchMedia('(hover: hover)').matches;
+      var touchCapable = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+      return mouseCapable || touchCapable;
     } catch (e) {
       return false;
     }
@@ -284,59 +284,42 @@
     svg.style.display = 'block';
     container.appendChild(svg);
 
-    // Glow layer: a radial gradient following the cursor, inserted
-    // right after the first (white base) rect and before every
-    // pattern-filled square layer - so the squares draw on TOP of it
-    // and occlude it wherever a square exists, leaving the glow
-    // visible only in the gaps between them.
+    // Erase-ring mask: no color/glow at all, just the squares' own
+    // opacity. Every pattern-filled rect (the squares) gets moved into
+    // one group and masked (can't mask each rect separately - they're
+    // stacked, overlapping layers). The mask's "hole" is a circle
+    // FILLED WITH A RADIAL GRADIENT (white center -> black edge)
+    // instead of a solid color: white = visible in an SVG mask, so the
+    // square(s) right at the cursor stay fully visible, fading out
+    // through a ring around that point, while everywhere outside the
+    // circle's own radius is untouched (shows through via the mask's
+    // white base rect, fully normal/visible) - matches "squares
+    // following the mouse stay, the ones farther out fade away".
     var defs = svg.querySelector('defs') || svg.insertBefore(document.createElementNS(SVG_NS, 'defs'), svg.firstChild);
-    var gradient = document.createElementNS(SVG_NS, 'radialGradient');
-    var gradId = 'prism-cursor-glow';
-    gradient.setAttribute('id', gradId);
-    gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
-    gradient.setAttribute('cx', vbW / 2);
-    gradient.setAttribute('cy', vbH / 2);
-    [
-      ['0%', '0.4'],
-      ['55%', '0.16'],
-      ['100%', '0'],
-    ].forEach(function (s) {
-      var stop = document.createElementNS(SVG_NS, 'stop');
-      stop.setAttribute('offset', s[0]);
-      stop.setAttribute('stop-color', '#64d3ff');
-      stop.setAttribute('stop-opacity', s[1]);
-      gradient.appendChild(stop);
-    });
-    defs.appendChild(gradient);
 
-    var glowRect = document.createElementNS(SVG_NS, 'rect');
-    glowRect.setAttribute('x', '0');
-    glowRect.setAttribute('y', '0');
-    glowRect.setAttribute('width', '100%');
-    glowRect.setAttribute('height', '100%');
-    glowRect.setAttribute('fill', 'url(#' + gradId + ')');
-    glowRect.style.opacity = '0';
-    glowRect.style.transition = 'opacity .35s ease';
-    // First non-defs child of the source is the white base rect (see
-    // pattern-randomized*.svg's structure) - insert right after it so
-    // every subsequent pattern-filled rect (the squares) draws on top.
-    var firstRect = svg.querySelector('rect');
-    if (firstRect && firstRect.nextSibling) {
-      svg.insertBefore(glowRect, firstRect.nextSibling);
-    } else {
-      svg.appendChild(glowRect);
-    }
-
-    // Erase mask: every remaining pattern-filled rect (the squares) is
-    // still a sibling at this point, after glowRect - move them all
-    // into one group and mask it, rather than trying to mask each rect
-    // separately (they're stacked, overlapping layers).
+    var firstRect = svg.querySelector('rect'); // the white base rect
     var squareRects = Array.prototype.slice.call(svg.querySelectorAll('rect')).filter(function (r) {
-      return r !== firstRect && r !== glowRect;
+      return r !== firstRect;
     });
     var squaresGroup = document.createElementNS(SVG_NS, 'g');
     squareRects.forEach(function (r) { squaresGroup.appendChild(r); });
     svg.appendChild(squaresGroup);
+
+    var fadeGradId = 'prism-erase-fade';
+    var fadeGradient = document.createElementNS(SVG_NS, 'radialGradient');
+    fadeGradient.setAttribute('id', fadeGradId);
+    fadeGradient.setAttribute('gradientUnits', 'objectBoundingBox');
+    [
+      ['0%', '#ffffff'],
+      ['70%', '#000000'],
+      ['100%', '#000000'],
+    ].forEach(function (s) {
+      var stop = document.createElementNS(SVG_NS, 'stop');
+      stop.setAttribute('offset', s[0]);
+      stop.setAttribute('stop-color', s[1]);
+      fadeGradient.appendChild(stop);
+    });
+    defs.appendChild(fadeGradient);
 
     var maskId = 'prism-erase-mask';
     var mask = document.createElementNS(SVG_NS, 'mask');
@@ -357,27 +340,15 @@
     var eraseHole = document.createElementNS(SVG_NS, 'circle');
     eraseHole.setAttribute('cx', vbW / 2);
     eraseHole.setAttribute('cy', vbH / 2);
-    eraseHole.setAttribute('fill', '#000000');
-    eraseHole.setAttribute('filter', 'url(#prism-erase-blur)');
+    eraseHole.setAttribute('fill', 'url(#' + fadeGradId + ')');
     eraseHole.style.opacity = '0';
     eraseHole.style.transition = 'opacity .4s ease-out';
     mask.appendChild(eraseHole);
-
-    var blurFilter = document.createElementNS(SVG_NS, 'filter');
-    blurFilter.setAttribute('id', 'prism-erase-blur');
-    blurFilter.setAttribute('x', '-50%');
-    blurFilter.setAttribute('y', '-50%');
-    blurFilter.setAttribute('width', '200%');
-    blurFilter.setAttribute('height', '200%');
-    var blur = document.createElementNS(SVG_NS, 'feGaussianBlur');
-    blurFilter.appendChild(blur);
-    defs.appendChild(blurFilter);
     defs.appendChild(mask);
 
     squaresGroup.setAttribute('mask', 'url(#' + maskId + ')');
 
-    var GLOW_SCREEN_RADIUS = 190; // px on screen - middle of the requested 150-220px range
-    var ERASE_SCREEN_RADIUS = 130; // px - a bit tighter than the glow, reads as a focused "wipe"
+    var ERASE_SCREEN_RADIUS = 170; // px on screen - the local zone squares fade out within
 
     function currentScale() {
       var box = svg.getBoundingClientRect();
@@ -398,11 +369,7 @@
     }
 
     function updateRadius() {
-      var scale = currentScale();
-      gradient.setAttribute('r', GLOW_SCREEN_RADIUS / scale);
-      var eraseR = ERASE_SCREEN_RADIUS / scale;
-      eraseHole.setAttribute('r', eraseR);
-      blur.setAttribute('stdDeviation', eraseR * 0.22);
+      eraseHole.setAttribute('r', ERASE_SCREEN_RADIUS / currentScale());
     }
     updateRadius();
 
@@ -428,14 +395,10 @@
       if (pointerInside && pendingX !== null) {
         var scale = currentScale();
         var pt = mapToUserSpace(pendingX, pendingY, scale);
-        gradient.setAttribute('cx', pt[0]);
-        gradient.setAttribute('cy', pt[1]);
         eraseHole.setAttribute('cx', pt[0]);
         eraseHole.setAttribute('cy', pt[1]);
-        glowRect.style.opacity = '1';
         eraseHole.style.opacity = '1';
       } else {
-        glowRect.style.opacity = '0';
         eraseHole.style.opacity = '0';
       }
     }
