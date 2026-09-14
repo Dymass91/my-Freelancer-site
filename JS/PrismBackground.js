@@ -13,15 +13,16 @@
 ////    triangle - nearest triangle brightest, falling off with
 ////    distance.
 ////  - Noise/square patterns (e.g. pattern-randomized*.svg): the whole
-////    original SVG is cloned inline as-is (unmodified appearance, no
-////    added glow/tint). The square layers are wrapped in a group with
-////    an SVG mask: the mask's "hole" is a soft circle filled with a
-////    white-center-to-black-edge radial gradient that follows the
-////    cursor/touch, so the square(s) right at the pointer stay fully
-////    visible while the ones farther out (toward the circle's own
-////    edge) fade away; everywhere outside that local radius is
-////    untouched. Lifting the finger/moving the mouse away lets them
-////    fade back in.
+////    original SVG is cloned inline as-is (unmodified appearance) and
+////    the square layers are left fully visible, untouched, everywhere
+////    - nothing is ever erased/hidden. A second copy of just those
+////    square shapes is layered on top, brightened + given a soft cyan
+////    glow via a CSS filter (not a separately drawn shape or tint),
+////    masked so that lit copy only shows through a soft circle that
+////    follows the cursor/touch: squares right at the pointer glow
+////    brightest, the glow itself fades out toward the edge of that
+////    local radius. Lifting the finger/moving away just fades the
+////    highlight back to nothing.
 ////
 //// Both use a plain CSS opacity transition for smooth ramp up/down
 //// rather than a hand-rolled per-frame easing loop, and follow a
@@ -284,28 +285,30 @@
     svg.style.display = 'block';
     container.appendChild(svg);
 
-    // Erase-ring mask: no color/glow at all, just the squares' own
-    // opacity. Every pattern-filled rect (the squares) gets moved into
-    // one group and masked (can't mask each rect separately - they're
-    // stacked, overlapping layers). The mask's "hole" is a circle
-    // FILLED WITH A RADIAL GRADIENT (white center -> black edge)
-    // instead of a solid color: white = visible in an SVG mask, so the
-    // square(s) right at the cursor stay fully visible, fading out
-    // through a ring around that point, while everywhere outside the
-    // circle's own radius is untouched (shows through via the mask's
-    // white base rect, fully normal/visible) - matches "squares
-    // following the mouse stay, the ones farther out fade away".
+    // The squares themselves stay exactly as-is, always fully visible -
+    // never hidden/erased. A second copy of them is layered on top,
+    // brightened + given a soft cyan glow (a CSS filter on the SAME
+    // square shapes, not a separately drawn shape/tint), and masked so
+    // that copy is only visible in a soft circle around the cursor -
+    // nearest squares glow brightest, the glow itself fades out toward
+    // the edge of that local radius. Lifting the finger/moving away
+    // just fades the highlight back down to nothing; the base squares
+    // underneath never change.
     var defs = svg.querySelector('defs') || svg.insertBefore(document.createElementNS(SVG_NS, 'defs'), svg.firstChild);
 
     var firstRect = svg.querySelector('rect'); // the white base rect
     var squareRects = Array.prototype.slice.call(svg.querySelectorAll('rect')).filter(function (r) {
       return r !== firstRect;
     });
-    var squaresGroup = document.createElementNS(SVG_NS, 'g');
-    squareRects.forEach(function (r) { squaresGroup.appendChild(r); });
-    svg.appendChild(squaresGroup);
 
-    var fadeGradId = 'prism-erase-fade';
+    var highlightGroup = document.createElementNS(SVG_NS, 'g');
+    squareRects.forEach(function (r) {
+      highlightGroup.appendChild(r.cloneNode(false));
+    });
+    svg.appendChild(highlightGroup);
+    highlightGroup.style.filter = 'brightness(1.9) saturate(1.4) drop-shadow(0 0 3px rgba(100, 211, 255, 0.65))';
+
+    var fadeGradId = 'prism-highlight-fade';
     var fadeGradient = document.createElementNS(SVG_NS, 'radialGradient');
     fadeGradient.setAttribute('id', fadeGradId);
     fadeGradient.setAttribute('gradientUnits', 'objectBoundingBox');
@@ -321,7 +324,7 @@
     });
     defs.appendChild(fadeGradient);
 
-    var maskId = 'prism-erase-mask';
+    var maskId = 'prism-highlight-mask';
     var mask = document.createElementNS(SVG_NS, 'mask');
     mask.setAttribute('id', maskId);
     mask.setAttribute('maskUnits', 'userSpaceOnUse');
@@ -329,26 +332,19 @@
     mask.setAttribute('y', '0');
     mask.setAttribute('width', vbW);
     mask.setAttribute('height', vbH);
-    var maskBase = document.createElementNS(SVG_NS, 'rect');
-    maskBase.setAttribute('x', '0');
-    maskBase.setAttribute('y', '0');
-    maskBase.setAttribute('width', '100%');
-    maskBase.setAttribute('height', '100%');
-    maskBase.setAttribute('fill', '#ffffff');
-    mask.appendChild(maskBase);
 
-    var eraseHole = document.createElementNS(SVG_NS, 'circle');
-    eraseHole.setAttribute('cx', vbW / 2);
-    eraseHole.setAttribute('cy', vbH / 2);
-    eraseHole.setAttribute('fill', 'url(#' + fadeGradId + ')');
-    eraseHole.style.opacity = '0';
-    eraseHole.style.transition = 'opacity .4s ease-out';
-    mask.appendChild(eraseHole);
+    var highlightHole = document.createElementNS(SVG_NS, 'circle');
+    highlightHole.setAttribute('cx', vbW / 2);
+    highlightHole.setAttribute('cy', vbH / 2);
+    highlightHole.setAttribute('fill', 'url(#' + fadeGradId + ')');
+    highlightHole.style.opacity = '0';
+    highlightHole.style.transition = 'opacity .4s ease-out';
+    mask.appendChild(highlightHole);
     defs.appendChild(mask);
 
-    squaresGroup.setAttribute('mask', 'url(#' + maskId + ')');
+    highlightGroup.setAttribute('mask', 'url(#' + maskId + ')');
 
-    var ERASE_SCREEN_RADIUS = 170; // px on screen - the local zone squares fade out within
+    var HIGHLIGHT_SCREEN_RADIUS = 170; // px on screen - the local zone squares light up within
 
     function currentScale() {
       var box = svg.getBoundingClientRect();
@@ -369,7 +365,7 @@
     }
 
     function updateRadius() {
-      eraseHole.setAttribute('r', ERASE_SCREEN_RADIUS / currentScale());
+      highlightHole.setAttribute('r', HIGHLIGHT_SCREEN_RADIUS / currentScale());
     }
     updateRadius();
 
@@ -395,11 +391,11 @@
       if (pointerInside && pendingX !== null) {
         var scale = currentScale();
         var pt = mapToUserSpace(pendingX, pendingY, scale);
-        eraseHole.setAttribute('cx', pt[0]);
-        eraseHole.setAttribute('cy', pt[1]);
-        eraseHole.style.opacity = '1';
+        highlightHole.setAttribute('cx', pt[0]);
+        highlightHole.setAttribute('cy', pt[1]);
+        highlightHole.style.opacity = '1';
       } else {
-        eraseHole.style.opacity = '0';
+        highlightHole.style.opacity = '0';
       }
     }
 
