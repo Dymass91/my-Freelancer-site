@@ -13,22 +13,19 @@
 ////    triangle - nearest triangle brightest, falling off with
 ////    distance.
 ////  - Noise/square patterns (e.g. pattern-randomized*.svg): the whole
-////    original SVG is cloned inline as-is (unmodified appearance) and
-////    the square layers are left fully visible, untouched, everywhere
-////    - nothing is ever erased/hidden. A second copy of just those
-////    square shapes is layered on top, brightened + given a soft cyan
-////    glow via a CSS filter (not a separately drawn shape or tint),
-////    masked so that lit copy only shows through a soft circle that
-////    follows the cursor/touch: squares right at the pointer glow
-////    brightest, the glow itself fades out toward the edge of that
-////    local radius. Lifting the finger/moving away just fades the
-////    highlight back to nothing.
+////    original SVG is cloned inline as-is (unmodified appearance),
+////    with one added radial-gradient rect inserted UNDER the square
+////    layers and ABOVE the white base rect - so the glow only shows
+////    through the gaps between squares, never recoloring a square
+////    itself, and follows the cursor directly.
 ////
 //// Both use a plain CSS opacity transition for smooth ramp up/down
-//// rather than a hand-rolled per-frame easing loop, and follow a
-//// single pointer (mouse, or tap-and-drag on touch; eases out on
-//// mouseleave/release). Works on both desktop (mouse/trackpad) and
-//// touch; prefers-reduced-motion disables this everywhere. ////
+//// rather than a hand-rolled per-frame easing loop, follow either the
+//// mouse or a single touch point (tap-and-drag; the glow eases out on
+//// release, same as a mouse leaving the window), and are skipped
+//// entirely (leaving the plain background untouched) only on
+//// prefers-reduced-motion or on a device with neither a fine pointer
+//// nor touch. ////
 
 (function () {
   var SVG_NS = 'http://www.w3.org/2000/svg';
@@ -47,12 +44,10 @@
   var CATCHMENT = RADIUS * 1.4; // slightly wider net so fade-out isn't clipped early
   var MAX_OPACITY = 0.55; // glow twin's peak opacity right at the cursor
 
-  // Both desktop (mouse/trackpad) and touch get the effect;
-  // prefers-reduced-motion is the only opt-out.
   function supportsEffect() {
     try {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-      var mouseCapable = window.matchMedia('(pointer: fine)').matches || window.matchMedia('(hover: hover)').matches;
+      var mouseCapable = window.matchMedia('(hover: hover)').matches && window.matchMedia('(pointer: fine)').matches;
       var touchCapable = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
       return mouseCapable || touchCapable;
     } catch (e) {
@@ -61,44 +56,6 @@
   }
 
   if (!supportsEffect()) return;
-
-  // Idle-activity fade: wraps the whole effect group (not the existing
-  // per-triangle/per-mask proximity opacity, which is untouched) in an
-  // extra opacity layer that fades in on movement and fades back out
-  // ~1.2s after the pointer stops - so the effect is invisible at rest
-  // and only appears while the mouse/finger is actually active. Call
-  // .poke() from each mode's onMove; CSS transitions handle the actual
-  // easing, so retargeting mid-transition (e.g. moving again during a
-  // fade-out) just smoothly redirects from whatever the current
-  // interpolated opacity is - no jump/flicker.
-  var FADE_IN_MS = 300;    // squares/triangles fading IN after movement resumes
-  var FADE_OUT_MS = 1200;  // fading OUT once idle
-  var IDLE_DELAY_MS = 1200; // how long to wait after the last move before fading out
-
-  function createActivityFade(el) {
-    el.style.transition = 'opacity ' + FADE_IN_MS + 'ms ease-out';
-    el.style.opacity = '0'; // invisible until the first movement
-    var isActive = false;
-    var idleTimer = null;
-
-    function goIdle() {
-      isActive = false;
-      el.style.transition = 'opacity ' + FADE_OUT_MS + 'ms ease-out';
-      el.style.opacity = '0';
-    }
-
-    return {
-      poke: function () {
-        clearTimeout(idleTimer);
-        idleTimer = setTimeout(goIdle, IDLE_DELAY_MS);
-        if (!isActive) {
-          isActive = true;
-          el.style.transition = 'opacity ' + FADE_IN_MS + 'ms ease-out';
-          el.style.opacity = '1';
-        }
-      },
-    };
-  }
 
   // Shared mouse+touch binding: onMove(x, y) gets called with the
   // pointer/first-touch position; onLeave() when the mouse leaves the
@@ -207,7 +164,6 @@
 
     var registry = []; // { cx, cy, el, opacity }
     var active = [];
-    var activityFade = createActivityFade(glowGroup);
 
     function buildGrid() {
       var vw = window.innerWidth;
@@ -248,7 +204,6 @@
     var pendingX = null, pendingY = null, ticking = false, pointerInside = false;
 
     function onMove(x, y) {
-      activityFade.poke();
       pendingX = x;
       pendingY = y;
       pointerInside = true;
@@ -325,68 +280,50 @@
     svg.style.display = 'block';
     container.appendChild(svg);
 
-    // The squares themselves stay exactly as-is, always fully visible -
-    // never hidden/erased. A second copy of them is layered on top,
-    // brightened + given a soft cyan glow (a CSS filter on the SAME
-    // square shapes, not a separately drawn shape/tint), and masked so
-    // that copy is only visible in a soft circle around the cursor -
-    // nearest squares glow brightest, the glow itself fades out toward
-    // the edge of that local radius. Lifting the finger/moving away
-    // just fades the highlight back down to nothing; the base squares
-    // underneath never change.
+    // Glow layer: a radial gradient following the cursor, inserted
+    // right after the first (white base) rect and before every
+    // pattern-filled square layer - so the squares draw on TOP of it
+    // and occlude it wherever a square exists, leaving the glow
+    // visible only in the gaps between them.
     var defs = svg.querySelector('defs') || svg.insertBefore(document.createElementNS(SVG_NS, 'defs'), svg.firstChild);
-
-    var firstRect = svg.querySelector('rect'); // the white base rect
-    var squareRects = Array.prototype.slice.call(svg.querySelectorAll('rect')).filter(function (r) {
-      return r !== firstRect;
-    });
-
-    var highlightGroup = document.createElementNS(SVG_NS, 'g');
-    squareRects.forEach(function (r) {
-      highlightGroup.appendChild(r.cloneNode(false));
-    });
-    svg.appendChild(highlightGroup);
-    highlightGroup.style.filter = 'brightness(1.9) saturate(1.4) drop-shadow(0 0 3px rgba(100, 211, 255, 0.65))';
-
-    var fadeGradId = 'prism-highlight-fade';
-    var fadeGradient = document.createElementNS(SVG_NS, 'radialGradient');
-    fadeGradient.setAttribute('id', fadeGradId);
-    fadeGradient.setAttribute('gradientUnits', 'objectBoundingBox');
+    var gradient = document.createElementNS(SVG_NS, 'radialGradient');
+    var gradId = 'prism-cursor-glow';
+    gradient.setAttribute('id', gradId);
+    gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+    gradient.setAttribute('cx', vbW / 2);
+    gradient.setAttribute('cy', vbH / 2);
     [
-      ['0%', '#ffffff'],
-      ['70%', '#000000'],
-      ['100%', '#000000'],
+      ['0%', '0.4'],
+      ['55%', '0.16'],
+      ['100%', '0'],
     ].forEach(function (s) {
       var stop = document.createElementNS(SVG_NS, 'stop');
       stop.setAttribute('offset', s[0]);
-      stop.setAttribute('stop-color', s[1]);
-      fadeGradient.appendChild(stop);
+      stop.setAttribute('stop-color', '#64d3ff');
+      stop.setAttribute('stop-opacity', s[1]);
+      gradient.appendChild(stop);
     });
-    defs.appendChild(fadeGradient);
+    defs.appendChild(gradient);
 
-    var maskId = 'prism-highlight-mask';
-    var mask = document.createElementNS(SVG_NS, 'mask');
-    mask.setAttribute('id', maskId);
-    mask.setAttribute('maskUnits', 'userSpaceOnUse');
-    mask.setAttribute('x', '0');
-    mask.setAttribute('y', '0');
-    mask.setAttribute('width', vbW);
-    mask.setAttribute('height', vbH);
+    var glowRect = document.createElementNS(SVG_NS, 'rect');
+    glowRect.setAttribute('x', '0');
+    glowRect.setAttribute('y', '0');
+    glowRect.setAttribute('width', '100%');
+    glowRect.setAttribute('height', '100%');
+    glowRect.setAttribute('fill', 'url(#' + gradId + ')');
+    glowRect.style.opacity = '0';
+    glowRect.style.transition = 'opacity .35s ease';
+    // First non-defs child of the source is the white base rect (see
+    // pattern-randomized*.svg's structure) - insert right after it so
+    // every subsequent pattern-filled rect (the squares) draws on top.
+    var firstRect = svg.querySelector('rect');
+    if (firstRect && firstRect.nextSibling) {
+      svg.insertBefore(glowRect, firstRect.nextSibling);
+    } else {
+      svg.appendChild(glowRect);
+    }
 
-    var highlightHole = document.createElementNS(SVG_NS, 'circle');
-    highlightHole.setAttribute('cx', vbW / 2);
-    highlightHole.setAttribute('cy', vbH / 2);
-    highlightHole.setAttribute('fill', 'url(#' + fadeGradId + ')');
-    highlightHole.style.opacity = '0';
-    highlightHole.style.transition = 'opacity .4s ease-out';
-    mask.appendChild(highlightHole);
-    defs.appendChild(mask);
-
-    highlightGroup.setAttribute('mask', 'url(#' + maskId + ')');
-
-    var activityFade = createActivityFade(highlightGroup);
-
-    var HIGHLIGHT_SCREEN_RADIUS = 170; // px on screen - the local zone squares light up within
+    var GLOW_SCREEN_RADIUS = 190; // px on screen - middle of the requested 150-220px range
 
     function currentScale() {
       var box = svg.getBoundingClientRect();
@@ -407,14 +344,13 @@
     }
 
     function updateRadius() {
-      highlightHole.setAttribute('r', HIGHLIGHT_SCREEN_RADIUS / currentScale());
+      gradient.setAttribute('r', GLOW_SCREEN_RADIUS / currentScale());
     }
     updateRadius();
 
     var pendingX = null, pendingY = null, ticking = false, pointerInside = false;
 
     function onMove(x, y) {
-      activityFade.poke();
       pendingX = x;
       pendingY = y;
       pointerInside = true;
@@ -434,11 +370,11 @@
       if (pointerInside && pendingX !== null) {
         var scale = currentScale();
         var pt = mapToUserSpace(pendingX, pendingY, scale);
-        highlightHole.setAttribute('cx', pt[0]);
-        highlightHole.setAttribute('cy', pt[1]);
-        highlightHole.style.opacity = '1';
+        gradient.setAttribute('cx', pt[0]);
+        gradient.setAttribute('cy', pt[1]);
+        glowRect.style.opacity = '1';
       } else {
-        highlightHole.style.opacity = '0';
+        glowRect.style.opacity = '0';
       }
     }
 
