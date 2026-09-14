@@ -262,19 +262,6 @@ textarea.input {
 .contact-info {
   padding: 5.3rem 2.2rem;
   position: relative;
-  /* Glass, not card: the page's animated pixel background stays
-     visible through this panel (body has no opaque background behind
-     .contact_container) - a light translucent fill plus blur keeps
-     the text readable without turning this into a solid white card. */
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-right: 1px solid rgba(80, 190, 240, 0.35);
-}
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .contact-info {
-    background: rgba(255, 255, 255, 0.6);
-  }
 }
 
 .contact-info .contact_title {
@@ -426,11 +413,6 @@ content: none;
   }
   .form {
     grid-template-columns: 1fr;
-  }
-
-  .contact-info {
-    border-right: none;
-    border-bottom: 1px solid rgba(80, 190, 240, 0.35);
   }
 
   .pixel-burst {
