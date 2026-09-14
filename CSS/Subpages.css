@@ -255,11 +255,19 @@
   overflow: hidden;
   text-decoration: none;
   box-shadow: 8px 20px 40px rgba(23, 32, 44, 0.1), 0 2px 8px rgba(23, 32, 44, 0.05);
-  transition: transform .3s ease, box-shadow .3s ease;
+  transition: transform 250ms ease, box-shadow 250ms ease;
 }
 .realizacje-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: 0 16px 40px rgba(100, 211, 255, 0.25), 0 2px 8px rgba(23, 32, 44, 0.08);
+}
+@media (hover: hover) {
+  .realizacje-card .browser-frame__viewport {
+    transition: transform 250ms ease;
+  }
+  .realizacje-card:hover .browser-frame__viewport {
+    transform: scale(1.015);
+  }
 }
 .realizacje-card img {
   width: 100%;
@@ -287,6 +295,17 @@
   color: rgb(100, 130, 150);
   line-height: 1.5;
   margin: 0;
+}
+/* Clamp the description to 4 lines on desktop only, so a long project
+   description doesn't stretch one card's height far past its
+   neighbors - title/badge/CTA are untouched. */
+@media (min-width: 768px) {
+  .realizacje-card__body p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 /* ── Case study: large live-preview panel ── */
@@ -464,16 +483,18 @@
    instead of a separate "concepts" section with its own heading. ── */
 .realizacje-grid.is-unified {
   grid-template-columns: 1fr;
-  max-width: 1100px;
+  /* No own max-width - fills the parent .subpage-section.sp-wide
+     container instead of being capped narrower than it. */
+  max-width: none;
 }
 @media (min-width: 640px) {
   .realizacje-grid.is-unified {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
   .realizacje-grid.is-unified {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 .realizacje-card__media {
@@ -496,7 +517,7 @@
 .realizacje-card__cta {
   display: inline-block;
   margin-top: auto;
-  padding-top: 8px;
+  padding-top: 12px;
   font-family: 'Jura', sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
