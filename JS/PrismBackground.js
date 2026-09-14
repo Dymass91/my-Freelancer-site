@@ -77,6 +77,47 @@
     window.addEventListener('touchcancel', onLeave, { passive: true });
   }
 
+  // "Fingerprint" marks: touch-only (not mouse) - a soft glow stamp at
+  // the touch point that fades in quickly, then eases out slowly over
+  // ~1.5s, like a print left on the surface after lifting the finger.
+  // Independent of the live glow above (which continues to follow a
+  // drag) and of each other, so tapping several spots leaves several
+  // marks fading at once. Appended into the same #prism-bg layer so it
+  // sits with the rest of the background, behind real content.
+  function setupFingerprints(container) {
+    var layer = document.createElement('div');
+    layer.id = 'prism-fingerprints';
+    container.appendChild(layer);
+
+    function stamp(x, y) {
+      var el = document.createElement('div');
+      el.className = 'prism-fingerprint';
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+      el.style.transition = 'opacity .15s ease-out, transform .15s ease-out';
+      layer.appendChild(el);
+      requestAnimationFrame(function () {
+        el.style.opacity = '0.85';
+        el.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+      setTimeout(function () {
+        el.style.transition = 'opacity 1.3s ease-out, transform 1.3s ease-out';
+        el.style.opacity = '0';
+      }, 220);
+      setTimeout(function () {
+        if (el.parentNode) el.parentNode.removeChild(el);
+      }, 1600);
+    }
+
+    window.addEventListener('touchstart', function (e) {
+      if (e.touches.length) stamp(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    window.addEventListener('touchend', function (e) {
+      var t = e.changedTouches && e.changedTouches[0];
+      if (t) stamp(t.clientX, t.clientY);
+    }, { passive: true });
+  }
+
   // The source file's polygon points are plain space-separated numbers
   // ("90 150 0 300 180 300"), not the more common "x,y x,y" comma
   // form - handle both by splitting on any run of commas/whitespace
@@ -256,6 +297,7 @@
     });
 
     buildGrid();
+    setupFingerprints(container);
 
     // The re-render is visually identical to the plain background at
     // rest (same points/colors/opacity) - swap it in now that it's built.
@@ -379,6 +421,7 @@
     }
 
     bindPointer(onMove, onLeave);
+    setupFingerprints(container);
 
     var resizeTimer;
     window.addEventListener('resize', function () {
