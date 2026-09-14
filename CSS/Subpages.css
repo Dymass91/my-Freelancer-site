@@ -545,7 +545,11 @@
    heading+paragraph stay reading-width via .case-context-text; only
    .case-columns (the 3 cards) uses the section's full new width. */
 .case-context-text {
-  max-width: 700px;
+  /* Panel itself spans the full width of its parent (.subpage-section.
+     sp-wide) - the same width .case-columns below it already gets, so
+     their outer edges line up. Reading-width is handled separately by
+     .case-context-text__inner, not by capping the panel itself. */
+  width: 100%;
   /* Same "readable dialog" language as the homepage hero's
      .hero-photo-card/.about-photo-card (Landing.css/Aboutme.css):
      var(--border-accent) hairline border, 16px radius, translucent
@@ -560,6 +564,10 @@
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 10px 24px rgba(35, 80, 120, 0.05);
   padding: 24px 28px;
+  box-sizing: border-box;
+}
+.case-context-text__inner {
+  max-width: 700px;
 }
 @media (max-width: 640px) {
   .case-context-text {
