@@ -38,70 +38,25 @@
   border-radius: 16px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  /* Was hidden, clipping both panels to this box's rounded corners.
-     Changed to visible so .pixel-cluster (a child of .form) can sit
-     partly above the card without being cut off. The right panel's
-     own outer-corner rounding is now handled directly on
-     .contact-form instead (see its rule) - same visual result. */
-  overflow: visible;
+  overflow: hidden;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  position: relative;
 }
 
 .contact-form {
-  background: linear-gradient(135deg, var(--main-color) 0%, var(--contact-deep-blue) 100%);
+  background: linear-gradient(to right bottom, var(--main-color) 30%, var(--contact-deep-blue));
   position: relative;
-  /* Was relying on .form's own overflow:hidden to clip this panel's
-     outer corners to match .form's border-radius. .form's overflow
-     is now visible (so the pixel-cluster decoration can extend above
-     the card without being cut off), so the same rounding is
-     replicated here directly - visually identical, just clipped one
-     level down. .contact-info needs no equivalent rule: it has no
-     background of its own (fully transparent, per the existing glass
-     effect), so there was never anything for a square corner to show
-     on that side. */
-  overflow: hidden;
-  border-radius: 0 16px 16px 0;
 }
 
-/* Pixel-seam decoration: inline SVG (individual <rect>s, not the
-   variant_c_pixel_burst.svg image) suggesting the blue panel's left
-   edge breaking apart into squares that scatter onto the glass panel
-   - largest/most opaque/bluest right at the seam, fading in size,
-   color and opacity moving left onto the glass. Positioned with its
-   right edge pinned to the seam (right:50% of .form) so its whole box
-   sits on the glass side and is never covered by the blue panel's own
-   background. Placed first among .form's children so it paints behind
-   .contact-info's actual text content, which follows it in the DOM.
-   Hidden on the stacked mobile layout, where there's no seam. */
-/* Pixel cluster: IMG/contact-pixel-cluster.png, a cropped version of
-   the user-supplied composition (the source file has a large
-   transparent margin around the actual cube cluster - cropped once
-   to that content's own bounding box rather than scaling the whole
-   canvas, so the cubes render at their real intended size instead of
-   shrinking to a fraction of a 100-140px box). Sits above the card's
-   top edge (negative top) so its full height stays clear of the
-   "Napisz do mnie" text below - the panel's own top padding is empty
-   space, so horizontal bleed onto either side there never touches
-   text. Shifted left of center so most of the large blue cubes read
-   as part of the blue panel, with only the lighter/glass cubes
-   drifting onto the left panel. */
-.pixel-cluster {
+.contact-form:before {
+  content: "";
   position: absolute;
-  top: -95px;
-  left: 50%;
-  transform: translateX(-38%);
-  height: 120px;
-  width: auto;
-  z-index: 2;
-  pointer-events: none;
-  user-select: none;
-}
-@media (max-width: 768px) {
-  .pixel-cluster {
-    display: none;
-  }
+  width: 26px;
+  height: 26px;
+  background-color: var(--main-color);
+  transform: rotate(45deg);
+  top: 50px;
+  left: -13px;
 }
 
 form {
@@ -127,9 +82,9 @@ form {
 .input {
   width: 100%;
   outline: none;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.09);
-  padding: 0.6rem 1.2rem 0.6rem 48px;
+  border: 2px solid #fafafa;
+  background: none;
+  padding: 0.6rem 1.2rem;
   color: #fff;
   font-weight: 500;
   font-size: 0.95rem;
@@ -137,52 +92,19 @@ form {
   border-radius: 25px;
   transition: 0.3s;
 }
-.input:focus {
-  border-color: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12);
-}
-.input::placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
 
 textarea.input {
-  padding: 0.8rem 1.2rem 0.8rem 48px;
+  padding: 0.8rem 1.2rem;
   min-height: 150px;
   border-radius: 22px;
   resize: none;
   overflow-y: auto;
 }
 
-/* Small field icon, reusing the site's already-loaded Font Awesome
-   kit (same icons already used in .information on the left panel) -
-   no new icon library. Purely decorative, so input/label/JS field
-   selection are untouched; only the icon's own left inset needs the
-   input's/label's padding shifted to clear it. One shared X axis for
-   every field: icon at left:20px, text (input/placeholder/label) at
-   left:48px, both fixed px values so they line up identically across
-   all four fields instead of a mix of rem/px offsets. */
-.input-icon {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 15px;
-  pointer-events: none;
-  z-index: 2;
-}
-.input-container.textarea .input-icon {
-  /* Pinned to the first line, not centered on the whole tall
-     textarea - top offset matches the textarea's own top padding
-     (0.8rem) plus half a line of its 0.95rem text. */
-  top: 1.3rem;
-  transform: none;
-}
-
 .input-container label {
   position: absolute;
   top: 50%;
-  left: 48px;
+  left: 15px;
   transform: translateY(-50%);
   padding: 0 0.4rem;
   color: #fafafa;
@@ -195,7 +117,6 @@ textarea.input {
 
 .input-container.textarea label {
   top: 1rem;
-  left: 48px;
   transform: translateY(0);
 }
 
@@ -213,29 +134,17 @@ textarea.input {
 }
 
 .btn {
-  padding: 0.7rem 1.5rem;
+  padding: 0.6rem 1.3rem;
   background-color: #fff;
   border: 2px solid #fafafa;
   font-size: 0.95rem;
-  font-weight: 700;
   color: rgb(64, 170, 235);
   line-height: 1;
   border-radius: 25px;
   outline: none;
   cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition: 0.3s;
   margin: 0;
-}
-.btn::after {
-  content: "\2192";
-  margin-left: 8px;
-  display: inline-block;
-}
-@media (min-width: 769px) {
-  .btn {
-    width: 60%;
-    min-width: 220px;
-  }
 }
 
 @keyframes fadeIn {
@@ -263,8 +172,8 @@ textarea.input {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(15, 40, 65, 0.25);
+  background-color: transparent;
+  color: #fff;
 }
 
 .input-container span {
@@ -292,7 +201,7 @@ textarea.input {
 .input-container.focus label {
   top: 0;
   transform: translateY(-50%);
-  left: 48px;
+  left: 25px;
   font-size: 0.8rem;
   background-color: var(--main-color);
   border-radius: 20px;
@@ -366,22 +275,32 @@ width: 100%;
       text-align: center;
       position: relative;
       display: block;
-      background: rgba(100, 211, 255, 0.12);
-      border: 1px solid rgba(80, 190, 240, 0.4);
+      background: var(--main-color);
       border-radius: 8px;
-      color: rgb(31, 92, 138);
-      transition: 0.3s;
+      color:  rgb(255, 255, 255);
+      transition: 0.5s;
   }
   .social-icons  a:hover
 {
-  color: rgb(31, 92, 138);
-    transition: 0.3s;
-    background: rgba(100, 211, 255, 0.25);
-    border-color: rgba(80, 190, 240, 0.65);
+
+  color: var(--span-color);
+    transition: 0.5s;
+    background:  rgb(255, 255, 255);
+    box-shadow: 0 0 10px var(--span-color), 0 0 10px rgba(100, 211, 255, 0.7), 0 0 20px rgba(100, 211, 255, 0.4);
 }
 .social-icons  a:before
 {
-content: none;
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border-radius: 8px;
+background: var(--contact-deep-blue);
+transition: 0.5s;
+transform: scale(0.9);
+z-index: -1;
 }
 .social-icons  a:hover:before
 {
@@ -428,6 +347,30 @@ content: none;
   transform: scale(1.05);
 } */
 
+.contact-info:before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 27px solid #959eac;
+ transform: rotate(35deg) skew(-25deg);
+  bottom: -60px;
+  right: 74px;
+  opacity: 0.3;
+}
+.contact-info:after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 27px solid #959eac;
+   transform: rotate(35deg) skew(-25deg);
+    top: -60px;
+    left: -34px;
+    opacity: 0.3;
+  }
+
+
 .square {
   position: absolute;
   height: 400px;
@@ -461,12 +404,17 @@ content: none;
     grid-template-columns: 1fr;
   }
 
-  /* Stacked layout: .contact-form is now the bottom block instead of
-     the right column, so its own outer-corner rounding (see the base
-     rule) needs to switch from "right side" to "bottom side" to keep
-     matching the card's actual visible corners. */
-  .contact-form {
-    border-radius: 0 0 16px 16px;
+  .contact-info:before {
+    bottom: initial;
+    top: -75px;
+    right: 65px;
+    transform: scale(0.95);
+  }
+
+  .contact-form:before {
+    top: -13px;
+    left: initial;
+    right: 70px;
   }
 
   .square {
@@ -501,12 +449,6 @@ content: none;
   .form {
     grid-template-columns: 1fr 1fr;
   }
-  /* Back to a 2-column layout at this breakpoint (even though it can
-     overlap with the <=768px stacked-layout query above) - restore
-     the "right side" corner rounding accordingly. */
-  .contact-form {
-    border-radius: 0 16px 16px 0;
-  }
   .contact-info {
     padding: 1.5rem 1.2rem;
   }
@@ -528,6 +470,10 @@ content: none;
 @media (max-width: 480px) {
   .contact_container {
     padding: 1.5rem;
+  }
+
+  .contact-info:before {
+    display: none;
   }
 
   .square,
