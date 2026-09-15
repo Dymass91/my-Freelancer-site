@@ -49,44 +49,28 @@
   position: relative;
 }
 
-/* Small decorative cluster (IMG/variant_c_pixel_burst.svg) straddling
-   the glass/blue seam near the form header - echoes the site's pixel-
-   square background language instead of the old chevron/diamond
-   notch this replaces. Hidden on the stacked mobile layout since
-   there's no seam to sit on there (see the 768px media query below). */
-.pixel-burst {
+/* Pixel-seam decoration: inline SVG (individual <rect>s, not the
+   variant_c_pixel_burst.svg image) suggesting the blue panel's left
+   edge breaking apart into squares that scatter onto the glass panel
+   - largest/most opaque/bluest right at the seam, fading in size,
+   color and opacity moving left onto the glass. Positioned with its
+   right edge pinned to the seam (right:50% of .form) so its whole box
+   sits on the glass side and is never covered by the blue panel's own
+   background. Placed first among .form's children so it paints behind
+   .contact-info's actual text content, which follows it in the DOM.
+   Hidden on the stacked mobile layout, where there's no seam. */
+.pixel-seam {
   position: absolute;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 64px;
+  top: 30px;
+  right: 50%;
+  width: 110px;
   height: auto;
-  z-index: 5;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* Second use of the same pixel-burst asset, this time as a quiet
-   corner accent on the glass panel itself (replacing the old
-   triangle motif) - a decorative layer sitting behind the panel's
-   real content, not a background-image on .contact-info (its
-   glass/transparency is untouched by this). z-index:-1 is safe here
-   only because .form (the nearest positioned ancestor with its own
-   z-index) already establishes a stacking context above the page's
-   fixed pixel background, so this can't be pushed behind it. */
-.contact-corner-burst {
-  position: absolute;
-  top: -40px;
-  left: -40px;
-  width: 140px;
-  height: auto;
-  opacity: 0.65;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   user-select: none;
 }
 @media (max-width: 768px) {
-  .contact-corner-burst {
+  .pixel-seam {
     display: none;
   }
 }
