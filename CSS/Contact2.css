@@ -38,7 +38,12 @@
   border-radius: 16px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  overflow: hidden;
+  /* Was hidden, clipping both panels to this box's rounded corners.
+     Changed to visible so .pixel-cluster (a child of .form) can sit
+     partly above the card without being cut off. The right panel's
+     own outer-corner rounding is now handled directly on
+     .contact-form instead (see its rule) - same visual result. */
+  overflow: visible;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: relative;
@@ -47,6 +52,17 @@
 .contact-form {
   background: linear-gradient(135deg, var(--main-color) 0%, var(--contact-deep-blue) 100%);
   position: relative;
+  /* Was relying on .form's own overflow:hidden to clip this panel's
+     outer corners to match .form's border-radius. .form's overflow
+     is now visible (so the pixel-cluster decoration can extend above
+     the card without being cut off), so the same rounding is
+     replicated here directly - visually identical, just clipped one
+     level down. .contact-info needs no equivalent rule: it has no
+     background of its own (fully transparent, per the existing glass
+     effect), so there was never anything for a square corner to show
+     on that side. */
+  overflow: hidden;
+  border-radius: 0 16px 16px 0;
 }
 
 /* Pixel-seam decoration: inline SVG (individual <rect>s, not the
@@ -59,18 +75,31 @@
    background. Placed first among .form's children so it paints behind
    .contact-info's actual text content, which follows it in the DOM.
    Hidden on the stacked mobile layout, where there's no seam. */
-.pixel-seam {
+/* Pixel cluster: IMG/contact-pixel-cluster.png, a cropped version of
+   the user-supplied composition (the source file has a large
+   transparent margin around the actual cube cluster - cropped once
+   to that content's own bounding box rather than scaling the whole
+   canvas, so the cubes render at their real intended size instead of
+   shrinking to a fraction of a 100-140px box). Sits above the card's
+   top edge (negative top) so its full height stays clear of the
+   "Napisz do mnie" text below - the panel's own top padding is empty
+   space, so horizontal bleed onto either side there never touches
+   text. Shifted left of center so most of the large blue cubes read
+   as part of the blue panel, with only the lighter/glass cubes
+   drifting onto the left panel. */
+.pixel-cluster {
   position: absolute;
-  top: 14px;
-  right: 50%;
-  width: 150px;
-  height: auto;
-  z-index: 0;
+  top: -95px;
+  left: 50%;
+  transform: translateX(-38%);
+  height: 120px;
+  width: auto;
+  z-index: 2;
   pointer-events: none;
   user-select: none;
 }
 @media (max-width: 768px) {
-  .pixel-seam {
+  .pixel-cluster {
     display: none;
   }
 }
@@ -432,8 +461,12 @@ content: none;
     grid-template-columns: 1fr;
   }
 
-  .pixel-burst {
-    display: none;
+  /* Stacked layout: .contact-form is now the bottom block instead of
+     the right column, so its own outer-corner rounding (see the base
+     rule) needs to switch from "right side" to "bottom side" to keep
+     matching the card's actual visible corners. */
+  .contact-form {
+    border-radius: 0 0 16px 16px;
   }
 
   .square {
@@ -467,6 +500,12 @@ content: none;
   }
   .form {
     grid-template-columns: 1fr 1fr;
+  }
+  /* Back to a 2-column layout at this breakpoint (even though it can
+     overlap with the <=768px stacked-layout query above) - restore
+     the "right side" corner rounding accordingly. */
+  .contact-form {
+    border-radius: 0 16px 16px 0;
   }
   .contact-info {
     padding: 1.5rem 1.2rem;
