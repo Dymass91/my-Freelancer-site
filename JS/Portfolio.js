@@ -30,26 +30,79 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', debounce(scaleAllFrames, 150));
 
     ////// Live-preview loading state: same visual language as the
-    ////// homepage's own page loader (.wrapper, Landing.css), scaled
-    ////// into each card. Injected here rather than authored in every
-    ////// card's markup since .browser-frame__viewport is one shared
-    ////// component (hero preview, portfolio grid, realizacje grid).
-    ////// An iframe paints an opaque blank box the moment it starts
-    ////// loading, well before the embedded page itself appears, so
-    ////// the indicator has to sit ABOVE it (z-index, not behind) and
-    ////// get explicitly hidden once we know the real page is ready -
-    ////// that "ready" signal is the exact same load/error/timeout
-    ////// logic the fallback-image handling below already tracks. //////
+    ////// homepage's own page loader (.wrapper, Landing.css - label,
+    ////// counter, progress bar), scaled into each card. Injected here
+    ////// rather than authored in every card's markup since
+    ////// .browser-frame__viewport is one shared component (hero
+    ////// preview, portfolio grid, realizacje grid). An iframe paints
+    ////// an opaque blank box the moment it starts loading, well
+    ////// before the embedded page itself appears, so the indicator
+    ////// has to sit ABOVE it (z-index, not behind).
+    //////
+    ////// The percentage is simulated, exactly like the homepage's own
+    ////// counter (AnimationGsap.js) - there is no browser API that
+    ////// exposes real load progress for cross-origin iframe content,
+    ////// so a genuinely accurate number isn't available here (or
+    ////// anywhere an iframe embeds a page you don't control). Eases
+    ////// toward CAP and keeps creeping slowly past it rather than
+    ////// stalling dead, so it never looks frozen even on the slowest
+    ////// real loads (measured 13-40s - see FALLBACK_TIMEOUT below).
+    ////// finish() snaps it to 100 the moment we actually know the
+    ////// card is ready (load/error/timeout), then that state fades
+    ////// the whole layer out via CSS. //////
 
-    document.querySelectorAll('.browser-frame__viewport').forEach(function (viewport) {
-        if (!viewport.querySelector('.browser-frame__iframe')) return;
+    var CARD_LOADERS = new WeakMap();
+
+    function createFrameLoader(viewport) {
         var loading = document.createElement('div');
         loading.className = 'browser-frame__loading';
         loading.setAttribute('aria-hidden', 'true');
-        var bar = document.createElement('div');
-        bar.className = 'browser-frame__loading-bar';
-        loading.appendChild(bar);
+        loading.innerHTML =
+            '<div class="browser-frame__loading-inner">' +
+                '<div class="browser-frame__loading-label">Ładowanie</div>' +
+                '<div class="browser-frame__loading-percent">' +
+                    '<span class="browser-frame__loading-number">0</span>' +
+                    '<span class="browser-frame__loading-percent-sign">%</span>' +
+                '</div>' +
+                '<div class="browser-frame__loading-track"><div class="browser-frame__loading-fill"></div></div>' +
+            '</div>';
         viewport.insertBefore(loading, viewport.firstChild);
+
+        var numberEl = loading.querySelector('.browser-frame__loading-number');
+        var fillEl = loading.querySelector('.browser-frame__loading-fill');
+        var CAP = 92;
+        var TAU = 3.2; // seconds - controls how fast it approaches CAP
+        var startTime = null;
+        var finished = false;
+        var rafId = null;
+
+        function render(value) {
+            numberEl.textContent = Math.round(value);
+            fillEl.style.width = value + '%';
+        }
+
+        function tick(timestamp) {
+            if (finished) return;
+            if (startTime === null) startTime = timestamp;
+            var elapsed = (timestamp - startTime) / 1000;
+            render(CAP * (1 - Math.exp(-elapsed / TAU)));
+            rafId = requestAnimationFrame(tick);
+        }
+        rafId = requestAnimationFrame(tick);
+
+        return {
+            finish: function () {
+                if (finished) return;
+                finished = true;
+                if (rafId) cancelAnimationFrame(rafId);
+                render(100);
+            }
+        };
+    }
+
+    document.querySelectorAll('.browser-frame__viewport').forEach(function (viewport) {
+        if (!viewport.querySelector('.browser-frame__iframe')) return;
+        CARD_LOADERS.set(viewport, createFrameLoader(viewport));
     });
 
     ////// Live-preview fallback: if a "live" card's iframe hasn't fired
@@ -77,26 +130,41 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.portfolio-card[data-mode="live"], .realizacje-card[data-mode="live"]').forEach(function (card) {
         var iframe = card.querySelector('.browser-frame__iframe');
         if (!iframe) return;
+        var viewport = card.querySelector('.browser-frame__viewport');
+        var loader = viewport && CARD_LOADERS.get(viewport);
+
+        // Snaps the counter to 100% immediately, then holds it visible
+        // for a beat before fading the loader away - without this the
+        // layer would vanish the instant "load" fires and the jump
+        // from ~92% straight to gone would read as a skipped number.
+        function complete() {
+            if (loader) loader.finish();
+            setTimeout(function () {
+                card.classList.add('is-frame-loaded');
+            }, 260);
+        }
 
         var settled = false;
         var timer = setTimeout(function () {
             if (settled) return;
             settled = true;
-            card.classList.add('mode-image', 'is-frame-loaded');
+            card.classList.add('mode-image');
             iframe.remove();
+            complete();
         }, FALLBACK_TIMEOUT);
 
         iframe.addEventListener('load', function () {
             settled = true;
             clearTimeout(timer);
-            card.classList.add('is-frame-loaded');
+            complete();
         });
         iframe.addEventListener('error', function () {
             if (settled) return;
             settled = true;
             clearTimeout(timer);
-            card.classList.add('mode-image', 'is-frame-loaded');
+            card.classList.add('mode-image');
             iframe.remove();
+            complete();
         });
     });
 
