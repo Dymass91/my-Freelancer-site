@@ -154,6 +154,60 @@
   opacity: 0;
   transition: opacity .3s ease;
 }
+/* Loading state: same visual language as the homepage's full-page
+   .wrapper loader (Landing.css) - #f4f5f7 background, the site's blue
+   gradient bar - scaled down to fit inside a card. Injected by
+   JS/Portfolio.js as the first child of every .browser-frame__viewport
+   (not authored per-card in markup, since this is one shared
+   component used on the homepage hero/portfolio grid and the
+   realizacje grid alike). Sits above the iframe (which paints an
+   opaque white box the instant it starts loading, well before the
+   embedded page's own content appears) so it stays visible for the
+   whole load, then Portfolio.js fades it out on the iframe's real
+   "load" event - or immediately if that card falls back to its static
+   image instead. */
+.browser-frame__loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f5f7;
+  opacity: 1;
+  transition: opacity .35s ease;
+}
+.browser-frame__loading-bar {
+  width: 44%;
+  max-width: 140px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--border-accent);
+  overflow: hidden;
+}
+.browser-frame__loading-bar::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, rgb(100, 211, 255), rgb(64, 170, 235));
+  animation: browserFrameLoading 1.1s ease-in-out infinite;
+}
+@keyframes browserFrameLoading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+.realizacje-card.is-frame-loaded .browser-frame__loading,
+.portfolio-card.is-frame-loaded .browser-frame__loading {
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .browser-frame__loading-bar::after {
+    animation: none;
+    left: 0;
+  }
+}
 /* Static "image" mode (set directly in the markup for any project whose
    headers block embedding) and the JS-triggered runtime fallback (added
    when a live iframe fails to load in time) both just show the image. */
