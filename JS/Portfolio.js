@@ -145,13 +145,49 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         var settled = false;
-        var timer = setTimeout(function () {
+
+        // A plain setTimeout counts down in real wall-clock time even
+        // while this browser tab sits in the background - but a
+        // backgrounded tab is exactly when the browser itself
+        // deprioritizes the iframe's own network/rendering, so it
+        // legitimately needs longer than FALLBACK_TIMEOUT to finish.
+        // Without this, leaving the tab unfocused for a while and
+        // coming back showed every still-loading card suddenly
+        // "reverting" to its static image - the countdown had quietly
+        // burned through while nobody was watching. Pausing/resuming
+        // the remaining budget around visibilitychange means only
+        // time spent actually watching a stuck card counts against it.
+        var timeLeft = FALLBACK_TIMEOUT;
+        var timerStartedAt = null;
+        var timer = null;
+
+        function onTimeout() {
             if (settled) return;
             settled = true;
             card.classList.add('mode-image');
             iframe.remove();
             complete();
-        }, FALLBACK_TIMEOUT);
+        }
+        function startTimer() {
+            timerStartedAt = Date.now();
+            timer = setTimeout(onTimeout, timeLeft);
+        }
+        function pauseTimer() {
+            if (!timer) return;
+            clearTimeout(timer);
+            timer = null;
+            timeLeft -= Date.now() - timerStartedAt;
+            if (timeLeft < 0) timeLeft = 0;
+        }
+        startTimer();
+        document.addEventListener('visibilitychange', function () {
+            if (settled) return;
+            if (document.hidden) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        });
 
         iframe.addEventListener('load', function () {
             settled = true;
