@@ -118,14 +118,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // Measured in testing: with 6 concurrent cross-origin iframes (each a
     // full page load - separate DNS/TLS, some on cold Cloudflare Workers,
     // one embedding its own nested Google Maps iframe) "load" times ranged
-    // from ~13s to ~40s, well past the ~2.5s originally planned. Since none
-    // of these projects are actually blocked (verified via response headers
-    // and a manual embed test - see project notes), a short timeout would
-    // falsely swap nearly every card to its static image. This is now a
-    // safety net against a genuinely stuck/blocked embed, not a quality
-    // gate, so it can afford to be generous - the card shows the loading
-    // bar (above) the whole time until the real preview pops in.
-    var FALLBACK_TIMEOUT = 20000;
+    // from ~13s to ~40s on desktop wifi, well past the ~2.5s originally
+    // planned. Since none of these projects are actually blocked (verified
+    // via response headers and a manual embed test - see project notes), a
+    // short timeout would falsely swap nearly every card to its static
+    // image. This is now a safety net against a genuinely stuck/blocked
+    // embed, not a quality gate, so it can afford to be generous - the
+    // card shows the loading bar (above) the whole time until the real
+    // preview pops in.
+    //
+    // Mobile gets a longer budget on top of that: several of these
+    // concurrent cross-origin loads competing over a slower/variable
+    // cellular connection routinely blow past the desktop-measured 40s
+    // ceiling even with nothing actually wrong, so the plain 20s timeout
+    // was swapping cards to their static image on first load, not just
+    // after the tab had been backgrounded (see the visibility handling
+    // below, which is a separate issue). Keyed off viewport width rather
+    // than a connection-speed API (Network Information isn't supported in
+    // Safari, mobile's the reliable signal we actually have).
+    var IS_NARROW_VIEWPORT = window.matchMedia('(max-width: 768px)').matches;
+    var FALLBACK_TIMEOUT = IS_NARROW_VIEWPORT ? 45000 : 20000;
 
     document.querySelectorAll('.portfolio-card[data-mode="live"], .realizacje-card[data-mode="live"]').forEach(function (card) {
         var iframe = card.querySelector('.browser-frame__iframe');
