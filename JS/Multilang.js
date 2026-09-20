@@ -280,7 +280,7 @@ var data = {
         ],
         "hero_preview_teaser": "Poniżej zobaczysz mój ostatni projekt dla klienta z Holandii.",
         "hero_rotator": [
-            "Od <strong>1599 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.",
+            "Od <strong>1199 zł</strong>. Gotowa strona w 1&ndash;2 tygodnie. Bez ukrytych kosztów.",
             "Buduję strony, które ładują się w <strong>2 sekundy</strong> i realnie <strong>przyciągają klientów</strong> &mdash; nie tylko ładnie wyglądają.",
             "Tworzę strony dla małych firm <strong>z Piły i okolic</strong> &mdash; od pomysłu do gotowej wizytówki w internecie."
         ],
@@ -329,7 +329,7 @@ var data = {
         "pricing": [
             {
                 "name": "START",
-                "price": "1599 zł",
+                "price": "1199 zł",
                 "priceLabel": "jednorazowo",
                 "badge": "Najpopularniejszy",
                 "description": "Dla małych firm i osób, które potrzebują prostej, profesjonalnej strony.",
@@ -339,7 +339,7 @@ var data = {
             },
             {
                 "name": "FIRMA",
-                "price": "3499 zł",
+                "price": "1799 zł",
                 "priceLabel": "jednorazowo",
                 "badge": "",
                 "description": "Dla firm, które potrzebują rozbudowanej prezentacji swojej oferty.",
@@ -414,7 +414,7 @@ var data = {
         ],
         "hero_preview_teaser": "Below you'll see my latest project for a client from the Netherlands.",
         "hero_rotator": [
-            "From <strong>1599 zł</strong>. A finished website in 1&ndash;2 weeks. No hidden costs.",
+            "From <strong>1199 zł</strong>. A finished website in 1&ndash;2 weeks. No hidden costs.",
             "I build websites that load in <strong>2 seconds</strong> and actually <strong>attract customers</strong> &mdash; not just look pretty.",
             "I create websites for small businesses <strong>in Piła and the surrounding area</strong> &mdash; from idea to a finished online presence."
         ],
@@ -463,7 +463,7 @@ var data = {
         "pricing": [
             {
                 "name": "START",
-                "price": "1599 zł",
+                "price": "1199 zł",
                 "priceLabel": "one-time",
                 "badge": "Most popular",
                 "description": "For small businesses and individuals who need a simple, professional website.",
@@ -473,7 +473,7 @@ var data = {
             },
             {
                 "name": "BUSINESS",
-                "price": "3499 zł",
+                "price": "1799 zł",
                 "priceLabel": "one-time",
                 "badge": "",
                 "description": "For businesses that need a more extensive presentation of their offer.",
@@ -548,7 +548,7 @@ var data = {
         ],
         "hero_preview_teaser": "Hieronder zie je mijn laatste project voor een klant uit Nederland.",
         "hero_rotator": [
-            "Vanaf <strong>1599 zł</strong>. Een kant-en-klare website in 1&ndash;2 weken. Geen verborgen kosten.",
+            "Vanaf <strong>1199 zł</strong>. Een kant-en-klare website in 1&ndash;2 weken. Geen verborgen kosten.",
             "Ik bouw websites die in <strong>2 seconden</strong> laden en echt <strong>klanten aantrekken</strong> &mdash; niet alleen mooi zijn.",
             "Ik maak websites voor kleine bedrijven <strong>in Piła en omgeving</strong> &mdash; van idee tot een kant-en-klare online aanwezigheid."
         ],
@@ -597,7 +597,7 @@ var data = {
         "pricing": [
             {
                 "name": "START",
-                "price": "1599 zł",
+                "price": "1199 zł",
                 "priceLabel": "eenmalig",
                 "badge": "Meest populair",
                 "description": "Voor kleine bedrijven en particulieren die een eenvoudige, professionele website nodig hebben.",
@@ -607,7 +607,7 @@ var data = {
             },
             {
                 "name": "BEDRIJF",
-                "price": "3499 zł",
+                "price": "1799 zł",
                 "priceLabel": "eenmalig",
                 "badge": "",
                 "description": "Voor bedrijven die een uitgebreidere presentatie van hun aanbod nodig hebben.",
