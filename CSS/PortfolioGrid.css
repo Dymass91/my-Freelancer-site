@@ -154,11 +154,16 @@
    desktop hero, rather than a stretched leftover card. */
 @media (min-width: 768px) {
   .portfolio-card--mobile-preview .browser-frame__viewport {
-    aspect-ratio: 9 / 16;
+    /* Closer to the hero card's own (8/5) viewport height than a true
+       phone ratio (9/16) would be - a true phone ratio left the whole
+       row much taller than the hero card actually needed, stretching
+       its meta section (flex:1) into a large empty gap underneath its
+       text. Still tall/narrow enough to read as "the mobile view". */
+    aspect-ratio: 3 / 4;
   }
   .portfolio-card--mobile-preview .browser-frame__iframe {
     width: 390px;
-    height: 700px;
+    height: 520px;
   }
 }
 .browser-frame__fallback {
