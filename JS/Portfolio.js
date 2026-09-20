@@ -222,29 +222,179 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    ////// Technology filters //////
+    ////// Technology filters, with a "blocks scatter/reassemble"
+    ////// transition between filter states - a FLIP animation (First/
+    ////// Last/Invert/Play): cards leaving the filtered set slide off
+    ////// past the edge of the page, cards joining it slide back in
+    ////// from that same edge, and cards present in both the old and
+    ////// new filter just glide from their old grid slot to their new
+    ////// one - so switching between Wszystkie/Realizacje/Koncepcje
+    ////// reads as one continuous rearrangement instead of an instant
+    ////// jump-cut. //////
 
     var filterButtons = document.querySelectorAll('.portfolio-filter');
     // Scoped to the grid - the hero section reuses .portfolio-card for its
     // flagship-project preview (same browser-frame styling/JS), and isn't
     // part of the filterable set.
     var cards = document.querySelectorAll('.portfolio-grid .portfolio-card');
+    var grid = document.querySelector('.portfolio-grid');
+    var REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var MOVE_MS = 420;
+    var EXIT_MS = 380;
 
-    filterButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            filterButtons.forEach(function (b) { b.classList.remove('is-active'); });
-            btn.classList.add('is-active');
+    // Which edge a card flies out to / in from - whichever side of the
+    // viewport it's already closer to, so cards scatter apart rather
+    // than all funneling toward one edge.
+    function exitOffset(rect) {
+        var goRight = (rect.left + rect.width / 2) >= (window.innerWidth / 2);
+        var distance = window.innerWidth + 200;
+        return goRight ? distance : -distance;
+    }
 
-            var filter = btn.getAttribute('data-filter');
+    function applyFilter(filter) {
+        if (REDUCE_MOTION || !grid) {
             cards.forEach(function (card) {
                 var tags = (card.getAttribute('data-tags') || '').split(',');
                 var show = filter === 'all' || tags.indexOf(filter) !== -1;
                 card.classList.toggle('is-hidden', !show);
             });
-
-            // Cards hidden via display:none report clientWidth 0, so any
-            // frame scaled while filtered out would be stuck at scale 0.
             scaleAllFrames();
+            return;
+        }
+
+        // First: where every currently-visible card sits right now.
+        var firstRects = new Map();
+        cards.forEach(function (card) {
+            if (!card.classList.contains('is-hidden')) {
+                firstRects.set(card, card.getBoundingClientRect());
+            }
+        });
+
+        var exiting = [], entering = [], staying = [];
+        cards.forEach(function (card) {
+            var tags = (card.getAttribute('data-tags') || '').split(',');
+            var show = filter === 'all' || tags.indexOf(filter) !== -1;
+            var wasHidden = card.classList.contains('is-hidden');
+            if (wasHidden && show) entering.push(card);
+            else if (!wasHidden && !show) exiting.push(card);
+            else if (!wasHidden && show) staying.push(card);
+        });
+
+        // Pull exiting cards out of the grid's normal flow, pinned via
+        // position:fixed to the exact screen spot they were already
+        // occupying - so the grid reflows the remaining cards
+        // immediately (as if they'd already left) with no visual jump,
+        // while the exiting card itself stays put for now, ready to
+        // slide off from there.
+        exiting.forEach(function (card) {
+            var rect = firstRects.get(card);
+            card.style.position = 'fixed';
+            card.style.margin = '0';
+            card.style.top = rect.top + 'px';
+            card.style.left = rect.left + 'px';
+            card.style.width = rect.width + 'px';
+            card.style.height = rect.height + 'px';
+            card.style.zIndex = '5';
+            card.style.transition = 'none';
+            card.style.transform = 'translateX(0)';
+        });
+
+        // Bring entering cards into flow so the grid finalizes its new
+        // layout (exiting cards already removed above, entering cards
+        // added here - this is the complete "Last" arrangement).
+        entering.forEach(function (card) {
+            card.classList.remove('is-hidden');
+        });
+
+        // Force a layout flush so the reads below see the settled
+        // final grid, not a stale pre-change one.
+        void grid.offsetHeight;
+
+        // Entering cards: offset them off past the page edge (Invert),
+        // starting from the natural slot they'll animate into.
+        entering.forEach(function (card) {
+            var rect = card.getBoundingClientRect();
+            card.style.transition = 'none';
+            card.style.transform = 'translateX(' + exitOffset(rect) + 'px)';
+        });
+
+        // Staying cards: Invert - jump (visually, via transform) back
+        // to their First position even though the DOM already placed
+        // them at Last, so the upcoming transition can animate the
+        // difference away.
+        var stayingDeltas = staying.map(function (card) {
+            var first = firstRects.get(card);
+            var last = card.getBoundingClientRect();
+            return { card: card, dx: first.left - last.left, dy: first.top - last.top };
+        });
+        stayingDeltas.forEach(function (item) {
+            item.card.style.transition = 'none';
+            item.card.style.transform = 'translate(' + item.dx + 'px,' + item.dy + 'px)';
+        });
+
+        // Force another flush so all the instant "start state" transforms
+        // above are actually painted before transitions are enabled below -
+        // otherwise the browser can coalesce start+end into one frame and
+        // skip the animation entirely.
+        void grid.offsetHeight;
+
+        // Play: enable transitions and set the end state for each group.
+        requestAnimationFrame(function () {
+            exiting.forEach(function (card) {
+                var rect = firstRects.get(card);
+                card.style.transition = 'transform ' + EXIT_MS + 'ms cubic-bezier(.4,0,.8,1)';
+                card.style.transform = 'translateX(' + exitOffset(rect) + 'px)';
+            });
+            entering.forEach(function (card) {
+                card.style.transition = 'transform ' + MOVE_MS + 'ms cubic-bezier(.2,0,.2,1)';
+                card.style.transform = 'translateX(0)';
+            });
+            stayingDeltas.forEach(function (item) {
+                item.card.style.transition = 'transform ' + MOVE_MS + 'ms ease';
+                item.card.style.transform = 'translate(0,0)';
+            });
+        });
+
+        // Cleanup once each group's animation has finished - exiting
+        // cards go back into normal display:none/grid flow (invisible,
+        // ready to reappear correctly next time), everyone else just
+        // loses the inline transform/transition so CSS (e.g. the hover
+        // lift) is back in full control.
+        setTimeout(function () {
+            exiting.forEach(function (card) {
+                card.classList.add('is-hidden');
+                card.style.position = '';
+                card.style.margin = '';
+                card.style.top = '';
+                card.style.left = '';
+                card.style.width = '';
+                card.style.height = '';
+                card.style.zIndex = '';
+                card.style.transition = '';
+                card.style.transform = '';
+            });
+        }, EXIT_MS + 20);
+
+        setTimeout(function () {
+            entering.concat(staying).forEach(function (card) {
+                card.style.transition = '';
+                card.style.transform = '';
+            });
+        }, MOVE_MS + 20);
+
+        // Cards hidden via display:none report clientWidth 0, so any
+        // frame scaled while filtered out would be stuck at scale 0 -
+        // entering cards already have their real layout width the
+        // instant they're unhidden above, well before their slide-in
+        // finishes, so this doesn't need to wait for the animation.
+        scaleAllFrames();
+    }
+
+    filterButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            filterButtons.forEach(function (b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            applyFilter(btn.getAttribute('data-filter'));
         });
     });
 
