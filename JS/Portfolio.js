@@ -1,16 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    ////// Live-preview scaling (iframe rendered at a fixed 1280x800
-    ////// "desktop" size, then scaled down to fit each card) //////
-
-    var FRAME_WIDTH = 1280;
+    ////// Live-preview scaling (iframe rendered at a fixed "desktop"
+    ////// size - normally 1280x800, or a narrow mobile width for
+    ////// .portfolio-card--mobile-preview cards, see PortfolioGrid.css -
+    ////// then scaled down to fit each card) //////
 
     function scaleFrame(viewport) {
         var iframe = viewport.querySelector('.browser-frame__iframe');
         if (!iframe) return;
         var width = viewport.clientWidth;
-        if (!width) return;
-        iframe.style.transform = 'scale(' + (width / FRAME_WIDTH) + ')';
+        // offsetWidth reads the iframe's own CSS width (1280px default,
+        // 390px for the mobile-preview variant) - unaffected by the
+        // transform:scale already applied here on a previous call, so
+        // this stays accurate across repeated resize recalculations
+        // without needing a separate constant per variant.
+        var frameWidth = iframe.offsetWidth;
+        if (!width || !frameWidth) return;
+        iframe.style.transform = 'scale(' + (width / frameWidth) + ')';
     }
 
     function scaleAllFrames() {

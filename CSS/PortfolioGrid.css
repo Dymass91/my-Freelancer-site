@@ -64,9 +64,6 @@
   .portfolio-card--hero {
     grid-column: span 2;
   }
-  .portfolio-card--hero .browser-frame__viewport {
-    aspect-ratio: 16 / 7;
-  }
 }
 
 /* ── Portfolio: browser-frame card ── */
@@ -144,6 +141,25 @@
   border: 0;
   pointer-events: none; /* whole card is the click target, not the embedded page */
   transform-origin: 0 0;
+}
+/* Mobile preview variant: the narrow column-width card that lands
+   beside a --hero card in the same grid row (bento's dense packing
+   backfills that leftover single column with the next card in
+   markup order). Squeezing the normal 1280px-wide desktop render
+   into that narrow width just produced a tiny, hard-to-read sliver
+   of the desktop layout - rendering the iframe at an actual mobile
+   width instead makes the embedded site serve its own real mobile
+   layout, which both reads better at that column width and reads as
+   an intentional "here's the mobile view" pairing next to the wide
+   desktop hero, rather than a stretched leftover card. */
+@media (min-width: 768px) {
+  .portfolio-card--mobile-preview .browser-frame__viewport {
+    aspect-ratio: 9 / 16;
+  }
+  .portfolio-card--mobile-preview .browser-frame__iframe {
+    width: 390px;
+    height: 700px;
+  }
 }
 .browser-frame__fallback {
   position: absolute;
