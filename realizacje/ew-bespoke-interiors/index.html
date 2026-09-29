@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script>
+    // Same capability check as the homepage - see index.html for the
+    // full rationale. Keeps background-attachment behavior consistent
+    // across the whole site.
+    (function () {
+      try {
+        var isIOS = /iP(hone|od|ad)/.test(navigator.platform) ||
+          (navigator.userAgent.indexOf('Mac') !== -1 && 'ontouchend' in document);
+        if (isIOS) return;
+        var mem = navigator.deviceMemory;
+        var cores = navigator.hardwareConcurrency;
+        if (mem >= 4 && cores >= 4) {
+          document.documentElement.classList.add('bg-fixed-capable');
+        }
+      } catch (e) {}
+    })();
+    </script>
+
+    <title>EW Bespoke Interiors – strona pracowni tapicerstwa samochodowego | Case study</title>
+    <meta name="description" content="Case study: strona internetowa EW Bespoke Interiors — pracowni tapicerstwa samochodowego ze Skórki koło Piły. Projekt, wykonanie i prezentacja realizacji dla klientów z całej Polski.">
+    <meta name="author" content="Tomasz Matyszczak">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tomaszmatyszczak.pl/realizacje/ew-bespoke-interiors/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="EW Bespoke Interiors – strona pracowni tapicerstwa samochodowego">
+    <meta property="og:description" content="Case study: strona internetowa pracowni tapicerstwa samochodowego EW Bespoke Interiors ze Skórki koło Piły.">
+    <meta property="og:url" content="https://tomaszmatyszczak.pl/realizacje/ew-bespoke-interiors/">
+    <meta property="og:image" content="https://tomaszmatyszczak.pl/IMG/ewbespoke.png">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="og:site_name" content="Tomasz Matyszczak – Web Developer">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EW Bespoke Interiors – strona pracowni tapicerstwa samochodowego">
+    <meta name="twitter:description" content="Case study: strona internetowa pracowni tapicerstwa samochodowego EW Bespoke Interiors ze Skórki koło Piły.">
+    <meta name="twitter:image" content="https://tomaszmatyszczak.pl/IMG/ewbespoke.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://tomaszmatyszczak.pl/" },
+            { "@type": "ListItem", "position": 2, "name": "Realizacje", "item": "https://tomaszmatyszczak.pl/realizacje/" },
+            { "@type": "ListItem", "position": 3, "name": "EW Bespoke Interiors", "item": "https://tomaszmatyszczak.pl/realizacje/ew-bespoke-interiors/" }
+          ]
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://tomaszmatyszczak.pl/realizacje/ew-bespoke-interiors/",
+          "name": "EW Bespoke Interiors",
+          "url": "https://tomaszmatyszczak.pl/realizacje/ew-bespoke-interiors/",
+          "creator": { "@id": "https://tomaszmatyszczak.pl/#person" },
+          "about": "Strona internetowa pracowni tapicerstwa samochodowego"
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="../../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/SectionHeader.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Footer.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Landing.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/ScrollToTopCSS.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Subpages.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../../IMG/Logo.png">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Saira+Condensed&family=Baumans&display=swap" rel="stylesheet">
+    <script defer src="https://kit.fontawesome.com/a9043bc812.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/#About" class="navbar_header_About">O mnie</a></li>
+            <li><a href="/#Skills" class="navbar_header_Service">Usługi</a></li>
+            <li><a href="/#Cennik" class="navbar_header_Cennik">Cennik</a></li>
+            <li><a href="/#Projects" class="navbar_header_Realizacje">Realizacje</a></li>
+            <li><a href="/#FAQ" class="navbar_header_FAQ">FAQ</a></li>
+            <li><a href="/#Contact" class="navbar_header_Contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <header class="case-hero">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Strona główna</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="/realizacje/">Realizacje</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">EW Bespoke Interiors</span>
+        </nav>
+        <div class="case-hero__top">
+            <span class="project-badge">Realizacja</span>
+            <h1 class="subpage-h1">EW Bespoke Interiors — strona pracowni tapicerstwa samochodowego</h1>
+            <p class="subpage-lede">Strona dla pracowni tapicerskiej ze Skórki koło Piły, dostępna pod adresem <a href="https://ew-bespoke-interiors.pl" target="_blank" rel="noopener noreferrer">ew-bespoke-interiors.pl</a>. Klient zajmuje się kompletnymi wnętrzami samochodów, fotelami i projektami na zamówienie dla klientów z całej Polski.</p>
+        </div>
+    </header>
+
+    <section class="case-preview" id="live-preview">
+        <div class="case-preview__frame" data-live-src="https://ew-bespoke-interiors.pl" data-live-title="Podgląd na żywo: EW Bespoke Interiors">
+            <div class="case-preview__bar">
+                <span class="case-preview__dot case-preview__dot--red"></span>
+                <span class="case-preview__dot case-preview__dot--yellow"></span>
+                <span class="case-preview__dot case-preview__dot--green"></span>
+                <span class="case-preview__url">ew-bespoke-interiors.pl</span>
+            </div>
+            <div class="case-preview__viewport">
+                <img class="case-preview__shot" src="../../IMG/ewbespoke.png" alt="Zrzut ekranu strony EW Bespoke Interiors">
+            </div>
+        </div>
+        <div class="case-preview__actions">
+            <a href="https://ew-bespoke-interiors.pl" target="_blank" rel="noopener noreferrer" class="case-preview__open-link">Otwórz pełną stronę w nowej karcie</a>
+        </div>
+    </section>
+
+    <section class="subpage-section sp-wide">
+        <div class="case-context-text">
+            <div class="case-context-text__inner">
+                <h2>Rzemiosło, które trzeba było pokazać</h2>
+                <p>Tapicerstwo na tym poziomie sprzedaje się przez detal — szew, materiał, proporcje. Strona musiała to pokazać, a nie tylko o tym powiedzieć: mocne, pełnoekranowe zdjęcia realizacji, czytelny podział na usługi i prosty sposób kontaktu dla klienta, który często przyjeżdża z drugiego końca Polski.</p>
+            </div>
+        </div>
+
+        <div class="case-columns">
+            <div class="subpage-card">
+                <h3>Zakres prac</h3>
+                <ul>
+                    <li>Projekt i wykonanie strony od zera</li>
+                    <li>Galeria realizacji w pełnej rozdzielczości</li>
+                    <li>Wersja polska i angielska</li>
+                    <li>Podstawy pod lokalne SEO</li>
+                </ul>
+            </div>
+            <div class="subpage-card">
+                <h3>Technologie</h3>
+                <ul>
+                    <li>Astro</li>
+                </ul>
+            </div>
+            <div class="subpage-card">
+                <h3>Kontekst</h3>
+                <ul>
+                    <li>Branża: tapicerstwo samochodowe</li>
+                    <li>Lokalizacja: Skórka koło Piły</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="subpage-section">
+        <p>Jeśli prowadzisz lokalny biznes rzemieślniczy lub usługowy i potrzebujesz podobnej strony, zajrzyj też do <a href="/ile-kosztuje-strona-internetowa/">artykułu o cenach</a>.</p>
+        <div class="related-links">
+            <a href="/realizacje/">← Wszystkie realizacje</a>
+            <a href="/modernizacja-stron/">Modernizacja stron</a>
+            <a href="/#Contact">Zamów podobną stronę</a>
+        </div>
+    </section>
+
+    <div id="overlay"></div>
+    <footer>
+        <div class="footer_info">
+            <p class="footer_policy_text">Korzystając z tej strony proszę zapoznać się z <a href="/">Polityką prywatności</a>.</p>
+            <p class="footer_text"> Wszelkie prawa zastrzeżone © 2021</p>
+        </div>
+    </footer>
+
+    <a href="#" class="to-top" aria-label="Wróć na górę"><i class="fas fa-chevron-up"></i></a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="../../JS/Navbar.js"></script>
+    <script src="../../JS/ScrollToTopArrow.js"></script>
+    <script src="../../JS/CaseStudyPreview.js"></script>
+    <script src="../../JS/PageTransition.js"></script>
+    <script src="../../JS/PrismBackground.js"></script>
+</body>
+
+</html>
