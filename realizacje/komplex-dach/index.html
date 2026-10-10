@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script>
+    // Same capability check as the homepage - see index.html for the
+    // full rationale. Keeps background-attachment behavior consistent
+    // across the whole site.
+    (function () {
+      try {
+        var isIOS = /iP(hone|od|ad)/.test(navigator.platform) ||
+          (navigator.userAgent.indexOf('Mac') !== -1 && 'ontouchend' in document);
+        if (isIOS) return;
+        var mem = navigator.deviceMemory;
+        var cores = navigator.hardwareConcurrency;
+        if (mem >= 4 && cores >= 4) {
+          document.documentElement.classList.add('bg-fixed-capable');
+        }
+      } catch (e) {}
+    })();
+    </script>
+
+    <title>Komplex-Dach Piła – strona firmy dekarskiej | Case study</title>
+    <meta name="description" content="Case study: strona internetowa Komplex-Dach Piła — firmy dekarskiej obsługującej Piłę i okolice w promieniu 100 km. Pełny zakres usług, obszar działania i bezpośredni kontakt telefoniczny.">
+    <meta name="author" content="Tomasz Matyszczak">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tomaszmatyszczak.pl/realizacje/komplex-dach/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Komplex-Dach Piła – strona firmy dekarskiej">
+    <meta property="og:description" content="Case study: strona internetowa firmy dekarskiej Komplex-Dach Piła, obsługującej Piłę i okolice w promieniu 100 km.">
+    <meta property="og:url" content="https://tomaszmatyszczak.pl/realizacje/komplex-dach/">
+    <meta property="og:image" content="https://tomaszmatyszczak.pl/IMG/komplexdach.png">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="og:site_name" content="Tomasz Matyszczak – Web Developer">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Komplex-Dach Piła – strona firmy dekarskiej">
+    <meta name="twitter:description" content="Case study: strona internetowa firmy dekarskiej Komplex-Dach Piła, obsługującej Piłę i okolice w promieniu 100 km.">
+    <meta name="twitter:image" content="https://tomaszmatyszczak.pl/IMG/komplexdach.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://tomaszmatyszczak.pl/" },
+            { "@type": "ListItem", "position": 2, "name": "Realizacje", "item": "https://tomaszmatyszczak.pl/realizacje/" },
+            { "@type": "ListItem", "position": 3, "name": "Komplex-Dach Piła", "item": "https://tomaszmatyszczak.pl/realizacje/komplex-dach/" }
+          ]
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://tomaszmatyszczak.pl/realizacje/komplex-dach/",
+          "name": "Komplex-Dach Piła",
+          "url": "https://tomaszmatyszczak.pl/realizacje/komplex-dach/",
+          "creator": { "@id": "https://tomaszmatyszczak.pl/#person" },
+          "about": "Strona internetowa firmy dekarskiej"
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="../../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/SectionHeader.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Footer.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Landing.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/ScrollToTopCSS.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Subpages.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../../IMG/Logo.png">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Saira+Condensed&family=Baumans&display=swap" rel="stylesheet">
+    <script defer src="https://kit.fontawesome.com/a9043bc812.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/#About" class="navbar_header_About">O mnie</a></li>
+            <li><a href="/#Skills" class="navbar_header_Service">Usługi</a></li>
+            <li><a href="/#Cennik" class="navbar_header_Cennik">Cennik</a></li>
+            <li><a href="/#Projects" class="navbar_header_Realizacje">Realizacje</a></li>
+            <li><a href="/#FAQ" class="navbar_header_FAQ">FAQ</a></li>
+            <li><a href="/#Contact" class="navbar_header_Contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <header class="case-hero">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Strona główna</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="/realizacje/">Realizacje</a>
+            <span class="breadcrumb-sep">/</span>
+            <span aria-current="page">Komplex-Dach Piła</span>
+        </nav>
+        <div class="case-hero__top">
+            <span class="project-badge">Realizacja</span>
+            <h1 class="subpage-h1">Komplex-Dach Piła — strona firmy dekarskiej</h1>
+            <p class="subpage-lede">Strona dla firmy dekarskiej z Piły, dostępna pod adresem <a href="https://komplex-dach-pila-cge.pages.dev" target="_blank" rel="noopener noreferrer">komplex-dach-pila-cge.pages.dev</a>. Klient oferuje kompleksowe wykonanie dachów, naprawy, przeglądy i obróbki blacharskie, obsługując Piłę i okolice w promieniu 100 km.</p>
+        </div>
+    </header>
+
+    <section class="case-preview" id="live-preview">
+        <div class="case-preview__frame" data-live-src="https://komplex-dach-pila-cge.pages.dev" data-live-title="Podgląd na żywo: Komplex-Dach Piła">
+            <div class="case-preview__bar">
+                <span class="case-preview__dot case-preview__dot--red"></span>
+                <span class="case-preview__dot case-preview__dot--yellow"></span>
+                <span class="case-preview__dot case-preview__dot--green"></span>
+                <span class="case-preview__url">komplex-dach-pila-cge.pages.dev</span>
+            </div>
+            <div class="case-preview__viewport">
+                <img class="case-preview__shot" src="../../IMG/komplexdach.png" alt="Zrzut ekranu strony Komplex-Dach Piła">
+            </div>
+        </div>
+        <div class="case-preview__actions">
+            <a href="https://komplex-dach-pila-cge.pages.dev" target="_blank" rel="noopener noreferrer" class="case-preview__open-link">Otwórz pełną stronę w nowej karcie</a>
+        </div>
+    </section>
+
+    <section class="subpage-section sp-wide">
+        <div class="case-context-text">
+            <div class="case-context-text__inner">
+                <h2>Zaufanie buduje się telefonem, nie formularzem</h2>
+                <p>Klient w tej branży dzwoni, nie wypełnia formularzy — chce usłyszeć fachowca i szybko umówić oględziny. Strona musiała to ułatwiać: numer telefonu widoczny na każdym ekranie, jasny podział na konkretne usługi i czytelna informacja, czy dekarz w ogóle dojedzie w dany rejon.</p>
+            </div>
+        </div>
+
+        <div class="case-columns">
+            <div class="subpage-card">
+                <h3>Zakres prac</h3>
+                <ul>
+                    <li>Projekt i wykonanie strony od zera</li>
+                    <li>Osobne podstrony dla każdej usługi</li>
+                    <li>Mapa obszaru działania z listą miejscowości</li>
+                    <li>Galeria realizacji i sekcja FAQ</li>
+                </ul>
+            </div>
+            <div class="subpage-card">
+                <h3>Technologie</h3>
+                <ul>
+                    <li>Astro</li>
+                </ul>
+            </div>
+            <div class="subpage-card">
+                <h3>Kontekst</h3>
+                <ul>
+                    <li>Branża: usługi dekarskie</li>
+                    <li>Obszar: Piła, promień ok. 100 km</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="subpage-section">
+        <p>Jeśli prowadzisz lokalny biznes usługowy i potrzebujesz podobnej strony, zajrzyj też do <a href="/ile-kosztuje-strona-internetowa/">artykułu o cenach</a>.</p>
+        <div class="related-links">
+            <a href="/realizacje/">← Wszystkie realizacje</a>
+            <a href="/modernizacja-stron/">Modernizacja stron</a>
+            <a href="/#Contact">Zamów podobną stronę</a>
+        </div>
+    </section>
+
+    <div id="overlay"></div>
+    <footer>
+        <div class="footer_info">
+            <p class="footer_policy_text">Korzystając z tej strony proszę zapoznać się z <a href="/">Polityką prywatności</a>.</p>
+            <p class="footer_text"> Wszelkie prawa zastrzeżone © 2021</p>
+        </div>
+    </footer>
+
+    <a href="#" class="to-top" aria-label="Wróć na górę"><i class="fas fa-chevron-up"></i></a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="../../JS/Navbar.js"></script>
+    <script src="../../JS/ScrollToTopArrow.js"></script>
+    <script src="../../JS/CaseStudyPreview.js"></script>
+    <script src="../../JS/PageTransition.js"></script>
+    <script src="../../JS/PrismBackground.js"></script>
+</body>
+
+</html>
