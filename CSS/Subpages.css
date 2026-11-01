@@ -741,23 +741,14 @@
 /* Subtle local blue glow, e.g. behind an eyebrow/heading pair - a
    single small radial gradient, not a section-wide wash. Position the
    element position:relative and this sits behind its content. */
+/* .sp-glow previously added a soft radial-gradient blue glow behind
+   these no-card text blocks (::before, see git history) - removed per
+   user feedback: it read as a visible blotch behind the text instead
+   of a subtle accent. Class kept (just position:relative) since it's
+   still used as a hook across the service pages' markup, but it no
+   longer draws anything. */
 .sp-glow {
   position: relative;
-  isolation: isolate;
-}
-.sp-glow::before {
-  content: "";
-  position: absolute;
-  /* No horizontal bleed - a fixed inset here previously extended past
-     the viewport edge on narrow screens (the glow sits near the page's
-     6vw side padding), inflating document scrollWidth into a real
-     horizontal-scroll bug. Vertical-only bleed still reads as a glow
-     since the gradient itself fades out well before the box edge. */
-  inset: -40px 0 auto 0;
-  height: 220px;
-  background: radial-gradient(circle, rgba(70, 180, 240, 0.10), transparent 65%);
-  z-index: -1;
-  pointer-events: none;
 }
 
 /* Checklist: replaces plain <ul><li> bullets with a small circled
